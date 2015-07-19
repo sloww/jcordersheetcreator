@@ -30,15 +30,19 @@ namespace OrderSheetCreator
             {
                 foreach (var maoyi in maoyishang)
                 {
-                    CusCategory cc = new CusCategory();
-                    cc.ParentNum = "130817052630";
-                    cc.SnNum = DateTime.Now.ToString("yyMMddHHmmss");
-                    cc.CateName = maoyi.Key.ToString().Trim();
-                    cc.IsDelete = 0;
-                    cc.CreateTime = DateTime.Now;
-                    ctx.CusCategory.Add(cc);
-                    ctx.SaveChanges();
-                    System.Threading.Thread.Sleep(1000);
+                    CusCategory cusc = ctx.CusCategory.FirstOrDefault(item => item.CateName.Equals(maoyi.Key));
+                    if (cusc == null)
+                    {
+                        CusCategory cc = new CusCategory();
+                        cc.ParentNum = "130817052630";
+                        cc.SnNum = DateTime.Now.ToString("yyMMddHHmmss");
+                        cc.CateName = maoyi.Key.ToString().Trim();
+                        cc.IsDelete = 0;
+                        cc.CreateTime = DateTime.Now;
+                        ctx.CusCategory.Add(cc);
+                        ctx.SaveChanges();
+                        System.Threading.Thread.Sleep(1000);
+                    }
                 }
             }
         }
@@ -74,12 +78,11 @@ namespace OrderSheetCreator
                     {
                         count++;
                         IRow irow = ist.GetRow(j);
-              
+
                         if (irow == null) continue;
                         if (irow.Cells.Count < 4) continue;
 
                         //int maxno = irow.Cells.Count;
-
 
                         string mysmc = irow.GetCell(11, MissingCellPolicy.RETURN_NULL_AND_BLANK).StringCellValue.Trim();
                         if (mysmc.Length < 2) continue;
@@ -108,6 +111,7 @@ namespace OrderSheetCreator
 
         }
 
+        //生成txt
         private void button3_Click(object sender, EventArgs e)
         {
             using (StreamWriter writer = new StreamWriter("maoyishang.txt"))
@@ -124,43 +128,42 @@ namespace OrderSheetCreator
         //导入工厂数据
         private void button4_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            /*
-            button2_Click(null, null);
+            if (maoyishang.Count == 0) return;
+            if(gongchang.Count ==0) return;
             List<Customer> ctlistforupdate = new List<Customer>();
-            List<Customer> ctlist=new List<Customer>();
+            List<Customer> ctlist = new List<Customer>();
             using (var ctx = new entity.jingchendbEntities())
             {
-                var cusQuery = from item in ctx.Customer
+                var cainzCustomers = from item in ctx.Customer
                                where item.FirstNum == "130817052630"
                                select item;
-                foreach (var cus in cusQuery)
+                foreach (var cainzCus in cainzCustomers)
                 {
-                    string gcmc1 = cus.CustomerName;
-                    string gcmc =gcmc1.Replace('C', ' ').Trim();
+                    string gcmc = cainzCus.CustomerName.Replace('C', ' ').Trim();
+                    //如果在工厂数据和工厂本地字典中同时有工厂的信息，则试图查询他的贸易商字段
                     if (gongchang.ContainsKey(gcmc))
                     {
-                        string mysmc = gongchang[gcmc];
                         try
                         {
-                            var mysid = (from item in ctx.CusCategory
-                                         where item.CateName== mysmc
-                                        select item).ToList();
-                            if (mysid != null && mysid.Count == 1)
+                            string mysmc = gongchang[gcmc];
+                            var _maoyishang = ctx.CusCategory.SingleOrDefault(item => item.CateName == mysmc);
+
+                            //var _maoyishang = (from item in ctx.CusCategory
+                            //             where item.CateName == mysmc
+                            //             select item).ToList();
+                            //if (_maoyishang != null && _maoyishang.Count == 1)
+                            //存在所属贸易商
+                            if(_maoyishang !=null)
                             {
-                                cus.SecondNum = mysid[0].SnNum;
-                                ctlistforupdate.Add(cus);
-                                
+                                cainzCus.SecondNum = _maoyishang.SnNum;
+                                ctlistforupdate.Add(cainzCus);
                             }
+                            //不存在贸易商
                             else
                             {
                                 using (StreamWriter w = new StreamWriter("log.txt", true))
                                 {
-                                    w.WriteLine(gcmc1);
+                                    w.WriteLine(gcmc);
                                 }
                             }
                         }
@@ -172,26 +175,32 @@ namespace OrderSheetCreator
                     }
                 }
 
-                
-                ctlist= cusQuery.ToList();
+
+                ctlist = cainzCustomers.ToList();
+
                 customerBindingSource.DataSource = ctlist;
-                
+
             }
 
-            
+            //修改动作
             using (var ctx = new entity.jingchendbEntities())
             {
-                foreach(var item in ctlistforupdate)
+                foreach (var item in ctlistforupdate)
                 {
                     ctx.Customer.Attach(item);
                     ctx.Entry(item).State = System.Data.Entity.EntityState.Modified;
                     ctx.SaveChanges();
-                   
+
                 }
-                
+
             }
 
-   */
         }
+
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+        }
+
     }
 }
