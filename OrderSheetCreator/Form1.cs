@@ -16,8 +16,8 @@ namespace OrderSheetCreator
 {
     public partial class Form1 : Form
     {
-        Dictionary<string, int> maoyishang = new Dictionary<string, int>();
-        Dictionary<string, string> gongchang = new Dictionary<string, string>();
+        Dictionary<string, int> gMaoYiShangDic = new Dictionary<string, int>();
+        Dictionary<string, string> gGongChangDic = new Dictionary<string, string>();
 
         public Form1()
         {
@@ -28,7 +28,7 @@ namespace OrderSheetCreator
         {
             using (var ctx = new entity.jingchendbEntities())
             {
-                foreach (var maoyi in maoyishang)
+                foreach (var maoyi in gMaoYiShangDic)
                 {
                     CusCategory cusc = ctx.CusCategory.FirstOrDefault(item => item.CateName.Equals(maoyi.Key));
                     if (cusc == null)
@@ -54,10 +54,111 @@ namespace OrderSheetCreator
             openFileDialog1.Filter = "xls file|*.xls";
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                Readjc(openFileDialog1.FileName);
+                ReadProducts(openFileDialog1.FileName);
+               
             }
         }
 
+
+        private void ReadProducts(string path)
+        {
+            IWorkbook wb = WorkbookFactory.Create(path);
+
+            int count = 0;
+
+            //循环 sheet
+            for (int i = 1; i < wb.NumberOfSheets; i++)
+            {
+
+                ISheet ist = wb.GetSheetAt(i);
+                int rowofPage = ist.LastRowNum + 1;
+                //查找各个位置
+
+                int titleRowNo = -1;
+                int cdNo = -1;
+                int caizhiNo = -1;
+                int caizhiEXNo = -1;
+                int chicunNo = -1;
+                int danjiaNo = -1;
+                int gongchangNo = -1;
+                string gudinggcm = "";
+
+                foreach (IRow row in ist)
+                {
+                    int cellCount = row.Cells.Count;
+                    for (int cNo = 0; cNo < cellCount; cNo++)
+                    {
+                        ICell icell = row.GetCell(cNo, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+                        if (icell.CellType == CellType.String)
+                        {
+                            string title = icell.StringCellValue.Trim().Replace("（元/个）", "").Replace(" ", "");
+                            switch (title)
+                            {
+                                case "CD":
+                                    {
+                                        cdNo = icell.ColumnIndex;
+                                    } break;
+                                case "材质":
+                                    {
+                                        caizhiNo = icell.ColumnIndex;
+                                    } break;
+                                case "材质说明":
+                                    {
+                                        caizhiEXNo = icell.ColumnIndex;
+                                    } break;
+                                case "单价    （元/个）":
+                                    {
+                                        danjiaNo = icell.ColumnIndex;
+                                    } break;
+                                case "尺寸mm":
+                                    {
+                                        chicunNo = icell.ColumnIndex;
+                                    } break;
+                                case "厂商名":
+                                case "工厂名":
+                                    {
+                                        gongchangNo = icell.ColumnIndex;
+                                    } break;
+                            }
+                        }
+
+
+                        if (cdNo != -1)
+                        {
+                            titleRowNo = row.RowNum;
+
+                            if (gongchangNo == -1)
+                            {
+                                gudinggcm = findgcm(ist.SheetName, gGongChangDic);
+                            }
+                        }
+
+                        break;
+
+                    }
+                }
+
+
+
+                for (int j = titleRowNo + 1; j < rowofPage; j++)
+                {
+                    count++;
+                    IRow irow = ist.GetRow(j);
+
+                    if (irow == null) continue;
+
+                    using (var ent = new entity.jingchendbEntities())
+                    {
+                        if (cdNo != -1)
+                        {
+                            String cdstring = irow.GetCell(cdNo, MissingCellPolicy.CREATE_NULL_AS_BLANK).StringCellValue;
+                            MessageBox.Show(cdstring);
+                        }
+                    }
+
+                }
+            }
+        }
 
         private void Readjc(string path)
         {
@@ -86,25 +187,25 @@ namespace OrderSheetCreator
                         if (mysmc.Length < 2) continue;
                         try
                         {
-                            int keyno = maoyishang[mysmc];
-                            maoyishang[mysmc]++;
+                            int keyno = gMaoYiShangDic[mysmc];
+                            gMaoYiShangDic[mysmc]++;
 
                         }
                         catch (KeyNotFoundException ee)
                         {
-                            maoyishang.Add(mysmc, 0);
+                            gMaoYiShangDic.Add(mysmc, 0);
                         }
 
                         string gcmc = irow.GetCell(12, MissingCellPolicy.RETURN_NULL_AND_BLANK).StringCellValue.Trim();
                         string gcmczip = stringZip(gcmc);
                         if (gcmc.Length < 2) continue;
-                        if (gongchang.ContainsKey(gcmc) == false)
+                        if (gGongChangDic.ContainsKey(gcmc) == false)
                         {
-                            gongchang.Add(gcmc, mysmc);
+                            gGongChangDic.Add(gcmc, mysmc);
                         }
-                        if (gongchang.ContainsKey(gcmczip) == false)
+                        if (gGongChangDic.ContainsKey(gcmczip) == false)
                         {
-                            gongchang.Add(gcmczip, mysmc);
+                            gGongChangDic.Add(gcmczip, mysmc);
                         }
 
                     }
@@ -119,7 +220,7 @@ namespace OrderSheetCreator
         {
             using (StreamWriter writer = new StreamWriter("maoyishang.txt"))
             {
-                foreach (var item in maoyishang)
+                foreach (var item in gMaoYiShangDic)
                 {
                     writer.WriteLine(item.Key);
                 }
@@ -131,20 +232,20 @@ namespace OrderSheetCreator
         //导入工厂数据
         private void button4_Click(object sender, EventArgs e)
         {
-            if (maoyishang.Count == 0) return;
-            if(gongchang.Count ==0) return;
+            if (gMaoYiShangDic.Count == 0) return;
+            if(gGongChangDic.Count ==0) return;
             List<Customer> ctlistforupdate = new List<Customer>();
             List<Customer> ctlist = new List<Customer>();
             using (var ctx = new entity.jingchendbEntities())
             {
                 var cainzCustomers = from item in ctx.Customer
-                               where item.FirstNum == "130817052630"
-                               select item;
+                                     where item.FirstNum == "130817052630"
+                                     select item;
                 foreach (var cainzCus in cainzCustomers)
                 {
                     string gcmc = cainzCus.CustomerName.Replace('C', ' ').Trim();
 
-                    string mysmc = findMys(gcmc, gongchang);
+                    string mysmc = findMys(gcmc, gGongChangDic);
                     if (mysmc != "")
                     {
 
@@ -163,47 +264,7 @@ namespace OrderSheetCreator
                             w.WriteLine(gcmc + "," + stringZip(gcmc));
                         }
                     }
-
-                    //如果在工厂数据和工厂本地字典中同时有工厂的信息，则试图查询他的贸易商字段
-                    /*
-                    if (gongchang.ContainsKey(gcmc))
-                    {
-                        try
-                        {
-                            string mysmc = gongchang[gcmc];
-                            var _maoyishang = ctx.CusCategory.SingleOrDefault(item => item.CateName == mysmc);
-
-                            //存在所属贸易商
-                            if (_maoyishang != null)
-                            {
-                                cainzCus.SecondNum = _maoyishang.SnNum;
-                                ctlistforupdate.Add(cainzCus);
-                            }
-                            //不存在贸易商
-                            else
-                            {
-                                using (StreamWriter w = new StreamWriter("log1.txt", true))
-                                {
-                                    w.WriteLine(gcmc);
-                                }
-                            }
-                        }
-                        catch (Exception ee)
-                        {
-
-                            MessageBox.Show(ee.Message);
-                        }
-                    }
-                    else
-                    {
-                        using (StreamWriter w = new StreamWriter("log2.txt", true))
-                        {
-                            w.WriteLine(gcmc);
-                        }
-                    }*/
                 }
-                     
-
 
                 ctlist = cainzCustomers.ToList();
 
@@ -222,10 +283,6 @@ namespace OrderSheetCreator
 
                 }
             }
-
- 
-
-
         }
 
 
@@ -264,6 +321,20 @@ namespace OrderSheetCreator
             foreach (var item in d1)
             {
                 if (nameEqual( stringZip(item.Key), s1zip)) return item.Value;
+            }
+            return "";
+        }
+
+        //查找一个非规范的公司名称是否正确
+
+        private string findgcm(string s1, Dictionary<string, string> d1)
+        {
+            if (d1.ContainsKey(s1)) return s1;
+            string s1zip = stringZip(s1);
+            if (d1.ContainsKey(s1zip)) return s1zip;
+            foreach (var item in d1)
+            {
+                if (nameEqual(stringZip(item.Key), s1zip)) return item.Key;
             }
             return "";
         }
