@@ -117,10 +117,10 @@
     <Compile Include="MoveStorageDetail.cs">
       <DependentUpon>jingchendb.tt</DependentUpon>
     </Compile>
-    <Compile Include="OrderDetail.cs">
+    <Compile Include="Order.cs">
       <DependentUpon>jingchendb.tt</DependentUpon>
     </Compile>
-    <Compile Include="Orders.cs">
+    <Compile Include="OrderDetail.cs">
       <DependentUpon>jingchendb.tt</DependentUpon>
     </Compile>
     <Compile Include="OutStoDetail.cs">
@@ -173,15 +173,6 @@
       <DependentUpon>jingchendb.tt</DependentUpon>
     </Compile>
     <Compile Include="SysRole.cs">
-      <DependentUpon>jingchendb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tgc.cs">
-      <DependentUpon>jingchendb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="tmyg.cs">
-      <DependentUpon>jingchendb.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T_Plan.cs">
       <DependentUpon>jingchendb.tt</DependentUpon>
     </Compile>
     <Compile Include="View_OutStorage_StoProInfoByBarcode.cs">

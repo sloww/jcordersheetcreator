@@ -35,6 +35,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.button5 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,7 +44,7 @@
             this.button1.Location = new System.Drawing.Point(64, 264);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(181, 84);
+            this.button1.Size = new System.Drawing.Size(233, 84);
             this.button1.TabIndex = 0;
             this.button1.Text = "导入贸易商数据";
             this.button1.UseVisualStyleBackColor = true;
@@ -54,9 +55,9 @@
             this.button2.Location = new System.Drawing.Point(64, 54);
             this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(181, 84);
+            this.button2.Size = new System.Drawing.Size(233, 84);
             this.button2.TabIndex = 3;
-            this.button2.Text = "导入excel 万能表";
+            this.button2.Text = "导入excel 万能表- 客户数据";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -69,7 +70,7 @@
             this.button3.Location = new System.Drawing.Point(64, 161);
             this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(181, 84);
+            this.button3.Size = new System.Drawing.Size(233, 84);
             this.button3.TabIndex = 4;
             this.button3.Text = "获取贸易商txt清单";
             this.button3.UseVisualStyleBackColor = true;
@@ -80,7 +81,7 @@
             this.button4.Location = new System.Drawing.Point(64, 369);
             this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(181, 84);
+            this.button4.Size = new System.Drawing.Size(233, 84);
             this.button4.TabIndex = 5;
             this.button4.Text = "绑定工厂和贸易商关系";
             this.button4.UseVisualStyleBackColor = true;
@@ -90,11 +91,23 @@
             // 
             this.customerBindingSource.DataSource = typeof(entity.Customer);
             // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(406, 54);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(259, 84);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "导入excel 万能表-产品数据";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1002, 655);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
@@ -116,6 +129,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.BindingSource customerBindingSource;
+        private System.Windows.Forms.Button button5;
     }
 }
 

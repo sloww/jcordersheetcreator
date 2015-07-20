@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ed0d093fba3a4052bcb07285fccaacd0" Name="关系图1" ZoomLevel="100">
+      <Diagram DiagramId="ed0d093fba3a4052bcb07285fccaacd0" Name="关系图1" ZoomLevel="27">
         <EntityTypeShape EntityType="jingchendbModel.BadProductLocal" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jingchendbModel.CheckProduct" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="false" />
         <EntityTypeShape EntityType="jingchendbModel.CheckStorage" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="false" />
@@ -23,10 +23,8 @@
         <EntityTypeShape EntityType="jingchendbModel.MoveSingleDetail" Width="1.5" PointX="8.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jingchendbModel.MoveStorage" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jingchendbModel.MoveStorageDetail" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="jingchendbModel.OrderDetail" Width="1.5" PointX="12.75" PointY="4.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="jingchendbModel.Orders" Width="1.5" PointX="12.75" PointY="12.75" IsExpanded="false" />
         <EntityTypeShape EntityType="jingchendbModel.OutStoDetail" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="false" />
-        <EntityTypeShape EntityType="jingchendbModel.OutStorage" Width="1.5" PointX="14.75" PointY="4.75" IsExpanded="false" />
+        <EntityTypeShape EntityType="jingchendbModel.OutStorage" Width="1.5" PointX="13.75" PointY="4.375" IsExpanded="true" />
         <EntityTypeShape EntityType="jingchendbModel.OutStorSingleDetail" Width="1.5" PointX="14.75" PointY="10.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jingchendbModel.ProBatch" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="false" />
         <EntityTypeShape EntityType="jingchendbModel.ProCategory" Width="1.5" PointX="8.75" PointY="15.75" IsExpanded="true" />
@@ -42,12 +40,11 @@
         <EntityTypeShape EntityType="jingchendbModel.SysRelation" Width="1.5" PointX="8.75" PointY="18.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jingchendbModel.SysResource" Width="1.5" PointX="18.75" PointY="9.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jingchendbModel.SysRole" Width="1.5" PointX="18.75" PointY="13.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="jingchendbModel.T_Plan" Width="1.5" PointX="18.75" PointY="16.75" IsExpanded="false" />
         <EntityTypeShape EntityType="jingchendbModel.VnCity" Width="1.5" PointX="20.75" PointY="3.75" IsExpanded="false" />
         <EntityTypeShape EntityType="jingchendbModel.VnProvince" Width="1.5" PointX="20.75" PointY="6.75" IsExpanded="false" />
         <EntityTypeShape EntityType="jingchendbModel.View_OutStorage_StoProInfoByBarcode" Width="1.5" PointX="20.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="jingchendbModel.tgc" Width="1.5" PointX="11.646669717341041" PointY="1.3161195075680128" />
-        <EntityTypeShape EntityType="jingchendbModel.tmyg" Width="1.5" PointX="4.2022550758916211" PointY="1.913253442343908" />
+        <EntityTypeShape EntityType="jingchendbModel.OrderDetail" Width="0.625" PointX="25.875" PointY="8.875" />
+        <EntityTypeShape EntityType="jingchendbModel.Order" Width="0.625" PointX="28.875" PointY="10.375" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

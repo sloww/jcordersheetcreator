@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="jingchendbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="jingchendbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="jingchendbModelStoreContainer">
           <EntitySet Name="BadProductLocal" EntityType="jingchendbModel.Store.BadProductLocal" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CheckProduct" EntityType="jingchendbModel.Store.CheckProduct" store:Type="Tables" Schema="dbo" />
@@ -43,9 +43,6 @@
           <EntitySet Name="SysRelation" EntityType="jingchendbModel.Store.SysRelation" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SysResource" EntityType="jingchendbModel.Store.SysResource" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="SysRole" EntityType="jingchendbModel.Store.SysRole" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="T_Plan" EntityType="jingchendbModel.Store.T_Plan" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tgc" EntityType="jingchendbModel.Store.tgc" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tmygs" EntityType="jingchendbModel.Store.tmygs" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="VnCity" EntityType="jingchendbModel.Store.VnCity" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="VnProvince" EntityType="jingchendbModel.Store.VnProvince" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="View_OutStorage_StoProInfoByBarcode" EntityType="jingchendbModel.Store.View_OutStorage_StoProInfoByBarcode" store:Type="Views" store:Schema="dbo" store:Name="View_OutStorage_StoProInfoByBarcode">
@@ -475,7 +472,7 @@
           <Property Name="Remark" Type="nvarchar" MaxLength="400" />
           <Property Name="FirstNum" Type="varchar" MaxLength="500" />
           <Property Name="SecondNum" Type="varchar" MaxLength="500" />
-          <Property Name="Buyer" Type="varchar" MaxLength="500" />
+          <Property Name="Buyer" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="OutStoDetail">
           <Key>
@@ -739,79 +736,6 @@
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="200" />
         </EntityType>
-        <EntityType Name="T_Plan">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="PlanNum" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="ConOrderNum" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="ConId" Type="int" />
-          <Property Name="DetailId" Type="int" />
-          <Property Name="IndexNum" Type="int" Nullable="false" />
-          <Property Name="PlanDate" Type="datetime" Nullable="false" />
-          <Property Name="PlanStart" Type="datetime" />
-          <Property Name="PlanEnd" Type="datetime" />
-          <Property Name="Status" Type="int" />
-          <Property Name="CreateTime" Type="datetime" Nullable="false" />
-          <Property Name="UpdateTime" Type="datetime" Nullable="false" />
-          <Property Name="CreateUser" Type="nvarchar" MaxLength="50" />
-          <Property Name="Remark" Type="nvarchar" MaxLength="20" />
-          <Property Name="IsDelete" Type="int" Nullable="false" />
-          <Property Name="Rate" Type="int" />
-          <Property Name="IsSticker" Type="int" />
-          <Property Name="IsPsAudite" Type="int" />
-          <Property Name="PsAudite" Type="int" />
-          <Property Name="PSStart" Type="datetime" />
-          <Property Name="PSEnd" Type="datetime" />
-          <Property Name="IsCutMat" Type="int" />
-          <Property Name="CutMatStart" Type="datetime" />
-          <Property Name="CusMatEnd" Type="datetime" />
-          <Property Name="CusMatStatus" Type="int" />
-          <Property Name="IsPrinter1" Type="int" />
-          <Property Name="Printer1Start" Type="datetime" />
-          <Property Name="Printer1End" Type="datetime" />
-          <Property Name="Printer1IsPause" Type="int" />
-          <Property Name="Printer1Reason" Type="nvarchar" MaxLength="200" />
-          <Property Name="Printer1RealNum" Type="int" />
-          <Property Name="Printer1Status" Type="int" />
-          <Property Name="IsPrinter2" Type="int" />
-          <Property Name="Printer2Start" Type="datetime" />
-          <Property Name="Printer2End" Type="datetime" />
-          <Property Name="Printer2IsPause" Type="int" />
-          <Property Name="Printer2Reason" Type="nvarchar" MaxLength="200" />
-          <Property Name="Printer2RealNum" Type="int" />
-          <Property Name="Printer2Status" Type="int" />
-          <Property Name="IsQC" Type="int" />
-          <Property Name="QCStatus" Type="int" />
-          <Property Name="QCAudite" Type="int" />
-          <Property Name="DensityValue" Type="nvarchar" MaxLength="200" />
-          <Property Name="QCStart" Type="datetime" />
-          <Property Name="QCEnd" Type="datetime" />
-          <Property Name="IsCutProduct" Type="int" />
-          <Property Name="CusProtatus" Type="int" />
-          <Property Name="CusProStart" Type="datetime" />
-          <Property Name="CusProEnd" Type="datetime" />
-          <Property Name="IsMQ" Type="int" />
-          <Property Name="MQStatus" Type="int" />
-          <Property Name="MQStart" Type="datetime" />
-          <Property Name="MQEnd" Type="datetime" />
-        </EntityType>
-        <EntityType Name="tgc">
-          <Key>
-            <PropertyRef Name="gcid" />
-          </Key>
-          <Property Name="gcid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="gc" Type="nvarchar" Nullable="false" MaxLength="200" />
-          <Property Name="mygsid" Type="uniqueidentifier" Nullable="false" />
-        </EntityType>
-        <EntityType Name="tmygs">
-          <Key>
-            <PropertyRef Name="mygsid" />
-          </Key>
-          <Property Name="mygsid" Type="uniqueidentifier" Nullable="false" />
-          <Property Name="mygs" Type="nvarchar" Nullable="false" MaxLength="200" />
-        </EntityType>
         <EntityType Name="VnCity">
           <Key>
             <PropertyRef Name="ID" />
@@ -832,7 +756,7 @@
           <Property Name="PNameEn" Type="varchar" MaxLength="30" />
         </EntityType>
         <!--生成过程中发现错误:
-      警告 6002: 表/视图“jingchendb.dbo.View_OutStorage_StoProInfoByBarcode”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
+      警告 6002: 表/视图“JingChenDB.dbo.View_OutStorage_StoProInfoByBarcode”未定义主键。已推断出该键，并将定义创建为只读的表/视图。
       -->
         <EntityType Name="View_OutStorage_StoProInfoByBarcode">
           <Key>
@@ -880,8 +804,6 @@
           <EntitySet Name="MoveSingleDetail" EntityType="jingchendbModel.MoveSingleDetail" />
           <EntitySet Name="MoveStorage" EntityType="jingchendbModel.MoveStorage" />
           <EntitySet Name="MoveStorageDetail" EntityType="jingchendbModel.MoveStorageDetail" />
-          <EntitySet Name="OrderDetail" EntityType="jingchendbModel.OrderDetail" />
-          <EntitySet Name="Orders" EntityType="jingchendbModel.Orders" />
           <EntitySet Name="OutStoDetail" EntityType="jingchendbModel.OutStoDetail" />
           <EntitySet Name="OutStorage" EntityType="jingchendbModel.OutStorage" />
           <EntitySet Name="OutStorSingleDetail" EntityType="jingchendbModel.OutStorSingleDetail" />
@@ -899,12 +821,11 @@
           <EntitySet Name="SysRelation" EntityType="jingchendbModel.SysRelation" />
           <EntitySet Name="SysResource" EntityType="jingchendbModel.SysResource" />
           <EntitySet Name="SysRole" EntityType="jingchendbModel.SysRole" />
-          <EntitySet Name="T_Plan" EntityType="jingchendbModel.T_Plan" />
           <EntitySet Name="VnCity" EntityType="jingchendbModel.VnCity" />
           <EntitySet Name="VnProvince" EntityType="jingchendbModel.VnProvince" />
           <EntitySet Name="View_OutStorage_StoProInfoByBarcode" EntityType="jingchendbModel.View_OutStorage_StoProInfoByBarcode" />
-          <EntitySet Name="tgcs" EntityType="jingchendbModel.tgc" />
-          <EntitySet Name="tmygs" EntityType="jingchendbModel.tmyg" />
+          <EntitySet Name="OrderDetails" EntityType="jingchendbModel.OrderDetail" />
+          <EntitySet Name="Orders" EntityType="jingchendbModel.Order" />
         </EntityContainer>
         <EntityType Name="BadProductLocal">
           <Key>
@@ -1249,77 +1170,6 @@
           <Property Name="ToName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
           <Property Name="BatchNum" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
         </EntityType>
-        <EntityType Name="OrderDetail">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SnNum" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="OrderNum" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="NitORI" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="ProductCD" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="CdFileName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="PopDesignNo" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="PopSize" Type="String" MaxLength="400" Unicode="false" FixedLength="false" />
-          <Property Name="PaperKind" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="PopCate" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
-          <Property Name="PopCateName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
-          <Property Name="Colour" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="POPNum" Type="Int32" />
-          <Property Name="RealNum" Type="Int32" />
-          <Property Name="UnitNum" Type="Int32" Nullable="false" />
-          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="ExpectDate" Type="DateTime" Precision="3" />
-          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="ProbabilityDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ETD" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Reference" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="PrintMoney" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="CheckMoney" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="InvoiceMoney" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="Sample" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
-          <Property Name="IsDelete" Type="Int32" Nullable="false" />
-          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Remark" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="BatchNum" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="Orders">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderNum" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="NitORI" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="CustomerNum" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="CustomerName" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
-          <Property Name="Phone" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
-          <Property Name="Contact" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
-          <Property Name="Address" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
-          <Property Name="Invoice" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
-          <Property Name="Company" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
-          <Property Name="SendAddress" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="Receiver" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="Telephone" Type="String" MaxLength="400" Unicode="false" FixedLength="false" />
-          <Property Name="Fax" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
-          <Property Name="FinanceContact" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
-          <Property Name="BankName" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
-          <Property Name="CardNum" Type="String" MaxLength="400" Unicode="false" FixedLength="false" />
-          <Property Name="Taxpayer" Type="String" MaxLength="400" Unicode="false" FixedLength="false" />
-          <Property Name="SendDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Money" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="IsDelete" Type="Int32" Nullable="false" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
-          <Property Name="CreateUserNo" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
-          <Property Name="CreateUserName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Remark" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
-          <Property Name="FirstNum" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
-          <Property Name="SecondNum" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
-          <Property Name="Buyer" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
-        </EntityType>
         <EntityType Name="OutStoDetail">
           <Key>
             <PropertyRef Name="ID" />
@@ -1582,64 +1432,6 @@
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Remark" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
         </EntityType>
-        <EntityType Name="T_Plan">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PlanNum" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="ConOrderNum" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="ConId" Type="Int32" />
-          <Property Name="DetailId" Type="Int32" />
-          <Property Name="IndexNum" Type="Int32" Nullable="false" />
-          <Property Name="PlanDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="PlanStart" Type="DateTime" Precision="3" />
-          <Property Name="PlanEnd" Type="DateTime" Precision="3" />
-          <Property Name="Status" Type="Int32" />
-          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="UpdateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CreateUser" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Remark" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="IsDelete" Type="Int32" Nullable="false" />
-          <Property Name="Rate" Type="Int32" />
-          <Property Name="IsSticker" Type="Int32" />
-          <Property Name="IsPsAudite" Type="Int32" />
-          <Property Name="PsAudite" Type="Int32" />
-          <Property Name="PSStart" Type="DateTime" Precision="3" />
-          <Property Name="PSEnd" Type="DateTime" Precision="3" />
-          <Property Name="IsCutMat" Type="Int32" />
-          <Property Name="CutMatStart" Type="DateTime" Precision="3" />
-          <Property Name="CusMatEnd" Type="DateTime" Precision="3" />
-          <Property Name="CusMatStatus" Type="Int32" />
-          <Property Name="IsPrinter1" Type="Int32" />
-          <Property Name="Printer1Start" Type="DateTime" Precision="3" />
-          <Property Name="Printer1End" Type="DateTime" Precision="3" />
-          <Property Name="Printer1IsPause" Type="Int32" />
-          <Property Name="Printer1Reason" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="Printer1RealNum" Type="Int32" />
-          <Property Name="Printer1Status" Type="Int32" />
-          <Property Name="IsPrinter2" Type="Int32" />
-          <Property Name="Printer2Start" Type="DateTime" Precision="3" />
-          <Property Name="Printer2End" Type="DateTime" Precision="3" />
-          <Property Name="Printer2IsPause" Type="Int32" />
-          <Property Name="Printer2Reason" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="Printer2RealNum" Type="Int32" />
-          <Property Name="Printer2Status" Type="Int32" />
-          <Property Name="IsQC" Type="Int32" />
-          <Property Name="QCStatus" Type="Int32" />
-          <Property Name="QCAudite" Type="Int32" />
-          <Property Name="DensityValue" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="QCStart" Type="DateTime" Precision="3" />
-          <Property Name="QCEnd" Type="DateTime" Precision="3" />
-          <Property Name="IsCutProduct" Type="Int32" />
-          <Property Name="CusProtatus" Type="Int32" />
-          <Property Name="CusProStart" Type="DateTime" Precision="3" />
-          <Property Name="CusProEnd" Type="DateTime" Precision="3" />
-          <Property Name="IsMQ" Type="Int32" />
-          <Property Name="MQStatus" Type="Int32" />
-          <Property Name="MQStart" Type="DateTime" Precision="3" />
-          <Property Name="MQEnd" Type="DateTime" Precision="3" />
-        </EntityType>
         <EntityType Name="VnCity">
           <Key>
             <PropertyRef Name="ID" />
@@ -1682,20 +1474,76 @@
           <Property Name="Num" Type="Int32" Nullable="false" />
           <Property Name="LocaName" Type="String" Nullable="false" MaxLength="30" Unicode="true" FixedLength="false" />
         </EntityType>
-        <EntityType Name="tgc">
+        <EntityType Name="OrderDetail">
           <Key>
-            <PropertyRef Name="gcid" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Type="Guid" Name="gcid" Nullable="false" />
-          <Property Type="String" Name="gc" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Type="Guid" Name="mygsid" Nullable="false" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SnNum" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="OrderNum" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NitORI" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProductCD" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CdFileName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PopDesignNo" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PopSize" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PaperKind" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PopCate" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PopCateName" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Colour" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="POPNum" />
+          <Property Type="Int32" Name="RealNum" />
+          <Property Type="Int32" Name="UnitNum" Nullable="false" />
+          <Property Type="String" Name="UnitName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ExpectDate" Precision="3" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="DateTime" Name="ProbabilityDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="ETD" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Reference" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="PrintMoney" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="CheckMoney" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="InvoiceMoney" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="String" Name="Sample" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="IsDelete" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BatchNum" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityType Name="tmyg">
+        <EntityType Name="Order">
           <Key>
-            <PropertyRef Name="mygsid" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Type="Guid" Name="mygsid" Nullable="false" />
-          <Property Type="String" Name="mygs" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="OrderNum" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NitORI" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CustomerNum" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CustomerName" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Phone" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Contact" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Address" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Invoice" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Company" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="SendAddress" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Receiver" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Telephone" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Fax" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FinanceContact" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BankName" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CardNum" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Taxpayer" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="SendDate" Nullable="false" Precision="3" />
+          <Property Type="Decimal" Name="Money" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="Int32" Name="IsDelete" Nullable="false" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="String" Name="CreateUserNo" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CreateUserName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" Precision="3" />
+          <Property Type="DateTime" Name="LastUpdate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Remark" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FirstNum" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="SecondNum" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="Buyer" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -2064,79 +1912,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="OrderDetail">
-            <EntityTypeMapping TypeName="jingchendbModel.OrderDetail">
-              <MappingFragment StoreEntitySet="OrderDetail">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="SnNum" ColumnName="SnNum" />
-                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-                <ScalarProperty Name="NitORI" ColumnName="NitORI" />
-                <ScalarProperty Name="ProductCD" ColumnName="ProductCD" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="CdFileName" ColumnName="CdFileName" />
-                <ScalarProperty Name="PopDesignNo" ColumnName="PopDesignNo" />
-                <ScalarProperty Name="PopSize" ColumnName="PopSize" />
-                <ScalarProperty Name="PaperKind" ColumnName="PaperKind" />
-                <ScalarProperty Name="PopCate" ColumnName="PopCate" />
-                <ScalarProperty Name="PopCateName" ColumnName="PopCateName" />
-                <ScalarProperty Name="Colour" ColumnName="Colour" />
-                <ScalarProperty Name="POPNum" ColumnName="POPNum" />
-                <ScalarProperty Name="RealNum" ColumnName="RealNum" />
-                <ScalarProperty Name="UnitNum" ColumnName="UnitNum" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-                <ScalarProperty Name="ExpectDate" ColumnName="ExpectDate" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="ProbabilityDate" ColumnName="ProbabilityDate" />
-                <ScalarProperty Name="ETD" ColumnName="ETD" />
-                <ScalarProperty Name="Reference" ColumnName="Reference" />
-                <ScalarProperty Name="PrintMoney" ColumnName="PrintMoney" />
-                <ScalarProperty Name="CheckMoney" ColumnName="CheckMoney" />
-                <ScalarProperty Name="InvoiceMoney" ColumnName="InvoiceMoney" />
-                <ScalarProperty Name="Sample" ColumnName="Sample" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="jingchendbModel.Orders">
-              <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-                <ScalarProperty Name="NitORI" ColumnName="NitORI" />
-                <ScalarProperty Name="CustomerNum" ColumnName="CustomerNum" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Contact" ColumnName="Contact" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Invoice" ColumnName="Invoice" />
-                <ScalarProperty Name="Company" ColumnName="Company" />
-                <ScalarProperty Name="SendAddress" ColumnName="SendAddress" />
-                <ScalarProperty Name="Receiver" ColumnName="Receiver" />
-                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="FinanceContact" ColumnName="FinanceContact" />
-                <ScalarProperty Name="BankName" ColumnName="BankName" />
-                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
-                <ScalarProperty Name="Taxpayer" ColumnName="Taxpayer" />
-                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
-                <ScalarProperty Name="Money" ColumnName="Money" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CreateUserNo" ColumnName="CreateUserNo" />
-                <ScalarProperty Name="CreateUserName" ColumnName="CreateUserName" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="FirstNum" ColumnName="FirstNum" />
-                <ScalarProperty Name="SecondNum" ColumnName="SecondNum" />
-                <ScalarProperty Name="Buyer" ColumnName="Buyer" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="OutStoDetail">
             <EntityTypeMapping TypeName="jingchendbModel.OutStoDetail">
               <MappingFragment StoreEntitySet="OutStoDetail">
@@ -2416,65 +2191,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="T_Plan">
-            <EntityTypeMapping TypeName="jingchendbModel.T_Plan">
-              <MappingFragment StoreEntitySet="T_Plan">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="PlanNum" ColumnName="PlanNum" />
-                <ScalarProperty Name="ConOrderNum" ColumnName="ConOrderNum" />
-                <ScalarProperty Name="ConId" ColumnName="ConId" />
-                <ScalarProperty Name="DetailId" ColumnName="DetailId" />
-                <ScalarProperty Name="IndexNum" ColumnName="IndexNum" />
-                <ScalarProperty Name="PlanDate" ColumnName="PlanDate" />
-                <ScalarProperty Name="PlanStart" ColumnName="PlanStart" />
-                <ScalarProperty Name="PlanEnd" ColumnName="PlanEnd" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
-                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="Rate" ColumnName="Rate" />
-                <ScalarProperty Name="IsSticker" ColumnName="IsSticker" />
-                <ScalarProperty Name="IsPsAudite" ColumnName="IsPsAudite" />
-                <ScalarProperty Name="PsAudite" ColumnName="PsAudite" />
-                <ScalarProperty Name="PSStart" ColumnName="PSStart" />
-                <ScalarProperty Name="PSEnd" ColumnName="PSEnd" />
-                <ScalarProperty Name="IsCutMat" ColumnName="IsCutMat" />
-                <ScalarProperty Name="CutMatStart" ColumnName="CutMatStart" />
-                <ScalarProperty Name="CusMatEnd" ColumnName="CusMatEnd" />
-                <ScalarProperty Name="CusMatStatus" ColumnName="CusMatStatus" />
-                <ScalarProperty Name="IsPrinter1" ColumnName="IsPrinter1" />
-                <ScalarProperty Name="Printer1Start" ColumnName="Printer1Start" />
-                <ScalarProperty Name="Printer1End" ColumnName="Printer1End" />
-                <ScalarProperty Name="Printer1IsPause" ColumnName="Printer1IsPause" />
-                <ScalarProperty Name="Printer1Reason" ColumnName="Printer1Reason" />
-                <ScalarProperty Name="Printer1RealNum" ColumnName="Printer1RealNum" />
-                <ScalarProperty Name="Printer1Status" ColumnName="Printer1Status" />
-                <ScalarProperty Name="IsPrinter2" ColumnName="IsPrinter2" />
-                <ScalarProperty Name="Printer2Start" ColumnName="Printer2Start" />
-                <ScalarProperty Name="Printer2End" ColumnName="Printer2End" />
-                <ScalarProperty Name="Printer2IsPause" ColumnName="Printer2IsPause" />
-                <ScalarProperty Name="Printer2Reason" ColumnName="Printer2Reason" />
-                <ScalarProperty Name="Printer2RealNum" ColumnName="Printer2RealNum" />
-                <ScalarProperty Name="Printer2Status" ColumnName="Printer2Status" />
-                <ScalarProperty Name="IsQC" ColumnName="IsQC" />
-                <ScalarProperty Name="QCStatus" ColumnName="QCStatus" />
-                <ScalarProperty Name="QCAudite" ColumnName="QCAudite" />
-                <ScalarProperty Name="DensityValue" ColumnName="DensityValue" />
-                <ScalarProperty Name="QCStart" ColumnName="QCStart" />
-                <ScalarProperty Name="QCEnd" ColumnName="QCEnd" />
-                <ScalarProperty Name="IsCutProduct" ColumnName="IsCutProduct" />
-                <ScalarProperty Name="CusProtatus" ColumnName="CusProtatus" />
-                <ScalarProperty Name="CusProStart" ColumnName="CusProStart" />
-                <ScalarProperty Name="CusProEnd" ColumnName="CusProEnd" />
-                <ScalarProperty Name="IsMQ" ColumnName="IsMQ" />
-                <ScalarProperty Name="MQStatus" ColumnName="MQStatus" />
-                <ScalarProperty Name="MQStart" ColumnName="MQStart" />
-                <ScalarProperty Name="MQEnd" ColumnName="MQEnd" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="VnCity">
             <EntityTypeMapping TypeName="jingchendbModel.VnCity">
               <MappingFragment StoreEntitySet="VnCity">
@@ -2512,24 +2228,80 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tgcs">
-            <EntityTypeMapping TypeName="jingchendbModel.tgc">
-              <MappingFragment StoreEntitySet="tgc">
-                <ScalarProperty Name="mygsid" ColumnName="mygsid" />
-                <ScalarProperty Name="gc" ColumnName="gc" />
-                <ScalarProperty Name="gcid" ColumnName="gcid" />
+          <EntitySetMapping Name="OrderDetails">
+            <EntityTypeMapping TypeName="jingchendbModel.OrderDetail">
+              <MappingFragment StoreEntitySet="OrderDetail">
+                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Sample" ColumnName="Sample" />
+                <ScalarProperty Name="InvoiceMoney" ColumnName="InvoiceMoney" />
+                <ScalarProperty Name="CheckMoney" ColumnName="CheckMoney" />
+                <ScalarProperty Name="PrintMoney" ColumnName="PrintMoney" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="ETD" ColumnName="ETD" />
+                <ScalarProperty Name="ProbabilityDate" ColumnName="ProbabilityDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ExpectDate" ColumnName="ExpectDate" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="UnitNum" ColumnName="UnitNum" />
+                <ScalarProperty Name="RealNum" ColumnName="RealNum" />
+                <ScalarProperty Name="POPNum" ColumnName="POPNum" />
+                <ScalarProperty Name="Colour" ColumnName="Colour" />
+                <ScalarProperty Name="PopCateName" ColumnName="PopCateName" />
+                <ScalarProperty Name="PopCate" ColumnName="PopCate" />
+                <ScalarProperty Name="PaperKind" ColumnName="PaperKind" />
+                <ScalarProperty Name="PopSize" ColumnName="PopSize" />
+                <ScalarProperty Name="PopDesignNo" ColumnName="PopDesignNo" />
+                <ScalarProperty Name="CdFileName" ColumnName="CdFileName" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCD" ColumnName="ProductCD" />
+                <ScalarProperty Name="NitORI" ColumnName="NitORI" />
+                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+                <ScalarProperty Name="SnNum" ColumnName="SnNum" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tmygs">
-            <EntityTypeMapping TypeName="jingchendbModel.tmyg">
-              <MappingFragment StoreEntitySet="tmygs">
-                <ScalarProperty Name="mygs" ColumnName="mygs" />
-                <ScalarProperty Name="mygsid" ColumnName="mygsid" />
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="jingchendbModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+                <ScalarProperty Name="SecondNum" ColumnName="SecondNum" />
+                <ScalarProperty Name="FirstNum" ColumnName="FirstNum" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="CreateUserName" ColumnName="CreateUserName" />
+                <ScalarProperty Name="CreateUserNo" ColumnName="CreateUserNo" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Money" ColumnName="Money" />
+                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+                <ScalarProperty Name="Taxpayer" ColumnName="Taxpayer" />
+                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+                <ScalarProperty Name="BankName" ColumnName="BankName" />
+                <ScalarProperty Name="FinanceContact" ColumnName="FinanceContact" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+                <ScalarProperty Name="SendAddress" ColumnName="SendAddress" />
+                <ScalarProperty Name="Company" ColumnName="Company" />
+                <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Contact" ColumnName="Contact" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="CustomerNum" ColumnName="CustomerNum" />
+                <ScalarProperty Name="NitORI" ColumnName="NitORI" />
+                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

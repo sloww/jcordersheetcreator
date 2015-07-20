@@ -11,6 +11,8 @@ using entity;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
 using NPOI.SS.Util;
+using NPOI.HSSF.UserModel;
+using System.Collections;
 
 namespace OrderSheetCreator
 {
@@ -30,7 +32,8 @@ namespace OrderSheetCreator
             {
                 foreach (var maoyi in gMaoYiShangDic)
                 {
-                    CusCategory cusc = ctx.CusCategory.FirstOrDefault(item => item.CateName.Equals(maoyi.Key));
+                    string catename = maoyi.Key;
+                    CusCategory cusc = ctx.CusCategory.FirstOrDefault(item => item.CateName == catename);
                     if (cusc == null)
                     {
                         CusCategory cc = new CusCategory();
@@ -40,7 +43,15 @@ namespace OrderSheetCreator
                         cc.IsDelete = 0;
                         cc.CreateTime = DateTime.Now;
                         ctx.CusCategory.Add(cc);
-                        ctx.SaveChanges();
+                        ctx.Entry(cc).State = System.Data.Entity.EntityState.Added;
+                        try
+                        {
+                            ctx.SaveChanges();
+                        }
+                        catch (Exception ee)
+                        {
+                            MessageBox.Show(ee.Message);
+                        }
                         System.Threading.Thread.Sleep(1000);
                     }
                 }
@@ -54,7 +65,7 @@ namespace OrderSheetCreator
             openFileDialog1.Filter = "xls file|*.xls";
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
-                ReadProducts(openFileDialog1.FileName);
+                Readjc(openFileDialog1.FileName);
                
             }
         }
@@ -66,13 +77,18 @@ namespace OrderSheetCreator
 
             int count = 0;
 
+            int sheetNo = 0;
+
             //循环 sheet
             for (int i = 1; i < wb.NumberOfSheets; i++)
             {
 
                 ISheet ist = wb.GetSheetAt(i);
+                if (ist.SheetName.Contains("heet")) continue;
+                
+
+
                 int rowofPage = ist.LastRowNum + 1;
-                //查找各个位置
 
                 int titleRowNo = -1;
                 int cdNo = -1;
@@ -81,8 +97,11 @@ namespace OrderSheetCreator
                 int chicunNo = -1;
                 int danjiaNo = -1;
                 int gongchangNo = -1;
+                int wuliaoNo = -1;
+                int yanseNo = -1;
                 string gudinggcm = "";
 
+                //查找各个位置
                 foreach (IRow row in ist)
                 {
                     int cellCount = row.Cells.Count;
@@ -91,7 +110,7 @@ namespace OrderSheetCreator
                         ICell icell = row.GetCell(cNo, MissingCellPolicy.CREATE_NULL_AS_BLANK);
                         if (icell.CellType == CellType.String)
                         {
-                            string title = icell.StringCellValue.Trim().Replace("（元/个）", "").Replace(" ", "");
+                            string title = icell.StringCellValue.Trim().Replace("（元/个）", "").Replace("mm", "").Replace(" ", "").Trim();
                             switch (title)
                             {
                                 case "CD":
@@ -106,39 +125,83 @@ namespace OrderSheetCreator
                                     {
                                         caizhiEXNo = icell.ColumnIndex;
                                     } break;
-                                case "单价    （元/个）":
+                                case "颜色":
+                                    {
+                                        yanseNo = icell.ColumnIndex;
+                                    } break;
+                                case "单价":
                                     {
                                         danjiaNo = icell.ColumnIndex;
                                     } break;
-                                case "尺寸mm":
+                                case "尺寸":
                                     {
                                         chicunNo = icell.ColumnIndex;
                                     } break;
                                 case "厂商名":
                                 case "工厂名":
+                                case "厂商名称":
                                     {
                                         gongchangNo = icell.ColumnIndex;
                                     } break;
+                                case "物料编号":
+                                case "物料名称":
+                                    {
+                                        wuliaoNo = icell.ColumnIndex;
+                                    } break;
                             }
                         }
+                    }
 
+                    if (cdNo != -1)
+                    {
+                        titleRowNo = row.RowNum;
 
-                        if (cdNo != -1)
+                        if (gongchangNo == -1)
                         {
-                            titleRowNo = row.RowNum;
-
-                            if (gongchangNo == -1)
-                            {
-                                gudinggcm = findgcm(ist.SheetName, gGongChangDic);
-                            }
+                            gudinggcm = findgcm(ist.SheetName, gGongChangDic);
                         }
 
                         break;
-
                     }
+
                 }
 
+                //生成excel
 
+                IWorkbook iwb = new HSSFWorkbook();
+                ISheet nist = iwb.CreateSheet();
+                nist.CreateRow(0);
+                IRow TitleRow = nist.GetRow(0);
+                TitleRow.CreateCell(0).SetCellValue("序号");
+                TitleRow.CreateCell(1).SetCellValue("订购工厂");
+                TitleRow.CreateCell(2).SetCellValue("商品条形码/CD");
+                TitleRow.CreateCell(3).SetCellValue("物料名称");
+                TitleRow.CreateCell(4).SetCellValue("尺寸（mm）");
+                TitleRow.CreateCell(5).SetCellValue("颜色");
+                TitleRow.CreateCell(6).SetCellValue("材质");
+                TitleRow.CreateCell(7).SetCellValue("材质说明");
+                TitleRow.CreateCell(8).SetCellValue("单价");
+
+                ICellStyle ics = iwb.CreateCellStyle();
+                ics.Alignment = NPOI.SS.UserModel.HorizontalAlignment.Center;
+                ics.ShrinkToFit = true;
+                ics.BorderBottom = ics.BorderLeft = ics.BorderRight = ics.BorderTop = NPOI.SS.UserModel.BorderStyle.Thin;
+
+                this.setCellStyle(TitleRow, 0, ics);
+
+
+                nist.SetColumnWidth(0, 3 * 512);
+                nist.SetColumnWidth(1, 8 * 512);
+                nist.SetColumnWidth(2, 10 * 512);
+                nist.SetColumnWidth(3, 8 * 512);
+                nist.SetColumnWidth(4, 6 * 512);
+                nist.SetColumnWidth(5, 6 * 512);
+                nist.SetColumnWidth(6, 12 * 512);
+                nist.SetColumnWidth(7, 6 * 512);
+                nist.SetColumnWidth(8, 4 * 512);
+                int rouNum = 1;
+
+                Hashtable productHT = new Hashtable();
 
                 for (int j = titleRowNo + 1; j < rowofPage; j++)
                 {
@@ -147,17 +210,86 @@ namespace OrderSheetCreator
 
                     if (irow == null) continue;
 
-                    using (var ent = new entity.jingchendbEntities())
+                    string cdString = getCellString(cdNo, irow);
+                    string caizhiString = getCellString(caizhiNo, irow);
+                    string chicunString = getCellString(chicunNo, irow);
+                    string danjiaString = getCellString(danjiaNo, irow);
+                    string yanseString = getCellString(yanseNo, irow);
+                    string caizhiEXString = getCellString(caizhiEXNo, irow);
+                    string gongchangString = getCellString(gongchangNo, irow);
+                    string wuliaoString = getCellString(wuliaoNo, irow);
+                    string com = cdString + caizhiString + chicunString + danjiaString + yanseString + caizhiEXString + wuliaoString + gongchangString;
+                    double danjiaDouble = getCellDouble(danjiaNo, irow);
+
+                    if (com.Length < 6) continue;
+                    if (false == productHT.ContainsKey(com))
                     {
-                        if (cdNo != -1)
-                        {
-                            String cdstring = irow.GetCell(cdNo, MissingCellPolicy.CREATE_NULL_AS_BLANK).StringCellValue;
-                            MessageBox.Show(cdstring);
-                        }
+
+                        IRow irowc = nist.CreateRow(rouNum);
+                        irowc.CreateCell(0).SetCellValue(rouNum.ToString());
+                        irowc.CreateCell(1).SetCellValue(gongchangString);
+                        irowc.CreateCell(2).SetCellValue(cdString);
+                        irowc.CreateCell(3).SetCellValue(wuliaoString);
+                        irowc.CreateCell(4).SetCellValue(chicunString);
+                        irowc.CreateCell(5).SetCellValue(yanseString);
+                        irowc.CreateCell(6).SetCellValue(caizhiString);
+                        irowc.CreateCell(7).SetCellValue(caizhiEXString);
+                        irowc.CreateCell(8).SetCellValue(danjiaDouble);
+                        irowc.GetCell(8).SetCellType(CellType.Numeric);
+
+                        setCellStyle(irowc, 9, ics);
+
+                        rouNum++;
+                        productHT.Add(com, null);
+
                     }
 
                 }
+
+                sheetNo++;
+                string excelName = string.Format("NO.{0:D2} {1} (共 {2}种).xls", sheetNo, ist.SheetName, productHT.Count);
+
+                using (FileStream fs = new FileStream(excelName, FileMode.Create))
+                {
+                    iwb.Write(fs);
+                }
             }
+        }
+        
+
+        private void setCellStyle(IRow irow,int cellno,ICellStyle ics)
+        {
+            for (int i = 0; i < cellno; i++)
+            {
+                irow.GetCell(i).CellStyle = ics;
+            }
+        }
+        string getCellString(int no, IRow row)
+        {
+            if (no < 0) return "";
+            ICell cell = row.GetCell(no, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+            if (cell.CellType == CellType.Numeric)
+            {
+                return cell.NumericCellValue.ToString().Replace("/b","");
+            }
+            else if (cell.CellType == CellType.String)
+            {
+                return cell.StringCellValue;
+
+            }
+            return "";
+        }
+
+        double getCellDouble(int no, IRow row)
+        {
+            if (no < 0) return 0;
+            ICell cell = row.GetCell(no, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+            if (cell.CellType == CellType.Numeric)
+            {
+                return cell.NumericCellValue;
+            }
+
+            return 0;
         }
 
         private void Readjc(string path)
@@ -227,7 +359,6 @@ namespace OrderSheetCreator
                 writer.Flush();
             }
         }
-
 
         //导入工厂数据
         private void button4_Click(object sender, EventArgs e)
@@ -337,6 +468,18 @@ namespace OrderSheetCreator
                 if (nameEqual(stringZip(item.Key), s1zip)) return item.Key;
             }
             return "";
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.DefaultExt = ".xls";
+            openFileDialog1.Filter = "xls file|*.xls";
+            if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                ReadProducts(openFileDialog1.FileName);
+
+            }
+
         }
 
     }

@@ -12,7 +12,7 @@ namespace entity
     using System;
     using System.Collections.Generic;
     
-    public partial class Orders
+    public partial class Order
     {
         public int ID { get; set; }
         public string OrderNum { get; set; }
