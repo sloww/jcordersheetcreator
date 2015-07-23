@@ -15,5 +15,23 @@ namespace OrderSheetCreator
         {
             InitializeComponent();
         }
+
+        private void txbBarcode_TextChanged(object sender, EventArgs e)
+        {
+            if (txbBarcode.Text.Length > 1)
+            {
+                using (var db = new entity.jingchendbEntities())
+                {
+                    var productQuery = from a in db.Products
+                                       where a.BarCode.Contains(txbBarcode.Text)
+                                       select a;
+                    productsBindingSource.DataSource = productQuery.Take(10).ToList();
+                }
+            }
+            else
+            {
+                productsBindingSource.DataSource = null;
+            }
+        }
     }
 }

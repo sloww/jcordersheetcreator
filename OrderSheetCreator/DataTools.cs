@@ -16,12 +16,13 @@ using System.Collections;
 
 namespace OrderSheetCreator
 {
-    public partial class Form1 : Form
+    public partial class DataTools : Form
     {
         Dictionary<string, int> gMaoYiShangDic = new Dictionary<string, int>();
         Dictionary<string, string> gGongChangDic = new Dictionary<string, string>();
+        List<CainzCustomer> FACTORYS = new List<CainzCustomer>();
 
-        public Form1()
+        public DataTools()
         {
             InitializeComponent();
         }
@@ -69,7 +70,6 @@ namespace OrderSheetCreator
                
             }
         }
-
 
         private void ReadProducts(string path)
         {
@@ -255,7 +255,6 @@ namespace OrderSheetCreator
             }
         }
         
-
         private void setCellStyle(IRow irow,int cellno,ICellStyle ics)
         {
             for (int i = 0; i < cellno; i++)
@@ -263,6 +262,7 @@ namespace OrderSheetCreator
                 irow.GetCell(i).CellStyle = ics;
             }
         }
+
         string getCellString(int no, IRow row)
         {
             if (no < 0) return "";
@@ -312,31 +312,44 @@ namespace OrderSheetCreator
                         IRow irow = ist.GetRow(j);
 
                         if (irow == null) continue;
-                        if (irow.Cells.Count < 4) continue;
+                        if (irow.Cells.Count < 14) continue;
 
-                        string mysmc = irow.GetCell(11, MissingCellPolicy.RETURN_NULL_AND_BLANK).StringCellValue.Trim();
-                        if (mysmc.Length < 2) continue;
+                        string traderName = irow.GetCell(11, MissingCellPolicy.RETURN_NULL_AND_BLANK).StringCellValue.Trim();
+                        if (traderName.Length < 2) continue;
                         try
                         {
-                            int keyno = gMaoYiShangDic[mysmc];
-                            gMaoYiShangDic[mysmc]++;
+                            int keyno = gMaoYiShangDic[traderName];
+                            gMaoYiShangDic[traderName]++;
 
                         }
                         catch (KeyNotFoundException ee)
                         {
-                            gMaoYiShangDic.Add(mysmc, 0);
+                            gMaoYiShangDic.Add(traderName, 0);
                         }
 
-                        string gcmc = irow.GetCell(12, MissingCellPolicy.RETURN_NULL_AND_BLANK).StringCellValue.Trim();
-                        string gcmczip = stringZip(gcmc);
-                        if (gcmc.Length < 2) continue;
-                        if (gGongChangDic.ContainsKey(gcmc) == false)
+                        string factoryName = getCellString(12,irow);
+                        string factoryNameZip = stringZip(factoryName);
+
+                        string add =getCellString(15,irow);
+                        if (factoryName.Length < 2) continue;
+
+                        //把工厂和贸易商联系起来的 一个冗余字典
+                        if (gGongChangDic.ContainsKey(factoryName) == false)
                         {
-                            gGongChangDic.Add(gcmc, mysmc);
+                            gGongChangDic.Add(factoryName, traderName);
+
+                            CainzCustomer factory = new CainzCustomer();
+                            factory.FactoryName = factoryName;
+                            //factory.FactoryNo = DateTime.Now.ToString("yyMMddHHmmss");
+                            factory.Address = getCellString(15, irow);
+                            factory.Contact = getCellString(13, irow);
+                            factory.Phone = getCellString(14, irow);
+                            FACTORYS.Add(factory);
+
                         }
-                        if (gGongChangDic.ContainsKey(gcmczip) == false)
+                        if (gGongChangDic.ContainsKey(factoryNameZip) == false)
                         {
-                            gGongChangDic.Add(gcmczip, mysmc);
+                            gGongChangDic.Add(factoryNameZip, traderName);
                         }
 
                     }
@@ -373,13 +386,13 @@ namespace OrderSheetCreator
                                      select item;
                 foreach (var cainzCus in cainzCustomers)
                 {
-                    string gcmc = cainzCus.CustomerName.Replace('C', ' ').Trim();
+                    string FactoryName = cainzCus.CustomerName.Replace('C', ' ').Trim();
 
-                    string mysmc = findMys(gcmc, gGongChangDic);
-                    if (mysmc != "")
+                    string traderName = FindTraderByFactory(FactoryName, gGongChangDic);
+                    if (traderName != "")
                     {
 
-                        var _maoyishang = ctx.CusCategory.SingleOrDefault(item => item.CateName == mysmc);
+                        var _maoyishang = ctx.CusCategory.SingleOrDefault(item => item.CateName == traderName);
                         if (_maoyishang != null)
                         {
                             cainzCus.SecondNum = _maoyishang.SnNum;
@@ -391,7 +404,7 @@ namespace OrderSheetCreator
                     {
                         using (StreamWriter w = new StreamWriter("log2.txt", true))
                         {
-                            w.WriteLine(gcmc + "," + stringZip(gcmc));
+                            w.WriteLine(FactoryName + "," + stringZip(FactoryName));
                         }
                     }
                 }
@@ -443,7 +456,7 @@ namespace OrderSheetCreator
 
         //查找一个公司名称是否近似有对应的贸易公司名称
 
-        private string findMys(string s1,Dictionary<string,string> d1)
+        private string FindTraderByFactory(string s1,Dictionary<string,string> d1)
         {
             if (d1.ContainsKey(s1)) return d1[s1];
             string s1zip = stringZip(s1);
@@ -479,6 +492,117 @@ namespace OrderSheetCreator
 
             }
 
+        }
+
+        private void btnFactory_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        //导入 到新表 Trader 
+        private void btnCainzMaoyis_Click(object sender, EventArgs e)
+        {
+            using (var db = new jingchendbEntities())
+            {
+                //遍历贸易商表列表,通过名称查找，如果不存在则添加
+                foreach (var Trader in gMaoYiShangDic)
+                {
+                    string traderName = Trader.Key;
+                    CainzTrader cusc = db.CainzTrader.FirstOrDefault(item => item.CateName == traderName);
+                    if (cusc == null)
+                    {
+                        CainzTrader cc = new CainzTrader();
+                        cc.ParentNum = "130817052630";
+                        cc.SnNum = DateTime.Now.ToString("yyMMddHHmmss");
+                        cc.CateName = Trader.Key.ToString().Trim();
+                        cc.IsDelete = 0;
+                        cc.CreateTime = DateTime.Now;
+                        db.CainzTrader.Add(cc);
+                        db.SaveChanges();
+                        System.Threading.Thread.Sleep(1000);
+                    }
+                }
+            }
+        }
+
+        // 向 cainzcustomer 表 导入/更新数据
+        private void btnImportFactory_Click(object sender, EventArgs e)
+        {
+
+            using (var db = new jingchendbEntities())
+            {
+                foreach (var f in this.FACTORYS)
+                {
+                    string FactoryName = f.FactoryName;
+                    CainzCustomer f2 = db.CainzCustomer.FirstOrDefault(item => item.FactoryName == FactoryName);
+                    if (f2 == null)
+                    {
+                        f.FactoryNo = DateTime.Now.ToString("yyMMddHHmmss");
+                        f.FirstNum = "130817052630";
+                        db.CainzCustomer.Add(f);
+                        db.SaveChanges();
+                        System.Threading.Thread.Sleep(1000);
+                    }
+                }
+            }
+        }
+
+        private void btnBlind_Click(object sender, EventArgs e)
+        {
+            if (gMaoYiShangDic.Count == 0) return;
+            if (gGongChangDic.Count == 0) return;
+            List<CainzCustomer> ctlistforupdate = new List<CainzCustomer>();
+            List<CainzCustomer> ctlist = new List<CainzCustomer>();
+            using (var db = new entity.jingchendbEntities())
+            {
+                var factorys = from item in db.CainzCustomer
+                                     where item.FirstNum == "130817052630"
+                                     select item;
+                foreach (var cainzCus in factorys)
+                {
+                    string factoryName = cainzCus.FactoryName.Replace('C', ' ').Trim();
+
+                    string traderName = FindTraderByFactory(factoryName, gGongChangDic);
+
+                    if (traderName != "")
+                    {
+
+                        var _maoyishang = db.CainzTrader.SingleOrDefault(item => item.CateName == traderName);
+
+                        if (_maoyishang != null)
+                        {
+                            cainzCus.Trader = _maoyishang.CateName;
+                            cainzCus.TraderNo = _maoyishang.SnNum;
+                            ctlistforupdate.Add(cainzCus);
+                        }
+
+                    }
+                    else
+                    {
+                        using (StreamWriter w = new StreamWriter("log3.txt", true))
+                        {
+                            w.WriteLine(factoryName + "," + stringZip(factoryName));
+                        }
+                    }
+                }
+
+                ctlist = factorys.ToList();
+
+                customerBindingSource.DataSource = ctlist;
+
+            }
+
+            //修改动作
+            using (var ctx = new entity.jingchendbEntities())
+            {
+                foreach (var item in ctlistforupdate)
+                {
+                    ctx.CainzCustomer.Attach(item);
+                    ctx.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                    ctx.SaveChanges();
+
+                }
+            }
         }
 
     }

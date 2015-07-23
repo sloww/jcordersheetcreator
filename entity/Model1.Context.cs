@@ -26,6 +26,11 @@ namespace entity
         }
     
         public DbSet<BadProductLocal> BadProductLocal { get; set; }
+        public DbSet<CainzCustomer> CainzCustomer { get; set; }
+        public DbSet<CainzOrderDetail> CainzOrderDetail { get; set; }
+        public DbSet<CainzOrders> CainzOrders { get; set; }
+        public DbSet<CainzProduct> CainzProduct { get; set; }
+        public DbSet<CainzTrader> CainzTrader { get; set; }
         public DbSet<CheckProduct> CheckProduct { get; set; }
         public DbSet<CheckStorage> CheckStorage { get; set; }
         public DbSet<CheckStorageDetail> CheckStorageDetail { get; set; }
@@ -43,6 +48,8 @@ namespace entity
         public DbSet<MoveSingleDetail> MoveSingleDetail { get; set; }
         public DbSet<MoveStorage> MoveStorage { get; set; }
         public DbSet<MoveStorageDetail> MoveStorageDetail { get; set; }
+        public DbSet<OrderDetail> OrderDetail { get; set; }
+        public DbSet<Orders> Orders { get; set; }
         public DbSet<OutStoDetail> OutStoDetail { get; set; }
         public DbSet<OutStorage> OutStorage { get; set; }
         public DbSet<OutStorSingleDetail> OutStorSingleDetail { get; set; }
@@ -62,10 +69,5 @@ namespace entity
         public DbSet<SysRole> SysRole { get; set; }
         public DbSet<VnCity> VnCity { get; set; }
         public DbSet<VnProvince> VnProvince { get; set; }
-        public DbSet<View_OutStorage_StoProInfoByBarcode> View_OutStorage_StoProInfoByBarcode { get; set; }
-        public DbSet<OrderDetail> OrderDetails { get; set; }
-        public DbSet<Order> Orders { get; set; }
-        public DbSet<CainzOrderDetail> CainzOrderDetails { get; set; }
-        public DbSet<CainzOrder> CainzOrders { get; set; }
     }
 }

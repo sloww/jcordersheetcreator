@@ -12,7 +12,7 @@ namespace entity
     using System;
     using System.Collections.Generic;
     
-    public partial class CainzOrder
+    public partial class Orders
     {
         public int ID { get; set; }
         public string OrderNum { get; set; }
@@ -44,6 +44,5 @@ namespace entity
         public string FirstNum { get; set; }
         public string SecondNum { get; set; }
         public string Buyer { get; set; }
-        public Nullable<int> isDraft { get; set; }
     }
 }

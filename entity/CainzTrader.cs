@@ -12,17 +12,14 @@ namespace entity
     using System;
     using System.Collections.Generic;
     
-    public partial class View_OutStorage_StoProInfoByBarcode
+    public partial class CainzTrader
     {
         public int ID { get; set; }
-        public string BarCode { get; set; }
-        public string DefaultLocal { get; set; }
-        public string ProductName { get; set; }
-        public string UnitName { get; set; }
-        public int LocaSatus { get; set; }
-        public string BatchNum { get; set; }
-        public string LocaNum { get; set; }
-        public int Num { get; set; }
-        public string LocaName { get; set; }
+        public string SnNum { get; set; }
+        public string ParentNum { get; set; }
+        public string CateName { get; set; }
+        public int IsDelete { get; set; }
+        public System.DateTime CreateTime { get; set; }
+        public string Remark { get; set; }
     }
 }

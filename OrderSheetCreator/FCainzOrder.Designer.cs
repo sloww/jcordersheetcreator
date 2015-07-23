@@ -376,7 +376,7 @@
             // 
             // cainzOrderBindingSource
             // 
-            this.cainzOrderBindingSource.DataSource = typeof(entity.CainzOrder);
+            this.cainzOrderBindingSource.DataSource = typeof(entity.CainzOrders);
             // 
             // FCainzOrder
             // 

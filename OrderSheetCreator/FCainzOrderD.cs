@@ -30,5 +30,11 @@ namespace OrderSheetCreator
         {
            
         }
+
+        private void tsbNew_Click(object sender, EventArgs e)
+        {
+            FAdd fadd = new FAdd();
+            fadd.ShowDialog();
+        }
     }
 }

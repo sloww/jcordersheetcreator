@@ -15,7 +15,7 @@ namespace OrderSheetCreator
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FCainzOrder());
+            Application.Run(new DataTools());
         }
     }
 }
