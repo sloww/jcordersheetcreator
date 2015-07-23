@@ -189,7 +189,6 @@ namespace OrderSheetCreator
 
                 this.setCellStyle(TitleRow, 0, ics);
 
-
                 nist.SetColumnWidth(0, 3 * 512);
                 nist.SetColumnWidth(1, 8 * 512);
                 nist.SetColumnWidth(2, 10 * 512);

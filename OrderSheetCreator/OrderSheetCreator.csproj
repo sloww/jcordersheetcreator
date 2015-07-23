@@ -66,6 +66,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FAdd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FAdd.Designer.cs">
+      <DependentUpon>FAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FCainzOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FCainzOrder.Designer.cs">
+      <DependentUpon>FCainzOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FCainzOrderD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FCainzOrderD.Designer.cs">
+      <DependentUpon>FCainzOrderD.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +92,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FAdd.resx">
+      <DependentUpon>FAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FCainzOrder.resx">
+      <DependentUpon>FCainzOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FCainzOrderD.resx">
+      <DependentUpon>FCainzOrderD.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
@@ -88,6 +115,8 @@
     </Compile>
     <None Include="App.config" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\entity.CainzOrder.datasource" />
+    <None Include="Properties\DataSources\entity.CainzOrderDetail.datasource" />
     <None Include="Properties\DataSources\entity.Customer.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

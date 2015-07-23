@@ -51,6 +51,12 @@
     <Compile Include="BadProductLocal.cs">
       <DependentUpon>jingchendb.tt</DependentUpon>
     </Compile>
+    <Compile Include="CainzOrder.cs">
+      <DependentUpon>jingchendb.tt</DependentUpon>
+    </Compile>
+    <Compile Include="CainzOrderDetail.cs">
+      <DependentUpon>jingchendb.tt</DependentUpon>
+    </Compile>
     <Compile Include="CheckProduct.cs">
       <DependentUpon>jingchendb.tt</DependentUpon>
     </Compile>

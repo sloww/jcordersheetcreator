@@ -65,5 +65,7 @@ namespace entity
         public DbSet<View_OutStorage_StoProInfoByBarcode> View_OutStorage_StoProInfoByBarcode { get; set; }
         public DbSet<OrderDetail> OrderDetails { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<CainzOrderDetail> CainzOrderDetails { get; set; }
+        public DbSet<CainzOrder> CainzOrders { get; set; }
     }
 }

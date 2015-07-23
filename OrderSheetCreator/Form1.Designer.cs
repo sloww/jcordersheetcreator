@@ -41,10 +41,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(64, 264);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(48, 211);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(233, 84);
+            this.button1.Size = new System.Drawing.Size(175, 67);
             this.button1.TabIndex = 0;
             this.button1.Text = "导入贸易商数据";
             this.button1.UseVisualStyleBackColor = true;
@@ -52,10 +51,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(64, 54);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(48, 43);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(233, 84);
+            this.button2.Size = new System.Drawing.Size(175, 67);
             this.button2.TabIndex = 3;
             this.button2.Text = "导入excel 万能表- 客户数据";
             this.button2.UseVisualStyleBackColor = true;
@@ -67,10 +65,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(64, 161);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Location = new System.Drawing.Point(48, 129);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(233, 84);
+            this.button3.Size = new System.Drawing.Size(175, 67);
             this.button3.TabIndex = 4;
             this.button3.Text = "获取贸易商txt清单";
             this.button3.UseVisualStyleBackColor = true;
@@ -78,10 +75,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(64, 369);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
+            this.button4.Location = new System.Drawing.Point(48, 295);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(233, 84);
+            this.button4.Size = new System.Drawing.Size(175, 67);
             this.button4.TabIndex = 5;
             this.button4.Text = "绑定工厂和贸易商关系";
             this.button4.UseVisualStyleBackColor = true;
@@ -93,10 +89,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(406, 54);
-            this.button5.Margin = new System.Windows.Forms.Padding(4);
+            this.button5.Location = new System.Drawing.Point(304, 43);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(259, 84);
+            this.button5.Size = new System.Drawing.Size(194, 67);
             this.button5.TabIndex = 6;
             this.button5.Text = "导入excel 万能表-产品数据";
             this.button5.UseVisualStyleBackColor = true;
@@ -104,17 +99,16 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1002, 655);
+            this.ClientSize = new System.Drawing.Size(752, 524);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
-            this.Text = "景辰数据快捷工具";
+            this.Text = " ";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             this.ResumeLayout(false);
