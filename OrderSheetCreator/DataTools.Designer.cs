@@ -34,7 +34,6 @@
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.btnGetMaoyisTXT = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
-            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button5 = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnFactory = new System.Windows.Forms.Button();
@@ -42,9 +41,11 @@
             this.btnImportFactory = new System.Windows.Forms.Button();
             this.btnCainzMaoyis = new System.Windows.Forms.Button();
             this.btnBlind = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnImportProductData = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -91,10 +92,6 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataSource = typeof(entity.Customer);
-            // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(860, 19);
@@ -131,6 +128,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnImportProductData);
             this.panel2.Controls.Add(this.btnImportFactory);
             this.panel2.Controls.Add(this.btnCainzMaoyis);
             this.panel2.Controls.Add(this.btnBlind);
@@ -170,6 +168,20 @@
             this.btnBlind.UseVisualStyleBackColor = true;
             this.btnBlind.Click += new System.EventHandler(this.btnBlind_Click);
             // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataSource = typeof(entity.Customer);
+            // 
+            // btnImportProductData
+            // 
+            this.btnImportProductData.Location = new System.Drawing.Point(860, 26);
+            this.btnImportProductData.Name = "btnImportProductData";
+            this.btnImportProductData.Size = new System.Drawing.Size(173, 49);
+            this.btnImportProductData.TabIndex = 9;
+            this.btnImportProductData.Text = "导入产品数据";
+            this.btnImportProductData.UseVisualStyleBackColor = true;
+            this.btnImportProductData.Click += new System.EventHandler(this.btnImportProductData_Click);
+            // 
             // DataTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -180,9 +192,9 @@
             this.Name = "DataTools";
             this.Text = "景辰ERP数据维护管理工具";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -202,6 +214,7 @@
         private System.Windows.Forms.Button btnCainzMaoyis;
         private System.Windows.Forms.Button btnImportFactory;
         private System.Windows.Forms.Button btnBlind;
+        private System.Windows.Forms.Button btnImportProductData;
     }
 }
 
