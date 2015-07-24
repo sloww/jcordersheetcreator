@@ -60,11 +60,19 @@ namespace OrderSheetCreator
 
         private void btnContinue_Click(object sender, EventArgs e)
         {
-
+            add();
         }
 
         private void add()
         {
+            entity.CainzOrderDetail cod = new entity.CainzOrderDetail();
+            cod.ProductCD = txbBarcode.Text;
+            cod.Colour = txbColor.Text;
+            cod.PopSize = txbSize.Text;
+            cod.Price = System.Decimal.Parse(txbPrice.Text) ;
+            cod.OrderNum = txbCount.Text;
+            cod.CreateTime = DateTime.Now;
+            
 
         }
     }

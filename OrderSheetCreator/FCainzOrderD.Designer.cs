@@ -109,7 +109,7 @@
             this.tsbCancel});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(976, 32);
+            this.toolStrip1.Size = new System.Drawing.Size(972, 32);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -198,8 +198,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dataGridView1);
             this.splitContainer1.Panel2.Controls.Add(this.panel1);
-            this.splitContainer1.Size = new System.Drawing.Size(976, 621);
-            this.splitContainer1.SplitterDistance = 91;
+            this.splitContainer1.Size = new System.Drawing.Size(972, 617);
+            this.splitContainer1.SplitterDistance = 90;
             this.splitContainer1.SplitterWidth = 1;
             this.splitContainer1.TabIndex = 1;
             this.splitContainer1.TabStop = false;
@@ -361,7 +361,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(976, 484);
+            this.dataGridView1.Size = new System.Drawing.Size(972, 481);
             this.dataGridView1.TabIndex = 1;
             // 
             // productCDDataGridViewTextBoxColumn
@@ -582,9 +582,9 @@
             // 
             this.panel1.Controls.Add(this.label6);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 484);
+            this.panel1.Location = new System.Drawing.Point(0, 481);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(976, 45);
+            this.panel1.Size = new System.Drawing.Size(972, 45);
             this.panel1.TabIndex = 0;
             // 
             // label6
@@ -601,7 +601,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(976, 653);
+            this.ClientSize = new System.Drawing.Size(972, 649);
             this.ControlBox = false;
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip1);
@@ -611,7 +611,7 @@
             this.Name = "FCainzOrderD";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "新增订单";
             this.Load += new System.EventHandler(this.FCainzOrderD_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FCainzOrderD_KeyDown);
