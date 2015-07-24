@@ -113,10 +113,13 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\DataSources\entity.CainzOrder.datasource" />
     <None Include="Properties\DataSources\entity.CainzOrderDetail.datasource" />
+    <None Include="Properties\DataSources\entity.CainzProduct.datasource" />
     <None Include="Properties\DataSources\entity.Customer.datasource" />
     <None Include="Properties\DataSources\entity.Material.datasource" />
     <None Include="Properties\DataSources\entity.Products.datasource" />

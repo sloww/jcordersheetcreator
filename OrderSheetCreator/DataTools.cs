@@ -71,8 +71,6 @@ namespace OrderSheetCreator
             }
         }
 
-        
-        
         private void setCellStyle(IRow irow,int cellno,ICellStyle ics)
         {
             for (int i = 0; i < cellno; i++)
@@ -295,7 +293,6 @@ namespace OrderSheetCreator
                     return c;
                 else
                     return null;
-
             }
         }
 

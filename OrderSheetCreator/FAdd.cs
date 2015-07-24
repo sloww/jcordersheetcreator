@@ -18,20 +18,54 @@ namespace OrderSheetCreator
 
         private void txbBarcode_TextChanged(object sender, EventArgs e)
         {
-            if (txbBarcode.Text.Length > 1)
+            if (txbBarcode.Text.Length > 2)
             {
                 using (var db = new entity.jingchendbEntities())
                 {
-                    var productQuery = from a in db.Products
-                                       where a.BarCode.Contains(txbBarcode.Text)
+                    var productQuery = from a in db.CainzProduct
+                                       where a.Barcode.Contains(txbBarcode.Text)
                                        select a;
-                    productsBindingSource.DataSource = productQuery.Take(10).ToList();
+                    productsBindingSource.DataSource = productQuery.Take(9).ToList();
                 }
             }
             else
             {
-                productsBindingSource.DataSource = null;
+                //productsBindingSource.DataSource = null;
             }
+        }
+
+        private void FAdd_Load(object sender, EventArgs e)
+        {
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.AllowDrop = false;
+            dataGridView1.ReadOnly = true;
+            dataGridView1.MultiSelect = false;
+            dataGridView1.AllowUserToAddRows = false;
+        }
+
+        private void FAdd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)115)
+            {
+            }
+        }
+
+        private void btnSaveClose_Click(object sender, EventArgs e)
+        {
+            entity.CainzOrderDetail cod =new entity.CainzOrderDetail();
+            cod.ProductCD = txbBarcode.Text;
+         
+          
+        }
+
+        private void btnContinue_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void add()
+        {
+
         }
     }
 }
