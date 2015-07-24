@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="jingchendbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="jingchendbModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="jingchendbModelStoreContainer">
           <EntitySet Name="BadProductLocal" EntityType="jingchendbModel.Store.BadProductLocal" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="CainzCustomer" EntityType="jingchendbModel.Store.CainzCustomer" store:Type="Tables" Schema="dbo" />
@@ -165,7 +165,7 @@
           <Property Name="Material" Type="nvarchar" MaxLength="200" />
           <Property Name="Size" Type="nvarchar" MaxLength="200" />
           <Property Name="Color" Type="nvarchar" MaxLength="200" />
-          <Property Name="Price" Type="money" />
+          <Property Name="Price" Type="decimal" Precision="19" Scale="4" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="CainzTrader">
@@ -444,7 +444,7 @@
           <Property Name="UnitName" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="CategoryNum" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="ProSpec" Type="nvarchar" Nullable="false" MaxLength="20" />
-          <Property Name="Description" Type="text" />
+          <Property Name="Description" Type="varchar(max)" />
           <Property Name="InPrice" Type="decimal" Nullable="false" Scale="2" />
           <Property Name="Price" Type="decimal" Nullable="false" Scale="2" />
           <Property Name="IsDelete" Type="int" Nullable="false" />
@@ -453,7 +453,7 @@
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="CusNum" Type="varchar" MaxLength="30" />
           <Property Name="CusName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Remark" Type="ntext" />
+          <Property Name="Remark" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="MaterialCategory">
           <Key>
@@ -590,8 +590,8 @@
           <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="300" />
           <Property Name="BarCode" Type="varchar" Nullable="false" MaxLength="300" />
           <Property Name="Num" Type="int" Nullable="false" />
-          <Property Name="TotalPrice" Type="money" Nullable="false" />
-          <Property Name="RealPrice" Type="money" Nullable="false" />
+          <Property Name="TotalPrice" Type="decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="RealPrice" Type="decimal" Nullable="false" Precision="19" Scale="4" />
           <Property Name="LocaNum" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="BatchNum" Type="varchar" Nullable="false" MaxLength="200" />
         </EntityType>
@@ -677,7 +677,7 @@
           <Property Name="UnitName" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="CategoryNum" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="ProSpec" Type="nvarchar" Nullable="false" MaxLength="200" />
-          <Property Name="Description" Type="text" />
+          <Property Name="Description" Type="varchar(max)" />
           <Property Name="InPrice" Type="decimal" Nullable="false" Scale="3" />
           <Property Name="Price" Type="decimal" Nullable="false" Scale="3" />
           <Property Name="IsDelete" Type="int" Nullable="false" />
@@ -686,7 +686,7 @@
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="CusNum" Type="varchar" MaxLength="300" />
           <Property Name="CusName" Type="nvarchar" MaxLength="500" />
-          <Property Name="Remark" Type="ntext" />
+          <Property Name="Remark" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="ProShatter">
           <Key>
@@ -788,7 +788,7 @@
           <Property Name="Address" Type="nvarchar" MaxLength="100" />
           <Property Name="BankName" Type="nvarchar" MaxLength="20" />
           <Property Name="BankCard" Type="varchar" MaxLength="30" />
-          <Property Name="Description" Type="text" />
+          <Property Name="Description" Type="varchar(max)" />
           <Property Name="IsDelete" Type="int" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
         </EntityType>
@@ -862,8 +862,7 @@
           <Property Name="PName" Type="nvarchar" Nullable="false" MaxLength="15" />
           <Property Name="PNameEn" Type="varchar" MaxLength="30" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="jingchendbModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -1728,866 +1727,865 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="jingchendbModelStoreContainer" CdmEntityContainer="jingchendbEntities">
-          <EntitySetMapping Name="BadProductLocal">
-            <EntityTypeMapping TypeName="jingchendbModel.BadProductLocal">
-              <MappingFragment StoreEntitySet="BadProductLocal">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="ProductNum" ColumnName="ProductNum" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="LocalNum" ColumnName="LocalNum" />
-                <ScalarProperty Name="ProductType" ColumnName="ProductType" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="BadLocal" ColumnName="BadLocal" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CainzCustomer">
-            <EntityTypeMapping TypeName="jingchendbModel.CainzCustomer">
-              <MappingFragment StoreEntitySet="CainzCustomer">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="FactoryNo" ColumnName="FactoryNo" />
-                <ScalarProperty Name="FactoryName" ColumnName="FactoryName" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Contact" ColumnName="Contact" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Trader" ColumnName="Trader" />
-                <ScalarProperty Name="SendAddress" ColumnName="SendAddress" />
-                <ScalarProperty Name="Receiver" ColumnName="Receiver" />
-                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="FirstNum" ColumnName="FirstNum" />
-                <ScalarProperty Name="TraderNo" ColumnName="TraderNo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CainzOrderDetail">
-            <EntityTypeMapping TypeName="jingchendbModel.CainzOrderDetail">
-              <MappingFragment StoreEntitySet="CainzOrderDetail">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="SnNum" ColumnName="SnNum" />
-                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-                <ScalarProperty Name="NitORI" ColumnName="NitORI" />
-                <ScalarProperty Name="ProductCD" ColumnName="ProductCD" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="CdFileName" ColumnName="CdFileName" />
-                <ScalarProperty Name="PopDesignNo" ColumnName="PopDesignNo" />
-                <ScalarProperty Name="PopSize" ColumnName="PopSize" />
-                <ScalarProperty Name="PaperKind" ColumnName="PaperKind" />
-                <ScalarProperty Name="PopCate" ColumnName="PopCate" />
-                <ScalarProperty Name="PopCateName" ColumnName="PopCateName" />
-                <ScalarProperty Name="Colour" ColumnName="Colour" />
-                <ScalarProperty Name="POPNum" ColumnName="POPNum" />
-                <ScalarProperty Name="RealNum" ColumnName="RealNum" />
-                <ScalarProperty Name="UnitNum" ColumnName="UnitNum" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-                <ScalarProperty Name="ExpectDate" ColumnName="ExpectDate" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="ProbabilityDate" ColumnName="ProbabilityDate" />
-                <ScalarProperty Name="ETD" ColumnName="ETD" />
-                <ScalarProperty Name="Reference" ColumnName="Reference" />
-                <ScalarProperty Name="PrintMoney" ColumnName="PrintMoney" />
-                <ScalarProperty Name="CheckMoney" ColumnName="CheckMoney" />
-                <ScalarProperty Name="InvoiceMoney" ColumnName="InvoiceMoney" />
-                <ScalarProperty Name="Sample" ColumnName="Sample" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CainzOrders">
-            <EntityTypeMapping TypeName="jingchendbModel.CainzOrders">
-              <MappingFragment StoreEntitySet="CainzOrders">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-                <ScalarProperty Name="NitORI" ColumnName="NitORI" />
-                <ScalarProperty Name="CustomerNum" ColumnName="CustomerNum" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Contact" ColumnName="Contact" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Invoice" ColumnName="Invoice" />
-                <ScalarProperty Name="Company" ColumnName="Company" />
-                <ScalarProperty Name="SendAddress" ColumnName="SendAddress" />
-                <ScalarProperty Name="Receiver" ColumnName="Receiver" />
-                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="FinanceContact" ColumnName="FinanceContact" />
-                <ScalarProperty Name="BankName" ColumnName="BankName" />
-                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
-                <ScalarProperty Name="Taxpayer" ColumnName="Taxpayer" />
-                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
-                <ScalarProperty Name="Money" ColumnName="Money" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CreateUserNo" ColumnName="CreateUserNo" />
-                <ScalarProperty Name="CreateUserName" ColumnName="CreateUserName" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="FirstNum" ColumnName="FirstNum" />
-                <ScalarProperty Name="SecondNum" ColumnName="SecondNum" />
-                <ScalarProperty Name="Buyer" ColumnName="Buyer" />
-                <ScalarProperty Name="isDraft" ColumnName="isDraft" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CainzProduct">
-            <EntityTypeMapping TypeName="jingchendbModel.CainzProduct">
-              <MappingFragment StoreEntitySet="CainzProduct">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
-                <ScalarProperty Name="FactoryID" ColumnName="FactoryID" />
-                <ScalarProperty Name="FactoryName" ColumnName="FactoryName" />
-                <ScalarProperty Name="Material" ColumnName="Material" />
-                <ScalarProperty Name="Size" ColumnName="Size" />
-                <ScalarProperty Name="Color" ColumnName="Color" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CainzTrader">
-            <EntityTypeMapping TypeName="jingchendbModel.CainzTrader">
-              <MappingFragment StoreEntitySet="CainzTrader">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="SnNum" ColumnName="SnNum" />
-                <ScalarProperty Name="ParentNum" ColumnName="ParentNum" />
-                <ScalarProperty Name="CateName" ColumnName="CateName" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CheckProduct">
-            <EntityTypeMapping TypeName="jingchendbModel.CheckProduct">
-              <MappingFragment StoreEntitySet="CheckProduct">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="LocaNum" ColumnName="LocaNum" />
-                <ScalarProperty Name="LocaName" ColumnName="LocaName" />
-                <ScalarProperty Name="ProductNum" ColumnName="ProductNum" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="RealNum" ColumnName="RealNum" />
-                <ScalarProperty Name="SouNum" ColumnName="SouNum" />
-                <ScalarProperty Name="ErrorValue" ColumnName="ErrorValue" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CheckStorage">
-            <EntityTypeMapping TypeName="jingchendbModel.CheckStorage">
-              <MappingFragment StoreEntitySet="CheckStorage">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CheckNum" ColumnName="CheckNum" />
-                <ScalarProperty Name="CheckUser" ColumnName="CheckUser" />
-                <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="Time" ColumnName="Time" />
-                <ScalarProperty Name="AuditUser" ColumnName="AuditUser" />
-                <ScalarProperty Name="AuditeTime" ColumnName="AuditeTime" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CheckStorageDetail">
-            <EntityTypeMapping TypeName="jingchendbModel.CheckStorageDetail">
-              <MappingFragment StoreEntitySet="CheckStorageDetail">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CheckNum" ColumnName="CheckNum" />
-                <ScalarProperty Name="LocaNum" ColumnName="LocaNum" />
-                <ScalarProperty Name="LocaName" ColumnName="LocaName" />
-                <ScalarProperty Name="LocaBarCode" ColumnName="LocaBarCode" />
-                <ScalarProperty Name="RealProductName" ColumnName="RealProductName" />
-                <ScalarProperty Name="RealBarCode" ColumnName="RealBarCode" />
-                <ScalarProperty Name="RealNum" ColumnName="RealNum" />
-                <ScalarProperty Name="SouProcutName" ColumnName="SouProcutName" />
-                <ScalarProperty Name="SouBarCode" ColumnName="SouBarCode" />
-                <ScalarProperty Name="SouNum" ColumnName="SouNum" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Construction">
-            <EntityTypeMapping TypeName="jingchendbModel.Construction">
-              <MappingFragment StoreEntitySet="Construction">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-                <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
-                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
-                <ScalarProperty Name="PrintNum" ColumnName="PrintNum" />
-                <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
-                <ScalarProperty Name="CusNum" ColumnName="CusNum" />
-                <ScalarProperty Name="CusName" ColumnName="CusName" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Revevier" ColumnName="Revevier" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="HouDao" ColumnName="HouDao" />
-                <ScalarProperty Name="PrintRequire" ColumnName="PrintRequire" />
-                <ScalarProperty Name="GM" ColumnName="GM" />
-                <ScalarProperty Name="YM" ColumnName="YM" />
-                <ScalarProperty Name="PD" ColumnName="PD" />
-                <ScalarProperty Name="ZD" ColumnName="ZD" />
-                <ScalarProperty Name="UV" ColumnName="UV" />
-                <ScalarProperty Name="DB" ColumnName="DB" />
-                <ScalarProperty Name="SG" ColumnName="SG" />
-                <ScalarProperty Name="ZY" ColumnName="ZY" />
-                <ScalarProperty Name="YH" ColumnName="YH" />
-                <ScalarProperty Name="GMValue" ColumnName="GMValue" />
-                <ScalarProperty Name="YMValue" ColumnName="YMValue" />
-                <ScalarProperty Name="PDValue" ColumnName="PDValue" />
-                <ScalarProperty Name="ZDValue" ColumnName="ZDValue" />
-                <ScalarProperty Name="UVValue" ColumnName="UVValue" />
-                <ScalarProperty Name="DBValue" ColumnName="DBValue" />
-                <ScalarProperty Name="SGValue" ColumnName="SGValue" />
-                <ScalarProperty Name="ZYValue" ColumnName="ZYValue" />
-                <ScalarProperty Name="YHValue" ColumnName="YHValue" />
-                <ScalarProperty Name="TJ" ColumnName="TJ" />
-                <ScalarProperty Name="TY" ColumnName="TY" />
-                <ScalarProperty Name="DH" ColumnName="DH" />
-                <ScalarProperty Name="AutoSG" ColumnName="AutoSG" />
-                <ScalarProperty Name="ZDing" ColumnName="ZDing" />
-                <ScalarProperty Name="HH" ColumnName="HH" />
-                <ScalarProperty Name="MQ" ColumnName="MQ" />
-                <ScalarProperty Name="YX" ColumnName="YX" />
-                <ScalarProperty Name="Other" ColumnName="Other" />
-                <ScalarProperty Name="TJValue" ColumnName="TJValue" />
-                <ScalarProperty Name="TYValue" ColumnName="TYValue" />
-                <ScalarProperty Name="DHValue" ColumnName="DHValue" />
-                <ScalarProperty Name="AutoSGValue" ColumnName="AutoSGValue" />
-                <ScalarProperty Name="ZDingValue" ColumnName="ZDingValue" />
-                <ScalarProperty Name="HHValue" ColumnName="HHValue" />
-                <ScalarProperty Name="MQValue" ColumnName="MQValue" />
-                <ScalarProperty Name="YXValue" ColumnName="YXValue" />
-                <ScalarProperty Name="OtherValue" ColumnName="OtherValue" />
-                <ScalarProperty Name="WordSize" ColumnName="WordSize" />
-                <ScalarProperty Name="WordCount" ColumnName="WordCount" />
-                <ScalarProperty Name="CTPCount" ColumnName="CTPCount" />
-                <ScalarProperty Name="PSCount" ColumnName="PSCount" />
-                <ScalarProperty Name="Kaiqie" ColumnName="Kaiqie" />
-                <ScalarProperty Name="CHouDAO" ColumnName="CHouDAO" />
-                <ScalarProperty Name="Qingdian" ColumnName="Qingdian" />
-                <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="IsPrint" ColumnName="IsPrint" />
-                <ScalarProperty Name="PrintTime" ColumnName="PrintTime" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ConstructionDetail">
-            <EntityTypeMapping TypeName="jingchendbModel.ConstructionDetail">
-              <MappingFragment StoreEntitySet="ConstructionDetail">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="SnNum" ColumnName="SnNum" />
-                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="PopSize" ColumnName="PopSize" />
-                <ScalarProperty Name="PopNum" ColumnName="PopNum" />
-                <ScalarProperty Name="RealNum" ColumnName="RealNum" />
-                <ScalarProperty Name="ShenShu" ColumnName="ShenShu" />
-                <ScalarProperty Name="MinNum" ColumnName="MinNum" />
-                <ScalarProperty Name="Size" ColumnName="Size" />
-                <ScalarProperty Name="Kshu" ColumnName="Kshu" />
-                <ScalarProperty Name="Color" ColumnName="Color" />
-                <ScalarProperty Name="Positive" ColumnName="Positive" />
-                <ScalarProperty Name="Back" ColumnName="Back" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CusAddress">
-            <EntityTypeMapping TypeName="jingchendbModel.CusAddress">
-              <MappingFragment StoreEntitySet="CusAddress">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="AddNum" ColumnName="AddNum" />
-                <ScalarProperty Name="CusNum" ColumnName="CusNum" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Contact" ColumnName="Contact" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="CusCategory">
-            <EntityTypeMapping TypeName="jingchendbModel.CusCategory">
-              <MappingFragment StoreEntitySet="CusCategory">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="SnNum" ColumnName="SnNum" />
-                <ScalarProperty Name="ParentNum" ColumnName="ParentNum" />
-                <ScalarProperty Name="CateName" ColumnName="CateName" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Customer">
-            <EntityTypeMapping TypeName="jingchendbModel.Customer">
-              <MappingFragment StoreEntitySet="Customer">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CustomerNum" ColumnName="CustomerNum" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Contact" ColumnName="Contact" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Invoice" ColumnName="Invoice" />
-                <ScalarProperty Name="Company" ColumnName="Company" />
-                <ScalarProperty Name="SendAddress" ColumnName="SendAddress" />
-                <ScalarProperty Name="Receiver" ColumnName="Receiver" />
-                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="FinanceContact" ColumnName="FinanceContact" />
-                <ScalarProperty Name="BankName" ColumnName="BankName" />
-                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
-                <ScalarProperty Name="Taxpayer" ColumnName="Taxpayer" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="FirstNum" ColumnName="FirstNum" />
-                <ScalarProperty Name="SecondNum" ColumnName="SecondNum" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Equipment">
-            <EntityTypeMapping TypeName="jingchendbModel.Equipment">
-              <MappingFragment StoreEntitySet="Equipment">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="EquipmentNum" ColumnName="EquipmentNum" />
-                <ScalarProperty Name="EquipmentName" ColumnName="EquipmentName" />
-                <ScalarProperty Name="EquipmentCode" ColumnName="EquipmentCode" />
-                <ScalarProperty Name="IsImpower" ColumnName="IsImpower" />
-                <ScalarProperty Name="Flag" ColumnName="Flag" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="InStorage">
-            <EntityTypeMapping TypeName="jingchendbModel.InStorage">
-              <MappingFragment StoreEntitySet="InStorage">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="InStorNum" ColumnName="InStorNum" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="SupNum" ColumnName="SupNum" />
-                <ScalarProperty Name="SupName" ColumnName="SupName" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="AuditUser" ColumnName="AuditUser" />
-                <ScalarProperty Name="AuditeTime" ColumnName="AuditeTime" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="EquipmentNum" ColumnName="EquipmentNum" />
-                <ScalarProperty Name="EquipmentCode" ColumnName="EquipmentCode" />
-                <ScalarProperty Name="InType" ColumnName="InType" />
-                <ScalarProperty Name="ContractOrder" ColumnName="ContractOrder" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="InStorDetail">
-            <EntityTypeMapping TypeName="jingchendbModel.InStorDetail">
-              <MappingFragment StoreEntitySet="InStorDetail">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="InStorNum" ColumnName="InStorNum" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="InPrice" ColumnName="InPrice" />
-                <ScalarProperty Name="LocaNum" ColumnName="LocaNum" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="InStorSingleDetail">
-            <EntityTypeMapping TypeName="jingchendbModel.InStorSingleDetail">
-              <MappingFragment StoreEntitySet="InStorSingleDetail">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="InStorDetailID" ColumnName="InStorDetailID" />
-                <ScalarProperty Name="SingleNum" ColumnName="SingleNum" />
-                <ScalarProperty Name="InStorNum" ColumnName="InStorNum" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Material">
-            <EntityTypeMapping TypeName="jingchendbModel.Material">
-              <MappingFragment StoreEntitySet="Material">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="ProductNum" ColumnName="ProductNum" />
-                <ScalarProperty Name="CdFileName" ColumnName="CdFileName" />
-                <ScalarProperty Name="PopDesign" ColumnName="PopDesign" />
-                <ScalarProperty Name="PopSize" ColumnName="PopSize" />
-                <ScalarProperty Name="PagerKind" ColumnName="PagerKind" />
-                <ScalarProperty Name="Colour" ColumnName="Colour" />
-                <ScalarProperty Name="InitNum" ColumnName="InitNum" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="WarnNum" ColumnName="WarnNum" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-                <ScalarProperty Name="CategoryNum" ColumnName="CategoryNum" />
-                <ScalarProperty Name="ProSpec" ColumnName="ProSpec" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="InPrice" ColumnName="InPrice" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="DefaultLocal" ColumnName="DefaultLocal" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CusNum" ColumnName="CusNum" />
-                <ScalarProperty Name="CusName" ColumnName="CusName" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MaterialCategory">
-            <EntityTypeMapping TypeName="jingchendbModel.MaterialCategory">
-              <MappingFragment StoreEntitySet="MaterialCategory">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CategoryNum" ColumnName="CategoryNum" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MoveSingleDetail">
-            <EntityTypeMapping TypeName="jingchendbModel.MoveSingleDetail">
-              <MappingFragment StoreEntitySet="MoveSingleDetail">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MoveDetailID" ColumnName="MoveDetailID" />
-                <ScalarProperty Name="SingleNum" ColumnName="SingleNum" />
-                <ScalarProperty Name="MoveNum" ColumnName="MoveNum" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MoveStorage">
-            <EntityTypeMapping TypeName="jingchendbModel.MoveStorage">
-              <MappingFragment StoreEntitySet="MoveStorage">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MoveNum" ColumnName="MoveNum" />
-                <ScalarProperty Name="MoveType" ColumnName="MoveType" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="AuditUser" ColumnName="AuditUser" />
-                <ScalarProperty Name="AuditeTime" ColumnName="AuditeTime" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MoveStorageDetail">
-            <EntityTypeMapping TypeName="jingchendbModel.MoveStorageDetail">
-              <MappingFragment StoreEntitySet="MoveStorageDetail">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="MoveNum" ColumnName="MoveNum" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="FromNum" ColumnName="FromNum" />
-                <ScalarProperty Name="FromName" ColumnName="FromName" />
-                <ScalarProperty Name="ToNum" ColumnName="ToNum" />
-                <ScalarProperty Name="ToName" ColumnName="ToName" />
-                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OrderDetail">
-            <EntityTypeMapping TypeName="jingchendbModel.OrderDetail">
-              <MappingFragment StoreEntitySet="OrderDetail">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="SnNum" ColumnName="SnNum" />
-                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-                <ScalarProperty Name="NitORI" ColumnName="NitORI" />
-                <ScalarProperty Name="ProductCD" ColumnName="ProductCD" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="CdFileName" ColumnName="CdFileName" />
-                <ScalarProperty Name="PopDesignNo" ColumnName="PopDesignNo" />
-                <ScalarProperty Name="PopSize" ColumnName="PopSize" />
-                <ScalarProperty Name="PaperKind" ColumnName="PaperKind" />
-                <ScalarProperty Name="PopCate" ColumnName="PopCate" />
-                <ScalarProperty Name="PopCateName" ColumnName="PopCateName" />
-                <ScalarProperty Name="Colour" ColumnName="Colour" />
-                <ScalarProperty Name="POPNum" ColumnName="POPNum" />
-                <ScalarProperty Name="RealNum" ColumnName="RealNum" />
-                <ScalarProperty Name="UnitNum" ColumnName="UnitNum" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-                <ScalarProperty Name="ExpectDate" ColumnName="ExpectDate" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="ProbabilityDate" ColumnName="ProbabilityDate" />
-                <ScalarProperty Name="ETD" ColumnName="ETD" />
-                <ScalarProperty Name="Reference" ColumnName="Reference" />
-                <ScalarProperty Name="PrintMoney" ColumnName="PrintMoney" />
-                <ScalarProperty Name="CheckMoney" ColumnName="CheckMoney" />
-                <ScalarProperty Name="InvoiceMoney" ColumnName="InvoiceMoney" />
-                <ScalarProperty Name="Sample" ColumnName="Sample" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Orders">
-            <EntityTypeMapping TypeName="jingchendbModel.Orders">
-              <MappingFragment StoreEntitySet="Orders">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-                <ScalarProperty Name="NitORI" ColumnName="NitORI" />
-                <ScalarProperty Name="CustomerNum" ColumnName="CustomerNum" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Contact" ColumnName="Contact" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Invoice" ColumnName="Invoice" />
-                <ScalarProperty Name="Company" ColumnName="Company" />
-                <ScalarProperty Name="SendAddress" ColumnName="SendAddress" />
-                <ScalarProperty Name="Receiver" ColumnName="Receiver" />
-                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="FinanceContact" ColumnName="FinanceContact" />
-                <ScalarProperty Name="BankName" ColumnName="BankName" />
-                <ScalarProperty Name="CardNum" ColumnName="CardNum" />
-                <ScalarProperty Name="Taxpayer" ColumnName="Taxpayer" />
-                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
-                <ScalarProperty Name="Money" ColumnName="Money" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CreateUserNo" ColumnName="CreateUserNo" />
-                <ScalarProperty Name="CreateUserName" ColumnName="CreateUserName" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="FirstNum" ColumnName="FirstNum" />
-                <ScalarProperty Name="SecondNum" ColumnName="SecondNum" />
-                <ScalarProperty Name="Buyer" ColumnName="Buyer" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OutStoDetail">
-            <EntityTypeMapping TypeName="jingchendbModel.OutStoDetail">
-              <MappingFragment StoreEntitySet="OutStoDetail">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
-                <ScalarProperty Name="RealPrice" ColumnName="RealPrice" />
-                <ScalarProperty Name="LocaNum" ColumnName="LocaNum" />
-                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OutStorage">
-            <EntityTypeMapping TypeName="jingchendbModel.OutStorage">
-              <MappingFragment StoreEntitySet="OutStorage">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-                <ScalarProperty Name="CusNum" ColumnName="CusNum" />
-                <ScalarProperty Name="CusName" ColumnName="CusName" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="PCode" ColumnName="PCode" />
-                <ScalarProperty Name="CCode" ColumnName="CCode" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="AuditUser" ColumnName="AuditUser" />
-                <ScalarProperty Name="AuditeTime" ColumnName="AuditeTime" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="EquipmentNum" ColumnName="EquipmentNum" />
-                <ScalarProperty Name="EquipmentCode" ColumnName="EquipmentCode" />
-                <ScalarProperty Name="OutType" ColumnName="OutType" />
-                <ScalarProperty Name="ContractOrder" ColumnName="ContractOrder" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="OutStorSingleDetail">
-            <EntityTypeMapping TypeName="jingchendbModel.OutStorSingleDetail">
-              <MappingFragment StoreEntitySet="OutStorSingleDetail">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="OutStorDetailID" ColumnName="OutStorDetailID" />
-                <ScalarProperty Name="SingleNum" ColumnName="SingleNum" />
-                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProBatch">
-            <EntityTypeMapping TypeName="jingchendbModel.ProBatch">
-              <MappingFragment StoreEntitySet="ProBatch">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProCategory">
-            <EntityTypeMapping TypeName="jingchendbModel.ProCategory">
-              <MappingFragment StoreEntitySet="ProCategory">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="CategoryNum" ColumnName="CategoryNum" />
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Products">
-            <EntityTypeMapping TypeName="jingchendbModel.Products">
-              <MappingFragment StoreEntitySet="Products">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="ProductNum" ColumnName="ProductNum" />
-                <ScalarProperty Name="CdFileName" ColumnName="CdFileName" />
-                <ScalarProperty Name="PopDesign" ColumnName="PopDesign" />
-                <ScalarProperty Name="PopSize" ColumnName="PopSize" />
-                <ScalarProperty Name="PagerKind" ColumnName="PagerKind" />
-                <ScalarProperty Name="Colour" ColumnName="Colour" />
-                <ScalarProperty Name="InitNum" ColumnName="InitNum" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="WarnNum" ColumnName="WarnNum" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-                <ScalarProperty Name="CategoryNum" ColumnName="CategoryNum" />
-                <ScalarProperty Name="ProSpec" ColumnName="ProSpec" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="InPrice" ColumnName="InPrice" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="DefaultLocal" ColumnName="DefaultLocal" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CusNum" ColumnName="CusNum" />
-                <ScalarProperty Name="CusName" ColumnName="CusName" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProShatter">
-            <EntityTypeMapping TypeName="jingchendbModel.ProShatter">
-              <MappingFragment StoreEntitySet="ProShatter">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Reason" ColumnName="Reason" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="AuditUser" ColumnName="AuditUser" />
-                <ScalarProperty Name="AuditTime" ColumnName="AuditTime" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="IsMoveLoca" ColumnName="IsMoveLoca" />
-                <ScalarProperty Name="MoveLocaNum" ColumnName="MoveLocaNum" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProShatterDetail">
-            <EntityTypeMapping TypeName="jingchendbModel.ProShatterDetail">
-              <MappingFragment StoreEntitySet="ProShatterDetail">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-                <ScalarProperty Name="Barcode" ColumnName="Barcode" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-                <ScalarProperty Name="LocaNum" ColumnName="LocaNum" />
-                <ScalarProperty Name="LocaName" ColumnName="LocaName" />
-                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ProSingle">
-            <EntityTypeMapping TypeName="jingchendbModel.ProSingle">
-              <MappingFragment StoreEntitySet="ProSingle">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
-                <ScalarProperty Name="SingleNum" ColumnName="SingleNum" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="ShatterSingleDetail">
-            <EntityTypeMapping TypeName="jingchendbModel.ShatterSingleDetail">
-              <MappingFragment StoreEntitySet="ShatterSingleDetail">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ProShatterDetailID" ColumnName="ProShatterDetailID" />
-                <ScalarProperty Name="SingleNum" ColumnName="SingleNum" />
-                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="StoLocation">
-            <EntityTypeMapping TypeName="jingchendbModel.StoLocation">
-              <MappingFragment StoreEntitySet="StoLocation">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="LocaNum" ColumnName="LocaNum" />
-                <ScalarProperty Name="LocaName" ColumnName="LocaName" />
-                <ScalarProperty Name="LocaBarCode" ColumnName="LocaBarCode" />
-                <ScalarProperty Name="Space" ColumnName="Space" />
-                <ScalarProperty Name="Unit" ColumnName="Unit" />
-                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="StoProRelation">
-            <EntityTypeMapping TypeName="jingchendbModel.StoProRelation">
-              <MappingFragment StoreEntitySet="StoProRelation">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="LocaNum" ColumnName="LocaNum" />
-                <ScalarProperty Name="BarCode" ColumnName="BarCode" />
-                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
-                <ScalarProperty Name="Num" ColumnName="Num" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Supplier">
-            <EntityTypeMapping TypeName="jingchendbModel.Supplier">
-              <MappingFragment StoreEntitySet="Supplier">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="SupNum" ColumnName="SupNum" />
-                <ScalarProperty Name="SupName" ColumnName="SupName" />
-                <ScalarProperty Name="Company" ColumnName="Company" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="Fax" ColumnName="Fax" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="ContactName" ColumnName="ContactName" />
-                <ScalarProperty Name="PCode" ColumnName="PCode" />
-                <ScalarProperty Name="CCode" ColumnName="CCode" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="BankName" ColumnName="BankName" />
-                <ScalarProperty Name="BankCard" ColumnName="BankCard" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysAdmin">
-            <EntityTypeMapping TypeName="jingchendbModel.SysAdmin">
-              <MappingFragment StoreEntitySet="SysAdmin">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="PassWord" ColumnName="PassWord" />
-                <ScalarProperty Name="UserCode" ColumnName="UserCode" />
-                <ScalarProperty Name="RealName" ColumnName="RealName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="LoginCount" ColumnName="LoginCount" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysRelation">
-            <EntityTypeMapping TypeName="jingchendbModel.SysRelation">
-              <MappingFragment StoreEntitySet="SysRelation">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
-                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysResource">
-            <EntityTypeMapping TypeName="jingchendbModel.SysResource">
-              <MappingFragment StoreEntitySet="SysResource">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="ResName" ColumnName="ResName" />
-                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
-                <ScalarProperty Name="Sort" ColumnName="Sort" />
-                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-                <ScalarProperty Name="Url" ColumnName="Url" />
-                <ScalarProperty Name="CssName" ColumnName="CssName" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="Depart" ColumnName="Depart" />
-                <ScalarProperty Name="ResType" ColumnName="ResType" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SysRole">
-            <EntityTypeMapping TypeName="jingchendbModel.SysRole">
-              <MappingFragment StoreEntitySet="SysRole">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
-                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="Remark" ColumnName="Remark" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VnCity">
-            <EntityTypeMapping TypeName="jingchendbModel.VnCity">
-              <MappingFragment StoreEntitySet="VnCity">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="CName" ColumnName="CName" />
-                <ScalarProperty Name="CNameEn" ColumnName="CNameEn" />
-                <ScalarProperty Name="PCode" ColumnName="PCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="VnProvince">
-            <EntityTypeMapping TypeName="jingchendbModel.VnProvince">
-              <MappingFragment StoreEntitySet="VnProvince">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Code" ColumnName="Code" />
-                <ScalarProperty Name="PName" ColumnName="PName" />
-                <ScalarProperty Name="PNameEn" ColumnName="PNameEn" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="jingchendbModelStoreContainer" CdmEntityContainer="jingchendbEntities">
+    <EntitySetMapping Name="BadProductLocal">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.BadProductLocal)">
+        <MappingFragment StoreEntitySet="BadProductLocal">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="ProductNum" ColumnName="ProductNum" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="LocalNum" ColumnName="LocalNum" />
+          <ScalarProperty Name="ProductType" ColumnName="ProductType" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="BadLocal" ColumnName="BadLocal" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CainzCustomer">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.CainzCustomer)">
+        <MappingFragment StoreEntitySet="CainzCustomer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FactoryNo" ColumnName="FactoryNo" />
+          <ScalarProperty Name="FactoryName" ColumnName="FactoryName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Trader" ColumnName="Trader" />
+          <ScalarProperty Name="SendAddress" ColumnName="SendAddress" />
+          <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="FirstNum" ColumnName="FirstNum" />
+          <ScalarProperty Name="TraderNo" ColumnName="TraderNo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CainzOrderDetail">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.CainzOrderDetail)">
+        <MappingFragment StoreEntitySet="CainzOrderDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SnNum" ColumnName="SnNum" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="NitORI" ColumnName="NitORI" />
+          <ScalarProperty Name="ProductCD" ColumnName="ProductCD" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="CdFileName" ColumnName="CdFileName" />
+          <ScalarProperty Name="PopDesignNo" ColumnName="PopDesignNo" />
+          <ScalarProperty Name="PopSize" ColumnName="PopSize" />
+          <ScalarProperty Name="PaperKind" ColumnName="PaperKind" />
+          <ScalarProperty Name="PopCate" ColumnName="PopCate" />
+          <ScalarProperty Name="PopCateName" ColumnName="PopCateName" />
+          <ScalarProperty Name="Colour" ColumnName="Colour" />
+          <ScalarProperty Name="POPNum" ColumnName="POPNum" />
+          <ScalarProperty Name="RealNum" ColumnName="RealNum" />
+          <ScalarProperty Name="UnitNum" ColumnName="UnitNum" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="ExpectDate" ColumnName="ExpectDate" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProbabilityDate" ColumnName="ProbabilityDate" />
+          <ScalarProperty Name="ETD" ColumnName="ETD" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="PrintMoney" ColumnName="PrintMoney" />
+          <ScalarProperty Name="CheckMoney" ColumnName="CheckMoney" />
+          <ScalarProperty Name="InvoiceMoney" ColumnName="InvoiceMoney" />
+          <ScalarProperty Name="Sample" ColumnName="Sample" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CainzOrders">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.CainzOrders)">
+        <MappingFragment StoreEntitySet="CainzOrders">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="NitORI" ColumnName="NitORI" />
+          <ScalarProperty Name="CustomerNum" ColumnName="CustomerNum" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="SendAddress" ColumnName="SendAddress" />
+          <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="FinanceContact" ColumnName="FinanceContact" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+          <ScalarProperty Name="Taxpayer" ColumnName="Taxpayer" />
+          <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+          <ScalarProperty Name="Money" ColumnName="Money" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateUserNo" ColumnName="CreateUserNo" />
+          <ScalarProperty Name="CreateUserName" ColumnName="CreateUserName" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="FirstNum" ColumnName="FirstNum" />
+          <ScalarProperty Name="SecondNum" ColumnName="SecondNum" />
+          <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+          <ScalarProperty Name="isDraft" ColumnName="isDraft" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CainzProduct">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.CainzProduct)">
+        <MappingFragment StoreEntitySet="CainzProduct">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="FactoryID" ColumnName="FactoryID" />
+          <ScalarProperty Name="FactoryName" ColumnName="FactoryName" />
+          <ScalarProperty Name="Material" ColumnName="Material" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CainzTrader">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.CainzTrader)">
+        <MappingFragment StoreEntitySet="CainzTrader">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SnNum" ColumnName="SnNum" />
+          <ScalarProperty Name="ParentNum" ColumnName="ParentNum" />
+          <ScalarProperty Name="CateName" ColumnName="CateName" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CheckProduct">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.CheckProduct)">
+        <MappingFragment StoreEntitySet="CheckProduct">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LocaNum" ColumnName="LocaNum" />
+          <ScalarProperty Name="LocaName" ColumnName="LocaName" />
+          <ScalarProperty Name="ProductNum" ColumnName="ProductNum" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="RealNum" ColumnName="RealNum" />
+          <ScalarProperty Name="SouNum" ColumnName="SouNum" />
+          <ScalarProperty Name="ErrorValue" ColumnName="ErrorValue" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CheckStorage">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.CheckStorage)">
+        <MappingFragment StoreEntitySet="CheckStorage">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CheckNum" ColumnName="CheckNum" />
+          <ScalarProperty Name="CheckUser" ColumnName="CheckUser" />
+          <ScalarProperty Name="CheckTime" ColumnName="CheckTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="AuditUser" ColumnName="AuditUser" />
+          <ScalarProperty Name="AuditeTime" ColumnName="AuditeTime" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CheckStorageDetail">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.CheckStorageDetail)">
+        <MappingFragment StoreEntitySet="CheckStorageDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CheckNum" ColumnName="CheckNum" />
+          <ScalarProperty Name="LocaNum" ColumnName="LocaNum" />
+          <ScalarProperty Name="LocaName" ColumnName="LocaName" />
+          <ScalarProperty Name="LocaBarCode" ColumnName="LocaBarCode" />
+          <ScalarProperty Name="RealProductName" ColumnName="RealProductName" />
+          <ScalarProperty Name="RealBarCode" ColumnName="RealBarCode" />
+          <ScalarProperty Name="RealNum" ColumnName="RealNum" />
+          <ScalarProperty Name="SouProcutName" ColumnName="SouProcutName" />
+          <ScalarProperty Name="SouBarCode" ColumnName="SouBarCode" />
+          <ScalarProperty Name="SouNum" ColumnName="SouNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Construction">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.Construction)">
+        <MappingFragment StoreEntitySet="Construction">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="CompleteDate" ColumnName="CompleteDate" />
+          <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+          <ScalarProperty Name="PrintNum" ColumnName="PrintNum" />
+          <ScalarProperty Name="BeginDate" ColumnName="BeginDate" />
+          <ScalarProperty Name="CusNum" ColumnName="CusNum" />
+          <ScalarProperty Name="CusName" ColumnName="CusName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Revevier" ColumnName="Revevier" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="HouDao" ColumnName="HouDao" />
+          <ScalarProperty Name="PrintRequire" ColumnName="PrintRequire" />
+          <ScalarProperty Name="GM" ColumnName="GM" />
+          <ScalarProperty Name="YM" ColumnName="YM" />
+          <ScalarProperty Name="PD" ColumnName="PD" />
+          <ScalarProperty Name="ZD" ColumnName="ZD" />
+          <ScalarProperty Name="UV" ColumnName="UV" />
+          <ScalarProperty Name="DB" ColumnName="DB" />
+          <ScalarProperty Name="SG" ColumnName="SG" />
+          <ScalarProperty Name="ZY" ColumnName="ZY" />
+          <ScalarProperty Name="YH" ColumnName="YH" />
+          <ScalarProperty Name="GMValue" ColumnName="GMValue" />
+          <ScalarProperty Name="YMValue" ColumnName="YMValue" />
+          <ScalarProperty Name="PDValue" ColumnName="PDValue" />
+          <ScalarProperty Name="ZDValue" ColumnName="ZDValue" />
+          <ScalarProperty Name="UVValue" ColumnName="UVValue" />
+          <ScalarProperty Name="DBValue" ColumnName="DBValue" />
+          <ScalarProperty Name="SGValue" ColumnName="SGValue" />
+          <ScalarProperty Name="ZYValue" ColumnName="ZYValue" />
+          <ScalarProperty Name="YHValue" ColumnName="YHValue" />
+          <ScalarProperty Name="TJ" ColumnName="TJ" />
+          <ScalarProperty Name="TY" ColumnName="TY" />
+          <ScalarProperty Name="DH" ColumnName="DH" />
+          <ScalarProperty Name="AutoSG" ColumnName="AutoSG" />
+          <ScalarProperty Name="ZDing" ColumnName="ZDing" />
+          <ScalarProperty Name="HH" ColumnName="HH" />
+          <ScalarProperty Name="MQ" ColumnName="MQ" />
+          <ScalarProperty Name="YX" ColumnName="YX" />
+          <ScalarProperty Name="Other" ColumnName="Other" />
+          <ScalarProperty Name="TJValue" ColumnName="TJValue" />
+          <ScalarProperty Name="TYValue" ColumnName="TYValue" />
+          <ScalarProperty Name="DHValue" ColumnName="DHValue" />
+          <ScalarProperty Name="AutoSGValue" ColumnName="AutoSGValue" />
+          <ScalarProperty Name="ZDingValue" ColumnName="ZDingValue" />
+          <ScalarProperty Name="HHValue" ColumnName="HHValue" />
+          <ScalarProperty Name="MQValue" ColumnName="MQValue" />
+          <ScalarProperty Name="YXValue" ColumnName="YXValue" />
+          <ScalarProperty Name="OtherValue" ColumnName="OtherValue" />
+          <ScalarProperty Name="WordSize" ColumnName="WordSize" />
+          <ScalarProperty Name="WordCount" ColumnName="WordCount" />
+          <ScalarProperty Name="CTPCount" ColumnName="CTPCount" />
+          <ScalarProperty Name="PSCount" ColumnName="PSCount" />
+          <ScalarProperty Name="Kaiqie" ColumnName="Kaiqie" />
+          <ScalarProperty Name="CHouDAO" ColumnName="CHouDAO" />
+          <ScalarProperty Name="Qingdian" ColumnName="Qingdian" />
+          <ScalarProperty Name="CreateUser" ColumnName="CreateUser" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="IsPrint" ColumnName="IsPrint" />
+          <ScalarProperty Name="PrintTime" ColumnName="PrintTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConstructionDetail">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.ConstructionDetail)">
+        <MappingFragment StoreEntitySet="ConstructionDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SnNum" ColumnName="SnNum" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="PopSize" ColumnName="PopSize" />
+          <ScalarProperty Name="PopNum" ColumnName="PopNum" />
+          <ScalarProperty Name="RealNum" ColumnName="RealNum" />
+          <ScalarProperty Name="ShenShu" ColumnName="ShenShu" />
+          <ScalarProperty Name="MinNum" ColumnName="MinNum" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Kshu" ColumnName="Kshu" />
+          <ScalarProperty Name="Color" ColumnName="Color" />
+          <ScalarProperty Name="Positive" ColumnName="Positive" />
+          <ScalarProperty Name="Back" ColumnName="Back" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CusAddress">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.CusAddress)">
+        <MappingFragment StoreEntitySet="CusAddress">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="AddNum" ColumnName="AddNum" />
+          <ScalarProperty Name="CusNum" ColumnName="CusNum" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CusCategory">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.CusCategory)">
+        <MappingFragment StoreEntitySet="CusCategory">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SnNum" ColumnName="SnNum" />
+          <ScalarProperty Name="ParentNum" ColumnName="ParentNum" />
+          <ScalarProperty Name="CateName" ColumnName="CateName" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customer">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.Customer)">
+        <MappingFragment StoreEntitySet="Customer">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CustomerNum" ColumnName="CustomerNum" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="SendAddress" ColumnName="SendAddress" />
+          <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="FinanceContact" ColumnName="FinanceContact" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+          <ScalarProperty Name="Taxpayer" ColumnName="Taxpayer" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="FirstNum" ColumnName="FirstNum" />
+          <ScalarProperty Name="SecondNum" ColumnName="SecondNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Equipment">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.Equipment)">
+        <MappingFragment StoreEntitySet="Equipment">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="EquipmentNum" ColumnName="EquipmentNum" />
+          <ScalarProperty Name="EquipmentName" ColumnName="EquipmentName" />
+          <ScalarProperty Name="EquipmentCode" ColumnName="EquipmentCode" />
+          <ScalarProperty Name="IsImpower" ColumnName="IsImpower" />
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InStorage">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.InStorage)">
+        <MappingFragment StoreEntitySet="InStorage">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="InStorNum" ColumnName="InStorNum" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="SupNum" ColumnName="SupNum" />
+          <ScalarProperty Name="SupName" ColumnName="SupName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="AuditUser" ColumnName="AuditUser" />
+          <ScalarProperty Name="AuditeTime" ColumnName="AuditeTime" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="EquipmentNum" ColumnName="EquipmentNum" />
+          <ScalarProperty Name="EquipmentCode" ColumnName="EquipmentCode" />
+          <ScalarProperty Name="InType" ColumnName="InType" />
+          <ScalarProperty Name="ContractOrder" ColumnName="ContractOrder" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InStorDetail">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.InStorDetail)">
+        <MappingFragment StoreEntitySet="InStorDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="InStorNum" ColumnName="InStorNum" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="InPrice" ColumnName="InPrice" />
+          <ScalarProperty Name="LocaNum" ColumnName="LocaNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InStorSingleDetail">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.InStorSingleDetail)">
+        <MappingFragment StoreEntitySet="InStorSingleDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="InStorDetailID" ColumnName="InStorDetailID" />
+          <ScalarProperty Name="SingleNum" ColumnName="SingleNum" />
+          <ScalarProperty Name="InStorNum" ColumnName="InStorNum" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Material">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.Material)">
+        <MappingFragment StoreEntitySet="Material">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="ProductNum" ColumnName="ProductNum" />
+          <ScalarProperty Name="CdFileName" ColumnName="CdFileName" />
+          <ScalarProperty Name="PopDesign" ColumnName="PopDesign" />
+          <ScalarProperty Name="PopSize" ColumnName="PopSize" />
+          <ScalarProperty Name="PagerKind" ColumnName="PagerKind" />
+          <ScalarProperty Name="Colour" ColumnName="Colour" />
+          <ScalarProperty Name="InitNum" ColumnName="InitNum" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="WarnNum" ColumnName="WarnNum" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="CategoryNum" ColumnName="CategoryNum" />
+          <ScalarProperty Name="ProSpec" ColumnName="ProSpec" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="InPrice" ColumnName="InPrice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="DefaultLocal" ColumnName="DefaultLocal" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CusNum" ColumnName="CusNum" />
+          <ScalarProperty Name="CusName" ColumnName="CusName" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MaterialCategory">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.MaterialCategory)">
+        <MappingFragment StoreEntitySet="MaterialCategory">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CategoryNum" ColumnName="CategoryNum" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MoveSingleDetail">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.MoveSingleDetail)">
+        <MappingFragment StoreEntitySet="MoveSingleDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MoveDetailID" ColumnName="MoveDetailID" />
+          <ScalarProperty Name="SingleNum" ColumnName="SingleNum" />
+          <ScalarProperty Name="MoveNum" ColumnName="MoveNum" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MoveStorage">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.MoveStorage)">
+        <MappingFragment StoreEntitySet="MoveStorage">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MoveNum" ColumnName="MoveNum" />
+          <ScalarProperty Name="MoveType" ColumnName="MoveType" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AuditUser" ColumnName="AuditUser" />
+          <ScalarProperty Name="AuditeTime" ColumnName="AuditeTime" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MoveStorageDetail">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.MoveStorageDetail)">
+        <MappingFragment StoreEntitySet="MoveStorageDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="MoveNum" ColumnName="MoveNum" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="FromNum" ColumnName="FromNum" />
+          <ScalarProperty Name="FromName" ColumnName="FromName" />
+          <ScalarProperty Name="ToNum" ColumnName="ToNum" />
+          <ScalarProperty Name="ToName" ColumnName="ToName" />
+          <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OrderDetail">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.OrderDetail)">
+        <MappingFragment StoreEntitySet="OrderDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SnNum" ColumnName="SnNum" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="NitORI" ColumnName="NitORI" />
+          <ScalarProperty Name="ProductCD" ColumnName="ProductCD" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="CdFileName" ColumnName="CdFileName" />
+          <ScalarProperty Name="PopDesignNo" ColumnName="PopDesignNo" />
+          <ScalarProperty Name="PopSize" ColumnName="PopSize" />
+          <ScalarProperty Name="PaperKind" ColumnName="PaperKind" />
+          <ScalarProperty Name="PopCate" ColumnName="PopCate" />
+          <ScalarProperty Name="PopCateName" ColumnName="PopCateName" />
+          <ScalarProperty Name="Colour" ColumnName="Colour" />
+          <ScalarProperty Name="POPNum" ColumnName="POPNum" />
+          <ScalarProperty Name="RealNum" ColumnName="RealNum" />
+          <ScalarProperty Name="UnitNum" ColumnName="UnitNum" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="ExpectDate" ColumnName="ExpectDate" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="ProbabilityDate" ColumnName="ProbabilityDate" />
+          <ScalarProperty Name="ETD" ColumnName="ETD" />
+          <ScalarProperty Name="Reference" ColumnName="Reference" />
+          <ScalarProperty Name="PrintMoney" ColumnName="PrintMoney" />
+          <ScalarProperty Name="CheckMoney" ColumnName="CheckMoney" />
+          <ScalarProperty Name="InvoiceMoney" ColumnName="InvoiceMoney" />
+          <ScalarProperty Name="Sample" ColumnName="Sample" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.Orders)">
+        <MappingFragment StoreEntitySet="Orders">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="NitORI" ColumnName="NitORI" />
+          <ScalarProperty Name="CustomerNum" ColumnName="CustomerNum" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Contact" ColumnName="Contact" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Invoice" ColumnName="Invoice" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="SendAddress" ColumnName="SendAddress" />
+          <ScalarProperty Name="Receiver" ColumnName="Receiver" />
+          <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="FinanceContact" ColumnName="FinanceContact" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="CardNum" ColumnName="CardNum" />
+          <ScalarProperty Name="Taxpayer" ColumnName="Taxpayer" />
+          <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+          <ScalarProperty Name="Money" ColumnName="Money" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CreateUserNo" ColumnName="CreateUserNo" />
+          <ScalarProperty Name="CreateUserName" ColumnName="CreateUserName" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="LastUpdate" ColumnName="LastUpdate" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="FirstNum" ColumnName="FirstNum" />
+          <ScalarProperty Name="SecondNum" ColumnName="SecondNum" />
+          <ScalarProperty Name="Buyer" ColumnName="Buyer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OutStoDetail">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.OutStoDetail)">
+        <MappingFragment StoreEntitySet="OutStoDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="RealPrice" ColumnName="RealPrice" />
+          <ScalarProperty Name="LocaNum" ColumnName="LocaNum" />
+          <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OutStorage">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.OutStorage)">
+        <MappingFragment StoreEntitySet="OutStorage">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="CusNum" ColumnName="CusNum" />
+          <ScalarProperty Name="CusName" ColumnName="CusName" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="PCode" ColumnName="PCode" />
+          <ScalarProperty Name="CCode" ColumnName="CCode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AuditUser" ColumnName="AuditUser" />
+          <ScalarProperty Name="AuditeTime" ColumnName="AuditeTime" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="EquipmentNum" ColumnName="EquipmentNum" />
+          <ScalarProperty Name="EquipmentCode" ColumnName="EquipmentCode" />
+          <ScalarProperty Name="OutType" ColumnName="OutType" />
+          <ScalarProperty Name="ContractOrder" ColumnName="ContractOrder" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OutStorSingleDetail">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.OutStorSingleDetail)">
+        <MappingFragment StoreEntitySet="OutStorSingleDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OutStorDetailID" ColumnName="OutStorDetailID" />
+          <ScalarProperty Name="SingleNum" ColumnName="SingleNum" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProBatch">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.ProBatch)">
+        <MappingFragment StoreEntitySet="ProBatch">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProCategory">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.ProCategory)">
+        <MappingFragment StoreEntitySet="ProCategory">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="CategoryNum" ColumnName="CategoryNum" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.Products)">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="ProductNum" ColumnName="ProductNum" />
+          <ScalarProperty Name="CdFileName" ColumnName="CdFileName" />
+          <ScalarProperty Name="PopDesign" ColumnName="PopDesign" />
+          <ScalarProperty Name="PopSize" ColumnName="PopSize" />
+          <ScalarProperty Name="PagerKind" ColumnName="PagerKind" />
+          <ScalarProperty Name="Colour" ColumnName="Colour" />
+          <ScalarProperty Name="InitNum" ColumnName="InitNum" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="WarnNum" ColumnName="WarnNum" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="CategoryNum" ColumnName="CategoryNum" />
+          <ScalarProperty Name="ProSpec" ColumnName="ProSpec" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="InPrice" ColumnName="InPrice" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="DefaultLocal" ColumnName="DefaultLocal" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="CusNum" ColumnName="CusNum" />
+          <ScalarProperty Name="CusName" ColumnName="CusName" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProShatter">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.ProShatter)">
+        <MappingFragment StoreEntitySet="ProShatter">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="AuditUser" ColumnName="AuditUser" />
+          <ScalarProperty Name="AuditTime" ColumnName="AuditTime" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsMoveLoca" ColumnName="IsMoveLoca" />
+          <ScalarProperty Name="MoveLocaNum" ColumnName="MoveLocaNum" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProShatterDetail">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.ProShatterDetail)">
+        <MappingFragment StoreEntitySet="ProShatterDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="Barcode" ColumnName="Barcode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+          <ScalarProperty Name="LocaNum" ColumnName="LocaNum" />
+          <ScalarProperty Name="LocaName" ColumnName="LocaName" />
+          <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProSingle">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.ProSingle)">
+        <MappingFragment StoreEntitySet="ProSingle">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+          <ScalarProperty Name="SingleNum" ColumnName="SingleNum" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShatterSingleDetail">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.ShatterSingleDetail)">
+        <MappingFragment StoreEntitySet="ShatterSingleDetail">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ProShatterDetailID" ColumnName="ProShatterDetailID" />
+          <ScalarProperty Name="SingleNum" ColumnName="SingleNum" />
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoLocation">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.StoLocation)">
+        <MappingFragment StoreEntitySet="StoLocation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LocaNum" ColumnName="LocaNum" />
+          <ScalarProperty Name="LocaName" ColumnName="LocaName" />
+          <ScalarProperty Name="LocaBarCode" ColumnName="LocaBarCode" />
+          <ScalarProperty Name="Space" ColumnName="Space" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StoProRelation">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.StoProRelation)">
+        <MappingFragment StoreEntitySet="StoProRelation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LocaNum" ColumnName="LocaNum" />
+          <ScalarProperty Name="BarCode" ColumnName="BarCode" />
+          <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+          <ScalarProperty Name="Num" ColumnName="Num" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Supplier">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.Supplier)">
+        <MappingFragment StoreEntitySet="Supplier">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="SupNum" ColumnName="SupNum" />
+          <ScalarProperty Name="SupName" ColumnName="SupName" />
+          <ScalarProperty Name="Company" ColumnName="Company" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="Fax" ColumnName="Fax" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+          <ScalarProperty Name="PCode" ColumnName="PCode" />
+          <ScalarProperty Name="CCode" ColumnName="CCode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="BankName" ColumnName="BankName" />
+          <ScalarProperty Name="BankCard" ColumnName="BankCard" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SysAdmin">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.SysAdmin)">
+        <MappingFragment StoreEntitySet="SysAdmin">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="PassWord" ColumnName="PassWord" />
+          <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+          <ScalarProperty Name="RealName" ColumnName="RealName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="LoginCount" ColumnName="LoginCount" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SysRelation">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.SysRelation)">
+        <MappingFragment StoreEntitySet="SysRelation">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SysResource">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.SysResource)">
+        <MappingFragment StoreEntitySet="SysResource">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ResName" ColumnName="ResName" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="Sort" ColumnName="Sort" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="CssName" ColumnName="CssName" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Depart" ColumnName="Depart" />
+          <ScalarProperty Name="ResType" ColumnName="ResType" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SysRole">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.SysRole)">
+        <MappingFragment StoreEntitySet="SysRole">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VnCity">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.VnCity)">
+        <MappingFragment StoreEntitySet="VnCity">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="CName" ColumnName="CName" />
+          <ScalarProperty Name="CNameEn" ColumnName="CNameEn" />
+          <ScalarProperty Name="PCode" ColumnName="PCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VnProvince">
+      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.VnProvince)">
+        <MappingFragment StoreEntitySet="VnProvince">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="PName" ColumnName="PName" />
+          <ScalarProperty Name="PNameEn" ColumnName="PNameEn" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">

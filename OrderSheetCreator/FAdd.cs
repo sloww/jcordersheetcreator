@@ -52,12 +52,20 @@ namespace OrderSheetCreator
 
         private void btnSaveClose_Click(object sender, EventArgs e)
         {
-            entity.CainzOrderDetail cod =new entity.CainzOrderDetail();
-            cod.ProductCD = txbBarcode.Text;
+            add();
+            this.Clear();
+            this.Close();
          
           
         }
 
+
+        private void Clear()
+        {
+            
+            txbBarcode.Text = "";
+     
+        }
         private void btnContinue_Click(object sender, EventArgs e)
         {
             add();
@@ -72,8 +80,11 @@ namespace OrderSheetCreator
             cod.Price = System.Decimal.Parse(txbPrice.Text) ;
             cod.OrderNum = txbCount.Text;
             cod.CreateTime = DateTime.Now;
-            
+
+            FCainzOrderD.ORDERDETAILLIST.Add(cod);
 
         }
+
+
     }
 }

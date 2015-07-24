@@ -30,17 +30,17 @@ namespace OrderSheetCreator
 
         private void FCainzOrderD_Load(object sender, EventArgs e)
         {
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.AllowDrop = false;
             dataGridView1.ReadOnly = true;
             dataGridView1.MultiSelect = false;
             dataGridView1.AllowUserToAddRows = false;
+
+            dataGridView1.Rows.Insert(0, "1", "459509116295", "", "40*60", "正1C 反1C", "300g铜版纸，上光", "10,000", "0.060", "600.00", "", "", "");
         }
 
         private void tsbNew_Click(object sender, EventArgs e)
         {
             fadd.ShowDialog();
-            cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
         }
 
         private void FCainzOrderD_KeyDown(object sender, KeyEventArgs e)
@@ -49,6 +49,11 @@ namespace OrderSheetCreator
             {
                 tsbNew_Click(null, null);
             }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
