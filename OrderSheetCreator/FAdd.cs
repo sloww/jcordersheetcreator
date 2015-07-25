@@ -18,12 +18,12 @@ namespace OrderSheetCreator
 
         private void txbBarcode_TextChanged(object sender, EventArgs e)
         {
-            if (txbBarcode.Text.Length > 2)
+            if (txbSearchBarcode.Text.Length > 2)
             {
                 using (var db = new entity.jingchendbEntities())
                 {
                     var productQuery = from a in db.CainzProduct
-                                       where a.Barcode.Contains(txbBarcode.Text)
+                                       where a.Barcode.Contains(txbSearchBarcode.Text)
                                        select a;
                     productsBindingSource.DataSource = productQuery.Take(9).ToList();
                 }
@@ -62,19 +62,23 @@ namespace OrderSheetCreator
 
         private void Clear()
         {
-            
-            txbBarcode.Text = "";
+            txbSearchBarcode.Text = "";
+            txbCount.Text = "";
+            txbReMarK.Text = "";
+            this.txbSearchBarcode.Focus();
      
         }
         private void btnContinue_Click(object sender, EventArgs e)
         {
             add();
+            this.Clear();
         }
 
         private void add()
         {
             entity.CainzOrderDetail cod = new entity.CainzOrderDetail();
             cod.ProductCD = txbBarcode.Text;
+            cod.PaperKind = txbMaterial.Text;
             cod.Colour = txbColor.Text;
             cod.PopSize = txbSize.Text;
             cod.Price = System.Decimal.Parse(txbPrice.Text) ;
@@ -84,6 +88,7 @@ namespace OrderSheetCreator
             FCainzOrderD.ORDERDETAILLIST.Add(cod);
 
         }
+
 
 
     }

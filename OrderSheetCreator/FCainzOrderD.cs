@@ -35,12 +35,13 @@ namespace OrderSheetCreator
             dataGridView1.MultiSelect = false;
             dataGridView1.AllowUserToAddRows = false;
 
-            dataGridView1.Rows.Insert(0, "1", "459509116295", "", "40*60", "正1C 反1C", "300g铜版纸，上光", "10,000", "0.060", "600.00", "", "", "");
+            //dataGridView1.Rows.Insert(0, "1", "459509116295", "", "40*60", "正1C 反1C", "300g铜版纸，上光", "10,000", "0.060", "600.00", "", "", "");
         }
 
         private void tsbNew_Click(object sender, EventArgs e)
         {
             fadd.ShowDialog();
+            bindingSource1.DataSource = ORDERDETAILLIST;
         }
 
         private void FCainzOrderD_KeyDown(object sender, KeyEventArgs e)
