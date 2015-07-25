@@ -87,18 +87,18 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="SnNum" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="OrderNum" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="NitORI" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="ProductCD" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="SnNum" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="OrderNum" Type="int" Nullable="false" />
+          <Property Name="NitORI" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="ProductCD" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="200" />
           <Property Name="CdFileName" Type="nvarchar" MaxLength="200" />
-          <Property Name="PopDesignNo" Type="varchar" MaxLength="200" />
-          <Property Name="PopSize" Type="varchar" MaxLength="400" />
+          <Property Name="PopDesignNo" Type="nvarchar" MaxLength="200" />
+          <Property Name="PopSize" Type="nvarchar" MaxLength="200" />
           <Property Name="PaperKind" Type="nvarchar" MaxLength="200" />
-          <Property Name="PopCate" Type="varchar" MaxLength="30" />
-          <Property Name="PopCateName" Type="nvarchar" MaxLength="30" />
-          <Property Name="Colour" Type="varchar" MaxLength="50" />
+          <Property Name="PopCate" Type="nvarchar" MaxLength="200" />
+          <Property Name="PopCateName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Colour" Type="nvarchar" MaxLength="200" />
           <Property Name="POPNum" Type="int" />
           <Property Name="RealNum" Type="int" />
           <Property Name="UnitNum" Type="int" Nullable="false" />
@@ -106,7 +106,7 @@
           <Property Name="ExpectDate" Type="datetime" />
           <Property Name="Price" Type="decimal" Nullable="false" Scale="4" />
           <Property Name="ProbabilityDate" Type="datetime" Nullable="false" />
-          <Property Name="ETD" Type="nvarchar" MaxLength="50" />
+          <Property Name="ETD" Type="nvarchar" MaxLength="200" />
           <Property Name="Reference" Type="nvarchar" MaxLength="50" />
           <Property Name="PrintMoney" Type="decimal" Nullable="false" Scale="4" />
           <Property Name="CheckMoney" Type="decimal" Nullable="false" Scale="4" />
@@ -117,6 +117,7 @@
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="200" />
           <Property Name="BatchNum" Type="nvarchar" MaxLength="200" />
+          <Property Name="RowNo" Type="int" />
         </EntityType>
         <EntityType Name="CainzOrders">
           <Key>
@@ -165,7 +166,7 @@
           <Property Name="Material" Type="nvarchar" MaxLength="200" />
           <Property Name="Size" Type="nvarchar" MaxLength="200" />
           <Property Name="Color" Type="nvarchar" MaxLength="200" />
-          <Property Name="Price" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="Price" Type="money" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="CainzTrader">
@@ -444,7 +445,7 @@
           <Property Name="UnitName" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="CategoryNum" Type="varchar" Nullable="false" MaxLength="20" />
           <Property Name="ProSpec" Type="nvarchar" Nullable="false" MaxLength="20" />
-          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Description" Type="text" />
           <Property Name="InPrice" Type="decimal" Nullable="false" Scale="2" />
           <Property Name="Price" Type="decimal" Nullable="false" Scale="2" />
           <Property Name="IsDelete" Type="int" Nullable="false" />
@@ -453,7 +454,7 @@
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="CusNum" Type="varchar" MaxLength="30" />
           <Property Name="CusName" Type="nvarchar" MaxLength="50" />
-          <Property Name="Remark" Type="nvarchar(max)" />
+          <Property Name="Remark" Type="ntext" />
         </EntityType>
         <EntityType Name="MaterialCategory">
           <Key>
@@ -590,8 +591,8 @@
           <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="300" />
           <Property Name="BarCode" Type="varchar" Nullable="false" MaxLength="300" />
           <Property Name="Num" Type="int" Nullable="false" />
-          <Property Name="TotalPrice" Type="decimal" Nullable="false" Precision="19" Scale="4" />
-          <Property Name="RealPrice" Type="decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="TotalPrice" Type="money" Nullable="false" />
+          <Property Name="RealPrice" Type="money" Nullable="false" />
           <Property Name="LocaNum" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="BatchNum" Type="varchar" Nullable="false" MaxLength="200" />
         </EntityType>
@@ -677,7 +678,7 @@
           <Property Name="UnitName" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="CategoryNum" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="ProSpec" Type="nvarchar" Nullable="false" MaxLength="200" />
-          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Description" Type="text" />
           <Property Name="InPrice" Type="decimal" Nullable="false" Scale="3" />
           <Property Name="Price" Type="decimal" Nullable="false" Scale="3" />
           <Property Name="IsDelete" Type="int" Nullable="false" />
@@ -686,7 +687,7 @@
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="CusNum" Type="varchar" MaxLength="300" />
           <Property Name="CusName" Type="nvarchar" MaxLength="500" />
-          <Property Name="Remark" Type="nvarchar(max)" />
+          <Property Name="Remark" Type="ntext" />
         </EntityType>
         <EntityType Name="ProShatter">
           <Key>
@@ -788,7 +789,7 @@
           <Property Name="Address" Type="nvarchar" MaxLength="100" />
           <Property Name="BankName" Type="nvarchar" MaxLength="20" />
           <Property Name="BankCard" Type="varchar" MaxLength="30" />
-          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Description" Type="text" />
           <Property Name="IsDelete" Type="int" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
         </EntityType>
@@ -869,7 +870,6 @@
         <EntityContainer Name="jingchendbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BadProductLocal" EntityType="jingchendbModel.BadProductLocal" />
           <EntitySet Name="CainzCustomer" EntityType="jingchendbModel.CainzCustomer" />
-          <EntitySet Name="CainzOrderDetail" EntityType="jingchendbModel.CainzOrderDetail" />
           <EntitySet Name="CainzOrders" EntityType="jingchendbModel.CainzOrders" />
           <EntitySet Name="CainzProduct" EntityType="jingchendbModel.CainzProduct" />
           <EntitySet Name="CainzTrader" EntityType="jingchendbModel.CainzTrader" />
@@ -911,6 +911,7 @@
           <EntitySet Name="SysRole" EntityType="jingchendbModel.SysRole" />
           <EntitySet Name="VnCity" EntityType="jingchendbModel.VnCity" />
           <EntitySet Name="VnProvince" EntityType="jingchendbModel.VnProvince" />
+          <EntitySet Name="CainzOrderDetail" EntityType="jingchendbModel.CainzOrderDetail" />
         </EntityContainer>
         <EntityType Name="BadProductLocal">
           <Key>
@@ -942,42 +943,6 @@
           <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
           <Property Name="FirstNum" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="TraderNo" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="CainzOrderDetail">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SnNum" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="OrderNum" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="NitORI" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="ProductCD" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="CdFileName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="PopDesignNo" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-          <Property Name="PopSize" Type="String" MaxLength="400" Unicode="false" FixedLength="false" />
-          <Property Name="PaperKind" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="PopCate" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
-          <Property Name="PopCateName" Type="String" MaxLength="30" Unicode="true" FixedLength="false" />
-          <Property Name="Colour" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="POPNum" Type="Int32" />
-          <Property Name="RealNum" Type="Int32" />
-          <Property Name="UnitNum" Type="Int32" Nullable="false" />
-          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="ExpectDate" Type="DateTime" Precision="3" />
-          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="ProbabilityDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ETD" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="Reference" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
-          <Property Name="PrintMoney" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="CheckMoney" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="InvoiceMoney" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
-          <Property Name="Sample" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
-          <Property Name="Status" Type="Int32" Nullable="false" />
-          <Property Name="IsDelete" Type="Int32" Nullable="false" />
-          <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Remark" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
-          <Property Name="BatchNum" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="CainzOrders">
           <Key>
@@ -1723,6 +1688,43 @@
           <Property Name="PName" Type="String" Nullable="false" MaxLength="15" Unicode="true" FixedLength="false" />
           <Property Name="PNameEn" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
         </EntityType>
+        <EntityType Name="CainzOrderDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="SnNum" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="OrderNum" Nullable="false" />
+          <Property Type="String" Name="NitORI" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductCD" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="ProductName" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="CdFileName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PopDesignNo" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PopSize" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PaperKind" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PopCate" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="PopCateName" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Colour" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="POPNum" />
+          <Property Type="Int32" Name="RealNum" />
+          <Property Type="Int32" Name="UnitNum" Nullable="false" />
+          <Property Type="String" Name="UnitName" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="ExpectDate" Precision="3" />
+          <Property Type="Decimal" Name="Price" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="DateTime" Name="ProbabilityDate" Nullable="false" Precision="3" />
+          <Property Type="String" Name="ETD" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Reference" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Decimal" Name="PrintMoney" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="CheckMoney" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="Decimal" Name="InvoiceMoney" Nullable="false" Precision="18" Scale="4" />
+          <Property Type="String" Name="Sample" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="IsDelete" Nullable="false" />
+          <Property Type="DateTime" Name="CreateTime" Nullable="false" Precision="3" />
+          <Property Type="String" Name="Remark" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="BatchNum" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="RowNo" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1759,43 +1761,6 @@
           <ScalarProperty Name="Remark" ColumnName="Remark" />
           <ScalarProperty Name="FirstNum" ColumnName="FirstNum" />
           <ScalarProperty Name="TraderNo" ColumnName="TraderNo" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="CainzOrderDetail">
-      <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.CainzOrderDetail)">
-        <MappingFragment StoreEntitySet="CainzOrderDetail">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="SnNum" ColumnName="SnNum" />
-          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-          <ScalarProperty Name="NitORI" ColumnName="NitORI" />
-          <ScalarProperty Name="ProductCD" ColumnName="ProductCD" />
-          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
-          <ScalarProperty Name="CdFileName" ColumnName="CdFileName" />
-          <ScalarProperty Name="PopDesignNo" ColumnName="PopDesignNo" />
-          <ScalarProperty Name="PopSize" ColumnName="PopSize" />
-          <ScalarProperty Name="PaperKind" ColumnName="PaperKind" />
-          <ScalarProperty Name="PopCate" ColumnName="PopCate" />
-          <ScalarProperty Name="PopCateName" ColumnName="PopCateName" />
-          <ScalarProperty Name="Colour" ColumnName="Colour" />
-          <ScalarProperty Name="POPNum" ColumnName="POPNum" />
-          <ScalarProperty Name="RealNum" ColumnName="RealNum" />
-          <ScalarProperty Name="UnitNum" ColumnName="UnitNum" />
-          <ScalarProperty Name="UnitName" ColumnName="UnitName" />
-          <ScalarProperty Name="ExpectDate" ColumnName="ExpectDate" />
-          <ScalarProperty Name="Price" ColumnName="Price" />
-          <ScalarProperty Name="ProbabilityDate" ColumnName="ProbabilityDate" />
-          <ScalarProperty Name="ETD" ColumnName="ETD" />
-          <ScalarProperty Name="Reference" ColumnName="Reference" />
-          <ScalarProperty Name="PrintMoney" ColumnName="PrintMoney" />
-          <ScalarProperty Name="CheckMoney" ColumnName="CheckMoney" />
-          <ScalarProperty Name="InvoiceMoney" ColumnName="InvoiceMoney" />
-          <ScalarProperty Name="Sample" ColumnName="Sample" />
-          <ScalarProperty Name="Status" ColumnName="Status" />
-          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
-          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-          <ScalarProperty Name="Remark" ColumnName="Remark" />
-          <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -2584,6 +2549,44 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+          <EntitySetMapping Name="CainzOrderDetail">
+            <EntityTypeMapping TypeName="jingchendbModel.CainzOrderDetail">
+              <MappingFragment StoreEntitySet="CainzOrderDetail">
+                <ScalarProperty Name="RowNo" ColumnName="RowNo" />
+                <ScalarProperty Name="BatchNum" ColumnName="BatchNum" />
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Sample" ColumnName="Sample" />
+                <ScalarProperty Name="InvoiceMoney" ColumnName="InvoiceMoney" />
+                <ScalarProperty Name="CheckMoney" ColumnName="CheckMoney" />
+                <ScalarProperty Name="PrintMoney" ColumnName="PrintMoney" />
+                <ScalarProperty Name="Reference" ColumnName="Reference" />
+                <ScalarProperty Name="ETD" ColumnName="ETD" />
+                <ScalarProperty Name="ProbabilityDate" ColumnName="ProbabilityDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ExpectDate" ColumnName="ExpectDate" />
+                <ScalarProperty Name="UnitName" ColumnName="UnitName" />
+                <ScalarProperty Name="UnitNum" ColumnName="UnitNum" />
+                <ScalarProperty Name="RealNum" ColumnName="RealNum" />
+                <ScalarProperty Name="POPNum" ColumnName="POPNum" />
+                <ScalarProperty Name="Colour" ColumnName="Colour" />
+                <ScalarProperty Name="PopCateName" ColumnName="PopCateName" />
+                <ScalarProperty Name="PopCate" ColumnName="PopCate" />
+                <ScalarProperty Name="PaperKind" ColumnName="PaperKind" />
+                <ScalarProperty Name="PopSize" ColumnName="PopSize" />
+                <ScalarProperty Name="PopDesignNo" ColumnName="PopDesignNo" />
+                <ScalarProperty Name="CdFileName" ColumnName="CdFileName" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="ProductCD" ColumnName="ProductCD" />
+                <ScalarProperty Name="NitORI" ColumnName="NitORI" />
+                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+                <ScalarProperty Name="SnNum" ColumnName="SnNum" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping></edmx:Mappings>
   </edmx:Runtime>

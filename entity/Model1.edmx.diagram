@@ -4,10 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="4c0ad927db12416ca148ae928e0922c3" Name="关系图1">
+      <Diagram DiagramId="4c0ad927db12416ca148ae928e0922c3" Name="关系图1" ZoomLevel="79">
         <EntityTypeShape EntityType="jingchendbModel.BadProductLocal" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jingchendbModel.CainzCustomer" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="jingchendbModel.CainzOrderDetail" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jingchendbModel.CainzOrders" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jingchendbModel.CainzProduct" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jingchendbModel.CainzTrader" Width="1.5" PointX="6.75" PointY="4.75" IsExpanded="true" />
@@ -49,6 +48,7 @@
         <EntityTypeShape EntityType="jingchendbModel.SysRole" Width="1.5" PointX="20.75" PointY="3.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jingchendbModel.VnCity" Width="1.5" PointX="20.75" PointY="6.75" IsExpanded="true" />
         <EntityTypeShape EntityType="jingchendbModel.VnProvince" Width="1.5" PointX="20.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="jingchendbModel.CainzOrderDetail" Width="1.5" PointX="2.8679039677921234" PointY="30.538443177257871" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

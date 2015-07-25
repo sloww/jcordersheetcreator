@@ -11,7 +11,7 @@ namespace OrderSheetCreator
 {
     public partial class FCainzOrderD : Form
     {
-        public static List<entity.CainzOrderDetail> ORDERDETAILLIST = new List<entity.CainzOrderDetail>();
+        public static BindingList<entity.CainzOrderDetail> ORDERDETAILLIST = new BindingList<entity.CainzOrderDetail>();
         FAdd fadd = new FAdd();
         public FCainzOrderD()
         {
@@ -35,13 +35,18 @@ namespace OrderSheetCreator
             dataGridView1.MultiSelect = false;
             dataGridView1.AllowUserToAddRows = false;
 
+            PublicTools.IniDatagridview(dataGridView1);
+
+            cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
+
             //dataGridView1.Rows.Insert(0, "1", "459509116295", "", "40*60", "正1C 反1C", "300g铜版纸，上光", "10,000", "0.060", "600.00", "", "", "");
         }
 
         private void tsbNew_Click(object sender, EventArgs e)
         {
             fadd.ShowDialog();
-            bindingSource1.DataSource = ORDERDETAILLIST;
+            PublicTools.RecountRowsNum(dataGridView1);
+           
         }
 
         private void FCainzOrderD_KeyDown(object sender, KeyEventArgs e)

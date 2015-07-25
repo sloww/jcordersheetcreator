@@ -27,7 +27,6 @@ namespace entity
     
         public DbSet<BadProductLocal> BadProductLocal { get; set; }
         public DbSet<CainzCustomer> CainzCustomer { get; set; }
-        public DbSet<CainzOrderDetail> CainzOrderDetail { get; set; }
         public DbSet<CainzOrders> CainzOrders { get; set; }
         public DbSet<CainzProduct> CainzProduct { get; set; }
         public DbSet<CainzTrader> CainzTrader { get; set; }
@@ -69,5 +68,6 @@ namespace entity
         public DbSet<SysRole> SysRole { get; set; }
         public DbSet<VnCity> VnCity { get; set; }
         public DbSet<VnProvince> VnProvince { get; set; }
+        public DbSet<CainzOrderDetail> CainzOrderDetail { get; set; }
     }
 }

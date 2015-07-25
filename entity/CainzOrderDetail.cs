@@ -16,7 +16,7 @@ namespace entity
     {
         public int ID { get; set; }
         public string SnNum { get; set; }
-        public string OrderNum { get; set; }
+        public int OrderNum { get; set; }
         public string NitORI { get; set; }
         public string ProductCD { get; set; }
         public string ProductName { get; set; }
@@ -45,5 +45,6 @@ namespace entity
         public System.DateTime CreateTime { get; set; }
         public string Remark { get; set; }
         public string BatchNum { get; set; }
+        public Nullable<int> RowNo { get; set; }
     }
 }
