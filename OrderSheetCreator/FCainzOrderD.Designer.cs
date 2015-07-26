@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FCainzOrderD));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
@@ -53,18 +53,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cainzOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -109,6 +97,18 @@
             this.remarkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.batchNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rowNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cainzOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -238,9 +238,9 @@
             this.label9.Font = new System.Drawing.Font("宋体", 12F);
             this.label9.Location = new System.Drawing.Point(18, 50);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(280, 16);
+            this.label9.Size = new System.Drawing.Size(168, 16);
             this.label9.TabIndex = 4;
-            this.label9.Text = "下单日期（発注日）：2015年7月15日 ";
+            this.label9.Text = "下单日期（発注日）：";
             // 
             // label13
             // 
@@ -341,135 +341,11 @@
             this.dataGridView1.Size = new System.Drawing.Size(1018, 341);
             this.dataGridView1.TabIndex = 1;
             // 
-            // cainzOrderDetailBindingSource
-            // 
-            this.cainzOrderDetailBindingSource.DataSource = typeof(entity.CainzOrderDetail);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(19, 59);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(689, 12);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 89);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(689, 12);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 119);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(689, 12);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(19, 149);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(689, 12);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(19, 179);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(689, 12);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(19, 235);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(689, 12);
-            this.label15.TabIndex = 12;
-            this.label15.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(19, 265);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(689, 12);
-            this.label16.TabIndex = 12;
-            this.label16.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.label16);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 32);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1018, 291);
-            this.panel2.TabIndex = 2;
-            // 
-            // panel3
-            // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 664);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1018, 100);
-            this.panel3.TabIndex = 3;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.dataGridView1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 323);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1018, 341);
-            this.panel4.TabIndex = 4;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "RowNo";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle16;
-            this.dataGridViewTextBoxColumn1.HeaderText = "编号(NO.)";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = global::OrderSheetCreator.Properties.Settings.Default.cainzOrderD_colNo;
-            // 
             // colNo
             // 
             this.colNo.DataPropertyName = "RowNo";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colNo.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colNo.DefaultCellStyle = dataGridViewCellStyle1;
             this.colNo.HeaderText = "编号(NO.)";
             this.colNo.Name = "colNo";
             this.colNo.Width = 60;
@@ -480,7 +356,7 @@
             this.Column2.DataPropertyName = "ProductCD";
             this.Column2.HeaderText = "商品条形码号(JAN)";
             this.Column2.Name = "Column2";
-            this.Column2.Width = 94;
+            this.Column2.Width = 72;
             // 
             // Column3
             // 
@@ -509,16 +385,16 @@
             this.Column6.DataPropertyName = "PaperKind";
             this.Column6.HeaderText = "材质及其他要求(kind of paper)";
             this.Column6.Name = "Column6";
-            this.Column6.Width = 137;
+            this.Column6.Width = 94;
             // 
             // Column7
             // 
             this.Column7.DataPropertyName = "OrderNum";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle18.Format = "N0";
-            dataGridViewCellStyle18.NullValue = null;
-            dataGridViewCellStyle18.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle2;
             this.Column7.HeaderText = "订购数(枚）  (PCS)";
             this.Column7.Name = "Column7";
             this.Column7.Width = 90;
@@ -526,11 +402,11 @@
             // Column8
             // 
             this.Column8.DataPropertyName = "Price";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle19.Format = "N2";
-            dataGridViewCellStyle19.NullValue = "0";
-            dataGridViewCellStyle19.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = "0";
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle3;
             this.Column8.HeaderText = "单价（元）(price)";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
@@ -539,10 +415,10 @@
             // Column9
             // 
             this.Column9.DataPropertyName = "InvoiceMoney";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle20.Format = "N2";
-            dataGridViewCellStyle20.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.Column9.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.Column9.DefaultCellStyle = dataGridViewCellStyle4;
             this.Column9.HeaderText = "合计金额 (Amount)";
             this.Column9.Name = "Column9";
             this.Column9.Width = 90;
@@ -789,6 +665,130 @@
             this.rowNoDataGridViewTextBoxColumn.HeaderText = "RowNo";
             this.rowNoDataGridViewTextBoxColumn.Name = "rowNoDataGridViewTextBoxColumn";
             this.rowNoDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // cainzOrderDetailBindingSource
+            // 
+            this.cainzOrderDetailBindingSource.DataSource = typeof(entity.CainzOrderDetail);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(19, 59);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(689, 12);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(19, 89);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(689, 12);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(19, 119);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(689, 12);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(19, 149);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(689, 12);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(19, 179);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(689, 12);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(19, 235);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(689, 12);
+            this.label15.TabIndex = 12;
+            this.label15.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(19, 265);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(689, 12);
+            this.label16.TabIndex = 12;
+            this.label16.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label12);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Controls.Add(this.label16);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 32);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1018, 291);
+            this.panel2.TabIndex = 2;
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 664);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1018, 100);
+            this.panel3.TabIndex = 3;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.dataGridView1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 323);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1018, 341);
+            this.panel4.TabIndex = 4;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "RowNo";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewTextBoxColumn1.HeaderText = "编号(NO.)";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = global::OrderSheetCreator.Properties.Settings.Default.cainzOrderD_colNo;
             // 
             // FCainzOrderD
             // 
