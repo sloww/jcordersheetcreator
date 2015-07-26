@@ -35,26 +35,26 @@ namespace OrderSheetCreator
             dgv.AllowUserToResizeRows = false;
             dgv.BackgroundColor = Color.FromKnownColor(KnownColor.Control);
             dgv.BorderStyle = BorderStyle.None;
-            
+
 
         }
 
         public static void SetColumsAutoModeNone(DataGridView dgv)
         {
-            foreach(DataGridViewColumn dgvc in dgv.Columns)
+            foreach (DataGridViewColumn dgvc in dgv.Columns)
             {
                 dgvc.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
             }
         }
 
-        public static void SaveColumnWidth(DataGridView dgv,string path)
+        public static void SaveColumnWidth(DataGridView dgv, string path)
         {
             using (StreamWriter w = new StreamWriter(path))
             {
                 foreach (DataGridViewColumn col in dgv.Columns)
                 {
-                    if(col.Visible)
-                    w.WriteLine(string.Format("{0},{1}", col.HeaderText, col.Width));
+                    if (col.Visible)
+                        w.WriteLine(string.Format("{0},{1}", col.HeaderText, col.Width));
                 }
             }
         }
@@ -67,8 +67,8 @@ namespace OrderSheetCreator
                 while (!w.EndOfStream)
                 {
                     string[] readlinetmp = w.ReadLine().Split(',');
-                    int colWidth=0;
-                    if (readlinetmp.Length == 2 && int.TryParse(readlinetmp[1],out colWidth))
+                    int colWidth = 0;
+                    if (readlinetmp.Length == 2 && int.TryParse(readlinetmp[1], out colWidth))
                     {
                         for (int i = 0; i < dgv.Columns.Count; i++)
                         {
