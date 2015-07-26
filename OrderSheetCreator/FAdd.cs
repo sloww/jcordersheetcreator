@@ -27,8 +27,9 @@ namespace OrderSheetCreator
                 {
                     var productQuery = from a in db.CainzProduct
                                        where a.Barcode.Contains(txbSearchBarcode.Text)
+                                       orderby a.Barcode,a.Price
                                        select a;
-                    productsBindingSource.DataSource = productQuery.Take(9).ToList();
+                    productsBindingSource.DataSource = productQuery.Take(8).ToList();
 
                 }
                 PublicTools.RecountRowsNum(dataGridView1);
