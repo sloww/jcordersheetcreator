@@ -35,6 +35,9 @@ namespace OrderSheetCreator
             dgv.AllowUserToResizeRows = false;
             dgv.BackgroundColor = Color.FromKnownColor(KnownColor.Control);
             dgv.BorderStyle = BorderStyle.None;
+            dgv.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
+            dgv.DefaultCellStyle.Padding = new Padding(2);
 
 
         }
@@ -81,6 +84,24 @@ namespace OrderSheetCreator
                         }
                     }
                 }
+            }
+        }
+
+
+        public static void ReSizeTextbox(Control ctl)
+        {
+
+            float charCount = (float)ctl.Text.Length;
+            float fontsize = ctl.Font.Size;
+            float charlength = fontsize * charCount;
+            float tbWidth = (float)ctl.Width;
+            if (charlength > tbWidth)
+            {
+                ctl.Font = new Font(ctl.Font.FontFamily, ctl.Font.Size - 2);
+                Point p = ctl.Location;
+                ctl.Location = new Point(p.X, p.Y +2);
+                ReSizeTextbox(ctl);
+
             }
         }
     }

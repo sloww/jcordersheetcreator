@@ -12,6 +12,7 @@ namespace OrderSheetCreator
     public partial class FAdd : Form
     {
         private string FAddDdataGridViewSetPath = "查询表宽度设定.txt";
+        private TextBox textbox = new TextBox();
 
         public FAdd()
         {
@@ -87,16 +88,16 @@ namespace OrderSheetCreator
         }
         private void btnContinue_Click(object sender, EventArgs e)
         {
-            AddToODList();
-            this.Clear();
+            if (AddToODList())
+                this.Clear();
         }
 
-        private void AddToODList()
+        private bool AddToODList()
         {
             if (txbBarcode.Text.Length == 0)
             {
                 txbSearchBarcode.Focus();
-                return;
+                return false;
             }
             int count=-1;
 
@@ -104,14 +105,14 @@ namespace OrderSheetCreator
             {
                 MessageBox.Show("请输入正确订购数量");
                 txbCount.Focus();
-                return;
+                return false;
             }
 
             if (count < 1)
             {
                 MessageBox.Show("请输入正确订购数量");
                 txbCount.Focus();
-                return;
+                return false;
             }
 
             decimal _price = 0;
@@ -120,7 +121,7 @@ namespace OrderSheetCreator
             {
                 MessageBox.Show("请输入正确价格");
                 txbPrice.Focus();
-                return;
+                return false;
             }
 
             entity.CainzOrderDetail cod = new entity.CainzOrderDetail();
@@ -136,12 +137,26 @@ namespace OrderSheetCreator
             //注意最好计算！
             cod.InvoiceMoney = (decimal)cod.Price * (decimal)cod.OrderNum;
             FCainzOrderD.ORDERDETAILLIST.Add(cod);
+            return true;
 
         }
 
         private void FAdd_FormClosing(object sender, FormClosingEventArgs e)
         {
             PublicTools.SaveColumnWidth(dataGridView1, this.FAddDdataGridViewSetPath);
+        }
+
+        private void txbMaterial_TextChanged(object sender, EventArgs e)
+        {
+            if (txbMaterial.Tag == null)
+            {
+                txbMaterial.Tag = true;
+                this.textbox.Location = txbMaterial.Location;
+                this.textbox.Font = txbMaterial.Font;
+            }
+            txbMaterial.Location = this.textbox.Location;
+            txbMaterial.Font = this.textbox.Font;
+            PublicTools.ReSizeTextbox(txbMaterial);
         }
 
 
