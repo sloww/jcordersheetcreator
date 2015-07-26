@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FCainzOrderD));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle36 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle37 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle38 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle39 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
@@ -109,6 +109,14 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txbIssuedDate = new System.Windows.Forms.TextBox();
+            this.txbTrader = new System.Windows.Forms.TextBox();
+            this.txbFactory = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txbDELdate = new System.Windows.Forms.TextBox();
+            this.txbName = new System.Windows.Forms.TextBox();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -199,9 +207,9 @@
             this.label12.Font = new System.Drawing.Font("宋体", 12F);
             this.label12.Location = new System.Drawing.Point(18, 140);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(584, 16);
+            this.label12.Size = new System.Drawing.Size(296, 16);
             this.label12.TabIndex = 11;
-            this.label12.Text = "交货地址/电话（納品住所/電話番号）：上海市长宁区XXX路88号  021-8888-8888";
+            this.label12.Text = "交货地址/电话（納品住所/電話番号）：";
             // 
             // pictureBox1
             // 
@@ -218,9 +226,9 @@
             this.label11.Font = new System.Drawing.Font("宋体", 12F);
             this.label11.Location = new System.Drawing.Point(18, 80);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(328, 16);
+            this.label11.Size = new System.Drawing.Size(200, 16);
             this.label11.TabIndex = 4;
-            this.label11.Text = "所属贸易公司（商社名）：XXXX国际贸易公司";
+            this.label11.Text = "所属贸易公司（商社名）：";
             // 
             // label10
             // 
@@ -246,11 +254,11 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("宋体", 12F);
-            this.label13.Location = new System.Drawing.Point(367, 167);
+            this.label13.Location = new System.Drawing.Point(312, 167);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(224, 16);
+            this.label13.Size = new System.Drawing.Size(136, 16);
             this.label13.TabIndex = 0;
-            this.label13.Text = "交货期(納品日)：2015/7/24　";
+            this.label13.Text = "交货期(納品日)：";
             // 
             // label2
             // 
@@ -258,9 +266,9 @@
             this.label2.Font = new System.Drawing.Font("宋体", 12F);
             this.label2.Location = new System.Drawing.Point(18, 170);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(192, 16);
+            this.label2.Size = new System.Drawing.Size(152, 16);
             this.label2.TabIndex = 0;
-            this.label2.Text = "联系人(担当者)：XXX　　";
+            this.label2.Text = "联系人(担当者)：　";
             // 
             // label14
             // 
@@ -334,18 +342,18 @@
             this.rowNoDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.cainzOrderDetailBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(20, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(1018, 341);
+            this.dataGridView1.Size = new System.Drawing.Size(998, 341);
             this.dataGridView1.TabIndex = 1;
             // 
             // colNo
             // 
             this.colNo.DataPropertyName = "RowNo";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colNo.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colNo.DefaultCellStyle = dataGridViewCellStyle36;
             this.colNo.HeaderText = "编号(NO.)";
             this.colNo.Name = "colNo";
             this.colNo.Width = 60;
@@ -390,11 +398,11 @@
             // Column7
             // 
             this.Column7.DataPropertyName = "OrderNum";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle37.Format = "N0";
+            dataGridViewCellStyle37.NullValue = null;
+            dataGridViewCellStyle37.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle37;
             this.Column7.HeaderText = "订购数(枚）  (PCS)";
             this.Column7.Name = "Column7";
             this.Column7.Width = 90;
@@ -402,11 +410,11 @@
             // Column8
             // 
             this.Column8.DataPropertyName = "Price";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = "0";
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle38.Format = "N2";
+            dataGridViewCellStyle38.NullValue = "0";
+            dataGridViewCellStyle38.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle38;
             this.Column8.HeaderText = "单价（元）(price)";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
@@ -415,10 +423,10 @@
             // Column9
             // 
             this.Column9.DataPropertyName = "InvoiceMoney";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.Column9.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle39.Format = "N2";
+            dataGridViewCellStyle39.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.Column9.DefaultCellStyle = dataGridViewCellStyle39;
             this.Column9.HeaderText = "合计金额 (Amount)";
             this.Column9.Name = "Column9";
             this.Column9.Width = 90;
@@ -673,6 +681,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 9F);
             this.label3.Location = new System.Drawing.Point(19, 59);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(689, 12);
@@ -742,6 +751,14 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.textBox3);
+            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.txbName);
+            this.panel2.Controls.Add(this.txbDELdate);
+            this.panel2.Controls.Add(this.txbFactory);
+            this.panel2.Controls.Add(this.txbTrader);
+            this.panel2.Controls.Add(this.txbIssuedDate);
             this.panel2.Controls.Add(this.label12);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Controls.Add(this.label11);
@@ -778,17 +795,114 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 323);
             this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
             this.panel4.Size = new System.Drawing.Size(1018, 341);
             this.panel4.TabIndex = 4;
             // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "RowNo";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle40;
             this.dataGridViewTextBoxColumn1.HeaderText = "编号(NO.)";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.Width = global::OrderSheetCreator.Properties.Settings.Default.cainzOrderD_colNo;
+            // 
+            // txbIssuedDate
+            // 
+            this.txbIssuedDate.BackColor = System.Drawing.SystemColors.Control;
+            this.txbIssuedDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbIssuedDate.Font = new System.Drawing.Font("宋体", 12F);
+            this.txbIssuedDate.Location = new System.Drawing.Point(186, 50);
+            this.txbIssuedDate.Name = "txbIssuedDate";
+            this.txbIssuedDate.Size = new System.Drawing.Size(522, 19);
+            this.txbIssuedDate.TabIndex = 13;
+            this.txbIssuedDate.TabStop = false;
+            this.txbIssuedDate.Text = "2015年7月26日";
+            // 
+            // txbTrader
+            // 
+            this.txbTrader.BackColor = System.Drawing.SystemColors.Control;
+            this.txbTrader.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbTrader.Font = new System.Drawing.Font("宋体", 12F);
+            this.txbTrader.Location = new System.Drawing.Point(214, 80);
+            this.txbTrader.Name = "txbTrader";
+            this.txbTrader.Size = new System.Drawing.Size(494, 19);
+            this.txbTrader.TabIndex = 14;
+            this.txbTrader.TabStop = false;
+            this.txbTrader.Text = "贸易公司名称";
+            // 
+            // txbFactory
+            // 
+            this.txbFactory.BackColor = System.Drawing.SystemColors.Control;
+            this.txbFactory.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbFactory.Font = new System.Drawing.Font("宋体", 12F);
+            this.txbFactory.Location = new System.Drawing.Point(258, 110);
+            this.txbFactory.Name = "txbFactory";
+            this.txbFactory.Size = new System.Drawing.Size(450, 19);
+            this.txbFactory.TabIndex = 15;
+            this.txbFactory.TabStop = false;
+            this.txbFactory.Text = "工厂名称";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1.Font = new System.Drawing.Font("宋体", 12F);
+            this.textBox1.Location = new System.Drawing.Point(313, 140);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(544, 19);
+            this.textBox1.TabIndex = 16;
+            this.textBox1.TabStop = false;
+            this.textBox1.Text = "上海市长宁区XXX路88号  021-8888-8888";
+            // 
+            // txbDELdate
+            // 
+            this.txbDELdate.BackColor = System.Drawing.SystemColors.Control;
+            this.txbDELdate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbDELdate.Font = new System.Drawing.Font("宋体", 12F);
+            this.txbDELdate.Location = new System.Drawing.Point(441, 167);
+            this.txbDELdate.Name = "txbDELdate";
+            this.txbDELdate.Size = new System.Drawing.Size(267, 19);
+            this.txbDELdate.TabIndex = 15;
+            this.txbDELdate.TabStop = false;
+            this.txbDELdate.Text = "2015/7/24";
+            // 
+            // txbName
+            // 
+            this.txbName.BackColor = System.Drawing.SystemColors.Control;
+            this.txbName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbName.Font = new System.Drawing.Font("宋体", 12F);
+            this.txbName.Location = new System.Drawing.Point(148, 170);
+            this.txbName.Name = "txbName";
+            this.txbName.Size = new System.Drawing.Size(144, 19);
+            this.txbName.TabIndex = 15;
+            this.txbName.TabStop = false;
+            this.txbName.Text = "李建伟";
+            // 
+            // textBox2
+            // 
+            this.textBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("宋体", 12F);
+            this.textBox2.Location = new System.Drawing.Point(240, 226);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(213, 19);
+            this.textBox2.TabIndex = 15;
+            this.textBox2.TabStop = false;
+            this.textBox2.Text = "C-2015-2861";
+            // 
+            // textBox3
+            // 
+            this.textBox3.BackColor = System.Drawing.SystemColors.Control;
+            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox3.Font = new System.Drawing.Font("宋体", 12F);
+            this.textBox3.Location = new System.Drawing.Point(240, 256);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(213, 19);
+            this.textBox3.TabIndex = 15;
+            this.textBox3.TabStop = false;
+            this.textBox3.Text = "李建伟";
             // 
             // FCainzOrderD
             // 
@@ -806,7 +920,7 @@
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "新增订单";
+            this.Text = "   新增订单";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FCainzOrderD_FormClosing);
             this.Load += new System.EventHandler(this.FCainzOrderD_Load);
@@ -900,5 +1014,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn batchNumDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rowNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.TextBox txbIssuedDate;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txbFactory;
+        private System.Windows.Forms.TextBox txbTrader;
+        private System.Windows.Forms.TextBox txbName;
+        private System.Windows.Forms.TextBox txbDELdate;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox2;
     }
 }
