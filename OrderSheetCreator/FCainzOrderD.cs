@@ -13,6 +13,7 @@ namespace OrderSheetCreator
     {
         public static BindingList<entity.CainzOrderDetail> ORDERDETAILLIST = new BindingList<entity.CainzOrderDetail>();
         FAdd fadd = new FAdd();
+        private string FCainzOrderDdataGridViewSetPath = "订单表宽度设定.txt";
         public FCainzOrderD()
         {
             InitializeComponent();
@@ -30,16 +31,10 @@ namespace OrderSheetCreator
 
         private void FCainzOrderD_Load(object sender, EventArgs e)
         {
-            dataGridView1.AllowDrop = false;
-            dataGridView1.ReadOnly = true;
-            dataGridView1.MultiSelect = false;
-            dataGridView1.AllowUserToAddRows = false;
-
             PublicTools.IniDatagridview(dataGridView1);
-
+            PublicTools.SetColumsAutoModeNone(dataGridView1);
             cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
-
-            //dataGridView1.Rows.Insert(0, "1", "459509116295", "", "40*60", "正1C 反1C", "300g铜版纸，上光", "10,000", "0.060", "600.00", "", "", "");
+            PublicTools.RecoverColumnWidth(dataGridView1, FCainzOrderDdataGridViewSetPath);
         }
 
         private void tsbNew_Click(object sender, EventArgs e)
@@ -57,9 +52,10 @@ namespace OrderSheetCreator
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
+        private void FCainzOrderD_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            PublicTools.SaveColumnWidth(dataGridView1, this.FCainzOrderDdataGridViewSetPath);
         }
     }
 }

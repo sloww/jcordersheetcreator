@@ -35,6 +35,7 @@
             this.txbSearchBarcode = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblFactory = new System.Windows.Forms.Label();
+            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txbCount = new System.Windows.Forms.TextBox();
             this.txbPrice = new System.Windows.Forms.TextBox();
             this.txbColor = new System.Windows.Forms.TextBox();
@@ -46,15 +47,13 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
             this.txbReMarK = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnContinue = new System.Windows.Forms.Button();
+            this.txbBarcode = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txbBarcode = new System.Windows.Forms.TextBox();
-            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FactoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,11 +63,12 @@
             this.popSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -114,6 +114,10 @@
             this.lblFactory.Size = new System.Drawing.Size(0, 21);
             this.lblFactory.TabIndex = 14;
             this.lblFactory.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // productsBindingSource
+            // 
+            this.productsBindingSource.DataSource = typeof(entity.CainzProduct);
             // 
             // txbCount
             // 
@@ -249,6 +253,16 @@
             this.panel2.Size = new System.Drawing.Size(784, 194);
             this.panel2.TabIndex = 4;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label7.Location = new System.Drawing.Point(8, 18);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(55, 25);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "条码:";
+            // 
             // txbReMarK
             // 
             this.txbReMarK.BackColor = System.Drawing.Color.White;
@@ -278,6 +292,19 @@
             this.btnContinue.Text = "保存";
             this.btnContinue.UseVisualStyleBackColor = true;
             this.btnContinue.Click += new System.EventHandler(this.btnContinue_Click);
+            // 
+            // txbBarcode
+            // 
+            this.txbBarcode.BackColor = System.Drawing.SystemColors.Control;
+            this.txbBarcode.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbBarcode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Barcode", true));
+            this.txbBarcode.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txbBarcode.Location = new System.Drawing.Point(65, 20);
+            this.txbBarcode.Name = "txbBarcode";
+            this.txbBarcode.ReadOnly = true;
+            this.txbBarcode.Size = new System.Drawing.Size(222, 26);
+            this.txbBarcode.TabIndex = 8;
+            this.txbBarcode.TabStop = false;
             // 
             // panel3
             // 
@@ -312,42 +339,6 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(784, 235);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Barcode";
-            this.dataGridViewTextBoxColumn1.HeaderText = "条码";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 54;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(8, 18);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 25);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "条码:";
-            // 
-            // txbBarcode
-            // 
-            this.txbBarcode.BackColor = System.Drawing.SystemColors.Control;
-            this.txbBarcode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbBarcode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Barcode", true));
-            this.txbBarcode.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbBarcode.Location = new System.Drawing.Point(65, 20);
-            this.txbBarcode.Name = "txbBarcode";
-            this.txbBarcode.ReadOnly = true;
-            this.txbBarcode.Size = new System.Drawing.Size(222, 26);
-            this.txbBarcode.TabIndex = 8;
-            this.txbBarcode.TabStop = false;
-            // 
-            // productsBindingSource
-            // 
-            this.productsBindingSource.DataSource = typeof(entity.CainzProduct);
             // 
             // Column1
             // 
@@ -429,7 +420,14 @@
             this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
             this.iDDataGridViewTextBoxColumn.ReadOnly = true;
             this.iDDataGridViewTextBoxColumn.Visible = false;
-            this.iDDataGridViewTextBoxColumn.Width = 42;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Barcode";
+            this.dataGridViewTextBoxColumn1.HeaderText = "条码";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // FAdd
             // 
@@ -447,15 +445,16 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = " 添加产品";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FAdd_FormClosing);
             this.Load += new System.EventHandler(this.FAdd_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FAdd_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

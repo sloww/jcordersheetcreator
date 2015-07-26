@@ -34,5 +34,17 @@ namespace OrderSheetCreator.Properties {
                 this["add_barcode_w"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("60")]
+        public int cainzOrderD_colNo {
+            get {
+                return ((int)(this["cainzOrderD_colNo"]));
+            }
+            set {
+                this["cainzOrderD_colNo"] = value;
+            }
+        }
     }
 }

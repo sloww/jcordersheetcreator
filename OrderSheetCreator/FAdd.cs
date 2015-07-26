@@ -11,6 +11,8 @@ namespace OrderSheetCreator
 {
     public partial class FAdd : Form
     {
+        private string FAddDdataGridViewSetPath = "查询表宽度设定.txt";
+
         public FAdd()
         {
             InitializeComponent();
@@ -39,6 +41,8 @@ namespace OrderSheetCreator
         private void FAdd_Load(object sender, EventArgs e)
         {
             PublicTools.IniDatagridview(dataGridView1);
+            PublicTools.SetColumsAutoModeNone(dataGridView1);
+            PublicTools.RecoverColumnWidth(dataGridView1, this.FAddDdataGridViewSetPath);
         }
 
         private void FAdd_KeyPress(object sender, KeyPressEventArgs e)
@@ -133,6 +137,11 @@ namespace OrderSheetCreator
             cod.InvoiceMoney = (decimal)cod.Price * (decimal)cod.OrderNum;
             FCainzOrderD.ORDERDETAILLIST.Add(cod);
 
+        }
+
+        private void FAdd_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            PublicTools.SaveColumnWidth(dataGridView1, this.FAddDdataGridViewSetPath);
         }
 
 
