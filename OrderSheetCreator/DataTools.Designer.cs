@@ -38,11 +38,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnFactory = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnImportProductData = new System.Windows.Forms.Button();
             this.btnImportFactory = new System.Windows.Forms.Button();
             this.btnCainzMaoyis = new System.Windows.Forms.Button();
             this.btnBlind = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.btnImportProductData = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
@@ -138,6 +140,16 @@
             this.panel2.Size = new System.Drawing.Size(1103, 100);
             this.panel2.TabIndex = 8;
             // 
+            // btnImportProductData
+            // 
+            this.btnImportProductData.Location = new System.Drawing.Point(860, 26);
+            this.btnImportProductData.Name = "btnImportProductData";
+            this.btnImportProductData.Size = new System.Drawing.Size(173, 49);
+            this.btnImportProductData.TabIndex = 9;
+            this.btnImportProductData.Text = "导入产品数据";
+            this.btnImportProductData.UseVisualStyleBackColor = true;
+            this.btnImportProductData.Click += new System.EventHandler(this.btnImportProductData_Click);
+            // 
             // btnImportFactory
             // 
             this.btnImportFactory.Location = new System.Drawing.Point(543, 26);
@@ -168,25 +180,36 @@
             this.btnBlind.UseVisualStyleBackColor = true;
             this.btnBlind.Click += new System.EventHandler(this.btnBlind_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(860, 222);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(173, 49);
+            this.button3.TabIndex = 10;
+            this.button3.Text = "导入产品数据";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
             // customerBindingSource
             // 
             this.customerBindingSource.DataSource = typeof(entity.Customer);
             // 
-            // btnImportProductData
+            // button6
             // 
-            this.btnImportProductData.Location = new System.Drawing.Point(860, 26);
-            this.btnImportProductData.Name = "btnImportProductData";
-            this.btnImportProductData.Size = new System.Drawing.Size(173, 49);
-            this.btnImportProductData.TabIndex = 9;
-            this.btnImportProductData.Text = "导入产品数据";
-            this.btnImportProductData.UseVisualStyleBackColor = true;
-            this.btnImportProductData.Click += new System.EventHandler(this.btnImportProductData_Click);
+            this.button6.Location = new System.Drawing.Point(543, 222);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(122, 49);
+            this.button6.TabIndex = 8;
+            this.button6.Text = "添加工厂简拼";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
             // DataTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1103, 510);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Name = "DataTools";
@@ -215,6 +238,8 @@
         private System.Windows.Forms.Button btnImportFactory;
         private System.Windows.Forms.Button btnBlind;
         private System.Windows.Forms.Button btnImportProductData;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button6;
     }
 }
 

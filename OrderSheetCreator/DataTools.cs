@@ -13,6 +13,7 @@ using NPOI.XSSF.UserModel;
 using NPOI.SS.Util;
 using NPOI.HSSF.UserModel;
 using System.Collections;
+using NPinyin;
 
 namespace OrderSheetCreator
 {
@@ -21,6 +22,7 @@ namespace OrderSheetCreator
         Dictionary<string, int> gMaoYiShangDic = new Dictionary<string, int>();
         Dictionary<string, string> gGongChangDic = new Dictionary<string, string>();
         List<CainzCustomer> FACTORYS = new List<CainzCustomer>();
+
 
         public DataTools()
         {
@@ -808,6 +810,20 @@ namespace OrderSheetCreator
                     }
                 }
 
+            }
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            using (var db = new jingchendbEntities())
+            {
+                var result = from p in db.CainzCustomer
+                             select p;
+                foreach (var p in result)
+                {
+                    p.FactoryNameJP = Pinyin.GetInitials(p.FactoryName);
+                }
+                db.SaveChanges();
             }
         }
 

@@ -81,6 +81,7 @@
           <Property Name="Remark" Type="varchar" MaxLength="200" />
           <Property Name="FirstNum" Type="varchar" MaxLength="500" />
           <Property Name="TraderNo" Type="varchar" MaxLength="500" />
+          <Property Name="FactoryNameJP" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="CainzOrderDetail">
           <Key>
@@ -943,6 +944,7 @@
           <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
           <Property Name="FirstNum" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="TraderNo" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Type="String" Name="FactoryNameJP" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="CainzOrders">
           <Key>
@@ -1748,7 +1750,8 @@
     <EntitySetMapping Name="CainzCustomer">
       <EntityTypeMapping TypeName="IsTypeOf(jingchendbModel.CainzCustomer)">
         <MappingFragment StoreEntitySet="CainzCustomer">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FactoryNameJP" ColumnName="FactoryNameJP" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="FactoryNo" ColumnName="FactoryNo" />
           <ScalarProperty Name="FactoryName" ColumnName="FactoryName" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />

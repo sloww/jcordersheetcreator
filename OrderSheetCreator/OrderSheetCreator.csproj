@@ -73,6 +73,9 @@
     <Reference Include="ICSharpCode.SharpZipLib">
       <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
+    <Reference Include="NPinyin">
+      <HintPath>..\..\..\..\Downloads\NPinyin-0.2.4588.20158-bin\NPinyin.dll</HintPath>
+    </Reference>
     <Reference Include="NPOI">
       <HintPath>..\packages\NPOI.2.1.3.1\lib\net40\NPOI.dll</HintPath>
     </Reference>
@@ -122,6 +125,12 @@
     <Compile Include="DataTools.Designer.cs">
       <DependentUpon>DataTools.cs</DependentUpon>
     </Compile>
+    <Compile Include="FFactory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FFactory.Designer.cs">
+      <DependentUpon>FFactory.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicTools.cs" />
@@ -136,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataTools.resx">
       <DependentUpon>DataTools.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FFactory.resx">
+      <DependentUpon>FFactory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -152,6 +164,7 @@
     <None Include="packages.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Properties\DataSources\entity.CainzCustomer.datasource" />
     <None Include="Properties\DataSources\entity.CainzOrder.datasource" />
     <None Include="Properties\DataSources\entity.CainzOrderDetail.datasource" />
     <None Include="Properties\DataSources\entity.CainzProduct.datasource" />

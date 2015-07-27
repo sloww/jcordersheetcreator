@@ -11,7 +11,7 @@ namespace OrderSheetCreator
 {
     public partial class FAdd : Form
     {
-        private string FADD_DATAGRIDVIEW_SETPATH = "查询表宽度设定.txt";
+        private string FADD_DATAGRIDVIEW_SETPATH = "产品查询表宽度设定.txt";
         private TextBox TXBMATERIAL_TMP = new TextBox();
         private bool IS_IN_ORDER = false;
 

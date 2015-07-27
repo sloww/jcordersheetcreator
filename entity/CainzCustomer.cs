@@ -27,5 +27,6 @@ namespace entity
         public string Remark { get; set; }
         public string FirstNum { get; set; }
         public string TraderNo { get; set; }
+        public string FactoryNameJP { get; set; }
     }
 }

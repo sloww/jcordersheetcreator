@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FCainzOrderD));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
@@ -53,26 +53,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cainzOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.txbName = new System.Windows.Forms.TextBox();
-            this.txbDELdate = new System.Windows.Forms.TextBox();
-            this.txbFactory = new System.Windows.Forms.TextBox();
-            this.txbTrader = new System.Windows.Forms.TextBox();
-            this.txbIssuedDate = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -85,6 +65,27 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txbJingChenOrder = new System.Windows.Forms.TextBox();
+            this.txbOrder = new System.Windows.Forms.TextBox();
+            this.txbName = new System.Windows.Forms.TextBox();
+            this.txbDELdate = new System.Windows.Forms.TextBox();
+            this.txbFactory = new System.Windows.Forms.TextBox();
+            this.txbTrader = new System.Windows.Forms.TextBox();
+            this.txbIssuedDate = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txbFile = new System.Windows.Forms.TextBox();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.snNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -117,12 +118,13 @@
             this.remarkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.batchNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rowNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cainzOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cainzOrderDetailBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cainzOrderDetailBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -350,9 +352,107 @@
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
-            // cainzOrderDetailBindingSource
+            // colNo
             // 
-            this.cainzOrderDetailBindingSource.DataSource = typeof(entity.CainzOrderDetail);
+            this.colNo.DataPropertyName = "RowNo";
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colNo.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colNo.HeaderText = "编号(NO.)";
+            this.colNo.Name = "colNo";
+            this.colNo.Width = 60;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Column2.DataPropertyName = "ProductCD";
+            this.Column2.HeaderText = "商品条形码号(JAN)";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 72;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "ProductName";
+            this.Column3.HeaderText = "物料名称(型番)";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 90;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "PopSize";
+            this.Column4.HeaderText = "尺寸(mm) (SIZE)";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 90;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "Colour";
+            this.Column5.HeaderText = "颜色(COLOR)";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 90;
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Column6.DataPropertyName = "PaperKind";
+            this.Column6.HeaderText = "材质及其他要求(kind of paper)";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 94;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "OrderNum";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N0";
+            dataGridViewCellStyle2.NullValue = null;
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle2;
+            this.Column7.HeaderText = "订购数(枚）  (PCS)";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 90;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "Price";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = "0";
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column8.HeaderText = "单价（元）(price)";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 90;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "InvoiceMoney";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.Column9.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column9.HeaderText = "合计金额 (Amount)";
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 90;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "BatchNum";
+            this.Column11.HeaderText = "产品批号";
+            this.Column11.Name = "Column11";
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "ExpectDate";
+            this.Column10.HeaderText = "希望交货期";
+            this.Column10.Name = "Column10";
+            this.Column10.Width = 90;
+            // 
+            // Column12
+            // 
+            this.Column12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column12.DataPropertyName = "Remark";
+            this.Column12.HeaderText = "备注    (Notes)";
+            this.Column12.Name = "Column12";
             // 
             // label3
             // 
@@ -427,9 +527,11 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txbFile);
+            this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.textBox3);
-            this.panel2.Controls.Add(this.textBox2);
+            this.panel2.Controls.Add(this.txbJingChenOrder);
+            this.panel2.Controls.Add(this.txbOrder);
             this.panel2.Controls.Add(this.txbName);
             this.panel2.Controls.Add(this.txbDELdate);
             this.panel2.Controls.Add(this.txbFactory);
@@ -464,34 +566,31 @@
             this.textBox1.Font = new System.Drawing.Font("宋体", 12F);
             this.textBox1.Location = new System.Drawing.Point(313, 140);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(544, 19);
+            this.textBox1.Size = new System.Drawing.Size(395, 19);
             this.textBox1.TabIndex = 16;
             this.textBox1.TabStop = false;
-            this.textBox1.Text = "上海市长宁区XXX路88号  021-8888-8888";
             // 
-            // textBox3
+            // txbJingChenOrder
             // 
-            this.textBox3.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("宋体", 12F);
-            this.textBox3.Location = new System.Drawing.Point(240, 256);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(213, 19);
-            this.textBox3.TabIndex = 15;
-            this.textBox3.TabStop = false;
-            this.textBox3.Text = "李建伟";
+            this.txbJingChenOrder.BackColor = System.Drawing.SystemColors.Control;
+            this.txbJingChenOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbJingChenOrder.Font = new System.Drawing.Font("宋体", 12F);
+            this.txbJingChenOrder.Location = new System.Drawing.Point(240, 256);
+            this.txbJingChenOrder.Name = "txbJingChenOrder";
+            this.txbJingChenOrder.Size = new System.Drawing.Size(136, 19);
+            this.txbJingChenOrder.TabIndex = 15;
+            this.txbJingChenOrder.TabStop = false;
             // 
-            // textBox2
+            // txbOrder
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("宋体", 12F);
-            this.textBox2.Location = new System.Drawing.Point(240, 226);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(213, 19);
-            this.textBox2.TabIndex = 15;
-            this.textBox2.TabStop = false;
-            this.textBox2.Text = "C-2015-2861";
+            this.txbOrder.BackColor = System.Drawing.SystemColors.Control;
+            this.txbOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbOrder.Font = new System.Drawing.Font("宋体", 12F);
+            this.txbOrder.Location = new System.Drawing.Point(240, 226);
+            this.txbOrder.Name = "txbOrder";
+            this.txbOrder.Size = new System.Drawing.Size(136, 19);
+            this.txbOrder.TabIndex = 15;
+            this.txbOrder.TabStop = false;
             // 
             // txbName
             // 
@@ -503,7 +602,6 @@
             this.txbName.Size = new System.Drawing.Size(144, 19);
             this.txbName.TabIndex = 15;
             this.txbName.TabStop = false;
-            this.txbName.Text = "李建伟";
             // 
             // txbDELdate
             // 
@@ -515,7 +613,6 @@
             this.txbDELdate.Size = new System.Drawing.Size(267, 19);
             this.txbDELdate.TabIndex = 15;
             this.txbDELdate.TabStop = false;
-            this.txbDELdate.Text = "2015/7/24";
             // 
             // txbFactory
             // 
@@ -527,7 +624,6 @@
             this.txbFactory.Size = new System.Drawing.Size(450, 19);
             this.txbFactory.TabIndex = 15;
             this.txbFactory.TabStop = false;
-            this.txbFactory.Text = "工厂名称";
             // 
             // txbTrader
             // 
@@ -539,7 +635,6 @@
             this.txbTrader.Size = new System.Drawing.Size(494, 19);
             this.txbTrader.TabIndex = 14;
             this.txbTrader.TabStop = false;
-            this.txbTrader.Text = "贸易公司名称";
             // 
             // txbIssuedDate
             // 
@@ -551,7 +646,6 @@
             this.txbIssuedDate.Size = new System.Drawing.Size(522, 19);
             this.txbIssuedDate.TabIndex = 13;
             this.txbIssuedDate.TabStop = false;
-            this.txbIssuedDate.Text = "2015年7月26日";
             // 
             // panel3
             // 
@@ -580,107 +674,26 @@
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.Width = global::OrderSheetCreator.Properties.Settings.Default.cainzOrderD_colNo;
             // 
-            // colNo
+            // label6
             // 
-            this.colNo.DataPropertyName = "RowNo";
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colNo.DefaultCellStyle = dataGridViewCellStyle1;
-            this.colNo.HeaderText = "编号(NO.)";
-            this.colNo.Name = "colNo";
-            this.colNo.Width = 60;
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("宋体", 12F);
+            this.label6.Location = new System.Drawing.Point(397, 256);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(152, 16);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "文件位置（市场）：";
             // 
-            // Column2
+            // txbFile
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Column2.DataPropertyName = "ProductCD";
-            this.Column2.HeaderText = "商品条形码号(JAN)";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 94;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "ProductName";
-            this.Column3.HeaderText = "物料名称(型番)";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 90;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "PopSize";
-            this.Column4.HeaderText = "尺寸(mm) (SIZE)";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 90;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "Colour";
-            this.Column5.HeaderText = "颜色(COLOR)";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 90;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Column6.DataPropertyName = "PaperKind";
-            this.Column6.HeaderText = "材质及其他要求(kind of paper)";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 137;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "OrderNum";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle2.Format = "N0";
-            dataGridViewCellStyle2.NullValue = null;
-            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Column7.HeaderText = "订购数(枚）  (PCS)";
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 90;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "Price";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N2";
-            dataGridViewCellStyle3.NullValue = "0";
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column8.HeaderText = "单价（元）(price)";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Width = 90;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "InvoiceMoney";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.Column9.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column9.HeaderText = "合计金额 (Amount)";
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 90;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "BatchNum";
-            this.Column11.HeaderText = "产品批号";
-            this.Column11.Name = "Column11";
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "ExpectDate";
-            this.Column10.HeaderText = "希望交货期";
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 90;
-            // 
-            // Column12
-            // 
-            this.Column12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column12.DataPropertyName = "Remark";
-            this.Column12.HeaderText = "备注    (Notes)";
-            this.Column12.Name = "Column12";
+            this.txbFile.BackColor = System.Drawing.SystemColors.Control;
+            this.txbFile.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbFile.Font = new System.Drawing.Font("宋体", 12F);
+            this.txbFile.Location = new System.Drawing.Point(572, 256);
+            this.txbFile.Name = "txbFile";
+            this.txbFile.Size = new System.Drawing.Size(136, 19);
+            this.txbFile.TabIndex = 18;
+            this.txbFile.TabStop = false;
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -906,6 +919,10 @@
             this.rowNoDataGridViewTextBoxColumn.Name = "rowNoDataGridViewTextBoxColumn";
             this.rowNoDataGridViewTextBoxColumn.Visible = false;
             // 
+            // cainzOrderDetailBindingSource
+            // 
+            this.cainzOrderDetailBindingSource.DataSource = typeof(entity.CainzOrderDetail);
+            // 
             // FCainzOrderD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -931,10 +948,10 @@
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.cainzOrderDetailBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cainzOrderDetailBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -978,8 +995,8 @@
         private System.Windows.Forms.TextBox txbTrader;
         private System.Windows.Forms.TextBox txbName;
         private System.Windows.Forms.TextBox txbDELdate;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txbJingChenOrder;
+        private System.Windows.Forms.TextBox txbOrder;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -1024,5 +1041,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn remarkDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn batchNumDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rowNoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TextBox txbFile;
+        private System.Windows.Forms.Label label6;
     }
 }
