@@ -39,6 +39,7 @@ namespace OrderSheetCreator
 
         private void tsbNew_Click(object sender, EventArgs e)
         {
+            fadd = new FAdd();
             fadd.ShowDialog();
             PublicTools.RecountRowsNum(dataGridView1);
            
@@ -56,6 +57,15 @@ namespace OrderSheetCreator
         private void FCainzOrderD_FormClosing(object sender, FormClosingEventArgs e)
         {
             PublicTools.SaveColumnWidth(dataGridView1, this.FCainzOrderDdataGridViewSetPath);
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            fadd = new FAdd((entity.CainzOrderDetail)cainzOrderDetailBindingSource.Current);
+            fadd.ShowDialog();
+            PublicTools.RecountRowsNum(dataGridView1);
+
+
         }
     }
 }
