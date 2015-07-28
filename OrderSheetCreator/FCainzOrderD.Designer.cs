@@ -30,11 +30,11 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FCainzOrderD));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle15 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.btnFactory = new System.Windows.Forms.ToolStripButton();
@@ -43,6 +43,7 @@
             this.btnExport = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbCancel = new System.Windows.Forms.ToolStripButton();
+            this.btnTools = new System.Windows.Forms.ToolStripButton();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.label12 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -66,28 +67,6 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.txbFile = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txbAdd = new System.Windows.Forms.TextBox();
-            this.txbJingChenOrder = new System.Windows.Forms.TextBox();
-            this.txbOrder = new System.Windows.Forms.TextBox();
-            this.txbName = new System.Windows.Forms.TextBox();
-            this.txbDELdate = new System.Windows.Forms.TextBox();
-            this.txbFactory = new System.Windows.Forms.TextBox();
-            this.txbTrader = new System.Windows.Forms.TextBox();
-            this.txbIssuedDate = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnTools = new System.Windows.Forms.ToolStripButton();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.snNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -121,14 +100,35 @@
             this.batchNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rowNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cainzOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txbFile = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txbAdd = new System.Windows.Forms.TextBox();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.txbJingChenOrder = new System.Windows.Forms.TextBox();
+            this.txbOrder = new System.Windows.Forms.TextBox();
+            this.txbName = new System.Windows.Forms.TextBox();
+            this.txbDELdate = new System.Windows.Forms.TextBox();
+            this.txbFactory = new System.Windows.Forms.TextBox();
+            this.txbTrader = new System.Windows.Forms.TextBox();
+            this.txbIssuedDate = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel2.SuspendLayout();
-            this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cainzOrderDetailBindingSource)).BeginInit();
+            this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -210,6 +210,17 @@
             this.tsbCancel.Text = "清空新建";
             this.tsbCancel.Click += new System.EventHandler(this.tsbCancel_Click);
             // 
+            // btnTools
+            // 
+            this.btnTools.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnTools.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnTools.Image = ((System.Drawing.Image)(resources.GetObject("btnTools.Image")));
+            this.btnTools.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnTools.Name = "btnTools";
+            this.btnTools.Size = new System.Drawing.Size(113, 34);
+            this.btnTools.Text = "数据管理";
+            this.btnTools.Click += new System.EventHandler(this.btnTools_Click);
+            // 
             // tsbSave
             // 
             this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
@@ -236,7 +247,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(25, 6);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(951, 41);
             this.pictureBox1.TabIndex = 9;
@@ -372,19 +383,19 @@
             this.dataGridView1.DataSource = this.cainzOrderDetailBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(27, 0);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(1330, 429);
+            this.dataGridView1.Size = new System.Drawing.Size(1330, 528);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // colNo
             // 
             this.colNo.DataPropertyName = "RowNo";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colNo.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colNo.DefaultCellStyle = dataGridViewCellStyle11;
             this.colNo.HeaderText = "编号(NO.)";
             this.colNo.Name = "colNo";
             this.colNo.Width = 60;
@@ -424,16 +435,16 @@
             this.Column6.DataPropertyName = "PaperKind";
             this.Column6.HeaderText = "材质及其他要求(kind of paper)";
             this.Column6.Name = "Column6";
-            this.Column6.Width = 112;
+            this.Column6.Width = 101;
             // 
             // Column7
             // 
             this.Column7.DataPropertyName = "OrderNum";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N0";
-            dataGridViewCellStyle7.NullValue = null;
-            dataGridViewCellStyle7.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle12.Format = "N0";
+            dataGridViewCellStyle12.NullValue = null;
+            dataGridViewCellStyle12.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle12;
             this.Column7.HeaderText = "订购数(枚）  (PCS)";
             this.Column7.Name = "Column7";
             this.Column7.Width = 90;
@@ -441,11 +452,11 @@
             // Column8
             // 
             this.Column8.DataPropertyName = "Price";
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle8.Format = "N2";
-            dataGridViewCellStyle8.NullValue = "0";
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle13.Format = "N2";
+            dataGridViewCellStyle13.NullValue = "0";
+            dataGridViewCellStyle13.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle13;
             this.Column8.HeaderText = "单价（元）(price)";
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
@@ -454,10 +465,10 @@
             // Column9
             // 
             this.Column9.DataPropertyName = "InvoiceMoney";
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle9.Format = "N2";
-            dataGridViewCellStyle9.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.Column9.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle14.Format = "N2";
+            dataGridViewCellStyle14.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.Column9.DefaultCellStyle = dataGridViewCellStyle14;
             this.Column9.HeaderText = "合计金额 (Amount)";
             this.Column9.Name = "Column9";
             this.Column9.Width = 90;
@@ -481,282 +492,6 @@
             this.Column12.DataPropertyName = "Remark";
             this.Column12.HeaderText = "备注    (Notes)";
             this.Column12.Name = "Column12";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 9F);
-            this.label3.Location = new System.Drawing.Point(25, 74);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(919, 15);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(25, 111);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(919, 15);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(25, 149);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(919, 15);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(25, 186);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(919, 15);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(25, 224);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(919, 15);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(25, 294);
-            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(919, 15);
-            this.label15.TabIndex = 12;
-            this.label15.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(25, 331);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(919, 15);
-            this.label16.TabIndex = 12;
-            this.label16.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.txbFile);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.txbAdd);
-            this.panel2.Controls.Add(this.txbJingChenOrder);
-            this.panel2.Controls.Add(this.txbOrder);
-            this.panel2.Controls.Add(this.txbName);
-            this.panel2.Controls.Add(this.txbDELdate);
-            this.panel2.Controls.Add(this.txbFactory);
-            this.panel2.Controls.Add(this.txbTrader);
-            this.panel2.Controls.Add(this.txbIssuedDate);
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.label16);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 37);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1357, 364);
-            this.panel2.TabIndex = 2;
-            // 
-            // txbFile
-            // 
-            this.txbFile.BackColor = System.Drawing.SystemColors.Control;
-            this.txbFile.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbFile.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.txbFile.Location = new System.Drawing.Point(763, 320);
-            this.txbFile.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txbFile.Name = "txbFile";
-            this.txbFile.Size = new System.Drawing.Size(181, 23);
-            this.txbFile.TabIndex = 18;
-            this.txbFile.TabStop = false;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("宋体", 12F);
-            this.label6.Location = new System.Drawing.Point(529, 320);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(189, 20);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "文件位置（市场）：";
-            // 
-            // txbAdd
-            // 
-            this.txbAdd.BackColor = System.Drawing.SystemColors.Control;
-            this.txbAdd.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbAdd.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Address", true));
-            this.txbAdd.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.txbAdd.Location = new System.Drawing.Point(417, 175);
-            this.txbAdd.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txbAdd.Name = "txbAdd";
-            this.txbAdd.Size = new System.Drawing.Size(527, 23);
-            this.txbAdd.TabIndex = 16;
-            this.txbAdd.TabStop = false;
-            // 
-            // txbJingChenOrder
-            // 
-            this.txbJingChenOrder.BackColor = System.Drawing.SystemColors.Control;
-            this.txbJingChenOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbJingChenOrder.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.txbJingChenOrder.Location = new System.Drawing.Point(320, 320);
-            this.txbJingChenOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txbJingChenOrder.Name = "txbJingChenOrder";
-            this.txbJingChenOrder.Size = new System.Drawing.Size(181, 23);
-            this.txbJingChenOrder.TabIndex = 15;
-            this.txbJingChenOrder.TabStop = false;
-            // 
-            // txbOrder
-            // 
-            this.txbOrder.BackColor = System.Drawing.SystemColors.Control;
-            this.txbOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbOrder.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.txbOrder.Location = new System.Drawing.Point(320, 282);
-            this.txbOrder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txbOrder.Name = "txbOrder";
-            this.txbOrder.Size = new System.Drawing.Size(181, 23);
-            this.txbOrder.TabIndex = 15;
-            this.txbOrder.TabStop = false;
-            // 
-            // txbName
-            // 
-            this.txbName.BackColor = System.Drawing.SystemColors.Control;
-            this.txbName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Contact", true));
-            this.txbName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.txbName.Location = new System.Drawing.Point(197, 212);
-            this.txbName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(192, 23);
-            this.txbName.TabIndex = 15;
-            this.txbName.TabStop = false;
-            // 
-            // txbDELdate
-            // 
-            this.txbDELdate.BackColor = System.Drawing.SystemColors.Control;
-            this.txbDELdate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbDELdate.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.txbDELdate.Location = new System.Drawing.Point(588, 209);
-            this.txbDELdate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txbDELdate.Name = "txbDELdate";
-            this.txbDELdate.Size = new System.Drawing.Size(356, 23);
-            this.txbDELdate.TabIndex = 15;
-            this.txbDELdate.TabStop = false;
-            // 
-            // txbFactory
-            // 
-            this.txbFactory.BackColor = System.Drawing.SystemColors.Control;
-            this.txbFactory.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbFactory.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "FactoryName", true));
-            this.txbFactory.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.txbFactory.Location = new System.Drawing.Point(344, 138);
-            this.txbFactory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txbFactory.Name = "txbFactory";
-            this.txbFactory.Size = new System.Drawing.Size(600, 23);
-            this.txbFactory.TabIndex = 15;
-            this.txbFactory.TabStop = false;
-            // 
-            // txbTrader
-            // 
-            this.txbTrader.BackColor = System.Drawing.SystemColors.Control;
-            this.txbTrader.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbTrader.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Trader", true));
-            this.txbTrader.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.txbTrader.Location = new System.Drawing.Point(285, 100);
-            this.txbTrader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txbTrader.Name = "txbTrader";
-            this.txbTrader.Size = new System.Drawing.Size(659, 23);
-            this.txbTrader.TabIndex = 14;
-            this.txbTrader.TabStop = false;
-            // 
-            // txbIssuedDate
-            // 
-            this.txbIssuedDate.BackColor = System.Drawing.SystemColors.Control;
-            this.txbIssuedDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbIssuedDate.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.txbIssuedDate.Location = new System.Drawing.Point(248, 62);
-            this.txbIssuedDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txbIssuedDate.Name = "txbIssuedDate";
-            this.txbIssuedDate.Size = new System.Drawing.Size(696, 23);
-            this.txbIssuedDate.TabIndex = 13;
-            this.txbIssuedDate.TabStop = false;
-            // 
-            // panel3
-            // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 830);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1357, 125);
-            this.panel3.TabIndex = 3;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.dataGridView1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 401);
-            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
-            this.panel4.Size = new System.Drawing.Size(1357, 429);
-            this.panel4.TabIndex = 4;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "RowNo";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle10;
-            this.dataGridViewTextBoxColumn1.HeaderText = "编号(NO.)";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = global::OrderSheetCreator.Properties.Settings.Default.cainzOrderD_colNo;
-            // 
-            // btnTools
-            // 
-            this.btnTools.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.btnTools.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.btnTools.Image = ((System.Drawing.Image)(resources.GetObject("btnTools.Image")));
-            this.btnTools.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnTools.Name = "btnTools";
-            this.btnTools.Size = new System.Drawing.Size(113, 34);
-            this.btnTools.Text = "数据管理";
-            this.btnTools.Click += new System.EventHandler(this.btnTools_Click);
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -986,10 +721,275 @@
             // 
             this.cainzOrderDetailBindingSource.DataSource = typeof(entity.CainzOrderDetail);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 9F);
+            this.label3.Location = new System.Drawing.Point(25, 74);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(919, 15);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(25, 111);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(919, 15);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(25, 149);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(919, 15);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(25, 186);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(919, 15);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(25, 224);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(919, 15);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(25, 294);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(919, 15);
+            this.label15.TabIndex = 12;
+            this.label15.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(25, 331);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(919, 15);
+            this.label16.TabIndex = 12;
+            this.label16.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txbFile);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.txbAdd);
+            this.panel2.Controls.Add(this.txbJingChenOrder);
+            this.panel2.Controls.Add(this.txbOrder);
+            this.panel2.Controls.Add(this.txbName);
+            this.panel2.Controls.Add(this.txbDELdate);
+            this.panel2.Controls.Add(this.txbFactory);
+            this.panel2.Controls.Add(this.txbTrader);
+            this.panel2.Controls.Add(this.txbIssuedDate);
+            this.panel2.Controls.Add(this.label12);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Controls.Add(this.label16);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 37);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1357, 364);
+            this.panel2.TabIndex = 2;
+            // 
+            // txbFile
+            // 
+            this.txbFile.BackColor = System.Drawing.SystemColors.Control;
+            this.txbFile.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbFile.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbFile.Location = new System.Drawing.Point(705, 320);
+            this.txbFile.Margin = new System.Windows.Forms.Padding(4);
+            this.txbFile.Name = "txbFile";
+            this.txbFile.Size = new System.Drawing.Size(271, 23);
+            this.txbFile.TabIndex = 18;
+            this.txbFile.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("宋体", 12F);
+            this.label6.Location = new System.Drawing.Point(529, 320);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(189, 20);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "文件位置（市场）：";
+            // 
+            // txbAdd
+            // 
+            this.txbAdd.BackColor = System.Drawing.SystemColors.Control;
+            this.txbAdd.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbAdd.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Address", true));
+            this.txbAdd.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbAdd.Location = new System.Drawing.Point(386, 175);
+            this.txbAdd.Margin = new System.Windows.Forms.Padding(4);
+            this.txbAdd.Name = "txbAdd";
+            this.txbAdd.Size = new System.Drawing.Size(558, 23);
+            this.txbAdd.TabIndex = 16;
+            this.txbAdd.TabStop = false;
+            // 
             // bindingSource1
             // 
             this.bindingSource1.DataSource = typeof(entity.CainzCustomer);
             this.bindingSource1.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
+            // 
+            // txbJingChenOrder
+            // 
+            this.txbJingChenOrder.BackColor = System.Drawing.SystemColors.Control;
+            this.txbJingChenOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbJingChenOrder.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbJingChenOrder.Location = new System.Drawing.Point(320, 320);
+            this.txbJingChenOrder.Margin = new System.Windows.Forms.Padding(4);
+            this.txbJingChenOrder.Name = "txbJingChenOrder";
+            this.txbJingChenOrder.Size = new System.Drawing.Size(181, 23);
+            this.txbJingChenOrder.TabIndex = 15;
+            this.txbJingChenOrder.TabStop = false;
+            // 
+            // txbOrder
+            // 
+            this.txbOrder.BackColor = System.Drawing.SystemColors.Control;
+            this.txbOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbOrder.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbOrder.Location = new System.Drawing.Point(320, 282);
+            this.txbOrder.Margin = new System.Windows.Forms.Padding(4);
+            this.txbOrder.Name = "txbOrder";
+            this.txbOrder.Size = new System.Drawing.Size(181, 23);
+            this.txbOrder.TabIndex = 15;
+            this.txbOrder.TabStop = false;
+            // 
+            // txbName
+            // 
+            this.txbName.BackColor = System.Drawing.SystemColors.Control;
+            this.txbName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Contact", true));
+            this.txbName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbName.Location = new System.Drawing.Point(184, 212);
+            this.txbName.Margin = new System.Windows.Forms.Padding(4);
+            this.txbName.Name = "txbName";
+            this.txbName.Size = new System.Drawing.Size(205, 23);
+            this.txbName.TabIndex = 15;
+            this.txbName.TabStop = false;
+            // 
+            // txbDELdate
+            // 
+            this.txbDELdate.BackColor = System.Drawing.SystemColors.Control;
+            this.txbDELdate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbDELdate.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbDELdate.Location = new System.Drawing.Point(588, 209);
+            this.txbDELdate.Margin = new System.Windows.Forms.Padding(4);
+            this.txbDELdate.Name = "txbDELdate";
+            this.txbDELdate.Size = new System.Drawing.Size(356, 23);
+            this.txbDELdate.TabIndex = 15;
+            this.txbDELdate.TabStop = false;
+            // 
+            // txbFactory
+            // 
+            this.txbFactory.BackColor = System.Drawing.SystemColors.Control;
+            this.txbFactory.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbFactory.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "FactoryName", true));
+            this.txbFactory.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbFactory.Location = new System.Drawing.Point(320, 138);
+            this.txbFactory.Margin = new System.Windows.Forms.Padding(4);
+            this.txbFactory.Name = "txbFactory";
+            this.txbFactory.Size = new System.Drawing.Size(624, 23);
+            this.txbFactory.TabIndex = 15;
+            this.txbFactory.TabStop = false;
+            // 
+            // txbTrader
+            // 
+            this.txbTrader.BackColor = System.Drawing.SystemColors.Control;
+            this.txbTrader.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbTrader.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Trader", true));
+            this.txbTrader.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbTrader.Location = new System.Drawing.Point(258, 100);
+            this.txbTrader.Margin = new System.Windows.Forms.Padding(4);
+            this.txbTrader.Name = "txbTrader";
+            this.txbTrader.Size = new System.Drawing.Size(686, 23);
+            this.txbTrader.TabIndex = 14;
+            this.txbTrader.TabStop = false;
+            // 
+            // txbIssuedDate
+            // 
+            this.txbIssuedDate.BackColor = System.Drawing.SystemColors.Control;
+            this.txbIssuedDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbIssuedDate.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbIssuedDate.Location = new System.Drawing.Point(221, 62);
+            this.txbIssuedDate.Margin = new System.Windows.Forms.Padding(4);
+            this.txbIssuedDate.Name = "txbIssuedDate";
+            this.txbIssuedDate.Size = new System.Drawing.Size(723, 23);
+            this.txbIssuedDate.TabIndex = 13;
+            this.txbIssuedDate.TabStop = false;
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 929);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1357, 26);
+            this.panel3.TabIndex = 3;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.dataGridView1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 401);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4);
+            this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(27, 0, 0, 0);
+            this.panel4.Size = new System.Drawing.Size(1357, 528);
+            this.panel4.TabIndex = 4;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "RowNo";
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle15;
+            this.dataGridViewTextBoxColumn1.HeaderText = "编号(NO.)";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = global::OrderSheetCreator.Properties.Settings.Default.cainzOrderD_colNo;
             // 
             // FCainzOrderD
             // 
@@ -1003,7 +1003,7 @@
             this.Controls.Add(this.toolStrip1);
             this.DoubleBuffered = true;
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FCainzOrderD";
             this.ShowIcon = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
@@ -1017,11 +1017,11 @@
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cainzOrderDetailBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cainzOrderDetailBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 

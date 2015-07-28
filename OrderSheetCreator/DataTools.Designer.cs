@@ -54,7 +54,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(521, 24);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(163, 61);
             this.button1.TabIndex = 0;
@@ -65,7 +65,7 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(32, 24);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button2.Margin = new System.Windows.Forms.Padding(4);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(247, 61);
             this.button2.TabIndex = 3;
@@ -80,7 +80,7 @@
             // btnGetMaoyisTXT
             // 
             this.btnGetMaoyisTXT.Location = new System.Drawing.Point(319, 24);
-            this.btnGetMaoyisTXT.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnGetMaoyisTXT.Margin = new System.Windows.Forms.Padding(4);
             this.btnGetMaoyisTXT.Name = "btnGetMaoyisTXT";
             this.btnGetMaoyisTXT.Size = new System.Drawing.Size(163, 61);
             this.btnGetMaoyisTXT.TabIndex = 4;
@@ -91,7 +91,7 @@
             // button4
             // 
             this.button4.Location = new System.Drawing.Point(927, 24);
-            this.button4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button4.Margin = new System.Windows.Forms.Padding(4);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(180, 61);
             this.button4.TabIndex = 5;
@@ -102,7 +102,7 @@
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(1147, 24);
-            this.button5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button5.Margin = new System.Windows.Forms.Padding(4);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(231, 61);
             this.button5.TabIndex = 6;
@@ -120,7 +120,7 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1399, 106);
             this.panel1.TabIndex = 7;
@@ -128,7 +128,7 @@
             // btnFactory
             // 
             this.btnFactory.Location = new System.Drawing.Point(724, 24);
-            this.btnFactory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFactory.Margin = new System.Windows.Forms.Padding(4);
             this.btnFactory.Name = "btnFactory";
             this.btnFactory.Size = new System.Drawing.Size(163, 61);
             this.btnFactory.TabIndex = 7;
@@ -144,7 +144,7 @@
             this.panel2.Controls.Add(this.btnBlind);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 106);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1399, 125);
             this.panel2.TabIndex = 8;
@@ -152,7 +152,7 @@
             // btnImportProductData
             // 
             this.btnImportProductData.Location = new System.Drawing.Point(1147, 32);
-            this.btnImportProductData.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnImportProductData.Margin = new System.Windows.Forms.Padding(4);
             this.btnImportProductData.Name = "btnImportProductData";
             this.btnImportProductData.Size = new System.Drawing.Size(231, 61);
             this.btnImportProductData.TabIndex = 9;
@@ -163,7 +163,7 @@
             // btnImportFactory
             // 
             this.btnImportFactory.Location = new System.Drawing.Point(724, 32);
-            this.btnImportFactory.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnImportFactory.Margin = new System.Windows.Forms.Padding(4);
             this.btnImportFactory.Name = "btnImportFactory";
             this.btnImportFactory.Size = new System.Drawing.Size(163, 61);
             this.btnImportFactory.TabIndex = 8;
@@ -174,7 +174,7 @@
             // btnCainzMaoyis
             // 
             this.btnCainzMaoyis.Location = new System.Drawing.Point(521, 32);
-            this.btnCainzMaoyis.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCainzMaoyis.Margin = new System.Windows.Forms.Padding(4);
             this.btnCainzMaoyis.Name = "btnCainzMaoyis";
             this.btnCainzMaoyis.Size = new System.Drawing.Size(163, 61);
             this.btnCainzMaoyis.TabIndex = 0;
@@ -185,7 +185,7 @@
             // btnBlind
             // 
             this.btnBlind.Location = new System.Drawing.Point(927, 32);
-            this.btnBlind.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBlind.Margin = new System.Windows.Forms.Padding(4);
             this.btnBlind.Name = "btnBlind";
             this.btnBlind.Size = new System.Drawing.Size(180, 61);
             this.btnBlind.TabIndex = 5;
@@ -196,7 +196,7 @@
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(1147, 278);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.Margin = new System.Windows.Forms.Padding(4);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(231, 61);
             this.button3.TabIndex = 10;
@@ -207,7 +207,7 @@
             // button6
             // 
             this.button6.Location = new System.Drawing.Point(724, 278);
-            this.button6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button6.Margin = new System.Windows.Forms.Padding(4);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(163, 61);
             this.button6.TabIndex = 8;
@@ -240,8 +240,9 @@
             this.Controls.Add(this.button6);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DataTools";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "景辰ERP数据维护管理工具";
             this.Load += new System.EventHandler(this.Form1_Load);

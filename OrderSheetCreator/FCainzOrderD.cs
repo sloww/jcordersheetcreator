@@ -176,6 +176,7 @@ namespace OrderSheetCreator
             FFactory ff = new FFactory();
             ff.ShowDialog();
             bindingSource1.DataSource = CC;
+            bindingSource1_CurrentChanged(null, null);
         }
 
         private void btnTools_Click(object sender, EventArgs e)
