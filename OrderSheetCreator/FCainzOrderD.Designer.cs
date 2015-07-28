@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FCainzOrderD));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FCainzOrderD));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btnExport = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.tsbCancel = new System.Windows.Forms.ToolStripButton();
@@ -65,27 +65,6 @@
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column10 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column12 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.txbJingChenOrder = new System.Windows.Forms.TextBox();
-            this.txbOrder = new System.Windows.Forms.TextBox();
-            this.txbName = new System.Windows.Forms.TextBox();
-            this.txbDELdate = new System.Windows.Forms.TextBox();
-            this.txbFactory = new System.Windows.Forms.TextBox();
-            this.txbTrader = new System.Windows.Forms.TextBox();
-            this.txbIssuedDate = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txbFile = new System.Windows.Forms.TextBox();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.snNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -119,12 +98,36 @@
             this.batchNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rowNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cainzOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txbFile = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txbAdd = new System.Windows.Forms.TextBox();
+            this.txbJingChenOrder = new System.Windows.Forms.TextBox();
+            this.txbOrder = new System.Windows.Forms.TextBox();
+            this.txbName = new System.Windows.Forms.TextBox();
+            this.txbDELdate = new System.Windows.Forms.TextBox();
+            this.txbFactory = new System.Windows.Forms.TextBox();
+            this.txbTrader = new System.Windows.Forms.TextBox();
+            this.txbIssuedDate = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnFactory = new System.Windows.Forms.ToolStripButton();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cainzOrderDetailBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cainzOrderDetailBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -132,12 +135,13 @@
             this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripLabel1,
+            this.btnFactory,
             this.tsbNew,
             this.toolStripSeparator1,
-            this.toolStripButton1,
+            this.btnExport,
             this.toolStripSeparator2,
-            this.tsbSave,
-            this.tsbCancel});
+            this.tsbCancel,
+            this.tsbSave});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1018, 32);
@@ -157,8 +161,8 @@
             this.tsbNew.Image = ((System.Drawing.Image)(resources.GetObject("tsbNew.Image")));
             this.tsbNew.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbNew.Name = "tsbNew";
-            this.tsbNew.Size = new System.Drawing.Size(119, 29);
-            this.tsbNew.Text = "新增产品 F1";
+            this.tsbNew.Size = new System.Drawing.Size(92, 29);
+            this.tsbNew.Text = "新增产品";
             this.tsbNew.Click += new System.EventHandler(this.tsbNew_Click);
             // 
             // toolStripSeparator1
@@ -166,15 +170,16 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
             // 
-            // toolStripButton1
+            // btnExport
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(133, 29);
-            this.toolStripButton1.Text = "生成 Excel F2";
+            this.btnExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnExport.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnExport.Image = ((System.Drawing.Image)(resources.GetObject("btnExport.Image")));
+            this.btnExport.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(138, 29);
+            this.btnExport.Text = "生成订单Excel";
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
             // 
             // toolStripSeparator2
             // 
@@ -188,8 +193,8 @@
             this.tsbSave.Image = ((System.Drawing.Image)(resources.GetObject("tsbSave.Image")));
             this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSave.Name = "tsbSave";
-            this.tsbSave.Size = new System.Drawing.Size(169, 29);
-            this.tsbSave.Text = "保存并关闭 Ctr+S";
+            this.tsbSave.Size = new System.Drawing.Size(54, 29);
+            this.tsbSave.Text = "关闭";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
             // tsbCancel
@@ -199,8 +204,8 @@
             this.tsbCancel.Image = ((System.Drawing.Image)(resources.GetObject("tsbCancel.Image")));
             this.tsbCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCancel.Name = "tsbCancel";
-            this.tsbCancel.Size = new System.Drawing.Size(111, 29);
-            this.tsbCancel.Text = "不保存关闭";
+            this.tsbCancel.Size = new System.Drawing.Size(92, 29);
+            this.tsbCancel.Text = "清空新建";
             this.tsbCancel.Click += new System.EventHandler(this.tsbCancel_Click);
             // 
             // label12
@@ -454,247 +459,6 @@
             this.Column12.HeaderText = "备注    (Notes)";
             this.Column12.Name = "Column12";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 9F);
-            this.label3.Location = new System.Drawing.Point(19, 59);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(689, 12);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(19, 89);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(689, 12);
-            this.label4.TabIndex = 12;
-            this.label4.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(19, 119);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(689, 12);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(19, 149);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(689, 12);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(19, 179);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(689, 12);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(19, 235);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(689, 12);
-            this.label15.TabIndex = 12;
-            this.label15.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(19, 265);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(689, 12);
-            this.label16.TabIndex = 12;
-            this.label16.Text = "_________________________________________________________________________________" +
-    "_________________________________";
-            // 
-            // panel2
-            // 
-            this.panel2.Controls.Add(this.txbFile);
-            this.panel2.Controls.Add(this.label6);
-            this.panel2.Controls.Add(this.textBox1);
-            this.panel2.Controls.Add(this.txbJingChenOrder);
-            this.panel2.Controls.Add(this.txbOrder);
-            this.panel2.Controls.Add(this.txbName);
-            this.panel2.Controls.Add(this.txbDELdate);
-            this.panel2.Controls.Add(this.txbFactory);
-            this.panel2.Controls.Add(this.txbTrader);
-            this.panel2.Controls.Add(this.txbIssuedDate);
-            this.panel2.Controls.Add(this.label12);
-            this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Controls.Add(this.label11);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label13);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.label14);
-            this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label7);
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.label15);
-            this.panel2.Controls.Add(this.label16);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 32);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1018, 291);
-            this.panel2.TabIndex = 2;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.SystemColors.Control;
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("宋体", 12F);
-            this.textBox1.Location = new System.Drawing.Point(313, 140);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(395, 19);
-            this.textBox1.TabIndex = 16;
-            this.textBox1.TabStop = false;
-            // 
-            // txbJingChenOrder
-            // 
-            this.txbJingChenOrder.BackColor = System.Drawing.SystemColors.Control;
-            this.txbJingChenOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbJingChenOrder.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbJingChenOrder.Location = new System.Drawing.Point(240, 256);
-            this.txbJingChenOrder.Name = "txbJingChenOrder";
-            this.txbJingChenOrder.Size = new System.Drawing.Size(136, 19);
-            this.txbJingChenOrder.TabIndex = 15;
-            this.txbJingChenOrder.TabStop = false;
-            // 
-            // txbOrder
-            // 
-            this.txbOrder.BackColor = System.Drawing.SystemColors.Control;
-            this.txbOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbOrder.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbOrder.Location = new System.Drawing.Point(240, 226);
-            this.txbOrder.Name = "txbOrder";
-            this.txbOrder.Size = new System.Drawing.Size(136, 19);
-            this.txbOrder.TabIndex = 15;
-            this.txbOrder.TabStop = false;
-            // 
-            // txbName
-            // 
-            this.txbName.BackColor = System.Drawing.SystemColors.Control;
-            this.txbName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbName.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbName.Location = new System.Drawing.Point(148, 170);
-            this.txbName.Name = "txbName";
-            this.txbName.Size = new System.Drawing.Size(144, 19);
-            this.txbName.TabIndex = 15;
-            this.txbName.TabStop = false;
-            // 
-            // txbDELdate
-            // 
-            this.txbDELdate.BackColor = System.Drawing.SystemColors.Control;
-            this.txbDELdate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbDELdate.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbDELdate.Location = new System.Drawing.Point(441, 167);
-            this.txbDELdate.Name = "txbDELdate";
-            this.txbDELdate.Size = new System.Drawing.Size(267, 19);
-            this.txbDELdate.TabIndex = 15;
-            this.txbDELdate.TabStop = false;
-            // 
-            // txbFactory
-            // 
-            this.txbFactory.BackColor = System.Drawing.SystemColors.Control;
-            this.txbFactory.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbFactory.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbFactory.Location = new System.Drawing.Point(258, 110);
-            this.txbFactory.Name = "txbFactory";
-            this.txbFactory.Size = new System.Drawing.Size(450, 19);
-            this.txbFactory.TabIndex = 15;
-            this.txbFactory.TabStop = false;
-            // 
-            // txbTrader
-            // 
-            this.txbTrader.BackColor = System.Drawing.SystemColors.Control;
-            this.txbTrader.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbTrader.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbTrader.Location = new System.Drawing.Point(214, 80);
-            this.txbTrader.Name = "txbTrader";
-            this.txbTrader.Size = new System.Drawing.Size(494, 19);
-            this.txbTrader.TabIndex = 14;
-            this.txbTrader.TabStop = false;
-            // 
-            // txbIssuedDate
-            // 
-            this.txbIssuedDate.BackColor = System.Drawing.SystemColors.Control;
-            this.txbIssuedDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbIssuedDate.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbIssuedDate.Location = new System.Drawing.Point(186, 50);
-            this.txbIssuedDate.Name = "txbIssuedDate";
-            this.txbIssuedDate.Size = new System.Drawing.Size(522, 19);
-            this.txbIssuedDate.TabIndex = 13;
-            this.txbIssuedDate.TabStop = false;
-            // 
-            // panel3
-            // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 664);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1018, 100);
-            this.panel3.TabIndex = 3;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.dataGridView1);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 323);
-            this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
-            this.panel4.Size = new System.Drawing.Size(1018, 341);
-            this.panel4.TabIndex = 4;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "RowNo";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dataGridViewTextBoxColumn1.HeaderText = "编号(NO.)";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = global::OrderSheetCreator.Properties.Settings.Default.cainzOrderD_colNo;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("宋体", 12F);
-            this.label6.Location = new System.Drawing.Point(397, 256);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(152, 16);
-            this.label6.TabIndex = 17;
-            this.label6.Text = "文件位置（市场）：";
-            // 
-            // txbFile
-            // 
-            this.txbFile.BackColor = System.Drawing.SystemColors.Control;
-            this.txbFile.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbFile.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbFile.Location = new System.Drawing.Point(572, 256);
-            this.txbFile.Name = "txbFile";
-            this.txbFile.Size = new System.Drawing.Size(136, 19);
-            this.txbFile.TabIndex = 18;
-            this.txbFile.TabStop = false;
-            // 
             // iDDataGridViewTextBoxColumn
             // 
             this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
@@ -923,6 +687,266 @@
             // 
             this.cainzOrderDetailBindingSource.DataSource = typeof(entity.CainzOrderDetail);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("宋体", 9F);
+            this.label3.Location = new System.Drawing.Point(19, 59);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(689, 12);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(19, 89);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(689, 12);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(19, 119);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(689, 12);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(19, 149);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(689, 12);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(19, 179);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(689, 12);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(19, 235);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(689, 12);
+            this.label15.TabIndex = 12;
+            this.label15.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(19, 265);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(689, 12);
+            this.label16.TabIndex = 12;
+            this.label16.Text = "_________________________________________________________________________________" +
+    "_________________________________";
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.txbFile);
+            this.panel2.Controls.Add(this.label6);
+            this.panel2.Controls.Add(this.txbAdd);
+            this.panel2.Controls.Add(this.txbJingChenOrder);
+            this.panel2.Controls.Add(this.txbOrder);
+            this.panel2.Controls.Add(this.txbName);
+            this.panel2.Controls.Add(this.txbDELdate);
+            this.panel2.Controls.Add(this.txbFactory);
+            this.panel2.Controls.Add(this.txbTrader);
+            this.panel2.Controls.Add(this.txbIssuedDate);
+            this.panel2.Controls.Add(this.label12);
+            this.panel2.Controls.Add(this.pictureBox1);
+            this.panel2.Controls.Add(this.label11);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.label9);
+            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.label14);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.label4);
+            this.panel2.Controls.Add(this.label5);
+            this.panel2.Controls.Add(this.label7);
+            this.panel2.Controls.Add(this.label8);
+            this.panel2.Controls.Add(this.label15);
+            this.panel2.Controls.Add(this.label16);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 32);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1018, 291);
+            this.panel2.TabIndex = 2;
+            // 
+            // txbFile
+            // 
+            this.txbFile.BackColor = System.Drawing.SystemColors.Control;
+            this.txbFile.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbFile.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbFile.Location = new System.Drawing.Point(572, 256);
+            this.txbFile.Name = "txbFile";
+            this.txbFile.Size = new System.Drawing.Size(136, 19);
+            this.txbFile.TabIndex = 18;
+            this.txbFile.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("宋体", 12F);
+            this.label6.Location = new System.Drawing.Point(397, 256);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(152, 16);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "文件位置（市场）：";
+            // 
+            // txbAdd
+            // 
+            this.txbAdd.BackColor = System.Drawing.SystemColors.Control;
+            this.txbAdd.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbAdd.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Address", true));
+            this.txbAdd.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbAdd.Location = new System.Drawing.Point(313, 140);
+            this.txbAdd.Name = "txbAdd";
+            this.txbAdd.Size = new System.Drawing.Size(395, 19);
+            this.txbAdd.TabIndex = 16;
+            this.txbAdd.TabStop = false;
+            // 
+            // txbJingChenOrder
+            // 
+            this.txbJingChenOrder.BackColor = System.Drawing.SystemColors.Control;
+            this.txbJingChenOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbJingChenOrder.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbJingChenOrder.Location = new System.Drawing.Point(240, 256);
+            this.txbJingChenOrder.Name = "txbJingChenOrder";
+            this.txbJingChenOrder.Size = new System.Drawing.Size(136, 19);
+            this.txbJingChenOrder.TabIndex = 15;
+            this.txbJingChenOrder.TabStop = false;
+            // 
+            // txbOrder
+            // 
+            this.txbOrder.BackColor = System.Drawing.SystemColors.Control;
+            this.txbOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbOrder.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbOrder.Location = new System.Drawing.Point(240, 226);
+            this.txbOrder.Name = "txbOrder";
+            this.txbOrder.Size = new System.Drawing.Size(136, 19);
+            this.txbOrder.TabIndex = 15;
+            this.txbOrder.TabStop = false;
+            // 
+            // txbName
+            // 
+            this.txbName.BackColor = System.Drawing.SystemColors.Control;
+            this.txbName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Contact", true));
+            this.txbName.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbName.Location = new System.Drawing.Point(148, 170);
+            this.txbName.Name = "txbName";
+            this.txbName.Size = new System.Drawing.Size(144, 19);
+            this.txbName.TabIndex = 15;
+            this.txbName.TabStop = false;
+            // 
+            // txbDELdate
+            // 
+            this.txbDELdate.BackColor = System.Drawing.SystemColors.Control;
+            this.txbDELdate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbDELdate.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbDELdate.Location = new System.Drawing.Point(441, 167);
+            this.txbDELdate.Name = "txbDELdate";
+            this.txbDELdate.Size = new System.Drawing.Size(267, 19);
+            this.txbDELdate.TabIndex = 15;
+            this.txbDELdate.TabStop = false;
+            // 
+            // txbFactory
+            // 
+            this.txbFactory.BackColor = System.Drawing.SystemColors.Control;
+            this.txbFactory.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbFactory.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "FactoryName", true));
+            this.txbFactory.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbFactory.Location = new System.Drawing.Point(258, 110);
+            this.txbFactory.Name = "txbFactory";
+            this.txbFactory.Size = new System.Drawing.Size(450, 19);
+            this.txbFactory.TabIndex = 15;
+            this.txbFactory.TabStop = false;
+            // 
+            // txbTrader
+            // 
+            this.txbTrader.BackColor = System.Drawing.SystemColors.Control;
+            this.txbTrader.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbTrader.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.bindingSource1, "Trader", true));
+            this.txbTrader.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbTrader.Location = new System.Drawing.Point(214, 80);
+            this.txbTrader.Name = "txbTrader";
+            this.txbTrader.Size = new System.Drawing.Size(494, 19);
+            this.txbTrader.TabIndex = 14;
+            this.txbTrader.TabStop = false;
+            // 
+            // txbIssuedDate
+            // 
+            this.txbIssuedDate.BackColor = System.Drawing.SystemColors.Control;
+            this.txbIssuedDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbIssuedDate.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbIssuedDate.Location = new System.Drawing.Point(186, 50);
+            this.txbIssuedDate.Name = "txbIssuedDate";
+            this.txbIssuedDate.Size = new System.Drawing.Size(522, 19);
+            this.txbIssuedDate.TabIndex = 13;
+            this.txbIssuedDate.TabStop = false;
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 664);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1018, 100);
+            this.panel3.TabIndex = 3;
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.dataGridView1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 323);
+            this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(20, 0, 0, 0);
+            this.panel4.Size = new System.Drawing.Size(1018, 341);
+            this.panel4.TabIndex = 4;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "RowNo";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridViewTextBoxColumn1.HeaderText = "编号(NO.)";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = global::OrderSheetCreator.Properties.Settings.Default.cainzOrderD_colNo;
+            // 
+            // btnFactory
+            // 
+            this.btnFactory.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnFactory.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnFactory.Image = ((System.Drawing.Image)(resources.GetObject("btnFactory.Image")));
+            this.btnFactory.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFactory.Name = "btnFactory";
+            this.btnFactory.Size = new System.Drawing.Size(111, 29);
+            this.btnFactory.Text = "选择订购商";
+            this.btnFactory.Click += new System.EventHandler(this.btnFactory_Click);
+            // 
+            // bindingSource1
+            // 
+            this.bindingSource1.DataSource = typeof(entity.CainzCustomer);
+            // 
             // FCainzOrderD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -948,10 +972,11 @@
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cainzOrderDetailBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cainzOrderDetailBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -969,7 +994,7 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripButton tsbSave;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton btnExport;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
@@ -990,7 +1015,7 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.TextBox txbIssuedDate;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txbAdd;
         private System.Windows.Forms.TextBox txbFactory;
         private System.Windows.Forms.TextBox txbTrader;
         private System.Windows.Forms.TextBox txbName;
@@ -1043,5 +1068,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn rowNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.TextBox txbFile;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolStripButton btnFactory;
+        public System.Windows.Forms.BindingSource bindingSource1;
     }
 }

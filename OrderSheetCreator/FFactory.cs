@@ -11,12 +11,21 @@ namespace OrderSheetCreator
 {
     public partial class FFactory : Form
     {
+        FCainzOrderD fd;
         private string FFACTORY_DATAGRIDVIEW_SETPATH = "客户查询表宽度设定.txt";
 
         public FFactory()
         {
             InitializeComponent();
         }
+
+        public FFactory(FCainzOrderD fd)
+        {
+            InitializeComponent();
+            this.fd = fd;
+
+        }
+
 
         private void txbSearch_TextChanged(object sender, EventArgs e)
         {
@@ -49,6 +58,12 @@ namespace OrderSheetCreator
         {
             PublicTools.SaveColumnWidth(dataGridView1, this.FFACTORY_DATAGRIDVIEW_SETPATH);
 
+        }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            FCainzOrderD.CC =(entity.CainzCustomer) cainzCustomerBindingSource.Current;
+            this.Close();
         }
     }
 }

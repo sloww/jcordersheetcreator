@@ -29,9 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.btnContinue = new System.Windows.Forms.Button();
+            this.btnOK = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.factoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.traderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sendAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.remarkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cainzCustomerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFactory = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -51,30 +59,23 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.factoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.traderDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sendAddressDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.remarkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cainzCustomerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cainzCustomerBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cainzCustomerBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnContinue
+            // btnOK
             // 
-            this.btnContinue.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnContinue.Location = new System.Drawing.Point(842, 56);
-            this.btnContinue.Name = "btnContinue";
-            this.btnContinue.Size = new System.Drawing.Size(143, 51);
-            this.btnContinue.TabIndex = 13;
-            this.btnContinue.Text = "确认";
-            this.btnContinue.UseVisualStyleBackColor = true;
+            this.btnOK.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnOK.Location = new System.Drawing.Point(842, 56);
+            this.btnOK.Name = "btnOK";
+            this.btnOK.Size = new System.Drawing.Size(143, 51);
+            this.btnOK.TabIndex = 13;
+            this.btnOK.Text = "确认";
+            this.btnOK.UseVisualStyleBackColor = true;
+            this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // panel3
             // 
@@ -107,6 +108,58 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(1008, 274);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "序";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // factoryNameDataGridViewTextBoxColumn
+            // 
+            this.factoryNameDataGridViewTextBoxColumn.DataPropertyName = "FactoryName";
+            this.factoryNameDataGridViewTextBoxColumn.HeaderText = "订购工厂";
+            this.factoryNameDataGridViewTextBoxColumn.Name = "factoryNameDataGridViewTextBoxColumn";
+            this.factoryNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // traderDataGridViewTextBoxColumn
+            // 
+            this.traderDataGridViewTextBoxColumn.DataPropertyName = "Trader";
+            this.traderDataGridViewTextBoxColumn.HeaderText = "所属贸易公司";
+            this.traderDataGridViewTextBoxColumn.Name = "traderDataGridViewTextBoxColumn";
+            this.traderDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // sendAddressDataGridViewTextBoxColumn
+            // 
+            this.sendAddressDataGridViewTextBoxColumn.DataPropertyName = "Address";
+            this.sendAddressDataGridViewTextBoxColumn.HeaderText = "交货地址";
+            this.sendAddressDataGridViewTextBoxColumn.Name = "sendAddressDataGridViewTextBoxColumn";
+            this.sendAddressDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // phoneDataGridViewTextBoxColumn
+            // 
+            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
+            this.phoneDataGridViewTextBoxColumn.HeaderText = "电话";
+            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
+            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // contactDataGridViewTextBoxColumn
+            // 
+            this.contactDataGridViewTextBoxColumn.DataPropertyName = "Contact";
+            this.contactDataGridViewTextBoxColumn.HeaderText = "联系人";
+            this.contactDataGridViewTextBoxColumn.Name = "contactDataGridViewTextBoxColumn";
+            this.contactDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // remarkDataGridViewTextBoxColumn
+            // 
+            this.remarkDataGridViewTextBoxColumn.DataPropertyName = "Remark";
+            this.remarkDataGridViewTextBoxColumn.HeaderText = "备注";
+            this.remarkDataGridViewTextBoxColumn.Name = "remarkDataGridViewTextBoxColumn";
+            this.remarkDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // cainzCustomerBindingSource
+            // 
+            this.cainzCustomerBindingSource.DataSource = typeof(entity.CainzCustomer);
             // 
             // dataGridViewTextBoxColumn1
             // 
@@ -174,7 +227,7 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.btnContinue);
+            this.panel2.Controls.Add(this.btnOK);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 337);
             this.panel2.Name = "panel2";
@@ -320,58 +373,6 @@
             this.label8.Text = "_________________________________________________________________________________" +
     "_________________________________";
             // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "序";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // factoryNameDataGridViewTextBoxColumn
-            // 
-            this.factoryNameDataGridViewTextBoxColumn.DataPropertyName = "FactoryName";
-            this.factoryNameDataGridViewTextBoxColumn.HeaderText = "订购工厂";
-            this.factoryNameDataGridViewTextBoxColumn.Name = "factoryNameDataGridViewTextBoxColumn";
-            this.factoryNameDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // traderDataGridViewTextBoxColumn
-            // 
-            this.traderDataGridViewTextBoxColumn.DataPropertyName = "Trader";
-            this.traderDataGridViewTextBoxColumn.HeaderText = "所属贸易公司";
-            this.traderDataGridViewTextBoxColumn.Name = "traderDataGridViewTextBoxColumn";
-            this.traderDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // sendAddressDataGridViewTextBoxColumn
-            // 
-            this.sendAddressDataGridViewTextBoxColumn.DataPropertyName = "Address";
-            this.sendAddressDataGridViewTextBoxColumn.HeaderText = "交货地址";
-            this.sendAddressDataGridViewTextBoxColumn.Name = "sendAddressDataGridViewTextBoxColumn";
-            this.sendAddressDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // phoneDataGridViewTextBoxColumn
-            // 
-            this.phoneDataGridViewTextBoxColumn.DataPropertyName = "Phone";
-            this.phoneDataGridViewTextBoxColumn.HeaderText = "电话";
-            this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
-            this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // contactDataGridViewTextBoxColumn
-            // 
-            this.contactDataGridViewTextBoxColumn.DataPropertyName = "Contact";
-            this.contactDataGridViewTextBoxColumn.HeaderText = "联系人";
-            this.contactDataGridViewTextBoxColumn.Name = "contactDataGridViewTextBoxColumn";
-            this.contactDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // remarkDataGridViewTextBoxColumn
-            // 
-            this.remarkDataGridViewTextBoxColumn.DataPropertyName = "Remark";
-            this.remarkDataGridViewTextBoxColumn.HeaderText = "备注";
-            this.remarkDataGridViewTextBoxColumn.Name = "remarkDataGridViewTextBoxColumn";
-            this.remarkDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // cainzCustomerBindingSource
-            // 
-            this.cainzCustomerBindingSource.DataSource = typeof(entity.CainzCustomer);
-            // 
             // FFactory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -381,23 +382,24 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
             this.Name = "FFactory";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "选择订货工厂";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FFactory_FormClosing);
             this.Load += new System.EventHandler(this.FFactory_Load);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cainzCustomerBindingSource)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cainzCustomerBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button btnContinue;
+        private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;

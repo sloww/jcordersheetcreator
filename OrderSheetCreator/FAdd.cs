@@ -201,15 +201,6 @@ namespace OrderSheetCreator
                         break;
                     }
 
-                    //foreach (var odm in FCainzOrderD.ORDERDETAILLIST)
-                    //{
-                    //    if (odm.ProductCD.Equals(txbBarcode.Text) && odm.PaperKind.Equals(txbMaterial.Text) && odm.PopSize.Equals(txbSize.Text))
-                    //    {
-                    //        odm.OrderNum = count;
-                    //        odm.Remark = txbReMarK.Text.Trim();
-                    //        odm.CreateTime = DateTime.Now;
-                    //    }
-                    //}
                 }
                     if (btnContinue.Text == "修改")
                     {
@@ -253,8 +244,6 @@ namespace OrderSheetCreator
             if (cod != null)
             {
                 this.IS_IN_ORDER = true;
-                //txbCount.Text = cod.OrderNum.ToString();
-                //txbReMarK.Text = cod.Remark;
             }
         }
 
