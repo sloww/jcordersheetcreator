@@ -110,20 +110,28 @@ namespace OrderSheetCreator
             {
                 return;
             }
+
             IWorkbook wb = WorkbookFactory.Create(copedExcelPath);
 
             ISheet ist = wb.GetSheetAt(0);
             int rowofPage = ist.LastRowNum + 1;
 
+            ICell icIssuedDate = ist.GetRow(1).GetCell(0);
+            ICell icDELDate = ist.GetRow(5).GetCell(4);
             ICell icTrader = ist.GetRow(2).GetCell(0);
             ICell icFactroy = ist.GetRow(3).GetCell(0);
             ICell icAdd = ist.GetRow(4).GetCell(0);
             ICell icContent = ist.GetRow(5).GetCell(0);
+            ICell icFile = ist.GetRow(8).GetCell(5);
 
             icTrader.SetCellValue(icTrader.StringCellValue + txbTrader.Text);
             icFactroy.SetCellValue(icFactroy.StringCellValue + txbFactory.Text);
             icAdd.SetCellValue(icAdd.StringCellValue + txbAdd.Text);
             icContent.SetCellValue(icContent.StringCellValue + txbName.Text);
+            icIssuedDate.SetCellValue(icIssuedDate.StringCellValue + txbIssuedDate.Text);
+            icDELDate.SetCellValue(icDELDate.StringCellValue + txbDELdate.Text);
+
+            icFile.SetCellValue(icFile.StringCellValue+ txbFile.Text);
 
             int totol = ORDERDETAILLIST.Count;
             Decimal totolCount = 0;
@@ -145,6 +153,8 @@ namespace OrderSheetCreator
                 irow.GetCell(10).SetCellValue("");
                 irow.GetCell(11).SetCellValue(ORDERDETAILLIST[i].Remark);
             }
+
+            //合计写
             IRow irowTotol = ist.GetRow(31);
             irowTotol.GetCell(6).SetCellValue(totolCount.ToString());
             irowTotol.GetCell(8).SetCellValue(totolMoney.ToString());
@@ -166,6 +176,19 @@ namespace OrderSheetCreator
             FFactory ff = new FFactory();
             ff.ShowDialog();
             bindingSource1.DataSource = CC;
+        }
+
+        private void btnTools_Click(object sender, EventArgs e)
+        {
+            DataTools dt = new DataTools();
+            dt.ShowDialog();
+        }
+
+        private void bindingSource1_CurrentChanged(object sender, EventArgs e)
+        {
+            string traderJC = PublicTools.stringZip(txbTrader.Text);
+            string factoryJC = PublicTools.stringZip(txbFactory.Text);
+            txbFile.Text = string.Format("{0}-{1}", traderJC, factoryJC);
         }
     }
 }

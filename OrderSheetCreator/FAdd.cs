@@ -48,7 +48,7 @@ namespace OrderSheetCreator
         {
             if (txbSearchBarcode.Text.Length > 0)
             {
-                using (var db = new entity.jingchendbEntities())
+                using (var db = new entity.JingChenDBEntities2())
                 {
                     var productQuery = from a in db.CainzProduct
                                        where a.Barcode.Contains(txbSearchBarcode.Text)
@@ -233,7 +233,6 @@ namespace OrderSheetCreator
 
         private void txbBarcode_TextChanged(object sender, EventArgs e)
         {
-            this.CheckOrderList();
         }
 
         private void CheckOrderList()
@@ -299,10 +298,32 @@ namespace OrderSheetCreator
             }
         }
 
+        private void btnSaveToDB_Click(object sender, EventArgs e)
+        {
+            using (var db = new entity.JingChenDBEntities2())
+            {
+                entity.CainzProduct cp = (entity.CainzProduct)productsBindingSource.Current;
+                db.CainzProduct.Attach(cp);
+                db.Entry(cp).State = System.Data.Entity.EntityState.Modified;
+                db.SaveChanges();
+            }
+        }
 
-
-
-
+        private void productsBindingSource_CurrentItemChanged(object sender, EventArgs e)
+        {
+            this.CheckOrderList();
+            entity.CainzProduct cp = (entity.CainzProduct)productsBindingSource.Current;
+            if (cp != null)
+            {
+                using (var db = new entity.JingChenDBEntities2())
+                {
+                    var query = (from a in db.CainzCustomer
+                                 where a.ID == cp.FactoryID
+                                 select a.Trader).FirstOrDefault();
+                    txbTrader.Text = query;
+                }
+            }
+        }
 
     }
 }

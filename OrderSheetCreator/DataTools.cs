@@ -31,7 +31,8 @@ namespace OrderSheetCreator
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (var ctx = new entity.jingchendbEntities())
+            
+            using (var ctx = new entity.JingChenDBEntities2())
             {
                 foreach (var maoyi in gMaoYiShangDic)
                 {
@@ -69,11 +70,11 @@ namespace OrderSheetCreator
             if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 Readjc(openFileDialog1.FileName);
-               
+
             }
         }
 
-        private void setCellStyle(IRow irow,int cellno,ICellStyle ics)
+        private void setCellStyle(IRow irow, int cellno, ICellStyle ics)
         {
             for (int i = 0; i < cellno; i++)
             {
@@ -87,7 +88,7 @@ namespace OrderSheetCreator
             ICell cell = row.GetCell(no, MissingCellPolicy.CREATE_NULL_AS_BLANK);
             if (cell.CellType == CellType.Numeric)
             {
-                return cell.NumericCellValue.ToString().Replace("/b","");
+                return cell.NumericCellValue.ToString().Replace("/b", "");
             }
             else if (cell.CellType == CellType.String)
             {
@@ -145,10 +146,10 @@ namespace OrderSheetCreator
                             gMaoYiShangDic.Add(traderName, 0);
                         }
 
-                        string factoryName = getCellString(12,irow);
+                        string factoryName = getCellString(12, irow);
                         string factoryNameZip = stringZip(factoryName);
 
-                        string add =getCellString(15,irow);
+                        string add = getCellString(15, irow);
                         if (factoryName.Length < 2) continue;
 
                         //把工厂和贸易商联系起来的 一个冗余字典
@@ -194,10 +195,10 @@ namespace OrderSheetCreator
         private void button4_Click(object sender, EventArgs e)
         {
             if (gMaoYiShangDic.Count == 0) return;
-            if(gGongChangDic.Count ==0) return;
+            if (gGongChangDic.Count == 0) return;
             List<Customer> ctlistforupdate = new List<Customer>();
             List<Customer> ctlist = new List<Customer>();
-            using (var ctx = new entity.jingchendbEntities())
+            using (var ctx = new entity.JingChenDBEntities2())
             {
                 var cainzCustomers = from item in ctx.Customer
                                      where item.FirstNum == "130817052630"
@@ -234,7 +235,7 @@ namespace OrderSheetCreator
             }
 
             //修改动作
-            using (var ctx = new entity.jingchendbEntities())
+            using (var ctx = new entity.JingChenDBEntities2())
             {
                 foreach (var item in ctlistforupdate)
                 {
@@ -261,7 +262,7 @@ namespace OrderSheetCreator
 
         private string stringZip(string s1)
         {
-            string[] removeStrings = { "常熟","桐乡","台州","新昌","温州","南宁","曹县","有限", "公司", "包装", "材料", "上海", "文教", "礼品", "金属", "制品", "南通", "金属", "体育", "用品", "毛绒", "制造", "不锈钢", "山东", "经贸", "防滑垫", "金属", "中日", "合资", "自行车", "机电", "进出口", "（河源）", "（河源）", "（青岛）", "市", "厂", "工业", "橡胶", "技术开发区", "皮件", "劳保", "国际", "股份", "集团", "贸易", "贸易", "旅游", "汽车", "（深圳）", "家饰", "家居", "食品", "县", "省", "科技", "电子", "针织", "服饰", "炭业", "浙江", "广州", "福州", "泰州", "海陵区", "塑业", "上虞", "海陵区", "昆山", "皓源", "宁波", "经济", "昭源", "广西", "南宁", "进出口" };
+            string[] removeStrings = { "常熟", "桐乡", "台州", "新昌", "温州", "南宁", "曹县", "有限", "公司", "包装", "材料", "上海", "文教", "礼品", "金属", "制品", "南通", "金属", "体育", "用品", "毛绒", "制造", "不锈钢", "山东", "经贸", "防滑垫", "金属", "中日", "合资", "自行车", "机电", "进出口", "（河源）", "（河源）", "（青岛）", "市", "厂", "工业", "橡胶", "技术开发区", "皮件", "劳保", "国际", "股份", "集团", "贸易", "贸易", "旅游", "汽车", "（深圳）", "家饰", "家居", "食品", "县", "省", "科技", "电子", "针织", "服饰", "炭业", "浙江", "广州", "福州", "泰州", "海陵区", "塑业", "上虞", "海陵区", "昆山", "皓源", "宁波", "经济", "昭源", "广西", "南宁", "进出口" };
             //   
             foreach (var item in removeStrings)
             {
@@ -272,26 +273,26 @@ namespace OrderSheetCreator
 
         //查找一个公司名称是否近似有对应的贸易公司名称
 
-        private string FindTraderByFactory(string s1,Dictionary<string,string> d1)
+        private string FindTraderByFactory(string s1, Dictionary<string, string> d1)
         {
             if (d1.ContainsKey(s1)) return d1[s1];
             string s1zip = stringZip(s1);
             if (d1.ContainsKey(s1zip)) return d1[s1zip];
             foreach (var item in d1)
             {
-                if (nameEqual( stringZip(item.Key), s1zip)) return item.Value;
+                if (nameEqual(stringZip(item.Key), s1zip)) return item.Value;
             }
             return "";
         }
 
         private CainzTrader GetTradeByTraderName(string name)
         {
-            using(var db =new entity.jingchendbEntities())
+            using (var db = new entity.JingChenDBEntities2())
             {
                 var c = (from item in db.CainzTrader
-                        where item.CateName.Contains(name)
-                        select item).FirstOrDefault();
-                if(c!=null)
+                         where item.CateName.Contains(name)
+                         select item).FirstOrDefault();
+                if (c != null)
                     return c;
                 else
                     return null;
@@ -307,7 +308,7 @@ namespace OrderSheetCreator
         {
             name = stringZip(name);
             CainzCustomer cc = null;
-            using (var db = new entity.jingchendbEntities())
+            using (var db = new entity.JingChenDBEntities2())
             {
                 var c = (from item in db.CainzCustomer
                          where item.FactoryName.Contains(name)
@@ -352,7 +353,7 @@ namespace OrderSheetCreator
         //导入 到新表 Trader 
         private void btnCainzMaoyis_Click(object sender, EventArgs e)
         {
-            using (var db = new jingchendbEntities())
+            using (var db = new entity.JingChenDBEntities2())
             {
                 //遍历贸易商表列表,通过名称查找，如果不存在则添加
                 foreach (var Trader in gMaoYiShangDic)
@@ -379,7 +380,7 @@ namespace OrderSheetCreator
         private void btnImportFactory_Click(object sender, EventArgs e)
         {
 
-            using (var db = new jingchendbEntities())
+            using (var db = new entity.JingChenDBEntities2())
             {
                 foreach (var f in this.FACTORYS)
                 {
@@ -403,11 +404,11 @@ namespace OrderSheetCreator
             if (gGongChangDic.Count == 0) return;
             List<CainzCustomer> ctlistforupdate = new List<CainzCustomer>();
             List<CainzCustomer> ctlist = new List<CainzCustomer>();
-            using (var db = new entity.jingchendbEntities())
+            using (var db = new entity.JingChenDBEntities2())
             {
                 var factorys = from item in db.CainzCustomer
-                                     where item.FirstNum == "130817052630"
-                                     select item;
+                               where item.FirstNum == "130817052630"
+                               select item;
                 foreach (var cainzCus in factorys)
                 {
                     string factoryName = cainzCus.FactoryName.Replace('C', ' ').Trim();
@@ -443,7 +444,7 @@ namespace OrderSheetCreator
             }
 
             //修改动作
-            using (var ctx = new entity.jingchendbEntities())
+            using (var ctx = new entity.JingChenDBEntities2())
             {
                 foreach (var item in ctlistforupdate)
                 {
@@ -762,11 +763,11 @@ namespace OrderSheetCreator
                     string gongchangString = getCellString(gongchangNo, irow);
                     string wuliaoString = getCellString(wuliaoNo, irow);
 
-                    if(gongchangString =="常熟市帝网织造有限公司")
+                    if (gongchangString == "常熟市帝网织造有限公司")
                     {
                         i++;
                     }
-                    int  factoryID=-1;
+                    int factoryID = -1;
                     if (gongchangString == "")
                     {
                         gongchangString = ist.SheetName.Trim();
@@ -790,7 +791,7 @@ namespace OrderSheetCreator
                     if (com.Length < 6) continue;
                     if (false == productHT.ContainsKey(com))
                     {
-                        using (var db = new entity.jingchendbEntities())
+                        using (var db = new entity.JingChenDBEntities2())
                         {
                             CainzProduct p = new CainzProduct();
                             p.FactoryID = factoryID;
@@ -815,7 +816,7 @@ namespace OrderSheetCreator
 
         private void button6_Click(object sender, EventArgs e)
         {
-            using (var db = new jingchendbEntities())
+            using (var db = new entity.JingChenDBEntities2())
             {
                 var result = from p in db.CainzCustomer
                              select p;
@@ -827,7 +828,178 @@ namespace OrderSheetCreator
             }
         }
 
+        private void button3_Click_1(object sender, EventArgs e)
+        {
 
+        }
+
+
+        //批量导入
+        private void button7_Click(object sender, EventArgs e)
+        {
+            DirectoryInfo TheFolder = new DirectoryInfo("D://excel/");
+            foreach (FileInfo NextFile in TheFolder.GetFiles())
+            {
+                ReadExcelProductsAndInsert(NextFile.FullName);
+            }
+        }
+
+        //添加
+
+        private void ReadExcelProductsAndInsert(string path)
+        {
+            IWorkbook wb = WorkbookFactory.Create(path);
+
+            int count = 0;
+
+            //循环 sheet
+
+
+            ISheet ist = wb.GetSheetAt(0);
+
+            int rowofPage = ist.LastRowNum + 1;
+
+            int titleRowNo = -1;
+            int cdNo = -1;
+            int caizhiNo = -1;
+            int caizhiEXNo = -1;
+            int chicunNo = -1;
+            int danjiaNo = -1;
+            int gongchangNo = -1;
+            int wuliaoNo = -1;
+            int yanseNo = -1;
+            string gudinggcm = "";
+
+            //查找各个位置
+            foreach (IRow row in ist)
+            {
+                int cellCount = row.Cells.Count;
+                for (int cNo = 0; cNo < cellCount; cNo++)
+                {
+                    ICell icell = row.GetCell(cNo, MissingCellPolicy.CREATE_NULL_AS_BLANK);
+                    if (icell.CellType == CellType.String)
+                    {
+                        string title = icell.StringCellValue.Trim().Replace("（元/个）", "").Replace("mm", "").Replace(" ", "").Trim();
+                        switch (title)
+                        {
+                            case "商品条形码/CD":
+                                {
+                                    cdNo = icell.ColumnIndex;
+                                } break;
+                            case "材质":
+                                {
+                                    caizhiNo = icell.ColumnIndex;
+                                } break;
+                            case "材质说明":
+                                {
+                                    caizhiEXNo = icell.ColumnIndex;
+                                } break;
+                            case "颜色":
+                                {
+                                    yanseNo = icell.ColumnIndex;
+                                } break;
+                            case "单价":
+                                {
+                                    danjiaNo = icell.ColumnIndex;
+                                } break;
+                            case "尺寸":
+                                {
+                                    chicunNo = icell.ColumnIndex;
+                                } break;
+                            case "厂商名":
+                            case "订购工厂":
+                            case "厂商名称":
+                                {
+                                    gongchangNo = icell.ColumnIndex;
+                                } break;
+                            case "物料编号":
+                            case "物料名称":
+                                {
+                                    wuliaoNo = icell.ColumnIndex;
+                                } break;
+                        }
+                    }
+                }
+
+                if (cdNo != -1)
+                {
+                    titleRowNo = row.RowNum;
+
+                    if (gongchangNo == -1)
+                    {
+                        gudinggcm = findgcm(ist.SheetName, gGongChangDic);
+                    }
+
+                    break;
+                }
+
+            }
+
+
+            Hashtable productHT = new Hashtable();
+
+            for (int j = titleRowNo + 1; j < rowofPage; j++)
+            {
+                count++;
+                IRow irow = ist.GetRow(j);
+
+                if (irow == null) continue;
+
+                string cdString = getCellString(cdNo, irow);
+                if (cdString == "") continue;
+                string caizhiString = getCellString(caizhiNo, irow);
+                string chicunString = getCellString(chicunNo, irow);
+                string danjiaString = getCellString(danjiaNo, irow);
+                string yanseString = getCellString(yanseNo, irow);
+                string caizhiEXString = getCellString(caizhiEXNo, irow);
+                string gongchangString = getCellString(gongchangNo, irow);
+                string wuliaoString = getCellString(wuliaoNo, irow);
+
+                int factoryID = -1;
+                if (gongchangString == "")
+                {
+                    gongchangString = ist.SheetName.Trim();
+                }
+
+                CainzCustomer cc = this.GetFactoryByName(gongchangString);
+                if (cc == null)
+                {
+                    cc = this.GetFactoryByName(ist.SheetName.Trim());
+                }
+
+                if (cc != null)
+                {
+                    factoryID = cc.ID;
+                    gongchangString = cc.FactoryName;
+                }
+
+                string com = cdString + caizhiString + chicunString + danjiaString + yanseString + caizhiEXString + wuliaoString + gongchangString;
+                double danjiaDouble = getCellDouble(danjiaNo, irow);
+
+                if (com.Length < 6) continue;
+                if (false == productHT.ContainsKey(com))
+                {
+                    using (var db = new entity.JingChenDBEntities2())
+                    {
+                        CainzProduct p = new CainzProduct();
+                        p.FactoryID = factoryID;
+                        p.FactoryName = gongchangString;
+                        p.Barcode = cdString;
+                        p.Color = yanseString;
+                        p.Material = caizhiString;
+                        p.Size = chicunString;
+                        p.Price = (System.Decimal)danjiaDouble;
+                        p.CreateTime = DateTime.Now;
+                        db.CainzProduct.Add(p);
+                        db.Entry(p).State = System.Data.Entity.EntityState.Added;
+                        db.SaveChanges();
+                    }
+
+                    productHT.Add(com, null);
+                }
+            }
+
+        }
 
     }
 }
