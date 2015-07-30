@@ -1,16 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="db001Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="db001Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="db001ModelStoreContainer">
+          <EntitySet Name="CainzCustomer" EntityType="db001Model.Store.CainzCustomer" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CainzOrderDetail" EntityType="db001Model.Store.CainzOrderDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CainzOrders" EntityType="db001Model.Store.CainzOrders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CainzProduct" EntityType="db001Model.Store.CainzProduct" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CainzTrader" EntityType="db001Model.Store.CainzTrader" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CusCategory" EntityType="db001Model.Store.CusCategory" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Customer" EntityType="db001Model.Store.Customer" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
         <EntityType Name="CainzCustomer">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FactoryNo" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FactoryNo" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="FactoryName" Type="nvarchar" MaxLength="100" />
           <Property Name="Phone" Type="varchar" MaxLength="100" />
           <Property Name="Contact" Type="nvarchar" MaxLength="300" />
@@ -28,12 +37,12 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SnNum" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SnNum" Type="nvarchar" Nullable="false" MaxLength="200" />
           <Property Name="OrderNum" Type="int" Nullable="false" />
-          <Property Name="NitORI" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="ProductCD" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="ProductName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="NitORI" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="ProductCD" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="200" />
           <Property Name="CdFileName" Type="nvarchar" MaxLength="200" />
           <Property Name="PopDesignNo" Type="nvarchar" MaxLength="200" />
           <Property Name="PopSize" Type="nvarchar" MaxLength="200" />
@@ -44,15 +53,15 @@
           <Property Name="POPNum" Type="int" />
           <Property Name="RealNum" Type="int" />
           <Property Name="UnitNum" Type="int" Nullable="false" />
-          <Property Name="UnitName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="UnitName" Type="nvarchar" Nullable="false" MaxLength="20" />
           <Property Name="ExpectDate" Type="datetime" />
-          <Property Name="Price" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Price" Type="decimal" Nullable="false" Scale="4" />
           <Property Name="ProbabilityDate" Type="datetime" Nullable="false" />
           <Property Name="ETD" Type="nvarchar" MaxLength="200" />
           <Property Name="Reference" Type="nvarchar" MaxLength="50" />
-          <Property Name="PrintMoney" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="CheckMoney" Type="decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="InvoiceMoney" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="PrintMoney" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="CheckMoney" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="InvoiceMoney" Type="decimal" Nullable="false" Scale="4" />
           <Property Name="Sample" Type="nvarchar" MaxLength="20" />
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="IsDelete" Type="int" Nullable="false" />
@@ -65,10 +74,10 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="OrderNum" Type="varchar" MaxLength="50" Nullable="false" />
-          <Property Name="NitORI" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="CustomerNum" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderNum" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="NitORI" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="CustomerNum" Type="varchar" Nullable="false" MaxLength="200" />
           <Property Name="CustomerName" Type="nvarchar" MaxLength="300" />
           <Property Name="Phone" Type="varchar" MaxLength="500" />
           <Property Name="Contact" Type="nvarchar" MaxLength="300" />
@@ -84,10 +93,10 @@
           <Property Name="CardNum" Type="varchar" MaxLength="400" />
           <Property Name="Taxpayer" Type="varchar" MaxLength="400" />
           <Property Name="SendDate" Type="datetime" Nullable="false" />
-          <Property Name="Money" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Money" Type="decimal" Nullable="false" Scale="4" />
           <Property Name="IsDelete" Type="int" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
-          <Property Name="CreateUserNo" Type="varchar" MaxLength="300" Nullable="false" />
+          <Property Name="CreateUserNo" Type="varchar" Nullable="false" MaxLength="300" />
           <Property Name="CreateUserName" Type="nvarchar" MaxLength="200" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="LastUpdate" Type="datetime" Nullable="false" />
@@ -101,8 +110,8 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Barcode" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Barcode" Type="nvarchar" Nullable="false" MaxLength="200" />
           <Property Name="FactoryID" Type="nvarchar" MaxLength="200" />
           <Property Name="FactoryName" Type="nvarchar" MaxLength="200" />
           <Property Name="Material" Type="nvarchar" MaxLength="200" />
@@ -120,9 +129,9 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SnNum" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="ParentNum" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SnNum" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ParentNum" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="CateName" Type="nvarchar" MaxLength="100" />
           <Property Name="IsDelete" Type="int" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
@@ -132,9 +141,9 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SnNum" Type="varchar" MaxLength="100" Nullable="false" />
-          <Property Name="ParentNum" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SnNum" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ParentNum" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="CateName" Type="nvarchar" MaxLength="100" />
           <Property Name="IsDelete" Type="int" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
@@ -144,8 +153,8 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="CustomerNum" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerNum" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
           <Property Name="Phone" Type="varchar" MaxLength="100" />
           <Property Name="Contact" Type="nvarchar" MaxLength="300" />
@@ -164,74 +173,74 @@
           <Property Name="FirstNum" Type="varchar" MaxLength="500" />
           <Property Name="SecondNum" Type="varchar" MaxLength="500" />
         </EntityType>
-        <EntityContainer Name="db001ModelStoreContainer">
-          <EntitySet Name="CainzCustomer" EntityType="Self.CainzCustomer" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CainzOrderDetail" EntityType="Self.CainzOrderDetail" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CainzOrders" EntityType="Self.CainzOrders" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CainzProduct" EntityType="Self.CainzProduct" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CainzTrader" EntityType="Self.CainzTrader" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CusCategory" EntityType="Self.CusCategory" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
-        </EntityContainer>
       </Schema>
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="db001Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="db001Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="DB" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="CainzCustomer" EntityType="db001Model.CainzCustomer" />
+          <EntitySet Name="CainzOrderDetail" EntityType="db001Model.CainzOrderDetail" />
+          <EntitySet Name="CainzOrders" EntityType="db001Model.CainzOrders" />
+          <EntitySet Name="CainzProduct" EntityType="db001Model.CainzProduct" />
+          <EntitySet Name="CainzTrader" EntityType="db001Model.CainzTrader" />
+          <EntitySet Name="CusCategory" EntityType="db001Model.CusCategory" />
+          <EntitySet Name="Customer" EntityType="db001Model.Customer" />
+        </EntityContainer>
         <EntityType Name="CainzCustomer">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FactoryNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="FactoryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Contact" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Trader" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="SendAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Receiver" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Telephone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="FirstNum" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="TraderNo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="FactoryNameJP" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FactoryNo" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="FactoryName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Contact" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Trader" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="SendAddress" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Receiver" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Telephone" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="FirstNum" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="TraderNo" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="FactoryNameJP" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
         </EntityType>
         <EntityType Name="CainzOrderDetail">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SnNum" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SnNum" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="OrderNum" Type="Int32" Nullable="false" />
-          <Property Name="NitORI" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProductCD" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="ProductName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CdFileName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PopDesignNo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PopSize" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PaperKind" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PopCate" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="PopCateName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Colour" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NitORI" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="ProductCD" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="ProductName" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="CdFileName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="PopDesignNo" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="PopSize" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="PaperKind" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="PopCate" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="PopCateName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Colour" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="POPNum" Type="Int32" />
           <Property Name="RealNum" Type="Int32" />
           <Property Name="UnitNum" Type="Int32" Nullable="false" />
-          <Property Name="UnitName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UnitName" Type="String" Nullable="false" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="ExpectDate" Type="DateTime" Precision="3" />
-          <Property Name="Price" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
           <Property Name="ProbabilityDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="ETD" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Reference" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="PrintMoney" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="CheckMoney" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="InvoiceMoney" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
-          <Property Name="Sample" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="ETD" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Reference" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PrintMoney" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="CheckMoney" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="InvoiceMoney" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
+          <Property Name="Sample" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
           <Property Name="IsDelete" Type="Int32" Nullable="false" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="BatchNum" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="BatchNum" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="RowNo" Type="Int32" />
         </EntityType>
         <EntityType Name="CainzOrders">
@@ -239,35 +248,35 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="OrderNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="NitORI" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CustomerNum" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CustomerName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Contact" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="Invoice" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="Company" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="SendAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Receiver" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Telephone" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
-          <Property Name="Fax" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="FinanceContact" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="BankName" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="CardNum" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
-          <Property Name="Taxpayer" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
+          <Property Name="OrderNum" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="NitORI" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="CustomerNum" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="Contact" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
+          <Property Name="Invoice" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
+          <Property Name="Company" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="SendAddress" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Receiver" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Telephone" Type="String" MaxLength="400" Unicode="false" FixedLength="false" />
+          <Property Name="Fax" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="FinanceContact" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
+          <Property Name="BankName" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
+          <Property Name="CardNum" Type="String" MaxLength="400" Unicode="false" FixedLength="false" />
+          <Property Name="Taxpayer" Type="String" MaxLength="400" Unicode="false" FixedLength="false" />
           <Property Name="SendDate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Money" Type="Decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="Money" Type="Decimal" Nullable="false" Precision="18" Scale="4" />
           <Property Name="IsDelete" Type="Int32" Nullable="false" />
           <Property Name="Status" Type="Int32" Nullable="false" />
-          <Property Name="CreateUserNo" Type="String" MaxLength="300" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CreateUserName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreateUserNo" Type="String" Nullable="false" MaxLength="300" Unicode="false" FixedLength="false" />
+          <Property Name="CreateUserName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="LastUpdate" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Remark" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
-          <Property Name="FirstNum" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="SecondNum" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="Buyer" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Remark" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
+          <Property Name="FirstNum" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="SecondNum" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="Buyer" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
           <Property Name="isDraft" Type="Int32" />
         </EntityType>
         <EntityType Name="CainzProduct">
@@ -275,83 +284,74 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Barcode" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="FactoryID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="FactoryName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Material" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Size" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Color" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Barcode" Type="String" Nullable="false" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="FactoryID" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="FactoryName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Material" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Size" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Color" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Deleted" Type="Int32" Nullable="false" />
           <Property Name="ModifyTime" Type="DateTime" Precision="3" />
           <Property Name="Modified" Type="Int32" />
-          <Property Name="TraderName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="TraderID" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TraderName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="TraderID" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="CainzTrader">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SnNum" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ParentNum" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CateName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SnNum" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ParentNum" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CateName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="IsDelete" Type="Int32" Nullable="false" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Remark" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="CusCategory">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SnNum" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="ParentNum" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CateName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="SnNum" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="ParentNum" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="CateName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="IsDelete" Type="Int32" Nullable="false" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Remark" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Remark" Type="String" MaxLength="400" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="Customer">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CustomerNum" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="CustomerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Phone" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="Contact" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="Address" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Invoice" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Company" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="SendAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Receiver" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="Telephone" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Fax" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="FinanceContact" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
-          <Property Name="BankName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
-          <Property Name="CardNum" Type="String" MaxLength="400" FixedLength="false" Unicode="false" />
-          <Property Name="Taxpayer" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Remark" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="FirstNum" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="SecondNum" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerNum" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Contact" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="Address" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Invoice" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Company" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="SendAddress" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Receiver" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="Telephone" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Fax" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="FinanceContact" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="BankName" Type="String" MaxLength="300" Unicode="true" FixedLength="false" />
+          <Property Name="CardNum" Type="String" MaxLength="400" Unicode="false" FixedLength="false" />
+          <Property Name="Taxpayer" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Remark" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="FirstNum" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
+          <Property Name="SecondNum" Type="String" MaxLength="500" Unicode="false" FixedLength="false" />
         </EntityType>
-        <EntityContainer Name="JingChenDBEntities2" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="CainzCustomer" EntityType="Self.CainzCustomer" />
-          <EntitySet Name="CainzOrderDetail" EntityType="Self.CainzOrderDetail" />
-          <EntitySet Name="CainzOrders" EntityType="Self.CainzOrders" />
-          <EntitySet Name="CainzProduct" EntityType="Self.CainzProduct" />
-          <EntitySet Name="CainzTrader" EntityType="Self.CainzTrader" />
-          <EntitySet Name="CusCategory" EntityType="Self.CusCategory" />
-          <EntitySet Name="Customer" EntityType="Self.Customer" />
-        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="db001ModelStoreContainer" CdmEntityContainer="JingChenDBEntities2">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="db001ModelStoreContainer" CdmEntityContainer="DB">
           <EntitySetMapping Name="CainzCustomer">
             <EntityTypeMapping TypeName="db001Model.CainzCustomer">
               <MappingFragment StoreEntitySet="CainzCustomer">
@@ -523,7 +523,7 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
@@ -532,9 +532,8 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
       </DesignerInfoPropertySet>
     </Options>

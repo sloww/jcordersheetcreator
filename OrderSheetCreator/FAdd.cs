@@ -48,7 +48,7 @@ namespace OrderSheetCreator
         {
             if (txbSearchBarcode.Text.Length > 0)
             {
-                using (var db = new entity.JingChenDBEntities2())
+                using (var db = new entity.DB())
                 {
                     var productQuery = from a in db.CainzProduct
                                        where a.Barcode.Contains(txbSearchBarcode.Text) && a.Deleted == 0
@@ -315,7 +315,7 @@ namespace OrderSheetCreator
         {
             if (MessageBox.Show("是否修改该产品数据库，点击，YES，后修改不可恢复", "谨慎操作", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
             {
-                using (var db = new entity.JingChenDBEntities2())
+                using (var db = new entity.DB())
                 {
                     entity.CainzProduct cp = (entity.CainzProduct)productsBindingSource.Current;
                     cp.Modified = 1;
@@ -338,7 +338,7 @@ namespace OrderSheetCreator
         {
             if (MessageBox.Show("是否删除从数据库删除该行记录，点击，YES，后删除不可恢复", "谨慎操作", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
             {
-                using (var db = new entity.JingChenDBEntities2())
+                using (var db = new entity.DB())
                 {
                     entity.CainzProduct cp = (entity.CainzProduct)productsBindingSource.Current;
                     cp.Deleted = 1;
@@ -396,7 +396,7 @@ namespace OrderSheetCreator
 
         private void btnDBnew_Click(object sender, EventArgs e)
         {
-            using (var db = new entity.JingChenDBEntities2())
+            using (var db = new entity.DB())
             {
                 entity.CainzProduct cp = new entity.CainzProduct();
                 cp.Deleted = 0;
@@ -423,6 +423,19 @@ namespace OrderSheetCreator
         {
 
         }
+
+        private void txbIssuedDate_DoubleClick(object sender, EventArgs e)
+        {
+
+            FDateTime fdt = new FDateTime();
+            fdt.Location = PublicTools.local(txbIssuedDate);
+            fdt.ShowDialog();
+            txbIssuedDate.Text = FDateTime.DateTimeSelect.ToShortDateString();
+
+           
+        }
+
+
 
     }
 }

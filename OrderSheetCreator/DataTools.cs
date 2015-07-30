@@ -32,7 +32,7 @@ namespace OrderSheetCreator
         private void button1_Click(object sender, EventArgs e)
         {
             
-            using (var ctx = new entity.JingChenDBEntities2())
+            using (var ctx = new entity.DB())
             {
                 foreach (var maoyi in gMaoYiShangDic)
                 {
@@ -198,7 +198,7 @@ namespace OrderSheetCreator
             if (gGongChangDic.Count == 0) return;
             List<Customer> ctlistforupdate = new List<Customer>();
             List<Customer> ctlist = new List<Customer>();
-            using (var ctx = new entity.JingChenDBEntities2())
+            using (var ctx = new entity.DB())
             {
                 var cainzCustomers = from item in ctx.Customer
                                      where item.FirstNum == "130817052630"
@@ -235,7 +235,7 @@ namespace OrderSheetCreator
             }
 
             //修改动作
-            using (var ctx = new entity.JingChenDBEntities2())
+            using (var ctx = new entity.DB())
             {
                 foreach (var item in ctlistforupdate)
                 {
@@ -287,7 +287,7 @@ namespace OrderSheetCreator
 
         private CainzTrader GetTradeByTraderName(string name)
         {
-            using (var db = new entity.JingChenDBEntities2())
+            using (var db = new entity.DB())
             {
                 var c = (from item in db.CainzTrader
                          where item.CateName.Contains(name)
@@ -308,7 +308,7 @@ namespace OrderSheetCreator
         {
             name = stringZip(name);
             CainzCustomer cc = null;
-            using (var db = new entity.JingChenDBEntities2())
+            using (var db = new entity.DB())
             {
                 var c = (from item in db.CainzCustomer
                          where item.FactoryName.Contains(name)
@@ -353,7 +353,7 @@ namespace OrderSheetCreator
         //导入 到新表 Trader 
         private void btnCainzMaoyis_Click(object sender, EventArgs e)
         {
-            using (var db = new entity.JingChenDBEntities2())
+            using (var db = new entity.DB())
             {
                 //遍历贸易商表列表,通过名称查找，如果不存在则添加
                 foreach (var Trader in gMaoYiShangDic)
@@ -380,7 +380,7 @@ namespace OrderSheetCreator
         private void btnImportFactory_Click(object sender, EventArgs e)
         {
 
-            using (var db = new entity.JingChenDBEntities2())
+            using (var db = new entity.DB())
             {
                 foreach (var f in this.FACTORYS)
                 {
@@ -405,7 +405,7 @@ namespace OrderSheetCreator
             if (gGongChangDic.Count == 0) return;
             List<CainzCustomer> ctlistforupdate = new List<CainzCustomer>();
             List<CainzCustomer> ctlist = new List<CainzCustomer>();
-            using (var db = new entity.JingChenDBEntities2())
+            using (var db = new entity.DB())
             {
                 var factorys = from item in db.CainzCustomer
                                where item.FirstNum == "130817052630"
@@ -445,7 +445,7 @@ namespace OrderSheetCreator
             }
 
             //修改动作
-            using (var ctx = new entity.JingChenDBEntities2())
+            using (var ctx = new entity.DB())
             {
                 foreach (var item in ctlistforupdate)
                 {
@@ -792,7 +792,7 @@ namespace OrderSheetCreator
                     if (com.Length < 6) continue;
                     if (false == productHT.ContainsKey(com))
                     {
-                        using (var db = new entity.JingChenDBEntities2())
+                        using (var db = new entity.DB())
                         {
                             CainzProduct p = new CainzProduct();
                             p.FactoryID = factoryID;
@@ -817,7 +817,7 @@ namespace OrderSheetCreator
 
         private void button6_Click(object sender, EventArgs e)
         {
-            using (var db = new entity.JingChenDBEntities2())
+            using (var db = new entity.DB())
             {
                 var result = from p in db.CainzCustomer
                              select p;
@@ -984,7 +984,7 @@ namespace OrderSheetCreator
                 if (com.Length < 6) continue;
                 if (false == productHT.ContainsKey(com))
                 {
-                    using (var db = new entity.JingChenDBEntities2())
+                    using (var db = new entity.DB())
                     {
                         CainzProduct p = new CainzProduct();
                         p.FactoryID = factoryID;

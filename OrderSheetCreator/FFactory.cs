@@ -31,7 +31,7 @@ namespace OrderSheetCreator
         {
             if (txbSearch.Text.Length > 0)
             {
-                using (var db = new entity.JingChenDBEntities2())
+                using (var db = new entity.DB())
                 {
                     var Query = from a in db.CainzCustomer
                                        where a.FactoryName.Contains(txbSearch.Text) || a.FactoryNameJP.Contains(txbSearch.Text)

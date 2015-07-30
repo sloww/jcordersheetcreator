@@ -17,6 +17,7 @@ namespace OrderSheetCreator
         public static entity.CainzCustomer CC = new entity.CainzCustomer();
         FAdd fadd = new FAdd();
         private string FCainzOrderDdataGridViewSetPath = "订单表宽度设定.txt";
+        private FDateTime FDT = new FDateTime();
         public FCainzOrderD()
         {
             InitializeComponent();
@@ -179,8 +180,11 @@ namespace OrderSheetCreator
         {
             FFactory ff = new FFactory();
             ff.ShowDialog();
-            bindingSource1.DataSource = CC;
-            bindingSource1_CurrentChanged(null, null);
+            if (CC != null)
+            {
+                bindingSource1.DataSource = CC;
+                bindingSource1_CurrentChanged(null, null);
+            }
         }
 
         private void btnTools_Click(object sender, EventArgs e)
@@ -194,6 +198,35 @@ namespace OrderSheetCreator
             string traderJC = PublicTools.stringZip(txbTrader.Text);
             string factoryJC = PublicTools.stringZip(txbFactory.Text);
             txbFile.Text = string.Format("{0}-{1}", traderJC, factoryJC);
+        }
+
+        private void txbIssuedDate_DoubleClick(object sender, EventArgs e)
+        {
+            FDT.Location = PublicTools.local(txbIssuedDate);
+            FDT.ShowDialog();
+            txbIssuedDate.Text = FDateTime.DateTimeSelect.ToShortDateString();
+        }
+
+        private void txbDELdate_DoubleClick(object sender, EventArgs e)
+        {
+            FDT.Location = PublicTools.local(txbDELdate);
+            FDT.ShowDialog();
+            txbDELdate.Text = FDateTime.DateTimeSelect.ToShortDateString();
+        }
+
+        private void txbTrader_DoubleClick(object sender, EventArgs e)
+        {
+            btnFactory_Click(null, null);
+        }
+
+        private void txbFactory_DoubleClick(object sender, EventArgs e)
+        {
+            btnFactory_Click(null, null);
+        }
+
+        private void txbAdd_DoubleClick(object sender, EventArgs e)
+        {
+            btnFactory_Click(null, null);
         }
     }
 }

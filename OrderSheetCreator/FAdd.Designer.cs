@@ -92,9 +92,10 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.Location = new System.Drawing.Point(8, 10);
+            this.label1.Location = new System.Drawing.Point(11, 12);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 25);
+            this.label1.Size = new System.Drawing.Size(68, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "条码:";
             // 
@@ -102,9 +103,10 @@
             // 
             this.txbSearchBarcode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txbSearchBarcode.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbSearchBarcode.Location = new System.Drawing.Point(65, 6);
+            this.txbSearchBarcode.Location = new System.Drawing.Point(87, 8);
+            this.txbSearchBarcode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbSearchBarcode.Name = "txbSearchBarcode";
-            this.txbSearchBarcode.Size = new System.Drawing.Size(172, 33);
+            this.txbSearchBarcode.Size = new System.Drawing.Size(229, 39);
             this.txbSearchBarcode.TabIndex = 2;
             this.txbSearchBarcode.TextChanged += new System.EventHandler(this.txbSearchBarcode_TextChanged);
             this.txbSearchBarcode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbSearchBarcode_KeyPress);
@@ -118,8 +120,9 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(877, 48);
+            this.panel1.Size = new System.Drawing.Size(1169, 60);
             this.panel1.TabIndex = 3;
             // 
             // ckbAutoEnter
@@ -127,9 +130,10 @@
             this.ckbAutoEnter.AutoSize = true;
             this.ckbAutoEnter.Checked = true;
             this.ckbAutoEnter.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbAutoEnter.Location = new System.Drawing.Point(262, 23);
+            this.ckbAutoEnter.Location = new System.Drawing.Point(349, 29);
+            this.ckbAutoEnter.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ckbAutoEnter.Name = "ckbAutoEnter";
-            this.ckbAutoEnter.Size = new System.Drawing.Size(72, 16);
+            this.ckbAutoEnter.Size = new System.Drawing.Size(89, 19);
             this.ckbAutoEnter.TabIndex = 22;
             this.ckbAutoEnter.Text = "动态查询";
             this.ckbAutoEnter.UseVisualStyleBackColor = true;
@@ -139,9 +143,10 @@
             this.btnClose.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnClose.Font = new System.Drawing.Font("宋体", 12F);
             this.btnClose.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnClose.Location = new System.Drawing.Point(748, 3);
+            this.btnClose.Location = new System.Drawing.Point(997, 4);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(126, 38);
+            this.btnClose.Size = new System.Drawing.Size(168, 48);
             this.btnClose.TabIndex = 21;
             this.btnClose.Text = "关闭";
             this.btnClose.UseVisualStyleBackColor = false;
@@ -152,9 +157,10 @@
             this.btnSaveToDB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnSaveToDB.Font = new System.Drawing.Font("宋体", 12F);
             this.btnSaveToDB.ForeColor = System.Drawing.Color.White;
-            this.btnSaveToDB.Location = new System.Drawing.Point(187, 4);
+            this.btnSaveToDB.Location = new System.Drawing.Point(249, 5);
+            this.btnSaveToDB.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSaveToDB.Name = "btnSaveToDB";
-            this.btnSaveToDB.Size = new System.Drawing.Size(126, 38);
+            this.btnSaveToDB.Size = new System.Drawing.Size(168, 48);
             this.btnSaveToDB.TabIndex = 19;
             this.btnSaveToDB.Text = "更新到产品库!";
             this.btnSaveToDB.UseVisualStyleBackColor = false;
@@ -167,10 +173,11 @@
             this.txbCount.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbCount.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txbCount.ImeMode = System.Windows.Forms.ImeMode.Off;
-            this.txbCount.Location = new System.Drawing.Point(429, 51);
+            this.txbCount.Location = new System.Drawing.Point(572, 64);
+            this.txbCount.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbCount.MaxLength = 5;
             this.txbCount.Name = "txbCount";
-            this.txbCount.Size = new System.Drawing.Size(172, 26);
+            this.txbCount.Size = new System.Drawing.Size(229, 32);
             this.txbCount.TabIndex = 12;
             this.txbCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbCount_KeyPress);
             // 
@@ -180,9 +187,10 @@
             this.txbPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbPrice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Price", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0.00", "#0.00"));
             this.txbPrice.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbPrice.Location = new System.Drawing.Point(430, 12);
+            this.txbPrice.Location = new System.Drawing.Point(573, 15);
+            this.txbPrice.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbPrice.Name = "txbPrice";
-            this.txbPrice.Size = new System.Drawing.Size(172, 26);
+            this.txbPrice.Size = new System.Drawing.Size(229, 32);
             this.txbPrice.TabIndex = 11;
             this.txbPrice.TabStop = false;
             this.txbPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPrice_KeyPress);
@@ -198,9 +206,10 @@
             this.txbColor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbColor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Color", true));
             this.txbColor.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbColor.Location = new System.Drawing.Point(65, 135);
+            this.txbColor.Location = new System.Drawing.Point(87, 169);
+            this.txbColor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbColor.Name = "txbColor";
-            this.txbColor.Size = new System.Drawing.Size(259, 26);
+            this.txbColor.Size = new System.Drawing.Size(345, 32);
             this.txbColor.TabIndex = 10;
             this.txbColor.TabStop = false;
             this.txbColor.TextChanged += new System.EventHandler(this.txbColor_TextChanged);
@@ -212,9 +221,10 @@
             this.txbSize.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Size", true));
             this.txbSize.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbSize.Location = new System.Drawing.Point(65, 93);
+            this.txbSize.Location = new System.Drawing.Point(87, 116);
+            this.txbSize.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbSize.Name = "txbSize";
-            this.txbSize.Size = new System.Drawing.Size(259, 26);
+            this.txbSize.Size = new System.Drawing.Size(345, 32);
             this.txbSize.TabIndex = 9;
             this.txbSize.TabStop = false;
             // 
@@ -224,9 +234,10 @@
             this.txbMaterial.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbMaterial.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Material", true));
             this.txbMaterial.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbMaterial.Location = new System.Drawing.Point(65, 52);
+            this.txbMaterial.Location = new System.Drawing.Point(87, 65);
+            this.txbMaterial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbMaterial.Name = "txbMaterial";
-            this.txbMaterial.Size = new System.Drawing.Size(282, 26);
+            this.txbMaterial.Size = new System.Drawing.Size(376, 32);
             this.txbMaterial.TabIndex = 8;
             this.txbMaterial.TabStop = false;
             this.txbMaterial.TextChanged += new System.EventHandler(this.txbMaterial_TextChanged);
@@ -234,9 +245,10 @@
             // label6
             // 
             this.label6.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label6.Location = new System.Drawing.Point(357, 51);
+            this.label6.Location = new System.Drawing.Point(476, 64);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(63, 32);
+            this.label6.Size = new System.Drawing.Size(84, 40);
             this.label6.TabIndex = 7;
             this.label6.Text = "数量:";
             // 
@@ -244,9 +256,10 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label5.Location = new System.Drawing.Point(358, 12);
+            this.label5.Location = new System.Drawing.Point(477, 15);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(55, 25);
+            this.label5.Size = new System.Drawing.Size(68, 31);
             this.label5.TabIndex = 6;
             this.label5.Text = "单价:";
             // 
@@ -254,9 +267,10 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(8, 136);
+            this.label4.Location = new System.Drawing.Point(11, 170);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 25);
+            this.label4.Size = new System.Drawing.Size(68, 31);
             this.label4.TabIndex = 5;
             this.label4.Text = "颜色:";
             // 
@@ -264,9 +278,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(8, 94);
+            this.label3.Location = new System.Drawing.Point(11, 118);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(55, 25);
+            this.label3.Size = new System.Drawing.Size(68, 31);
             this.label3.TabIndex = 4;
             this.label3.Text = "尺寸:";
             // 
@@ -274,9 +289,10 @@
             // 
             this.lblMaterial.AutoSize = true;
             this.lblMaterial.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblMaterial.Location = new System.Drawing.Point(8, 52);
+            this.lblMaterial.Location = new System.Drawing.Point(11, 65);
+            this.lblMaterial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMaterial.Name = "lblMaterial";
-            this.lblMaterial.Size = new System.Drawing.Size(55, 25);
+            this.lblMaterial.Size = new System.Drawing.Size(68, 31);
             this.lblMaterial.TabIndex = 3;
             this.lblMaterial.Text = "材质:";
             // 
@@ -306,9 +322,10 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.btnShow);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 310);
+            this.panel2.Location = new System.Drawing.Point(0, 388);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(877, 273);
+            this.panel2.Size = new System.Drawing.Size(1169, 341);
             this.panel2.TabIndex = 4;
             // 
             // panel4
@@ -320,9 +337,10 @@
             this.panel4.Controls.Add(this.btnDeletedb);
             this.panel4.Controls.Add(this.btnSaveToDB);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 231);
+            this.panel4.Location = new System.Drawing.Point(0, 289);
+            this.panel4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(877, 42);
+            this.panel4.Size = new System.Drawing.Size(1169, 52);
             this.panel4.TabIndex = 19;
             // 
             // btnHidden
@@ -330,9 +348,10 @@
             this.btnHidden.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnHidden.Font = new System.Drawing.Font("宋体", 12F);
             this.btnHidden.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnHidden.Location = new System.Drawing.Point(748, 4);
+            this.btnHidden.Location = new System.Drawing.Point(997, 5);
+            this.btnHidden.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnHidden.Name = "btnHidden";
-            this.btnHidden.Size = new System.Drawing.Size(126, 38);
+            this.btnHidden.Size = new System.Drawing.Size(168, 48);
             this.btnHidden.TabIndex = 20;
             this.btnHidden.Text = "隐藏此界面";
             this.btnHidden.UseVisualStyleBackColor = false;
@@ -343,9 +362,10 @@
             this.btnDBnew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDBnew.Font = new System.Drawing.Font("宋体", 12F);
             this.btnDBnew.ForeColor = System.Drawing.Color.White;
-            this.btnDBnew.Location = new System.Drawing.Point(13, 4);
+            this.btnDBnew.Location = new System.Drawing.Point(17, 5);
+            this.btnDBnew.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDBnew.Name = "btnDBnew";
-            this.btnDBnew.Size = new System.Drawing.Size(126, 38);
+            this.btnDBnew.Size = new System.Drawing.Size(168, 48);
             this.btnDBnew.TabIndex = 19;
             this.btnDBnew.Text = "新增到数据库!";
             this.btnDBnew.UseVisualStyleBackColor = false;
@@ -356,9 +376,10 @@
             this.btnDeletedb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnDeletedb.Font = new System.Drawing.Font("宋体", 12F);
             this.btnDeletedb.ForeColor = System.Drawing.Color.White;
-            this.btnDeletedb.Location = new System.Drawing.Point(361, 4);
+            this.btnDeletedb.Location = new System.Drawing.Point(481, 5);
+            this.btnDeletedb.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDeletedb.Name = "btnDeletedb";
-            this.btnDeletedb.Size = new System.Drawing.Size(126, 38);
+            this.btnDeletedb.Size = new System.Drawing.Size(168, 48);
             this.btnDeletedb.TabIndex = 19;
             this.btnDeletedb.Text = "从产品库删除!";
             this.btnDeletedb.UseVisualStyleBackColor = false;
@@ -369,9 +390,10 @@
             this.ckbIsLock.AutoSize = true;
             this.ckbIsLock.Checked = true;
             this.ckbIsLock.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbIsLock.Location = new System.Drawing.Point(363, 192);
+            this.ckbIsLock.Location = new System.Drawing.Point(484, 240);
+            this.ckbIsLock.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.ckbIsLock.Name = "ckbIsLock";
-            this.ckbIsLock.Size = new System.Drawing.Size(108, 16);
+            this.ckbIsLock.Size = new System.Drawing.Size(134, 19);
             this.ckbIsLock.TabIndex = 20;
             this.ckbIsLock.Text = "查询锁定贸易商";
             this.ckbIsLock.UseVisualStyleBackColor = true;
@@ -379,18 +401,20 @@
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label2.Location = new System.Drawing.Point(358, 97);
+            this.label2.Location = new System.Drawing.Point(477, 121);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(63, 32);
+            this.label2.Size = new System.Drawing.Size(84, 40);
             this.label2.TabIndex = 14;
             this.label2.Text = "交期:";
             // 
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(358, 139);
+            this.label8.Location = new System.Drawing.Point(477, 174);
+            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(63, 32);
+            this.label8.Size = new System.Drawing.Size(84, 40);
             this.label8.TabIndex = 14;
             this.label8.Text = "备注:";
             // 
@@ -400,9 +424,10 @@
             this.txbTrader.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbTrader.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "TraderName", true));
             this.txbTrader.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbTrader.Location = new System.Drawing.Point(87, 182);
+            this.txbTrader.Location = new System.Drawing.Point(116, 228);
+            this.txbTrader.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbTrader.Name = "txbTrader";
-            this.txbTrader.Size = new System.Drawing.Size(237, 26);
+            this.txbTrader.Size = new System.Drawing.Size(316, 32);
             this.txbTrader.TabIndex = 10;
             this.txbTrader.TabStop = false;
             this.txbTrader.TextChanged += new System.EventHandler(this.txbTrader_TextChanged);
@@ -411,18 +436,20 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(8, 182);
+            this.label9.Location = new System.Drawing.Point(11, 228);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(88, 25);
+            this.label9.Size = new System.Drawing.Size(110, 31);
             this.label9.TabIndex = 18;
             this.label9.Text = "贸易商：";
             // 
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnDelete.Location = new System.Drawing.Point(748, 136);
+            this.btnDelete.Location = new System.Drawing.Point(997, 170);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(126, 38);
+            this.btnDelete.Size = new System.Drawing.Size(168, 48);
             this.btnDelete.TabIndex = 17;
             this.btnDelete.Text = "从订单删除";
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -432,9 +459,10 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label7.Location = new System.Drawing.Point(8, 10);
+            this.label7.Location = new System.Drawing.Point(11, 12);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(55, 25);
+            this.label7.Size = new System.Drawing.Size(68, 31);
             this.label7.TabIndex = 16;
             this.label7.Text = "条码:";
             // 
@@ -443,10 +471,12 @@
             this.txbIssuedDate.BackColor = System.Drawing.Color.White;
             this.txbIssuedDate.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbIssuedDate.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbIssuedDate.Location = new System.Drawing.Point(429, 97);
+            this.txbIssuedDate.Location = new System.Drawing.Point(572, 121);
+            this.txbIssuedDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbIssuedDate.Name = "txbIssuedDate";
-            this.txbIssuedDate.Size = new System.Drawing.Size(172, 26);
+            this.txbIssuedDate.Size = new System.Drawing.Size(229, 32);
             this.txbIssuedDate.TabIndex = 15;
+            this.txbIssuedDate.DoubleClick += new System.EventHandler(this.txbIssuedDate_DoubleClick);
             this.txbIssuedDate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbIssuedDate_KeyPress);
             // 
             // txbReMarK
@@ -454,17 +484,19 @@
             this.txbReMarK.BackColor = System.Drawing.Color.White;
             this.txbReMarK.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbReMarK.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbReMarK.Location = new System.Drawing.Point(429, 139);
+            this.txbReMarK.Location = new System.Drawing.Point(572, 174);
+            this.txbReMarK.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbReMarK.Name = "txbReMarK";
-            this.txbReMarK.Size = new System.Drawing.Size(172, 26);
+            this.txbReMarK.Size = new System.Drawing.Size(229, 32);
             this.txbReMarK.TabIndex = 15;
             // 
             // btnContinue
             // 
             this.btnContinue.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnContinue.Location = new System.Drawing.Point(748, 41);
+            this.btnContinue.Location = new System.Drawing.Point(997, 51);
+            this.btnContinue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnContinue.Name = "btnContinue";
-            this.btnContinue.Size = new System.Drawing.Size(126, 38);
+            this.btnContinue.Size = new System.Drawing.Size(168, 48);
             this.btnContinue.TabIndex = 13;
             this.btnContinue.Text = "添加到订单";
             this.btnContinue.UseVisualStyleBackColor = true;
@@ -476,9 +508,10 @@
             this.txbBarcode.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbBarcode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Barcode", true));
             this.txbBarcode.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbBarcode.Location = new System.Drawing.Point(65, 10);
+            this.txbBarcode.Location = new System.Drawing.Point(87, 12);
+            this.txbBarcode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txbBarcode.Name = "txbBarcode";
-            this.txbBarcode.Size = new System.Drawing.Size(259, 26);
+            this.txbBarcode.Size = new System.Drawing.Size(345, 32);
             this.txbBarcode.TabIndex = 8;
             this.txbBarcode.TabStop = false;
             this.txbBarcode.TextChanged += new System.EventHandler(this.txbBarcode_TextChanged);
@@ -488,9 +521,10 @@
             this.btnShow.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnShow.Font = new System.Drawing.Font("宋体", 12F);
             this.btnShow.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnShow.Location = new System.Drawing.Point(748, 231);
+            this.btnShow.Location = new System.Drawing.Point(997, 289);
+            this.btnShow.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(126, 38);
+            this.btnShow.Size = new System.Drawing.Size(168, 48);
             this.btnShow.TabIndex = 21;
             this.btnShow.Text = "显示管理界面";
             this.btnShow.UseVisualStyleBackColor = false;
@@ -500,9 +534,10 @@
             // 
             this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(0, 48);
+            this.panel3.Location = new System.Drawing.Point(0, 60);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(877, 262);
+            this.panel3.Size = new System.Drawing.Size(1169, 328);
             this.panel3.TabIndex = 5;
             // 
             // dataGridView1
@@ -526,10 +561,11 @@
             this.dataGridView1.DataSource = this.productsBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(877, 262);
+            this.dataGridView1.Size = new System.Drawing.Size(1169, 328);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
@@ -540,7 +576,7 @@
             this.Column1.HeaderText = "序";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
-            this.Column1.Width = 42;
+            this.Column1.Width = 47;
             // 
             // Barcode
             // 
@@ -549,7 +585,7 @@
             this.Barcode.HeaderText = "条码";
             this.Barcode.Name = "Barcode";
             this.Barcode.ReadOnly = true;
-            this.Barcode.Width = 54;
+            this.Barcode.Width = 62;
             // 
             // FactoryName
             // 
@@ -582,7 +618,7 @@
             this.Color.HeaderText = "颜色";
             this.Color.Name = "Color";
             this.Color.ReadOnly = true;
-            this.Color.Width = 54;
+            this.Color.Width = 62;
             // 
             // popSize
             // 
@@ -591,7 +627,7 @@
             this.popSize.HeaderText = "尺寸";
             this.popSize.Name = "popSize";
             this.popSize.ReadOnly = true;
-            this.popSize.Width = 54;
+            this.popSize.Width = 62;
             // 
             // Price
             // 
@@ -640,15 +676,16 @@
             // 
             // FAdd
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(877, 583);
+            this.ClientSize = new System.Drawing.Size(1169, 729);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.KeyPreview = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FAdd";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
