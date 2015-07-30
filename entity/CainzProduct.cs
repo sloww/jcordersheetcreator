@@ -23,5 +23,6 @@ namespace entity
         public string Color { get; set; }
         public Nullable<decimal> Price { get; set; }
         public System.DateTime CreateTime { get; set; }
+        public int Deleted { get; set; }
     }
 }

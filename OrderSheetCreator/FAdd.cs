@@ -44,15 +44,15 @@ namespace OrderSheetCreator
 
         }
 
-        private void txbSearchBarcode_TextChanged(object sender, EventArgs e)
+        private void SearchBarcode()
         {
             if (txbSearchBarcode.Text.Length > 0)
             {
                 using (var db = new entity.JingChenDBEntities2())
                 {
                     var productQuery = from a in db.CainzProduct
-                                       where a.Barcode.Contains(txbSearchBarcode.Text)
-                                       orderby a.Barcode,a.Price
+                                       where a.Barcode.Contains(txbSearchBarcode.Text) && a.Deleted == 0
+                                       orderby a.Barcode, a.Price
                                        select a;
                     productsBindingSource.DataSource = productQuery.Take(5).ToList();
 
@@ -65,8 +65,19 @@ namespace OrderSheetCreator
             }
         }
 
+        private void txbSearchBarcode_TextChanged(object sender, EventArgs e)
+        {
+            if (ckbAutoEnter.Checked)
+            {
+                this.SearchBarcode();
+            }
+
+        }
+
         private void FAdd_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.ControlBox = false;
             PublicTools.IniDatagridview(dataGridView1);
             PublicTools.SetColumsAutoModeNone(dataGridView1);
             PublicTools.RecoverColumnWidth(dataGridView1, this.FADD_DATAGRIDVIEW_SETPATH);
@@ -74,8 +85,9 @@ namespace OrderSheetCreator
 
         private void FAdd_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)115)
+            if (e.KeyChar == (char) Keys.Escape)
             {
+                this.Close();
             }
         }
 
@@ -300,12 +312,15 @@ namespace OrderSheetCreator
 
         private void btnSaveToDB_Click(object sender, EventArgs e)
         {
-            using (var db = new entity.JingChenDBEntities2())
+            if (MessageBox.Show("是否修改该产品数据库，点击，YES，后修改不可恢复", "谨慎操作", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
             {
-                entity.CainzProduct cp = (entity.CainzProduct)productsBindingSource.Current;
-                db.CainzProduct.Attach(cp);
-                db.Entry(cp).State = System.Data.Entity.EntityState.Modified;
-                db.SaveChanges();
+                using (var db = new entity.JingChenDBEntities2())
+                {
+                    entity.CainzProduct cp = (entity.CainzProduct)productsBindingSource.Current;
+                    db.CainzProduct.Attach(cp);
+                    db.Entry(cp).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
             }
         }
 
@@ -322,6 +337,66 @@ namespace OrderSheetCreator
                                  select a.Trader).FirstOrDefault();
                     txbTrader.Text = query;
                 }
+            }
+        }
+
+        private void btnDeletedb_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("是否删除从数据库删除该行记录，点击，YES，后删除不可恢复", "谨慎操作", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+            {
+                using (var db = new entity.JingChenDBEntities2())
+                {
+                    entity.CainzProduct cp = (entity.CainzProduct)productsBindingSource.Current;
+                    cp.Deleted = 1;
+                    db.CainzProduct.Attach(cp);
+                    db.Entry(cp).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+
+                this.SearchBarcode();
+            }
+            
+        }
+
+        private void btnHidden_Click(object sender, EventArgs e)
+        {
+            panel4.Visible = false;
+        }
+
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            panel4.Visible = true;
+            panel4.Height = 59;
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txbSearchBarcode_KeyUp(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void txbSearchBarcode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                this.SearchBarcode();
+            }
+        }
+
+        private void txbTrader_TextChanged(object sender, EventArgs e)
+        {
+            if (txbTrader.Text.Length > 0)
+            {
+                ckbIsLock.Visible = true;
+            }
+            else
+            {
+                ckbIsLock.Visible = false;
+
             }
         }
 

@@ -108,8 +108,9 @@
           <Property Name="Material" Type="nvarchar" MaxLength="200" />
           <Property Name="Size" Type="nvarchar" MaxLength="200" />
           <Property Name="Color" Type="nvarchar" MaxLength="200" />
-          <Property Name="Price" Type="decimal" Precision="19" Scale="4" />
+          <Property Name="Price" Type="money" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
+          <Property Name="Deleted" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="CainzTrader">
           <Key>
@@ -286,6 +287,7 @@
           <Property Name="Color" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" />
           <Property Name="CreateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Deleted" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="CainzTrader">
           <Key>
@@ -440,7 +442,8 @@
     <EntitySetMapping Name="CainzProduct">
       <EntityTypeMapping TypeName="IsTypeOf(JingChenDBModel.CainzProduct)">
         <MappingFragment StoreEntitySet="CainzProduct">
-          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="Barcode" ColumnName="Barcode" />
           <ScalarProperty Name="FactoryID" ColumnName="FactoryID" />
           <ScalarProperty Name="FactoryName" ColumnName="FactoryName" />
