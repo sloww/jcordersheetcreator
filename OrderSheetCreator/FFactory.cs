@@ -65,5 +65,10 @@ namespace OrderSheetCreator
             FCainzOrderD.CC =(entity.CainzCustomer) cainzCustomerBindingSource.Current;
             this.Close();
         }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            btnOK_Click(null, null);
+        }
     }
 }

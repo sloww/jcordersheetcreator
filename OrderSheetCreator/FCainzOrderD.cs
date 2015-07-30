@@ -24,7 +24,9 @@ namespace OrderSheetCreator
 
         private void tsbCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            bindingSource1.Clear();
+            cainzOrderDetailBindingSource.Clear();
+            //this.Close();
         }
 
         private void tsbSave_Click(object sender, EventArgs e)
@@ -39,6 +41,8 @@ namespace OrderSheetCreator
             cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
             PublicTools.RecoverColumnWidth(dataGridView1, FCainzOrderDdataGridViewSetPath);
             bindingSource1.DataSource = CC;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            this.ControlBox = true;
         }
 
         private void tsbNew_Click(object sender, EventArgs e)

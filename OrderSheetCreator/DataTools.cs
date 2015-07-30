@@ -364,15 +364,15 @@ namespace OrderSheetCreator
                     {
                         CainzTrader cc = new CainzTrader();
                         cc.ParentNum = "130817052630";
-                        cc.SnNum = DateTime.Now.ToString("yyMMddHHmmss");
+                        cc.SnNum = System.Guid.NewGuid().ToString();
                         cc.CateName = Trader.Key.ToString().Trim();
                         cc.IsDelete = 0;
                         cc.CreateTime = DateTime.Now;
                         db.CainzTrader.Add(cc);
-                        db.SaveChanges();
-                        System.Threading.Thread.Sleep(1000);
                     }
                 }
+                db.SaveChanges();
+
             }
         }
 
@@ -388,13 +388,14 @@ namespace OrderSheetCreator
                     CainzCustomer f2 = db.CainzCustomer.FirstOrDefault(item => item.FactoryName == FactoryName);
                     if (f2 == null)
                     {
-                        f.FactoryNo = DateTime.Now.ToString("yyMMddHHmmss");
+                        f.FactoryNo = System.Guid.NewGuid().ToString();
                         f.FirstNum = "130817052630";
+                        f.FactoryNameJP = Pinyin.GetInitials(f.FactoryName);
                         db.CainzCustomer.Add(f);
-                        db.SaveChanges();
-                        System.Threading.Thread.Sleep(1000);
+                        
                     }
                 }
+                db.SaveChanges();
             }
         }
 
@@ -767,7 +768,7 @@ namespace OrderSheetCreator
                     {
                         i++;
                     }
-                    int factoryID = -1;
+                    string factoryID = "";
                     if (gongchangString == "")
                     {
                         gongchangString = ist.SheetName.Trim();
@@ -781,7 +782,7 @@ namespace OrderSheetCreator
 
                     if (cc != null)
                     {
-                        factoryID = cc.ID;
+                        factoryID = cc.FactoryNo;
                         gongchangString = cc.FactoryName;
                     }
 
@@ -954,8 +955,10 @@ namespace OrderSheetCreator
                 string caizhiEXString = getCellString(caizhiEXNo, irow);
                 string gongchangString = getCellString(gongchangNo, irow);
                 string wuliaoString = getCellString(wuliaoNo, irow);
+                string  traderid = "";
+                string tradername = "";
 
-                int factoryID = -1;
+                string  factoryID = "";
                 if (gongchangString == "")
                 {
                     gongchangString = ist.SheetName.Trim();
@@ -969,8 +972,10 @@ namespace OrderSheetCreator
 
                 if (cc != null)
                 {
-                    factoryID = cc.ID;
+                    factoryID = cc.FactoryNo;
                     gongchangString = cc.FactoryName;
+                    traderid = cc.TraderNo;
+                    tradername = cc.Trader;
                 }
 
                 string com = cdString + caizhiString + chicunString + danjiaString + yanseString + caizhiEXString + wuliaoString + gongchangString;
@@ -990,13 +995,17 @@ namespace OrderSheetCreator
                         p.Size = chicunString;
                         p.Price = (System.Decimal)danjiaDouble;
                         p.CreateTime = DateTime.Now;
+                        p.TraderID = traderid;
+                        p.TraderName = tradername;
                         db.CainzProduct.Add(p);
                         db.Entry(p).State = System.Data.Entity.EntityState.Added;
                         db.SaveChanges();
+
                     }
 
                     productHT.Add(com, null);
                 }
+
             }
 
         }

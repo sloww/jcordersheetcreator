@@ -81,6 +81,7 @@ namespace OrderSheetCreator
             PublicTools.IniDatagridview(dataGridView1);
             PublicTools.SetColumsAutoModeNone(dataGridView1);
             PublicTools.RecoverColumnWidth(dataGridView1, this.FADD_DATAGRIDVIEW_SETPATH);
+            btnHidden_Click(null, null);
         }
 
         private void FAdd_KeyPress(object sender, KeyPressEventArgs e)
@@ -317,27 +318,20 @@ namespace OrderSheetCreator
                 using (var db = new entity.JingChenDBEntities2())
                 {
                     entity.CainzProduct cp = (entity.CainzProduct)productsBindingSource.Current;
+                    cp.Modified = 1;
+                    cp.ModifyTime = DateTime.Now;
                     db.CainzProduct.Attach(cp);
                     db.Entry(cp).State = System.Data.Entity.EntityState.Modified;
+
                     db.SaveChanges();
                 }
+                this.SearchBarcode();
             }
         }
 
         private void productsBindingSource_CurrentItemChanged(object sender, EventArgs e)
         {
             this.CheckOrderList();
-            entity.CainzProduct cp = (entity.CainzProduct)productsBindingSource.Current;
-            if (cp != null)
-            {
-                using (var db = new entity.JingChenDBEntities2())
-                {
-                    var query = (from a in db.CainzCustomer
-                                 where a.ID == cp.FactoryID
-                                 select a.Trader).FirstOrDefault();
-                    txbTrader.Text = query;
-                }
-            }
         }
 
         private void btnDeletedb_Click(object sender, EventArgs e)
@@ -398,6 +392,36 @@ namespace OrderSheetCreator
                 ckbIsLock.Visible = false;
 
             }
+        }
+
+        private void btnDBnew_Click(object sender, EventArgs e)
+        {
+            using (var db = new entity.JingChenDBEntities2())
+            {
+                entity.CainzProduct cp = new entity.CainzProduct();
+                cp.Deleted = 0;
+                cp.Barcode = txbBarcode.Text.Trim();
+                cp.Color = txbColor.Text.Trim();
+                cp.Material = txbMaterial.Text.Trim();
+                cp.Price = decimal.Parse(txbPrice.Text.Trim());
+                cp.Modified = 1;
+                cp.ModifyTime = DateTime.Now;
+                cp.CreateTime = DateTime.Now;
+                cp.FactoryID = ((entity.CainzProduct)productsBindingSource.Current).FactoryID;
+                cp.FactoryName = ((entity.CainzProduct)productsBindingSource.Current).FactoryName;
+                cp.TraderID = ((entity.CainzProduct)productsBindingSource.Current).TraderID;
+                cp.TraderName = ((entity.CainzProduct)productsBindingSource.Current).TraderName;
+                db.CainzProduct.Add(cp);
+                db.SaveChanges();
+            }
+
+            this.SearchBarcode();
+
+        }
+
+        private void txbColor_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
     }

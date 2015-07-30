@@ -29,11 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.txbSearchBarcode = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.ckbAutoEnter = new System.Windows.Forms.CheckBox();
+            this.btnClose = new System.Windows.Forms.Button();
             this.btnSaveToDB = new System.Windows.Forms.Button();
             this.txbCount = new System.Windows.Forms.TextBox();
             this.txbPrice = new System.Windows.Forms.TextBox();
@@ -47,6 +50,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblMaterial = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnHidden = new System.Windows.Forms.Button();
+            this.btnDBnew = new System.Windows.Forms.Button();
+            this.btnDeletedb = new System.Windows.Forms.Button();
+            this.ckbIsLock = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.txbTrader = new System.Windows.Forms.TextBox();
@@ -57,6 +65,7 @@
             this.txbReMarK = new System.Windows.Forms.TextBox();
             this.btnContinue = new System.Windows.Forms.Button();
             this.txbBarcode = new System.Windows.Forms.TextBox();
+            this.btnShow = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,22 +76,16 @@
             this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.popSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modified = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ModifyTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnDeletedb = new System.Windows.Forms.Button();
-            this.ckbIsLock = new System.Windows.Forms.CheckBox();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.btnDBnew = new System.Windows.Forms.Button();
-            this.btnHidden = new System.Windows.Forms.Button();
-            this.btnShow = new System.Windows.Forms.Button();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.ckbAutoEnter = new System.Windows.Forms.CheckBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -119,12 +122,37 @@
             this.panel1.Size = new System.Drawing.Size(877, 48);
             this.panel1.TabIndex = 3;
             // 
+            // ckbAutoEnter
+            // 
+            this.ckbAutoEnter.AutoSize = true;
+            this.ckbAutoEnter.Checked = true;
+            this.ckbAutoEnter.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbAutoEnter.Location = new System.Drawing.Point(262, 23);
+            this.ckbAutoEnter.Name = "ckbAutoEnter";
+            this.ckbAutoEnter.Size = new System.Drawing.Size(72, 16);
+            this.ckbAutoEnter.TabIndex = 22;
+            this.ckbAutoEnter.Text = "动态查询";
+            this.ckbAutoEnter.UseVisualStyleBackColor = true;
+            // 
+            // btnClose
+            // 
+            this.btnClose.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnClose.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnClose.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnClose.Location = new System.Drawing.Point(748, 3);
+            this.btnClose.Name = "btnClose";
+            this.btnClose.Size = new System.Drawing.Size(126, 38);
+            this.btnClose.TabIndex = 21;
+            this.btnClose.Text = "关闭";
+            this.btnClose.UseVisualStyleBackColor = false;
+            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+            // 
             // btnSaveToDB
             // 
             this.btnSaveToDB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.btnSaveToDB.Font = new System.Drawing.Font("宋体", 12F);
             this.btnSaveToDB.ForeColor = System.Drawing.Color.White;
-            this.btnSaveToDB.Location = new System.Drawing.Point(187, 18);
+            this.btnSaveToDB.Location = new System.Drawing.Point(187, 4);
             this.btnSaveToDB.Name = "btnSaveToDB";
             this.btnSaveToDB.Size = new System.Drawing.Size(126, 38);
             this.btnSaveToDB.TabIndex = 19;
@@ -150,7 +178,7 @@
             // 
             this.txbPrice.BackColor = System.Drawing.SystemColors.Control;
             this.txbPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbPrice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Price", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0.00元", "#0.00元"));
+            this.txbPrice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Price", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0.00", "#0.00"));
             this.txbPrice.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txbPrice.Location = new System.Drawing.Point(430, 12);
             this.txbPrice.Name = "txbPrice";
@@ -170,11 +198,12 @@
             this.txbColor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbColor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Color", true));
             this.txbColor.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbColor.Location = new System.Drawing.Point(69, 136);
+            this.txbColor.Location = new System.Drawing.Point(65, 135);
             this.txbColor.Name = "txbColor";
             this.txbColor.Size = new System.Drawing.Size(259, 26);
             this.txbColor.TabIndex = 10;
             this.txbColor.TabStop = false;
+            this.txbColor.TextChanged += new System.EventHandler(this.txbColor_TextChanged);
             // 
             // txbSize
             // 
@@ -183,7 +212,7 @@
             this.txbSize.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Size", true));
             this.txbSize.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbSize.Location = new System.Drawing.Point(65, 136);
+            this.txbSize.Location = new System.Drawing.Point(65, 93);
             this.txbSize.Name = "txbSize";
             this.txbSize.Size = new System.Drawing.Size(259, 26);
             this.txbSize.TabIndex = 9;
@@ -195,7 +224,7 @@
             this.txbMaterial.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbMaterial.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Material", true));
             this.txbMaterial.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbMaterial.Location = new System.Drawing.Point(69, 52);
+            this.txbMaterial.Location = new System.Drawing.Point(65, 52);
             this.txbMaterial.Name = "txbMaterial";
             this.txbMaterial.Size = new System.Drawing.Size(282, 26);
             this.txbMaterial.TabIndex = 8;
@@ -277,10 +306,75 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.btnShow);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 210);
+            this.panel2.Location = new System.Drawing.Point(0, 310);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(877, 273);
             this.panel2.TabIndex = 4;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.Control;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnHidden);
+            this.panel4.Controls.Add(this.btnDBnew);
+            this.panel4.Controls.Add(this.btnDeletedb);
+            this.panel4.Controls.Add(this.btnSaveToDB);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 231);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(877, 42);
+            this.panel4.TabIndex = 19;
+            // 
+            // btnHidden
+            // 
+            this.btnHidden.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnHidden.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnHidden.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnHidden.Location = new System.Drawing.Point(748, 4);
+            this.btnHidden.Name = "btnHidden";
+            this.btnHidden.Size = new System.Drawing.Size(126, 38);
+            this.btnHidden.TabIndex = 20;
+            this.btnHidden.Text = "隐藏此界面";
+            this.btnHidden.UseVisualStyleBackColor = false;
+            this.btnHidden.Click += new System.EventHandler(this.btnHidden_Click);
+            // 
+            // btnDBnew
+            // 
+            this.btnDBnew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnDBnew.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnDBnew.ForeColor = System.Drawing.Color.White;
+            this.btnDBnew.Location = new System.Drawing.Point(13, 4);
+            this.btnDBnew.Name = "btnDBnew";
+            this.btnDBnew.Size = new System.Drawing.Size(126, 38);
+            this.btnDBnew.TabIndex = 19;
+            this.btnDBnew.Text = "新增到数据库!";
+            this.btnDBnew.UseVisualStyleBackColor = false;
+            this.btnDBnew.Click += new System.EventHandler(this.btnDBnew_Click);
+            // 
+            // btnDeletedb
+            // 
+            this.btnDeletedb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnDeletedb.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnDeletedb.ForeColor = System.Drawing.Color.White;
+            this.btnDeletedb.Location = new System.Drawing.Point(361, 4);
+            this.btnDeletedb.Name = "btnDeletedb";
+            this.btnDeletedb.Size = new System.Drawing.Size(126, 38);
+            this.btnDeletedb.TabIndex = 19;
+            this.btnDeletedb.Text = "从产品库删除!";
+            this.btnDeletedb.UseVisualStyleBackColor = false;
+            this.btnDeletedb.Click += new System.EventHandler(this.btnDeletedb_Click);
+            // 
+            // ckbIsLock
+            // 
+            this.ckbIsLock.AutoSize = true;
+            this.ckbIsLock.Checked = true;
+            this.ckbIsLock.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ckbIsLock.Location = new System.Drawing.Point(363, 192);
+            this.ckbIsLock.Name = "ckbIsLock";
+            this.ckbIsLock.Size = new System.Drawing.Size(108, 16);
+            this.ckbIsLock.TabIndex = 20;
+            this.ckbIsLock.Text = "查询锁定贸易商";
+            this.ckbIsLock.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -304,6 +398,7 @@
             // 
             this.txbTrader.BackColor = System.Drawing.SystemColors.Control;
             this.txbTrader.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbTrader.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "TraderName", true));
             this.txbTrader.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txbTrader.Location = new System.Drawing.Point(87, 182);
             this.txbTrader.Name = "txbTrader";
@@ -388,13 +483,26 @@
             this.txbBarcode.TabStop = false;
             this.txbBarcode.TextChanged += new System.EventHandler(this.txbBarcode_TextChanged);
             // 
+            // btnShow
+            // 
+            this.btnShow.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnShow.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnShow.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnShow.Location = new System.Drawing.Point(748, 231);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Size = new System.Drawing.Size(126, 38);
+            this.btnShow.TabIndex = 21;
+            this.btnShow.Text = "显示管理界面";
+            this.btnShow.UseVisualStyleBackColor = false;
+            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.dataGridView1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 48);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(877, 162);
+            this.panel3.Size = new System.Drawing.Size(877, 262);
             this.panel3.TabIndex = 5;
             // 
             // dataGridView1
@@ -412,21 +520,23 @@
             this.Color,
             this.popSize,
             this.Price,
-            this.iDDataGridViewTextBoxColumn});
+            this.Modified,
+            this.iDDataGridViewTextBoxColumn,
+            this.ModifyTime});
             this.dataGridView1.DataSource = this.productsBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(877, 162);
+            this.dataGridView1.Size = new System.Drawing.Size(877, 262);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Column1.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Column1.DefaultCellStyle = dataGridViewCellStyle1;
             this.Column1.HeaderText = "序";
             this.Column1.Name = "Column1";
             this.Column1.ReadOnly = true;
@@ -486,13 +596,23 @@
             // Price
             // 
             this.Price.DataPropertyName = "Price";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle12.Format = "N2";
-            dataGridViewCellStyle12.NullValue = "0";
-            this.Price.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = "0";
+            this.Price.DefaultCellStyle = dataGridViewCellStyle2;
             this.Price.HeaderText = "单价";
             this.Price.Name = "Price";
             this.Price.ReadOnly = true;
+            // 
+            // Modified
+            // 
+            this.Modified.DataPropertyName = "Modified";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.NullValue = " ";
+            this.Modified.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Modified.HeaderText = "修正";
+            this.Modified.Name = "Modified";
+            this.Modified.ReadOnly = true;
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -503,6 +623,13 @@
             this.iDDataGridViewTextBoxColumn.ReadOnly = true;
             this.iDDataGridViewTextBoxColumn.Visible = false;
             // 
+            // ModifyTime
+            // 
+            this.ModifyTime.DataPropertyName = "ModifyTime";
+            this.ModifyTime.HeaderText = "修正时间";
+            this.ModifyTime.Name = "ModifyTime";
+            this.ModifyTime.ReadOnly = true;
+            // 
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -511,111 +638,11 @@
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
-            // btnDeletedb
-            // 
-            this.btnDeletedb.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnDeletedb.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnDeletedb.ForeColor = System.Drawing.Color.White;
-            this.btnDeletedb.Location = new System.Drawing.Point(361, 18);
-            this.btnDeletedb.Name = "btnDeletedb";
-            this.btnDeletedb.Size = new System.Drawing.Size(126, 38);
-            this.btnDeletedb.TabIndex = 19;
-            this.btnDeletedb.Text = "从产品库删除!";
-            this.btnDeletedb.UseVisualStyleBackColor = false;
-            this.btnDeletedb.Click += new System.EventHandler(this.btnDeletedb_Click);
-            // 
-            // ckbIsLock
-            // 
-            this.ckbIsLock.AutoSize = true;
-            this.ckbIsLock.Checked = true;
-            this.ckbIsLock.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbIsLock.Location = new System.Drawing.Point(363, 192);
-            this.ckbIsLock.Name = "ckbIsLock";
-            this.ckbIsLock.Size = new System.Drawing.Size(108, 16);
-            this.ckbIsLock.TabIndex = 20;
-            this.ckbIsLock.Text = "查询锁定贸易商";
-            this.ckbIsLock.UseVisualStyleBackColor = true;
-            // 
-            // panel4
-            // 
-            this.panel4.Controls.Add(this.btnHidden);
-            this.panel4.Controls.Add(this.btnDBnew);
-            this.panel4.Controls.Add(this.btnDeletedb);
-            this.panel4.Controls.Add(this.btnSaveToDB);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 273);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(877, 0);
-            this.panel4.TabIndex = 19;
-            // 
-            // btnDBnew
-            // 
-            this.btnDBnew.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.btnDBnew.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnDBnew.ForeColor = System.Drawing.Color.White;
-            this.btnDBnew.Location = new System.Drawing.Point(13, 18);
-            this.btnDBnew.Name = "btnDBnew";
-            this.btnDBnew.Size = new System.Drawing.Size(126, 38);
-            this.btnDBnew.TabIndex = 19;
-            this.btnDBnew.Text = "新增到数据库!";
-            this.btnDBnew.UseVisualStyleBackColor = false;
-            // 
-            // btnHidden
-            // 
-            this.btnHidden.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.btnHidden.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnHidden.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnHidden.Location = new System.Drawing.Point(748, 18);
-            this.btnHidden.Name = "btnHidden";
-            this.btnHidden.Size = new System.Drawing.Size(126, 38);
-            this.btnHidden.TabIndex = 20;
-            this.btnHidden.Text = "隐藏此界面";
-            this.btnHidden.UseVisualStyleBackColor = false;
-            this.btnHidden.Click += new System.EventHandler(this.btnHidden_Click);
-            // 
-            // btnShow
-            // 
-            this.btnShow.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.btnShow.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnShow.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnShow.Location = new System.Drawing.Point(748, 231);
-            this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(126, 38);
-            this.btnShow.TabIndex = 21;
-            this.btnShow.Text = "显示管理界面";
-            this.btnShow.UseVisualStyleBackColor = false;
-            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
-            // 
-            // btnClose
-            // 
-            this.btnClose.BackColor = System.Drawing.SystemColors.AppWorkspace;
-            this.btnClose.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnClose.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnClose.Location = new System.Drawing.Point(748, 3);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(126, 38);
-            this.btnClose.TabIndex = 21;
-            this.btnClose.Text = "关闭";
-            this.btnClose.UseVisualStyleBackColor = false;
-            this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // ckbAutoEnter
-            // 
-            this.ckbAutoEnter.AutoSize = true;
-            this.ckbAutoEnter.Checked = true;
-            this.ckbAutoEnter.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbAutoEnter.Location = new System.Drawing.Point(262, 23);
-            this.ckbAutoEnter.Name = "ckbAutoEnter";
-            this.ckbAutoEnter.Size = new System.Drawing.Size(72, 16);
-            this.ckbAutoEnter.TabIndex = 22;
-            this.ckbAutoEnter.Text = "动态查询";
-            this.ckbAutoEnter.UseVisualStyleBackColor = true;
-            // 
             // FAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(877, 483);
+            this.ClientSize = new System.Drawing.Size(877, 583);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -636,9 +663,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -668,15 +695,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txbBarcode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Barcode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FactoryName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FactoryID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Material;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Color;
-        private System.Windows.Forms.DataGridViewTextBoxColumn popSize;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.TextBox txbIssuedDate;
         private System.Windows.Forms.Label label2;
@@ -691,5 +709,16 @@
         private System.Windows.Forms.Button btnShow;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.CheckBox ckbAutoEnter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Barcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FactoryName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FactoryID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Material;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Color;
+        private System.Windows.Forms.DataGridViewTextBoxColumn popSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Modified;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ModifyTime;
     }
 }
