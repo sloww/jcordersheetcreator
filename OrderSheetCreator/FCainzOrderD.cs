@@ -44,6 +44,13 @@ namespace OrderSheetCreator
             bindingSource1.DataSource = CC;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.ControlBox = true;
+            using (entity.DB db = new entity.DB())
+            {
+
+
+                lblSql.Text = db.Database.Connection.ConnectionString.Replace("ceshi123!@#","***").Trim();
+            }
+            lblVer.Text = " Ver 1.2 2015-8-5";
         }
 
         private void tsbNew_Click(object sender, EventArgs e)
@@ -105,8 +112,8 @@ namespace OrderSheetCreator
                 MessageBox.Show("请添加订购工厂信息");
                 return;
             }
-            string excelPath = "D://cainzOrder.xls";
-            string copedExcelPath = string.Format("{0}{1}{2}", @"D://", DateTime.Now.ToString("MMddHHmmss"), ".xls");
+            string excelPath = Application.StartupPath+ @"\\cainzOrder.xls";
+            string copedExcelPath = string.Format("{0}\\订单记录\\{1}{2}", Application.StartupPath, DateTime.Now.ToString("MMddHHmmss"), ".xls");
             if (File.Exists(excelPath))
             {
                 File.Copy(excelPath, copedExcelPath, true);
@@ -118,7 +125,8 @@ namespace OrderSheetCreator
 
             IWorkbook wb = WorkbookFactory.Create(copedExcelPath);
 
-            ISheet ist = wb.GetSheetAt(0);
+            //第二页
+            ISheet ist = wb.GetSheetAt(1);
             int rowofPage = ist.LastRowNum + 1;
 
             ICell icIssuedDate = ist.GetRow(1).GetCell(0);
@@ -129,12 +137,17 @@ namespace OrderSheetCreator
             ICell icContent = ist.GetRow(5).GetCell(0);
             ICell icFile = ist.GetRow(8).GetCell(5);
 
+            ICell icOrder = ist.GetRow(7).GetCell(0);
+            ICell icJingchenOrer = ist.GetRow(8).GetCell(0);
+
             icTrader.SetCellValue(icTrader.StringCellValue + txbTrader.Text);
             icFactroy.SetCellValue(icFactroy.StringCellValue + txbFactory.Text);
             icAdd.SetCellValue(icAdd.StringCellValue + txbAdd.Text);
             icContent.SetCellValue(icContent.StringCellValue + txbName.Text);
             icIssuedDate.SetCellValue(icIssuedDate.StringCellValue + txbIssuedDate.Text);
             icDELDate.SetCellValue(icDELDate.StringCellValue + txbDELdate.Text);
+            icOrder.SetCellValue(icOrder.StringCellValue + txbOrder.Text);
+            icJingchenOrer.SetCellValue(icJingchenOrer.StringCellValue + txbJingChenOrder.Text);
 
             icFile.SetCellValue(icFile.StringCellValue+ txbFile.Text);
 
@@ -154,13 +167,16 @@ namespace OrderSheetCreator
                 irow.GetCell(7).SetCellValue(ORDERDETAILLIST[i].Price.ToString());
                 totolMoney += ORDERDETAILLIST[i].InvoiceMoney;
                 irow.GetCell(8).SetCellValue(ORDERDETAILLIST[i].InvoiceMoney.ToString());
-                irow.GetCell(9).SetCellValue(ORDERDETAILLIST[i].ExpectDate.ToString());
+                if (ORDERDETAILLIST[i].ExpectDate !=null)
+                {
+                    irow.GetCell(9).SetCellValue(((DateTime)ORDERDETAILLIST[i].ExpectDate).ToString("yyyy-MM-dd"));
+                }
                 irow.GetCell(10).SetCellValue("");
                 irow.GetCell(11).SetCellValue(ORDERDETAILLIST[i].Remark);
             }
 
             //合计写
-            IRow irowTotol = ist.GetRow(31);
+            IRow irowTotol = ist.GetRow(30);
             irowTotol.GetCell(6).SetCellValue(totolCount.ToString());
             irowTotol.GetCell(8).SetCellValue(totolMoney.ToString());
             
@@ -168,6 +184,11 @@ namespace OrderSheetCreator
             using (FileStream fs = new FileStream(copedExcelPath, FileMode.Open))
             {
                 wb.Write(fs);
+            }
+
+            using (var db = new entity.DB())
+            {
+
             }
             ORDERDETAILLIST = new BindingList<entity.CainzOrderDetail>();
             CC = new entity.CainzCustomer();

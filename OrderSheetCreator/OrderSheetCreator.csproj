@@ -142,6 +142,12 @@
     <Compile Include="DataTools.Designer.cs">
       <DependentUpon>DataTools.cs</DependentUpon>
     </Compile>
+    <Compile Include="FDateTime.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FDateTime.Designer.cs">
+      <DependentUpon>FDateTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="FFactory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +168,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataTools.resx">
       <DependentUpon>DataTools.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FDateTime.resx">
+      <DependentUpon>FDateTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FFactory.resx">
       <DependentUpon>FFactory.cs</DependentUpon>

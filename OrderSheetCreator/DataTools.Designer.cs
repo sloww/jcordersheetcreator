@@ -44,8 +44,9 @@
             this.btnBlind = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
-            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button7 = new System.Windows.Forms.Button();
+            this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.btnGetAllProduct = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
@@ -53,10 +54,9 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(521, 24);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Location = new System.Drawing.Point(391, 19);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(163, 61);
+            this.button1.Size = new System.Drawing.Size(122, 49);
             this.button1.TabIndex = 0;
             this.button1.Text = "导入贸易商数据";
             this.button1.UseVisualStyleBackColor = true;
@@ -64,10 +64,9 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(32, 24);
-            this.button2.Margin = new System.Windows.Forms.Padding(4);
+            this.button2.Location = new System.Drawing.Point(24, 19);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(247, 61);
+            this.button2.Size = new System.Drawing.Size(185, 49);
             this.button2.TabIndex = 3;
             this.button2.Text = "获取工厂和贸易商";
             this.button2.UseVisualStyleBackColor = true;
@@ -79,10 +78,9 @@
             // 
             // btnGetMaoyisTXT
             // 
-            this.btnGetMaoyisTXT.Location = new System.Drawing.Point(319, 24);
-            this.btnGetMaoyisTXT.Margin = new System.Windows.Forms.Padding(4);
+            this.btnGetMaoyisTXT.Location = new System.Drawing.Point(239, 19);
             this.btnGetMaoyisTXT.Name = "btnGetMaoyisTXT";
-            this.btnGetMaoyisTXT.Size = new System.Drawing.Size(163, 61);
+            this.btnGetMaoyisTXT.Size = new System.Drawing.Size(122, 49);
             this.btnGetMaoyisTXT.TabIndex = 4;
             this.btnGetMaoyisTXT.Text = "获取贸易商txt清单";
             this.btnGetMaoyisTXT.UseVisualStyleBackColor = true;
@@ -90,10 +88,9 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(927, 24);
-            this.button4.Margin = new System.Windows.Forms.Padding(4);
+            this.button4.Location = new System.Drawing.Point(695, 19);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(180, 61);
+            this.button4.Size = new System.Drawing.Size(135, 49);
             this.button4.TabIndex = 5;
             this.button4.Text = "绑定工厂和贸易商关系";
             this.button4.UseVisualStyleBackColor = true;
@@ -101,10 +98,9 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(1147, 24);
-            this.button5.Margin = new System.Windows.Forms.Padding(4);
+            this.button5.Location = new System.Drawing.Point(860, 19);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(231, 61);
+            this.button5.Size = new System.Drawing.Size(173, 49);
             this.button5.TabIndex = 6;
             this.button5.Text = "导入excel 万能表-产品数据";
             this.button5.UseVisualStyleBackColor = true;
@@ -120,17 +116,15 @@
             this.panel1.Controls.Add(this.button1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1399, 106);
+            this.panel1.Size = new System.Drawing.Size(1049, 85);
             this.panel1.TabIndex = 7;
             // 
             // btnFactory
             // 
-            this.btnFactory.Location = new System.Drawing.Point(724, 24);
-            this.btnFactory.Margin = new System.Windows.Forms.Padding(4);
+            this.btnFactory.Location = new System.Drawing.Point(543, 19);
             this.btnFactory.Name = "btnFactory";
-            this.btnFactory.Size = new System.Drawing.Size(163, 61);
+            this.btnFactory.Size = new System.Drawing.Size(122, 49);
             this.btnFactory.TabIndex = 7;
             this.btnFactory.Text = "获取工厂 txt 清单";
             this.btnFactory.UseVisualStyleBackColor = true;
@@ -143,18 +137,16 @@
             this.panel2.Controls.Add(this.btnCainzMaoyis);
             this.panel2.Controls.Add(this.btnBlind);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 106);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4);
+            this.panel2.Location = new System.Drawing.Point(0, 85);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1399, 125);
+            this.panel2.Size = new System.Drawing.Size(1049, 100);
             this.panel2.TabIndex = 8;
             // 
             // btnImportProductData
             // 
-            this.btnImportProductData.Location = new System.Drawing.Point(1147, 32);
-            this.btnImportProductData.Margin = new System.Windows.Forms.Padding(4);
+            this.btnImportProductData.Location = new System.Drawing.Point(860, 26);
             this.btnImportProductData.Name = "btnImportProductData";
-            this.btnImportProductData.Size = new System.Drawing.Size(231, 61);
+            this.btnImportProductData.Size = new System.Drawing.Size(173, 49);
             this.btnImportProductData.TabIndex = 9;
             this.btnImportProductData.Text = "导入产品数据";
             this.btnImportProductData.UseVisualStyleBackColor = true;
@@ -162,10 +154,9 @@
             // 
             // btnImportFactory
             // 
-            this.btnImportFactory.Location = new System.Drawing.Point(724, 32);
-            this.btnImportFactory.Margin = new System.Windows.Forms.Padding(4);
+            this.btnImportFactory.Location = new System.Drawing.Point(543, 26);
             this.btnImportFactory.Name = "btnImportFactory";
-            this.btnImportFactory.Size = new System.Drawing.Size(163, 61);
+            this.btnImportFactory.Size = new System.Drawing.Size(122, 49);
             this.btnImportFactory.TabIndex = 8;
             this.btnImportFactory.Text = "导入工厂信息";
             this.btnImportFactory.UseVisualStyleBackColor = true;
@@ -173,10 +164,9 @@
             // 
             // btnCainzMaoyis
             // 
-            this.btnCainzMaoyis.Location = new System.Drawing.Point(521, 32);
-            this.btnCainzMaoyis.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCainzMaoyis.Location = new System.Drawing.Point(391, 26);
             this.btnCainzMaoyis.Name = "btnCainzMaoyis";
-            this.btnCainzMaoyis.Size = new System.Drawing.Size(163, 61);
+            this.btnCainzMaoyis.Size = new System.Drawing.Size(122, 49);
             this.btnCainzMaoyis.TabIndex = 0;
             this.btnCainzMaoyis.Text = "导入贸易商数据";
             this.btnCainzMaoyis.UseVisualStyleBackColor = true;
@@ -184,10 +174,9 @@
             // 
             // btnBlind
             // 
-            this.btnBlind.Location = new System.Drawing.Point(927, 32);
-            this.btnBlind.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBlind.Location = new System.Drawing.Point(695, 26);
             this.btnBlind.Name = "btnBlind";
-            this.btnBlind.Size = new System.Drawing.Size(180, 61);
+            this.btnBlind.Size = new System.Drawing.Size(135, 49);
             this.btnBlind.TabIndex = 5;
             this.btnBlind.Text = "绑定工厂和贸易商关系";
             this.btnBlind.UseVisualStyleBackColor = true;
@@ -195,10 +184,9 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(1147, 278);
-            this.button3.Margin = new System.Windows.Forms.Padding(4);
+            this.button3.Location = new System.Drawing.Point(860, 222);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(231, 61);
+            this.button3.Size = new System.Drawing.Size(173, 49);
             this.button3.TabIndex = 10;
             this.button3.Text = "导入产品数据";
             this.button3.UseVisualStyleBackColor = true;
@@ -206,41 +194,49 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(724, 278);
-            this.button6.Margin = new System.Windows.Forms.Padding(4);
+            this.button6.Location = new System.Drawing.Point(543, 222);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(163, 61);
+            this.button6.Size = new System.Drawing.Size(122, 49);
             this.button6.TabIndex = 8;
             this.button6.Text = "添加工厂简拼";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataSource = typeof(entity.Customer);
-            // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(1147, 380);
-            this.button7.Margin = new System.Windows.Forms.Padding(4);
+            this.button7.Location = new System.Drawing.Point(860, 304);
             this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(231, 61);
+            this.button7.Size = new System.Drawing.Size(173, 49);
             this.button7.TabIndex = 11;
             this.button7.Text = "从修改的excel 导入数据";
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // customerBindingSource
+            // 
+            this.customerBindingSource.DataSource = typeof(entity.Customer);
+            // 
+            // btnGetAllProduct
+            // 
+            this.btnGetAllProduct.Location = new System.Drawing.Point(543, 345);
+            this.btnGetAllProduct.Name = "btnGetAllProduct";
+            this.btnGetAllProduct.Size = new System.Drawing.Size(122, 49);
+            this.btnGetAllProduct.TabIndex = 12;
+            this.btnGetAllProduct.Text = "获取所有的产品清单";
+            this.btnGetAllProduct.UseVisualStyleBackColor = true;
+            this.btnGetAllProduct.Click += new System.EventHandler(this.btnGetAllProduct_Click);
+            // 
             // DataTools
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1399, 638);
+            this.ClientSize = new System.Drawing.Size(1049, 510);
+            this.Controls.Add(this.btnGetAllProduct);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "DataTools";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -272,6 +268,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button btnGetAllProduct;
     }
 }
 
