@@ -33,11 +33,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.btnFactory = new System.Windows.Forms.ToolStripButton();
@@ -58,6 +58,31 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.cainzOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.txbFile = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txbAdd = new System.Windows.Forms.TextBox();
+            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.txbJingChenOrder = new System.Windows.Forms.TextBox();
+            this.txbOrder = new System.Windows.Forms.TextBox();
+            this.txbName = new System.Windows.Forms.TextBox();
+            this.txbDELdate = new System.Windows.Forms.TextBox();
+            this.txbFactory = new System.Windows.Forms.TextBox();
+            this.txbTrader = new System.Windows.Forms.TextBox();
+            this.txbIssuedDate = new System.Windows.Forms.TextBox();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lblSql = new System.Windows.Forms.Label();
+            this.lblVer = new System.Windows.Forms.Label();
             this.colNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -102,31 +127,6 @@
             this.remarkDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.batchNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rowNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cainzOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.txbFile = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txbAdd = new System.Windows.Forms.TextBox();
-            this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.txbJingChenOrder = new System.Windows.Forms.TextBox();
-            this.txbOrder = new System.Windows.Forms.TextBox();
-            this.txbName = new System.Windows.Forms.TextBox();
-            this.txbDELdate = new System.Windows.Forms.TextBox();
-            this.txbFactory = new System.Windows.Forms.TextBox();
-            this.txbTrader = new System.Windows.Forms.TextBox();
-            this.txbIssuedDate = new System.Windows.Forms.TextBox();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblSql = new System.Windows.Forms.Label();
-            this.lblVer = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -411,332 +411,6 @@
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
-            // colNo
-            // 
-            this.colNo.DataPropertyName = "RowNo";
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colNo.DefaultCellStyle = dataGridViewCellStyle2;
-            this.colNo.HeaderText = "编号(NO.)";
-            this.colNo.Name = "colNo";
-            this.colNo.Width = 60;
-            // 
-            // Column2
-            // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Column2.DataPropertyName = "ProductCD";
-            this.Column2.HeaderText = "商品条形码号(JAN)";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 72;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "ProductName";
-            this.Column3.HeaderText = "物料名称(型番)";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 90;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "PopSize";
-            this.Column4.HeaderText = "尺寸(mm) (SIZE)";
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 90;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "Colour";
-            this.Column5.HeaderText = "颜色(COLOR)";
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 90;
-            // 
-            // Column6
-            // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Column6.DataPropertyName = "PaperKind";
-            this.Column6.HeaderText = "材质及其他要求(kind of paper)";
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 94;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "OrderNum";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N0";
-            dataGridViewCellStyle3.NullValue = null;
-            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.Column7.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Column7.HeaderText = "订购数(枚）  (PCS)";
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 90;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "Price";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = "0";
-            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.Column8.DefaultCellStyle = dataGridViewCellStyle4;
-            this.Column8.HeaderText = "单价（元）(price)";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            this.Column8.Width = 90;
-            // 
-            // Column9
-            // 
-            this.Column9.DataPropertyName = "InvoiceMoney";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle5.Format = "N2";
-            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
-            this.Column9.DefaultCellStyle = dataGridViewCellStyle5;
-            this.Column9.HeaderText = "合计金额 (Amount)";
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 90;
-            // 
-            // Column11
-            // 
-            this.Column11.DataPropertyName = "BatchNum";
-            this.Column11.HeaderText = "产品批号";
-            this.Column11.Name = "Column11";
-            // 
-            // Column10
-            // 
-            this.Column10.DataPropertyName = "ExpectDate";
-            this.Column10.HeaderText = "希望交货期";
-            this.Column10.Name = "Column10";
-            this.Column10.Width = 90;
-            // 
-            // Column12
-            // 
-            this.Column12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Column12.DataPropertyName = "Remark";
-            this.Column12.HeaderText = "备注    (Notes)";
-            this.Column12.Name = "Column12";
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // snNumDataGridViewTextBoxColumn
-            // 
-            this.snNumDataGridViewTextBoxColumn.DataPropertyName = "SnNum";
-            this.snNumDataGridViewTextBoxColumn.HeaderText = "SnNum";
-            this.snNumDataGridViewTextBoxColumn.Name = "snNumDataGridViewTextBoxColumn";
-            this.snNumDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // orderNumDataGridViewTextBoxColumn
-            // 
-            this.orderNumDataGridViewTextBoxColumn.DataPropertyName = "OrderNum";
-            this.orderNumDataGridViewTextBoxColumn.HeaderText = "OrderNum";
-            this.orderNumDataGridViewTextBoxColumn.Name = "orderNumDataGridViewTextBoxColumn";
-            this.orderNumDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // nitORIDataGridViewTextBoxColumn
-            // 
-            this.nitORIDataGridViewTextBoxColumn.DataPropertyName = "NitORI";
-            this.nitORIDataGridViewTextBoxColumn.HeaderText = "NitORI";
-            this.nitORIDataGridViewTextBoxColumn.Name = "nitORIDataGridViewTextBoxColumn";
-            this.nitORIDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // productCDDataGridViewTextBoxColumn
-            // 
-            this.productCDDataGridViewTextBoxColumn.DataPropertyName = "ProductCD";
-            this.productCDDataGridViewTextBoxColumn.HeaderText = "ProductCD";
-            this.productCDDataGridViewTextBoxColumn.Name = "productCDDataGridViewTextBoxColumn";
-            this.productCDDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // productNameDataGridViewTextBoxColumn
-            // 
-            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
-            this.productNameDataGridViewTextBoxColumn.HeaderText = "ProductName";
-            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
-            this.productNameDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // cdFileNameDataGridViewTextBoxColumn
-            // 
-            this.cdFileNameDataGridViewTextBoxColumn.DataPropertyName = "CdFileName";
-            this.cdFileNameDataGridViewTextBoxColumn.HeaderText = "CdFileName";
-            this.cdFileNameDataGridViewTextBoxColumn.Name = "cdFileNameDataGridViewTextBoxColumn";
-            this.cdFileNameDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // popDesignNoDataGridViewTextBoxColumn
-            // 
-            this.popDesignNoDataGridViewTextBoxColumn.DataPropertyName = "PopDesignNo";
-            this.popDesignNoDataGridViewTextBoxColumn.HeaderText = "PopDesignNo";
-            this.popDesignNoDataGridViewTextBoxColumn.Name = "popDesignNoDataGridViewTextBoxColumn";
-            this.popDesignNoDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // popSizeDataGridViewTextBoxColumn
-            // 
-            this.popSizeDataGridViewTextBoxColumn.DataPropertyName = "PopSize";
-            this.popSizeDataGridViewTextBoxColumn.HeaderText = "PopSize";
-            this.popSizeDataGridViewTextBoxColumn.Name = "popSizeDataGridViewTextBoxColumn";
-            this.popSizeDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // paperKindDataGridViewTextBoxColumn
-            // 
-            this.paperKindDataGridViewTextBoxColumn.DataPropertyName = "PaperKind";
-            this.paperKindDataGridViewTextBoxColumn.HeaderText = "PaperKind";
-            this.paperKindDataGridViewTextBoxColumn.Name = "paperKindDataGridViewTextBoxColumn";
-            this.paperKindDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // popCateDataGridViewTextBoxColumn
-            // 
-            this.popCateDataGridViewTextBoxColumn.DataPropertyName = "PopCate";
-            this.popCateDataGridViewTextBoxColumn.HeaderText = "PopCate";
-            this.popCateDataGridViewTextBoxColumn.Name = "popCateDataGridViewTextBoxColumn";
-            this.popCateDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // popCateNameDataGridViewTextBoxColumn
-            // 
-            this.popCateNameDataGridViewTextBoxColumn.DataPropertyName = "PopCateName";
-            this.popCateNameDataGridViewTextBoxColumn.HeaderText = "PopCateName";
-            this.popCateNameDataGridViewTextBoxColumn.Name = "popCateNameDataGridViewTextBoxColumn";
-            this.popCateNameDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // colourDataGridViewTextBoxColumn
-            // 
-            this.colourDataGridViewTextBoxColumn.DataPropertyName = "Colour";
-            this.colourDataGridViewTextBoxColumn.HeaderText = "Colour";
-            this.colourDataGridViewTextBoxColumn.Name = "colourDataGridViewTextBoxColumn";
-            this.colourDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // pOPNumDataGridViewTextBoxColumn
-            // 
-            this.pOPNumDataGridViewTextBoxColumn.DataPropertyName = "POPNum";
-            this.pOPNumDataGridViewTextBoxColumn.HeaderText = "POPNum";
-            this.pOPNumDataGridViewTextBoxColumn.Name = "pOPNumDataGridViewTextBoxColumn";
-            this.pOPNumDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // realNumDataGridViewTextBoxColumn
-            // 
-            this.realNumDataGridViewTextBoxColumn.DataPropertyName = "RealNum";
-            this.realNumDataGridViewTextBoxColumn.HeaderText = "RealNum";
-            this.realNumDataGridViewTextBoxColumn.Name = "realNumDataGridViewTextBoxColumn";
-            this.realNumDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // unitNumDataGridViewTextBoxColumn
-            // 
-            this.unitNumDataGridViewTextBoxColumn.DataPropertyName = "UnitNum";
-            this.unitNumDataGridViewTextBoxColumn.HeaderText = "UnitNum";
-            this.unitNumDataGridViewTextBoxColumn.Name = "unitNumDataGridViewTextBoxColumn";
-            this.unitNumDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // unitNameDataGridViewTextBoxColumn
-            // 
-            this.unitNameDataGridViewTextBoxColumn.DataPropertyName = "UnitName";
-            this.unitNameDataGridViewTextBoxColumn.HeaderText = "UnitName";
-            this.unitNameDataGridViewTextBoxColumn.Name = "unitNameDataGridViewTextBoxColumn";
-            this.unitNameDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // expectDateDataGridViewTextBoxColumn
-            // 
-            this.expectDateDataGridViewTextBoxColumn.DataPropertyName = "ExpectDate";
-            this.expectDateDataGridViewTextBoxColumn.HeaderText = "ExpectDate";
-            this.expectDateDataGridViewTextBoxColumn.Name = "expectDateDataGridViewTextBoxColumn";
-            this.expectDateDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // priceDataGridViewTextBoxColumn
-            // 
-            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
-            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
-            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
-            this.priceDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // probabilityDateDataGridViewTextBoxColumn
-            // 
-            this.probabilityDateDataGridViewTextBoxColumn.DataPropertyName = "ProbabilityDate";
-            this.probabilityDateDataGridViewTextBoxColumn.HeaderText = "ProbabilityDate";
-            this.probabilityDateDataGridViewTextBoxColumn.Name = "probabilityDateDataGridViewTextBoxColumn";
-            this.probabilityDateDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // eTDDataGridViewTextBoxColumn
-            // 
-            this.eTDDataGridViewTextBoxColumn.DataPropertyName = "ETD";
-            this.eTDDataGridViewTextBoxColumn.HeaderText = "ETD";
-            this.eTDDataGridViewTextBoxColumn.Name = "eTDDataGridViewTextBoxColumn";
-            this.eTDDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // referenceDataGridViewTextBoxColumn
-            // 
-            this.referenceDataGridViewTextBoxColumn.DataPropertyName = "Reference";
-            this.referenceDataGridViewTextBoxColumn.HeaderText = "Reference";
-            this.referenceDataGridViewTextBoxColumn.Name = "referenceDataGridViewTextBoxColumn";
-            this.referenceDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // printMoneyDataGridViewTextBoxColumn
-            // 
-            this.printMoneyDataGridViewTextBoxColumn.DataPropertyName = "PrintMoney";
-            this.printMoneyDataGridViewTextBoxColumn.HeaderText = "PrintMoney";
-            this.printMoneyDataGridViewTextBoxColumn.Name = "printMoneyDataGridViewTextBoxColumn";
-            this.printMoneyDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // checkMoneyDataGridViewTextBoxColumn
-            // 
-            this.checkMoneyDataGridViewTextBoxColumn.DataPropertyName = "CheckMoney";
-            this.checkMoneyDataGridViewTextBoxColumn.HeaderText = "CheckMoney";
-            this.checkMoneyDataGridViewTextBoxColumn.Name = "checkMoneyDataGridViewTextBoxColumn";
-            this.checkMoneyDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // invoiceMoneyDataGridViewTextBoxColumn
-            // 
-            this.invoiceMoneyDataGridViewTextBoxColumn.DataPropertyName = "InvoiceMoney";
-            this.invoiceMoneyDataGridViewTextBoxColumn.HeaderText = "InvoiceMoney";
-            this.invoiceMoneyDataGridViewTextBoxColumn.Name = "invoiceMoneyDataGridViewTextBoxColumn";
-            this.invoiceMoneyDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // sampleDataGridViewTextBoxColumn
-            // 
-            this.sampleDataGridViewTextBoxColumn.DataPropertyName = "Sample";
-            this.sampleDataGridViewTextBoxColumn.HeaderText = "Sample";
-            this.sampleDataGridViewTextBoxColumn.Name = "sampleDataGridViewTextBoxColumn";
-            this.sampleDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // statusDataGridViewTextBoxColumn
-            // 
-            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
-            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
-            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
-            this.statusDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // isDeleteDataGridViewTextBoxColumn
-            // 
-            this.isDeleteDataGridViewTextBoxColumn.DataPropertyName = "IsDelete";
-            this.isDeleteDataGridViewTextBoxColumn.HeaderText = "IsDelete";
-            this.isDeleteDataGridViewTextBoxColumn.Name = "isDeleteDataGridViewTextBoxColumn";
-            this.isDeleteDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // createTimeDataGridViewTextBoxColumn
-            // 
-            this.createTimeDataGridViewTextBoxColumn.DataPropertyName = "CreateTime";
-            this.createTimeDataGridViewTextBoxColumn.HeaderText = "CreateTime";
-            this.createTimeDataGridViewTextBoxColumn.Name = "createTimeDataGridViewTextBoxColumn";
-            this.createTimeDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // remarkDataGridViewTextBoxColumn
-            // 
-            this.remarkDataGridViewTextBoxColumn.DataPropertyName = "Remark";
-            this.remarkDataGridViewTextBoxColumn.HeaderText = "Remark";
-            this.remarkDataGridViewTextBoxColumn.Name = "remarkDataGridViewTextBoxColumn";
-            this.remarkDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // batchNumDataGridViewTextBoxColumn
-            // 
-            this.batchNumDataGridViewTextBoxColumn.DataPropertyName = "BatchNum";
-            this.batchNumDataGridViewTextBoxColumn.HeaderText = "BatchNum";
-            this.batchNumDataGridViewTextBoxColumn.Name = "batchNumDataGridViewTextBoxColumn";
-            this.batchNumDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // rowNoDataGridViewTextBoxColumn
-            // 
-            this.rowNoDataGridViewTextBoxColumn.DataPropertyName = "RowNo";
-            this.rowNoDataGridViewTextBoxColumn.HeaderText = "RowNo";
-            this.rowNoDataGridViewTextBoxColumn.Name = "rowNoDataGridViewTextBoxColumn";
-            this.rowNoDataGridViewTextBoxColumn.Visible = false;
-            // 
             // cainzOrderDetailBindingSource
             // 
             this.cainzOrderDetailBindingSource.DataSource = typeof(entity.CainzOrderDetail);
@@ -1018,6 +692,332 @@
             this.lblVer.TabIndex = 1;
             this.lblVer.Text = "label18";
             // 
+            // colNo
+            // 
+            this.colNo.DataPropertyName = "RowNo";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colNo.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colNo.HeaderText = "编号(NO.)";
+            this.colNo.Name = "colNo";
+            this.colNo.Width = 60;
+            // 
+            // Column2
+            // 
+            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Column2.DataPropertyName = "ProductCD";
+            this.Column2.HeaderText = "商品条形码号(JAN)";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 94;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "ProductName";
+            this.Column3.HeaderText = "物料名称(型番)";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 90;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "PopSize";
+            this.Column4.HeaderText = "尺寸(mm) (SIZE)";
+            this.Column4.Name = "Column4";
+            this.Column4.Width = 90;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "Colour";
+            this.Column5.HeaderText = "颜色(COLOR)";
+            this.Column5.Name = "Column5";
+            this.Column5.Width = 90;
+            // 
+            // Column6
+            // 
+            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Column6.DataPropertyName = "PaperKind";
+            this.Column6.HeaderText = "材质及其他要求(kind of paper)";
+            this.Column6.Name = "Column6";
+            this.Column6.Width = 137;
+            // 
+            // Column7
+            // 
+            this.Column7.DataPropertyName = "OrderNum";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N0";
+            dataGridViewCellStyle3.NullValue = null;
+            dataGridViewCellStyle3.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.Column7.DefaultCellStyle = dataGridViewCellStyle3;
+            this.Column7.HeaderText = "订购数(枚）  (PCS)";
+            this.Column7.Name = "Column7";
+            this.Column7.Width = 90;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "Price";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle4.Format = "N3";
+            dataGridViewCellStyle4.NullValue = "0";
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.Column8.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Column8.HeaderText = "单价（元）(price)";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            this.Column8.Width = 90;
+            // 
+            // Column9
+            // 
+            this.Column9.DataPropertyName = "InvoiceMoney";
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle5.Format = "N3";
+            dataGridViewCellStyle5.Padding = new System.Windows.Forms.Padding(0, 0, 20, 0);
+            this.Column9.DefaultCellStyle = dataGridViewCellStyle5;
+            this.Column9.HeaderText = "合计金额 (Amount)";
+            this.Column9.Name = "Column9";
+            this.Column9.Width = 90;
+            // 
+            // Column11
+            // 
+            this.Column11.DataPropertyName = "BatchNum";
+            this.Column11.HeaderText = "产品批号";
+            this.Column11.Name = "Column11";
+            // 
+            // Column10
+            // 
+            this.Column10.DataPropertyName = "ExpectDate";
+            this.Column10.HeaderText = "希望交货期";
+            this.Column10.Name = "Column10";
+            this.Column10.Width = 90;
+            // 
+            // Column12
+            // 
+            this.Column12.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column12.DataPropertyName = "Remark";
+            this.Column12.HeaderText = "备注    (Notes)";
+            this.Column12.Name = "Column12";
+            // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // snNumDataGridViewTextBoxColumn
+            // 
+            this.snNumDataGridViewTextBoxColumn.DataPropertyName = "SnNum";
+            this.snNumDataGridViewTextBoxColumn.HeaderText = "SnNum";
+            this.snNumDataGridViewTextBoxColumn.Name = "snNumDataGridViewTextBoxColumn";
+            this.snNumDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // orderNumDataGridViewTextBoxColumn
+            // 
+            this.orderNumDataGridViewTextBoxColumn.DataPropertyName = "OrderNum";
+            this.orderNumDataGridViewTextBoxColumn.HeaderText = "OrderNum";
+            this.orderNumDataGridViewTextBoxColumn.Name = "orderNumDataGridViewTextBoxColumn";
+            this.orderNumDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // nitORIDataGridViewTextBoxColumn
+            // 
+            this.nitORIDataGridViewTextBoxColumn.DataPropertyName = "NitORI";
+            this.nitORIDataGridViewTextBoxColumn.HeaderText = "NitORI";
+            this.nitORIDataGridViewTextBoxColumn.Name = "nitORIDataGridViewTextBoxColumn";
+            this.nitORIDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // productCDDataGridViewTextBoxColumn
+            // 
+            this.productCDDataGridViewTextBoxColumn.DataPropertyName = "ProductCD";
+            this.productCDDataGridViewTextBoxColumn.HeaderText = "ProductCD";
+            this.productCDDataGridViewTextBoxColumn.Name = "productCDDataGridViewTextBoxColumn";
+            this.productCDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // productNameDataGridViewTextBoxColumn
+            // 
+            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
+            this.productNameDataGridViewTextBoxColumn.HeaderText = "ProductName";
+            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
+            this.productNameDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // cdFileNameDataGridViewTextBoxColumn
+            // 
+            this.cdFileNameDataGridViewTextBoxColumn.DataPropertyName = "CdFileName";
+            this.cdFileNameDataGridViewTextBoxColumn.HeaderText = "CdFileName";
+            this.cdFileNameDataGridViewTextBoxColumn.Name = "cdFileNameDataGridViewTextBoxColumn";
+            this.cdFileNameDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // popDesignNoDataGridViewTextBoxColumn
+            // 
+            this.popDesignNoDataGridViewTextBoxColumn.DataPropertyName = "PopDesignNo";
+            this.popDesignNoDataGridViewTextBoxColumn.HeaderText = "PopDesignNo";
+            this.popDesignNoDataGridViewTextBoxColumn.Name = "popDesignNoDataGridViewTextBoxColumn";
+            this.popDesignNoDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // popSizeDataGridViewTextBoxColumn
+            // 
+            this.popSizeDataGridViewTextBoxColumn.DataPropertyName = "PopSize";
+            this.popSizeDataGridViewTextBoxColumn.HeaderText = "PopSize";
+            this.popSizeDataGridViewTextBoxColumn.Name = "popSizeDataGridViewTextBoxColumn";
+            this.popSizeDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // paperKindDataGridViewTextBoxColumn
+            // 
+            this.paperKindDataGridViewTextBoxColumn.DataPropertyName = "PaperKind";
+            this.paperKindDataGridViewTextBoxColumn.HeaderText = "PaperKind";
+            this.paperKindDataGridViewTextBoxColumn.Name = "paperKindDataGridViewTextBoxColumn";
+            this.paperKindDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // popCateDataGridViewTextBoxColumn
+            // 
+            this.popCateDataGridViewTextBoxColumn.DataPropertyName = "PopCate";
+            this.popCateDataGridViewTextBoxColumn.HeaderText = "PopCate";
+            this.popCateDataGridViewTextBoxColumn.Name = "popCateDataGridViewTextBoxColumn";
+            this.popCateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // popCateNameDataGridViewTextBoxColumn
+            // 
+            this.popCateNameDataGridViewTextBoxColumn.DataPropertyName = "PopCateName";
+            this.popCateNameDataGridViewTextBoxColumn.HeaderText = "PopCateName";
+            this.popCateNameDataGridViewTextBoxColumn.Name = "popCateNameDataGridViewTextBoxColumn";
+            this.popCateNameDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // colourDataGridViewTextBoxColumn
+            // 
+            this.colourDataGridViewTextBoxColumn.DataPropertyName = "Colour";
+            this.colourDataGridViewTextBoxColumn.HeaderText = "Colour";
+            this.colourDataGridViewTextBoxColumn.Name = "colourDataGridViewTextBoxColumn";
+            this.colourDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // pOPNumDataGridViewTextBoxColumn
+            // 
+            this.pOPNumDataGridViewTextBoxColumn.DataPropertyName = "POPNum";
+            this.pOPNumDataGridViewTextBoxColumn.HeaderText = "POPNum";
+            this.pOPNumDataGridViewTextBoxColumn.Name = "pOPNumDataGridViewTextBoxColumn";
+            this.pOPNumDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // realNumDataGridViewTextBoxColumn
+            // 
+            this.realNumDataGridViewTextBoxColumn.DataPropertyName = "RealNum";
+            this.realNumDataGridViewTextBoxColumn.HeaderText = "RealNum";
+            this.realNumDataGridViewTextBoxColumn.Name = "realNumDataGridViewTextBoxColumn";
+            this.realNumDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // unitNumDataGridViewTextBoxColumn
+            // 
+            this.unitNumDataGridViewTextBoxColumn.DataPropertyName = "UnitNum";
+            this.unitNumDataGridViewTextBoxColumn.HeaderText = "UnitNum";
+            this.unitNumDataGridViewTextBoxColumn.Name = "unitNumDataGridViewTextBoxColumn";
+            this.unitNumDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // unitNameDataGridViewTextBoxColumn
+            // 
+            this.unitNameDataGridViewTextBoxColumn.DataPropertyName = "UnitName";
+            this.unitNameDataGridViewTextBoxColumn.HeaderText = "UnitName";
+            this.unitNameDataGridViewTextBoxColumn.Name = "unitNameDataGridViewTextBoxColumn";
+            this.unitNameDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // expectDateDataGridViewTextBoxColumn
+            // 
+            this.expectDateDataGridViewTextBoxColumn.DataPropertyName = "ExpectDate";
+            this.expectDateDataGridViewTextBoxColumn.HeaderText = "ExpectDate";
+            this.expectDateDataGridViewTextBoxColumn.Name = "expectDateDataGridViewTextBoxColumn";
+            this.expectDateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // priceDataGridViewTextBoxColumn
+            // 
+            this.priceDataGridViewTextBoxColumn.DataPropertyName = "Price";
+            this.priceDataGridViewTextBoxColumn.HeaderText = "Price";
+            this.priceDataGridViewTextBoxColumn.Name = "priceDataGridViewTextBoxColumn";
+            this.priceDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // probabilityDateDataGridViewTextBoxColumn
+            // 
+            this.probabilityDateDataGridViewTextBoxColumn.DataPropertyName = "ProbabilityDate";
+            this.probabilityDateDataGridViewTextBoxColumn.HeaderText = "ProbabilityDate";
+            this.probabilityDateDataGridViewTextBoxColumn.Name = "probabilityDateDataGridViewTextBoxColumn";
+            this.probabilityDateDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // eTDDataGridViewTextBoxColumn
+            // 
+            this.eTDDataGridViewTextBoxColumn.DataPropertyName = "ETD";
+            this.eTDDataGridViewTextBoxColumn.HeaderText = "ETD";
+            this.eTDDataGridViewTextBoxColumn.Name = "eTDDataGridViewTextBoxColumn";
+            this.eTDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // referenceDataGridViewTextBoxColumn
+            // 
+            this.referenceDataGridViewTextBoxColumn.DataPropertyName = "Reference";
+            this.referenceDataGridViewTextBoxColumn.HeaderText = "Reference";
+            this.referenceDataGridViewTextBoxColumn.Name = "referenceDataGridViewTextBoxColumn";
+            this.referenceDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // printMoneyDataGridViewTextBoxColumn
+            // 
+            this.printMoneyDataGridViewTextBoxColumn.DataPropertyName = "PrintMoney";
+            this.printMoneyDataGridViewTextBoxColumn.HeaderText = "PrintMoney";
+            this.printMoneyDataGridViewTextBoxColumn.Name = "printMoneyDataGridViewTextBoxColumn";
+            this.printMoneyDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // checkMoneyDataGridViewTextBoxColumn
+            // 
+            this.checkMoneyDataGridViewTextBoxColumn.DataPropertyName = "CheckMoney";
+            this.checkMoneyDataGridViewTextBoxColumn.HeaderText = "CheckMoney";
+            this.checkMoneyDataGridViewTextBoxColumn.Name = "checkMoneyDataGridViewTextBoxColumn";
+            this.checkMoneyDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // invoiceMoneyDataGridViewTextBoxColumn
+            // 
+            this.invoiceMoneyDataGridViewTextBoxColumn.DataPropertyName = "InvoiceMoney";
+            this.invoiceMoneyDataGridViewTextBoxColumn.HeaderText = "InvoiceMoney";
+            this.invoiceMoneyDataGridViewTextBoxColumn.Name = "invoiceMoneyDataGridViewTextBoxColumn";
+            this.invoiceMoneyDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // sampleDataGridViewTextBoxColumn
+            // 
+            this.sampleDataGridViewTextBoxColumn.DataPropertyName = "Sample";
+            this.sampleDataGridViewTextBoxColumn.HeaderText = "Sample";
+            this.sampleDataGridViewTextBoxColumn.Name = "sampleDataGridViewTextBoxColumn";
+            this.sampleDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // statusDataGridViewTextBoxColumn
+            // 
+            this.statusDataGridViewTextBoxColumn.DataPropertyName = "Status";
+            this.statusDataGridViewTextBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewTextBoxColumn.Name = "statusDataGridViewTextBoxColumn";
+            this.statusDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // isDeleteDataGridViewTextBoxColumn
+            // 
+            this.isDeleteDataGridViewTextBoxColumn.DataPropertyName = "IsDelete";
+            this.isDeleteDataGridViewTextBoxColumn.HeaderText = "IsDelete";
+            this.isDeleteDataGridViewTextBoxColumn.Name = "isDeleteDataGridViewTextBoxColumn";
+            this.isDeleteDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // createTimeDataGridViewTextBoxColumn
+            // 
+            this.createTimeDataGridViewTextBoxColumn.DataPropertyName = "CreateTime";
+            this.createTimeDataGridViewTextBoxColumn.HeaderText = "CreateTime";
+            this.createTimeDataGridViewTextBoxColumn.Name = "createTimeDataGridViewTextBoxColumn";
+            this.createTimeDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // remarkDataGridViewTextBoxColumn
+            // 
+            this.remarkDataGridViewTextBoxColumn.DataPropertyName = "Remark";
+            this.remarkDataGridViewTextBoxColumn.HeaderText = "Remark";
+            this.remarkDataGridViewTextBoxColumn.Name = "remarkDataGridViewTextBoxColumn";
+            this.remarkDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // batchNumDataGridViewTextBoxColumn
+            // 
+            this.batchNumDataGridViewTextBoxColumn.DataPropertyName = "BatchNum";
+            this.batchNumDataGridViewTextBoxColumn.HeaderText = "BatchNum";
+            this.batchNumDataGridViewTextBoxColumn.Name = "batchNumDataGridViewTextBoxColumn";
+            this.batchNumDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // rowNoDataGridViewTextBoxColumn
+            // 
+            this.rowNoDataGridViewTextBoxColumn.DataPropertyName = "RowNo";
+            this.rowNoDataGridViewTextBoxColumn.HeaderText = "RowNo";
+            this.rowNoDataGridViewTextBoxColumn.Name = "rowNoDataGridViewTextBoxColumn";
+            this.rowNoDataGridViewTextBoxColumn.Visible = false;
+            // 
             // FCainzOrderD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1095,6 +1095,13 @@
         private System.Windows.Forms.TextBox txbDELdate;
         private System.Windows.Forms.TextBox txbJingChenOrder;
         private System.Windows.Forms.TextBox txbOrder;
+        private System.Windows.Forms.TextBox txbFile;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ToolStripButton btnFactory;
+        public System.Windows.Forms.BindingSource bindingSource1;
+        private System.Windows.Forms.ToolStripButton btnTools;
+        private System.Windows.Forms.Label lblVer;
+        private System.Windows.Forms.Label lblSql;
         private System.Windows.Forms.DataGridViewTextBoxColumn colNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
@@ -1139,12 +1146,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn remarkDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn batchNumDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rowNoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.TextBox txbFile;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.ToolStripButton btnFactory;
-        public System.Windows.Forms.BindingSource bindingSource1;
-        private System.Windows.Forms.ToolStripButton btnTools;
-        private System.Windows.Forms.Label lblVer;
-        private System.Windows.Forms.Label lblSql;
     }
 }
