@@ -4,22 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="db001Model.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="db001ModelStoreContainer">
-          <EntitySet Name="CainzCustomer" EntityType="db001Model.Store.CainzCustomer" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CainzOrderDetail" EntityType="db001Model.Store.CainzOrderDetail" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CainzOrders" EntityType="db001Model.Store.CainzOrders" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CainzProduct" EntityType="db001Model.Store.CainzProduct" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CainzTrader" EntityType="db001Model.Store.CainzTrader" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CusCategory" EntityType="db001Model.Store.CusCategory" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Customer" EntityType="db001Model.Store.Customer" store:Type="Tables" Schema="dbo" />
-        </EntityContainer>
+    <Schema Namespace="db001Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityType Name="CainzCustomer">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="FactoryNo" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FactoryNo" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="FactoryName" Type="nvarchar" MaxLength="100" />
           <Property Name="Phone" Type="varchar" MaxLength="100" />
           <Property Name="Contact" Type="nvarchar" MaxLength="300" />
@@ -37,12 +28,12 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="SnNum" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SnNum" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="OrderNum" Type="int" Nullable="false" />
-          <Property Name="NitORI" Type="nvarchar" Nullable="false" MaxLength="200" />
-          <Property Name="ProductCD" Type="nvarchar" Nullable="false" MaxLength="200" />
-          <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="NitORI" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ProductCD" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="CdFileName" Type="nvarchar" MaxLength="200" />
           <Property Name="PopDesignNo" Type="nvarchar" MaxLength="200" />
           <Property Name="PopSize" Type="nvarchar" MaxLength="200" />
@@ -53,15 +44,15 @@
           <Property Name="POPNum" Type="int" />
           <Property Name="RealNum" Type="int" />
           <Property Name="UnitNum" Type="int" Nullable="false" />
-          <Property Name="UnitName" Type="nvarchar" Nullable="false" MaxLength="20" />
+          <Property Name="UnitName" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="ExpectDate" Type="datetime" />
-          <Property Name="Price" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="ProbabilityDate" Type="datetime" Nullable="false" />
           <Property Name="ETD" Type="nvarchar" MaxLength="200" />
           <Property Name="Reference" Type="nvarchar" MaxLength="50" />
-          <Property Name="PrintMoney" Type="decimal" Nullable="false" Scale="4" />
-          <Property Name="CheckMoney" Type="decimal" Nullable="false" Scale="4" />
-          <Property Name="InvoiceMoney" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="PrintMoney" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="CheckMoney" Type="decimal" Precision="18" Scale="4" Nullable="false" />
+          <Property Name="InvoiceMoney" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="Sample" Type="nvarchar" MaxLength="20" />
           <Property Name="Status" Type="int" Nullable="false" />
           <Property Name="IsDelete" Type="int" Nullable="false" />
@@ -74,10 +65,10 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="OrderNum" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="NitORI" Type="varchar" Nullable="false" MaxLength="200" />
-          <Property Name="CustomerNum" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderNum" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NitORI" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CustomerNum" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="CustomerName" Type="nvarchar" MaxLength="300" />
           <Property Name="Phone" Type="varchar" MaxLength="500" />
           <Property Name="Contact" Type="nvarchar" MaxLength="300" />
@@ -93,10 +84,10 @@
           <Property Name="CardNum" Type="varchar" MaxLength="400" />
           <Property Name="Taxpayer" Type="varchar" MaxLength="400" />
           <Property Name="SendDate" Type="datetime" Nullable="false" />
-          <Property Name="Money" Type="decimal" Nullable="false" Scale="4" />
+          <Property Name="Money" Type="decimal" Precision="18" Scale="4" Nullable="false" />
           <Property Name="IsDelete" Type="int" Nullable="false" />
           <Property Name="Status" Type="int" Nullable="false" />
-          <Property Name="CreateUserNo" Type="varchar" Nullable="false" MaxLength="300" />
+          <Property Name="CreateUserNo" Type="varchar" MaxLength="300" Nullable="false" />
           <Property Name="CreateUserName" Type="nvarchar" MaxLength="200" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="LastUpdate" Type="datetime" Nullable="false" />
@@ -110,8 +101,8 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Barcode" Type="nvarchar" Nullable="false" MaxLength="200" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Barcode" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="FactoryID" Type="nvarchar" MaxLength="200" />
           <Property Name="FactoryName" Type="nvarchar" MaxLength="200" />
           <Property Name="Material" Type="nvarchar" MaxLength="200" />
@@ -129,9 +120,9 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="SnNum" Type="varchar" Nullable="false" MaxLength="100" />
-          <Property Name="ParentNum" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SnNum" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ParentNum" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="CateName" Type="nvarchar" MaxLength="100" />
           <Property Name="IsDelete" Type="int" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
@@ -141,9 +132,9 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="SnNum" Type="varchar" Nullable="false" MaxLength="100" />
-          <Property Name="ParentNum" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SnNum" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="ParentNum" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="CateName" Type="nvarchar" MaxLength="100" />
           <Property Name="IsDelete" Type="int" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
@@ -153,8 +144,8 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CustomerNum" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerNum" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="CustomerName" Type="nvarchar" MaxLength="100" />
           <Property Name="Phone" Type="varchar" MaxLength="100" />
           <Property Name="Contact" Type="nvarchar" MaxLength="300" />
@@ -173,8 +164,16 @@
           <Property Name="FirstNum" Type="varchar" MaxLength="500" />
           <Property Name="SecondNum" Type="varchar" MaxLength="500" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+        <EntityContainer Name="db001ModelStoreContainer">
+          <EntitySet Name="CainzCustomer" EntityType="Self.CainzCustomer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CainzOrderDetail" EntityType="Self.CainzOrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CainzOrders" EntityType="Self.CainzOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CainzProduct" EntityType="Self.CainzProduct" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CainzTrader" EntityType="Self.CainzTrader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CusCategory" EntityType="Self.CusCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="db001Model" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -535,6 +534,7 @@
         <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

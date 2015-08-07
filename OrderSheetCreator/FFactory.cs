@@ -52,6 +52,7 @@ namespace OrderSheetCreator
             PublicTools.IniDatagridview(dataGridView1);
             PublicTools.SetColumsAutoModeNone(dataGridView1);
             PublicTools.RecoverColumnWidth(dataGridView1, this.FFACTORY_DATAGRIDVIEW_SETPATH);
+            panel4.Visible = false;
         }
 
         private void FFactory_FormClosing(object sender, FormClosingEventArgs e)
@@ -69,6 +70,33 @@ namespace OrderSheetCreator
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             btnOK_Click(null, null);
+        }
+
+        private void btnSaveToDB_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("是否修改数据库，点击，YES，后修改不可恢复", "谨慎操作", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+            {
+                using (var db = new entity.DB())
+                {
+                    entity.CainzCustomer cp = (entity.CainzCustomer)cainzCustomerBindingSource.Current;
+                    db.CainzCustomer.Attach(cp);
+                    db.Entry(cp).State = System.Data.Entity.EntityState.Modified;
+
+                    db.SaveChanges();
+                }
+                this.txbSearch_TextChanged(null,null);
+            }
+        }
+
+        private void btnHidden_Click(object sender, EventArgs e)
+        {
+            panel4.Visible = false;
+        }
+
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            panel4.Visible = true;
+            panel4.Height = 49;
         }
     }
 }

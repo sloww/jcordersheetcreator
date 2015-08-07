@@ -13,7 +13,9 @@ namespace OrderSheetCreator
 {
     public partial class FCainzOrderD : Form
     {
+        //全局订单明细列表
         public static BindingList<entity.CainzOrderDetail> ORDERDETAILLIST = new BindingList<entity.CainzOrderDetail>();
+        //全局客户信息
         public static entity.CainzCustomer CC = new entity.CainzCustomer();
         FAdd fadd = new FAdd();
         private string FCainzOrderDdataGridViewSetPath = "订单表宽度设定.txt";
@@ -247,6 +249,15 @@ namespace OrderSheetCreator
         private void txbAdd_DoubleClick(object sender, EventArgs e)
         {
             btnFactory_Click(null, null);
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            using (var db = new entity.DB())
+            {
+
+
+            }
         }
     }
 }

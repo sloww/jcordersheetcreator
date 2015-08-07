@@ -59,11 +59,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.btnHidden = new System.Windows.Forms.Button();
+            this.btnSaveToDB = new System.Windows.Forms.Button();
+            this.btnShow = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cainzCustomerBindingSource)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnOK
@@ -83,7 +88,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 63);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1008, 274);
+            this.panel3.Size = new System.Drawing.Size(1008, 275);
             this.panel3.TabIndex = 8;
             // 
             // dataGridView1
@@ -106,7 +111,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(1008, 274);
+            this.dataGridView1.Size = new System.Drawing.Size(1008, 275);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
@@ -215,6 +220,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.textBox1);
             this.panel2.Controls.Add(this.txbName);
             this.panel2.Controls.Add(this.txbDELdate);
@@ -229,10 +235,11 @@
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.btnOK);
+            this.panel2.Controls.Add(this.btnShow);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 337);
+            this.panel2.Location = new System.Drawing.Point(0, 338);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1008, 149);
+            this.panel2.Size = new System.Drawing.Size(1008, 188);
             this.panel2.TabIndex = 7;
             // 
             // textBox1
@@ -243,7 +250,7 @@
             this.textBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
             this.textBox1.Location = new System.Drawing.Point(305, 77);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(468, 19);
+            this.textBox1.Size = new System.Drawing.Size(531, 19);
             this.textBox1.TabIndex = 34;
             this.textBox1.TabStop = false;
             // 
@@ -278,6 +285,7 @@
             this.txbFactory.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
             this.txbFactory.Location = new System.Drawing.Point(250, 47);
             this.txbFactory.Name = "txbFactory";
+            this.txbFactory.ReadOnly = true;
             this.txbFactory.Size = new System.Drawing.Size(523, 19);
             this.txbFactory.TabIndex = 31;
             this.txbFactory.TabStop = false;
@@ -290,6 +298,7 @@
             this.txbTrader.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
             this.txbTrader.Location = new System.Drawing.Point(206, 17);
             this.txbTrader.Name = "txbTrader";
+            this.txbTrader.ReadOnly = true;
             this.txbTrader.Size = new System.Drawing.Size(567, 19);
             this.txbTrader.TabIndex = 30;
             this.txbTrader.TabStop = false;
@@ -374,11 +383,62 @@
             this.label8.Text = "_________________________________________________________________________________" +
     "_________________________________";
             // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.SystemColors.Control;
+            this.panel4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel4.Controls.Add(this.btnHidden);
+            this.panel4.Controls.Add(this.btnSaveToDB);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel4.Location = new System.Drawing.Point(0, 139);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1008, 49);
+            this.panel4.TabIndex = 35;
+            // 
+            // btnHidden
+            // 
+            this.btnHidden.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnHidden.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnHidden.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnHidden.Location = new System.Drawing.Point(869, 5);
+            this.btnHidden.Name = "btnHidden";
+            this.btnHidden.Size = new System.Drawing.Size(126, 38);
+            this.btnHidden.TabIndex = 20;
+            this.btnHidden.Text = "隐藏此界面";
+            this.btnHidden.UseVisualStyleBackColor = false;
+            this.btnHidden.Click += new System.EventHandler(this.btnHidden_Click);
+            // 
+            // btnSaveToDB
+            // 
+            this.btnSaveToDB.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.btnSaveToDB.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnSaveToDB.ForeColor = System.Drawing.Color.White;
+            this.btnSaveToDB.Location = new System.Drawing.Point(11, 5);
+            this.btnSaveToDB.Name = "btnSaveToDB";
+            this.btnSaveToDB.Size = new System.Drawing.Size(126, 38);
+            this.btnSaveToDB.TabIndex = 19;
+            this.btnSaveToDB.Text = "更新到数据库!";
+            this.btnSaveToDB.UseVisualStyleBackColor = false;
+            this.btnSaveToDB.Click += new System.EventHandler(this.btnSaveToDB_Click);
+            // 
+            // btnShow
+            // 
+            this.btnShow.BackColor = System.Drawing.SystemColors.AppWorkspace;
+            this.btnShow.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnShow.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnShow.Location = new System.Drawing.Point(879, 144);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Size = new System.Drawing.Size(126, 38);
+            this.btnShow.TabIndex = 36;
+            this.btnShow.Text = "显示管理界面";
+            this.btnShow.UseVisualStyleBackColor = false;
+            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
+            // 
             // FFactory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 486);
+            this.ClientSize = new System.Drawing.Size(1008, 526);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
@@ -395,6 +455,7 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -431,5 +492,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn remarkDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button btnHidden;
+        private System.Windows.Forms.Button btnSaveToDB;
+        private System.Windows.Forms.Button btnShow;
     }
 }
