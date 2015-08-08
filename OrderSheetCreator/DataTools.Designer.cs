@@ -42,7 +42,6 @@
             this.btnImportFactory = new System.Windows.Forms.Button();
             this.btnCainzMaoyis = new System.Windows.Forms.Button();
             this.btnBlind = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -54,6 +53,7 @@
             // 
             // button1
             // 
+            this.button1.Enabled = false;
             this.button1.Location = new System.Drawing.Point(391, 19);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(122, 49);
@@ -78,6 +78,7 @@
             // 
             // btnGetMaoyisTXT
             // 
+            this.btnGetMaoyisTXT.Enabled = false;
             this.btnGetMaoyisTXT.Location = new System.Drawing.Point(239, 19);
             this.btnGetMaoyisTXT.Name = "btnGetMaoyisTXT";
             this.btnGetMaoyisTXT.Size = new System.Drawing.Size(122, 49);
@@ -88,6 +89,7 @@
             // 
             // button4
             // 
+            this.button4.Enabled = false;
             this.button4.Location = new System.Drawing.Point(695, 19);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(135, 49);
@@ -98,6 +100,7 @@
             // 
             // button5
             // 
+            this.button5.Enabled = false;
             this.button5.Location = new System.Drawing.Point(860, 19);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(173, 49);
@@ -122,6 +125,7 @@
             // 
             // btnFactory
             // 
+            this.btnFactory.Enabled = false;
             this.btnFactory.Location = new System.Drawing.Point(543, 19);
             this.btnFactory.Name = "btnFactory";
             this.btnFactory.Size = new System.Drawing.Size(122, 49);
@@ -144,6 +148,7 @@
             // 
             // btnImportProductData
             // 
+            this.btnImportProductData.Enabled = false;
             this.btnImportProductData.Location = new System.Drawing.Point(860, 26);
             this.btnImportProductData.Name = "btnImportProductData";
             this.btnImportProductData.Size = new System.Drawing.Size(173, 49);
@@ -174,6 +179,7 @@
             // 
             // btnBlind
             // 
+            this.btnBlind.Enabled = false;
             this.btnBlind.Location = new System.Drawing.Point(695, 26);
             this.btnBlind.Name = "btnBlind";
             this.btnBlind.Size = new System.Drawing.Size(135, 49);
@@ -182,18 +188,9 @@
             this.btnBlind.UseVisualStyleBackColor = true;
             this.btnBlind.Click += new System.EventHandler(this.btnBlind_Click);
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(860, 222);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(173, 49);
-            this.button3.TabIndex = 10;
-            this.button3.Text = "导入产品数据";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
-            // 
             // button6
             // 
+            this.button6.Enabled = false;
             this.button6.Location = new System.Drawing.Point(543, 222);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(122, 49);
@@ -212,10 +209,6 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
-            // customerBindingSource
-            // 
-            this.customerBindingSource.DataSource = typeof(entity.Customer);
-            // 
             // btnGetAllProduct
             // 
             this.btnGetAllProduct.Location = new System.Drawing.Point(543, 345);
@@ -233,7 +226,6 @@
             this.ClientSize = new System.Drawing.Size(1049, 510);
             this.Controls.Add(this.btnGetAllProduct);
             this.Controls.Add(this.button7);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -265,7 +257,6 @@
         private System.Windows.Forms.Button btnImportFactory;
         private System.Windows.Forms.Button btnBlind;
         private System.Windows.Forms.Button btnImportProductData;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnGetAllProduct;

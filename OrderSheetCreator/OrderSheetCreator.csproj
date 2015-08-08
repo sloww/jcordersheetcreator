@@ -95,29 +95,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataTools.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataTools.Designer.cs">
+      <DependentUpon>DataTools.cs</DependentUpon>
+    </Compile>
     <Compile Include="FAdd.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FAdd.Designer.cs">
       <DependentUpon>FAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="FCainzOrder.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FCainzOrder.Designer.cs">
-      <DependentUpon>FCainzOrder.cs</DependentUpon>
-    </Compile>
     <Compile Include="FCainzOrderD.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FCainzOrderD.Designer.cs">
       <DependentUpon>FCainzOrderD.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DataTools.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DataTools.Designer.cs">
-      <DependentUpon>DataTools.cs</DependentUpon>
     </Compile>
     <Compile Include="FDateTime.cs">
       <SubType>Form</SubType>
@@ -131,26 +125,32 @@
     <Compile Include="FFactory.Designer.cs">
       <DependentUpon>FFactory.cs</DependentUpon>
     </Compile>
+    <Compile Include="FTrader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FTrader.Designer.cs">
+      <DependentUpon>FTrader.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PublicTools.cs" />
+    <EmbeddedResource Include="DataTools.resx">
+      <DependentUpon>DataTools.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FAdd.resx">
       <DependentUpon>FAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FCainzOrder.resx">
-      <DependentUpon>FCainzOrder.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FCainzOrderD.resx">
       <DependentUpon>FCainzOrderD.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DataTools.resx">
-      <DependentUpon>DataTools.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FDateTime.resx">
       <DependentUpon>FDateTime.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FFactory.resx">
       <DependentUpon>FFactory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FTrader.resx">
+      <DependentUpon>FTrader.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -170,6 +170,7 @@
     <None Include="Properties\DataSources\entity.CainzOrder.datasource" />
     <None Include="Properties\DataSources\entity.CainzOrderDetail.datasource" />
     <None Include="Properties\DataSources\entity.CainzProduct.datasource" />
+    <None Include="Properties\DataSources\entity.CainzTrader.datasource" />
     <None Include="Properties\DataSources\entity.Customer.datasource" />
     <None Include="Properties\DataSources\entity.Material.datasource" />
     <None Include="Properties\DataSources\entity.Products.datasource" />

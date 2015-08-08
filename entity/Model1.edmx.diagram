@@ -4,14 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a1b1af25548740fb95d9ae8c93ed6394" Name="关系图1">
-        <EntityTypeShape EntityType="db001Model.CainzCustomer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="db001Model.CainzOrderDetail" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="db001Model.CainzOrders" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="db001Model.CainzProduct" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="db001Model.CainzTrader" Width="1.5" PointX="6.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="db001Model.CusCategory" Width="1.5" PointX="8.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="db001Model.Customer" Width="1.5" PointX="0.75" PointY="8.75" IsExpanded="true" />
+      <Diagram DiagramId="a1b1af25548740fb95d9ae8c93ed6394" Name="关系图1" ShowGrid="true" ZoomLevel="64">
+        <EntityTypeShape EntityType="db001Model.CainzFactory" Width="1.5" PointX="3" PointY="2.25" />
+        <EntityTypeShape EntityType="db001Model.CainzOrder" Width="1.5" PointX="5.25" PointY="1.75" />
+        <EntityTypeShape EntityType="db001Model.CainzOrderDetail" Width="1.5" PointX="7.5" PointY="3.75" />
+        <EntityTypeShape EntityType="db001Model.CainzProduct" Width="1.5" PointX="3" PointY="7.5" />
+        <EntityTypeShape EntityType="db001Model.CainzTrader" Width="1.5" PointX="0.75" PointY="5.375" />
+        <AssociationConnector Association="db001Model.FK_CainzFactoryCainzOrder" />
+        <AssociationConnector Association="db001Model.FK_CainzTraderCainzFactory" />
+        <AssociationConnector Association="db001Model.FK_CainzOrderCainzOrderDetail" />
+        <AssociationConnector Association="db001Model.FK_CainzOrderDetailCainzProduct" />
+        <AssociationConnector Association="db001Model.FK_CainzProductCainzTrader" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

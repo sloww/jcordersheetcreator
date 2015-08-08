@@ -23,12 +23,12 @@ namespace OrderSheetCreator
         {
             InitializeComponent();
             this.IS_IN_ORDER = true;
-            txbMaterial.Text = cod.PaperKind;
-            txbSize.Text = cod.PopSize;
+            txbMaterial.Text = cod.CainzProduct.ProductMaterial;
+            txbSize.Text = cod.CainzProduct.ProductSize;
             txbReMarK.Text = cod.Remark;
-            txbCount.Text = cod.OrderNum.ToString();
-            txbPrice.Text = cod.Price.ToString();
-            txbColor.Text = cod.Colour;
+            txbCount.Text = cod.POPNum.ToString();
+            txbPrice.Text = cod.ProductPrice.ToString();
+            txbColor.Text = cod.CainzProduct.ProductColor;
             txbCount.Focus();
             btnContinue.Text = "修改";
             txbSearchBarcode.Enabled = false;
@@ -39,7 +39,7 @@ namespace OrderSheetCreator
             txbMaterial.Enabled = false;
             txbColor.Enabled = false;
             txbSize.Enabled = false;
-            txbBarcode.Text = cod.ProductCD;
+            txbBarcode.Text = cod.ProductBarcode;
             
 
         }
@@ -51,8 +51,8 @@ namespace OrderSheetCreator
                 using (var db = new entity.DB())
                 {
                     var productQuery = from a in db.CainzProduct
-                                       where a.Barcode.Contains(txbSearchBarcode.Text) && a.Deleted == 0
-                                       orderby a.Barcode, a.Price
+                                       where a.ProductBarcode.Contains(txbSearchBarcode.Text) && a.Deleted == 0
+                                       orderby a.ProductBarcode, a.ProductPrice
                                        select a;
                     productsBindingSource.DataSource = productQuery.Take(5).ToList();
 
@@ -168,12 +168,12 @@ namespace OrderSheetCreator
             {
                 entity.CainzOrderDetail cod = new entity.CainzOrderDetail();
                 cod.RowNo = FCainzOrderD.ORDERDETAILLIST.Count + 1;
-                cod.ProductCD = txbBarcode.Text;
-                cod.PaperKind = txbMaterial.Text;
-                cod.Colour = txbColor.Text;
-                cod.PopSize = txbSize.Text;
-                cod.Price = _price;
-                cod.OrderNum = count;
+                cod.ProductBarcode = txbBarcode.Text;
+                cod.ProductMaterial= txbMaterial.Text;
+                cod.ProductColor = txbColor.Text;
+                cod.ProductSize = txbSize.Text;
+                cod.ProductPrice = _price;
+                cod.POPNum = count;
                 cod.Remark = txbReMarK.Text.Trim();
                 cod.CreateTime = DateTime.Now;
 
@@ -187,7 +187,7 @@ namespace OrderSheetCreator
                 }
 
                 //注意最好计算！
-                cod.InvoiceMoney = (decimal)cod.Price * (decimal)cod.OrderNum;
+                cod.TotalMoney = (decimal)cod.ProductPrice * (decimal)cod.POPNum;
                 FCainzOrderD.ORDERDETAILLIST.Add(cod);
             }
             else
@@ -196,12 +196,12 @@ namespace OrderSheetCreator
                 for (int i = 0; i < listCount; i++)
                 {
 
-                    if (FCainzOrderD.ORDERDETAILLIST[i].ProductCD.Equals(txbBarcode.Text) && FCainzOrderD.ORDERDETAILLIST[i].PaperKind.Equals(txbMaterial.Text) && FCainzOrderD.ORDERDETAILLIST[i].PopSize.Equals(txbSize.Text))
+                    if (FCainzOrderD.ORDERDETAILLIST[i].ProductBarcode.Equals(txbBarcode.Text) && FCainzOrderD.ORDERDETAILLIST[i].ProductMaterial.Equals(txbMaterial.Text) && FCainzOrderD.ORDERDETAILLIST[i].ProductSize.Equals(txbSize.Text))
                     {
-                        FCainzOrderD.ORDERDETAILLIST[i].OrderNum = count;
+                        FCainzOrderD.ORDERDETAILLIST[i].POPNum = count;
                         FCainzOrderD.ORDERDETAILLIST[i].Remark = txbReMarK.Text.Trim();
                         FCainzOrderD.ORDERDETAILLIST[i].CreateTime = DateTime.Now;
-                        FCainzOrderD.ORDERDETAILLIST[i].Price = _price;
+                        FCainzOrderD.ORDERDETAILLIST[i].ProductPrice = _price;
                         if (txbIssuedDate.Text != "")
                         {
                             DateTime dt;
@@ -210,7 +210,7 @@ namespace OrderSheetCreator
                                 FCainzOrderD.ORDERDETAILLIST[i].ExpectDate = dt;
                             }
                         }
-                        FCainzOrderD.ORDERDETAILLIST[i].InvoiceMoney = (decimal)count * (decimal)_price;
+                        FCainzOrderD.ORDERDETAILLIST[i].TotalMoney = (decimal)count * (decimal)_price;
                         break;
                     }
 
@@ -264,7 +264,7 @@ namespace OrderSheetCreator
             entity.CainzOrderDetail cod = null;
             foreach (var odm in FCainzOrderD.ORDERDETAILLIST)
             {
-                if (odm.ProductCD.Equals(txbBarcode.Text) && odm.PaperKind.Equals(txbMaterial.Text) && odm.PopSize.Equals(txbSize.Text))
+                if (odm.ProductBarcode.Equals(txbBarcode.Text) && odm.ProductMaterial.Equals(txbMaterial.Text) && odm.ProductSize.Equals(txbSize.Text))
                 {
                     cod = odm;
                     break;
@@ -400,15 +400,13 @@ namespace OrderSheetCreator
             {
                 entity.CainzProduct cp = new entity.CainzProduct();
                 cp.Deleted = 0;
-                cp.Barcode = txbBarcode.Text.Trim();
-                cp.Color = txbColor.Text.Trim();
-                cp.Material = txbMaterial.Text.Trim();
-                cp.Price = decimal.Parse(txbPrice.Text.Trim());
+                cp.ProductBarcode = txbBarcode.Text.Trim();
+                cp.ProductColor = txbColor.Text.Trim();
+                cp.ProductMaterial = txbMaterial.Text.Trim();
+                cp.ProductPrice = decimal.Parse(txbPrice.Text.Trim());
                 cp.Modified = 1;
                 cp.ModifyTime = DateTime.Now;
                 cp.CreateTime = DateTime.Now;
-                cp.FactoryID = ((entity.CainzProduct)productsBindingSource.Current).FactoryID;
-                cp.FactoryName = ((entity.CainzProduct)productsBindingSource.Current).FactoryName;
                 cp.TraderID = ((entity.CainzProduct)productsBindingSource.Current).TraderID;
                 cp.TraderName = ((entity.CainzProduct)productsBindingSource.Current).TraderName;
                 db.CainzProduct.Add(cp);

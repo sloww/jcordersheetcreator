@@ -14,19 +14,27 @@ namespace entity
     
     public partial class CainzProduct
     {
-        public int ID { get; set; }
-        public string Barcode { get; set; }
-        public string FactoryID { get; set; }
-        public string FactoryName { get; set; }
-        public string Material { get; set; }
-        public string Size { get; set; }
-        public string Color { get; set; }
-        public Nullable<decimal> Price { get; set; }
+        public CainzProduct()
+        {
+            this.CainzOrderDetail = new HashSet<CainzOrderDetail>();
+        }
+    
+        public System.Guid ProductID { get; set; }
+        public string ProductBarcode { get; set; }
+        public string ProductName { get; set; }
+        public string ProductMaterial { get; set; }
+        public string ProductSize { get; set; }
+        public string ProductColor { get; set; }
+        public Nullable<decimal> ProductPrice { get; set; }
         public System.DateTime CreateTime { get; set; }
         public int Deleted { get; set; }
-        public Nullable<System.DateTime> ModifyTime { get; set; }
-        public Nullable<int> Modified { get; set; }
+        public System.DateTime ModifyTime { get; set; }
+        public int Modified { get; set; }
+        public Nullable<System.Guid> TraderID { get; set; }
         public string TraderName { get; set; }
-        public string TraderID { get; set; }
+        public System.Guid CainzTraderTraderID { get; set; }
+    
+        public virtual ICollection<CainzOrderDetail> CainzOrderDetail { get; set; }
+        public virtual CainzTrader CainzTrader { get; set; }
     }
 }

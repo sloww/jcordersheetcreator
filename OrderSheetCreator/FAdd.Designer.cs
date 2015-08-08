@@ -68,18 +68,15 @@
             this.btnShow = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FactoryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FactoryID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Material = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.popSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Modified = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModifyTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
@@ -178,7 +175,7 @@
             // 
             this.txbPrice.BackColor = System.Drawing.SystemColors.Control;
             this.txbPrice.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbPrice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Price", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, "0.000", "#0.000"));
+            this.txbPrice.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "ProductPrice", true));
             this.txbPrice.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txbPrice.Location = new System.Drawing.Point(430, 12);
             this.txbPrice.Name = "txbPrice";
@@ -196,7 +193,7 @@
             // 
             this.txbColor.BackColor = System.Drawing.SystemColors.Control;
             this.txbColor.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbColor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Color", true));
+            this.txbColor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "ProductColor", true));
             this.txbColor.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txbColor.Location = new System.Drawing.Point(65, 135);
             this.txbColor.Name = "txbColor";
@@ -210,7 +207,7 @@
             this.txbSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txbSize.BackColor = System.Drawing.SystemColors.Control;
             this.txbSize.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Size", true));
+            this.txbSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "ProductSize", true));
             this.txbSize.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txbSize.Location = new System.Drawing.Point(65, 93);
             this.txbSize.Name = "txbSize";
@@ -222,7 +219,7 @@
             // 
             this.txbMaterial.BackColor = System.Drawing.SystemColors.Control;
             this.txbMaterial.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbMaterial.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Material", true));
+            this.txbMaterial.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "ProductMaterial", true));
             this.txbMaterial.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txbMaterial.Location = new System.Drawing.Point(65, 52);
             this.txbMaterial.Name = "txbMaterial";
@@ -475,7 +472,7 @@
             // 
             this.txbBarcode.BackColor = System.Drawing.SystemColors.Control;
             this.txbBarcode.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbBarcode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "Barcode", true));
+            this.txbBarcode.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "ProductBarcode", true));
             this.txbBarcode.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txbBarcode.Location = new System.Drawing.Point(65, 10);
             this.txbBarcode.Name = "txbBarcode";
@@ -515,14 +512,11 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Barcode,
-            this.FactoryName,
-            this.FactoryID,
             this.Material,
             this.Color,
             this.popSize,
             this.Price,
             this.Modified,
-            this.iDDataGridViewTextBoxColumn,
             this.ModifyTime});
             this.dataGridView1.DataSource = this.productsBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -532,6 +526,14 @@
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(877, 262);
             this.dataGridView1.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Barcode";
+            this.dataGridViewTextBoxColumn1.HeaderText = "条码";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // Column1
             // 
@@ -546,32 +548,16 @@
             // Barcode
             // 
             this.Barcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Barcode.DataPropertyName = "Barcode";
+            this.Barcode.DataPropertyName = "ProductBarcode";
             this.Barcode.HeaderText = "条码";
             this.Barcode.Name = "Barcode";
             this.Barcode.ReadOnly = true;
             this.Barcode.Width = 54;
             // 
-            // FactoryName
-            // 
-            this.FactoryName.DataPropertyName = "FactoryName";
-            this.FactoryName.HeaderText = "FactoryName";
-            this.FactoryName.Name = "FactoryName";
-            this.FactoryName.ReadOnly = true;
-            this.FactoryName.Visible = false;
-            // 
-            // FactoryID
-            // 
-            this.FactoryID.DataPropertyName = "FactoryID";
-            this.FactoryID.HeaderText = "FactoryID";
-            this.FactoryID.Name = "FactoryID";
-            this.FactoryID.ReadOnly = true;
-            this.FactoryID.Visible = false;
-            // 
             // Material
             // 
             this.Material.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Material.DataPropertyName = "Material";
+            this.Material.DataPropertyName = "ProductMaterial";
             this.Material.HeaderText = "材质";
             this.Material.Name = "Material";
             this.Material.ReadOnly = true;
@@ -579,7 +565,7 @@
             // Color
             // 
             this.Color.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Color.DataPropertyName = "Color";
+            this.Color.DataPropertyName = "ProductColor";
             this.Color.HeaderText = "颜色";
             this.Color.Name = "Color";
             this.Color.ReadOnly = true;
@@ -588,7 +574,7 @@
             // popSize
             // 
             this.popSize.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.popSize.DataPropertyName = "Size";
+            this.popSize.DataPropertyName = "ProductSize";
             this.popSize.HeaderText = "尺寸";
             this.popSize.Name = "popSize";
             this.popSize.ReadOnly = true;
@@ -596,7 +582,7 @@
             // 
             // Price
             // 
-            this.Price.DataPropertyName = "Price";
+            this.Price.DataPropertyName = "ProductPrice";
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle2.Format = "N3";
             dataGridViewCellStyle2.NullValue = "0";
@@ -615,29 +601,12 @@
             this.Modified.Name = "Modified";
             this.Modified.ReadOnly = true;
             // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.ReadOnly = true;
-            this.iDDataGridViewTextBoxColumn.Visible = false;
-            // 
             // ModifyTime
             // 
             this.ModifyTime.DataPropertyName = "ModifyTime";
             this.ModifyTime.HeaderText = "修正时间";
             this.ModifyTime.Name = "ModifyTime";
             this.ModifyTime.ReadOnly = true;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Barcode";
-            this.dataGridViewTextBoxColumn1.HeaderText = "条码";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // FAdd
             // 
@@ -710,16 +679,14 @@
         private System.Windows.Forms.Button btnShow;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.CheckBox ckbAutoEnter;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Barcode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FactoryName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FactoryID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Material;
         private System.Windows.Forms.DataGridViewTextBoxColumn Color;
         private System.Windows.Forms.DataGridViewTextBoxColumn popSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Modified;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn ModifyTime;
     }
 }

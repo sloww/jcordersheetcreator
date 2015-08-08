@@ -21,7 +21,7 @@ namespace OrderSheetCreator
     {
         Dictionary<string, int> gMaoYiShangDic = new Dictionary<string, int>();
         Dictionary<string, string> gGongChangDic = new Dictionary<string, string>();
-        List<CainzCustomer> FACTORYS = new List<CainzCustomer>();
+        List<CainzFactory> FACTORYS = new List<CainzFactory>();
 
 
         public DataTools()
@@ -32,34 +32,34 @@ namespace OrderSheetCreator
         private void button1_Click(object sender, EventArgs e)
         {
             
-            using (var ctx = new entity.DB())
-            {
-                foreach (var maoyi in gMaoYiShangDic)
-                {
-                    string catename = maoyi.Key;
-                    CusCategory cusc = ctx.CusCategory.FirstOrDefault(item => item.CateName == catename);
-                    if (cusc == null)
-                    {
-                        CusCategory cc = new CusCategory();
-                        cc.ParentNum = "130817052630";
-                        cc.SnNum = DateTime.Now.ToString("yyMMddHHmmss");
-                        cc.CateName = maoyi.Key.ToString().Trim();
-                        cc.IsDelete = 0;
-                        cc.CreateTime = DateTime.Now;
-                        ctx.CusCategory.Add(cc);
-                        ctx.Entry(cc).State = System.Data.Entity.EntityState.Added;
-                        try
-                        {
-                            ctx.SaveChanges();
-                        }
-                        catch (Exception ee)
-                        {
-                            MessageBox.Show(ee.Message);
-                        }
-                        System.Threading.Thread.Sleep(1000);
-                    }
-                }
-            }
+            //using (var ctx = new entity.DB())
+            //{
+            //    foreach (var maoyi in gMaoYiShangDic)
+            //    {
+            //        string catename = maoyi.Key;
+            //        CusCategory cusc = ctx.CusCategory.FirstOrDefault(item => item.CateName == catename);
+            //        if (cusc == null)
+            //        {
+            //            CusCategory cc = new CusCategory();
+            //            cc.ParentNum = "130817052630";
+            //            cc.SnNum = DateTime.Now.ToString("yyMMddHHmmss");
+            //            cc.CateName = maoyi.Key.ToString().Trim();
+            //            cc.IsDelete = 0;
+            //            cc.CreateTime = DateTime.Now;
+            //            ctx.CusCategory.Add(cc);
+            //            ctx.Entry(cc).State = System.Data.Entity.EntityState.Added;
+            //            try
+            //            {
+            //                ctx.SaveChanges();
+            //            }
+            //            catch (Exception ee)
+            //            {
+            //                MessageBox.Show(ee.Message);
+            //            }
+            //            System.Threading.Thread.Sleep(1000);
+            //        }
+            //    }
+            //}
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -157,12 +157,12 @@ namespace OrderSheetCreator
                         {
                             gGongChangDic.Add(factoryName, traderName);
 
-                            CainzCustomer factory = new CainzCustomer();
+                            CainzFactory factory = new CainzFactory();
                             factory.FactoryName = factoryName;
                             //factory.FactoryNo = DateTime.Now.ToString("yyMMddHHmmss");
-                            factory.Address = getCellString(15, irow);
+                            factory.FactoryAddress = getCellString(15, irow);
                             factory.Contact = getCellString(13, irow);
-                            factory.Phone = getCellString(14, irow);
+                            factory.ContactPhone = getCellString(14, irow);
                             FACTORYS.Add(factory);
 
                         }
@@ -194,57 +194,57 @@ namespace OrderSheetCreator
         //导入工厂数据
         private void button4_Click(object sender, EventArgs e)
         {
-            if (gMaoYiShangDic.Count == 0) return;
-            if (gGongChangDic.Count == 0) return;
-            List<Customer> ctlistforupdate = new List<Customer>();
-            List<Customer> ctlist = new List<Customer>();
-            using (var ctx = new entity.DB())
-            {
-                var cainzCustomers = from item in ctx.Customer
-                                     where item.FirstNum == "130817052630"
-                                     select item;
-                foreach (var cainzCus in cainzCustomers)
-                {
-                    string FactoryName = cainzCus.CustomerName.Replace('C', ' ').Trim();
+            //if (gMaoYiShangDic.Count == 0) return;
+            //if (gGongChangDic.Count == 0) return;
+            //List<Customer> ctlistforupdate = new List<Customer>();
+            //List<Customer> ctlist = new List<Customer>();
+            //using (var ctx = new entity.DB())
+            //{
+            //    var cainzCustomers = from item in ctx.Customer
+            //                         where item.FirstNum == "130817052630"
+            //                         select item;
+            //    foreach (var cainzCus in cainzCustomers)
+            //    {
+            //        string FactoryName = cainzCus.CustomerName.Replace('C', ' ').Trim();
 
-                    string traderName = FindTraderByFactory(FactoryName, gGongChangDic);
-                    if (traderName != "")
-                    {
+            //        string traderName = FindTraderByFactory(FactoryName, gGongChangDic);
+            //        if (traderName != "")
+            //        {
 
-                        var _maoyishang = ctx.CusCategory.SingleOrDefault(item => item.CateName == traderName);
-                        if (_maoyishang != null)
-                        {
-                            cainzCus.SecondNum = _maoyishang.SnNum;
-                            ctlistforupdate.Add(cainzCus);
-                        }
+            //            var _maoyishang = ctx.CusCategory.SingleOrDefault(item => item.CateName == traderName);
+            //            if (_maoyishang != null)
+            //            {
+            //                cainzCus.SecondNum = _maoyishang.SnNum;
+            //                ctlistforupdate.Add(cainzCus);
+            //            }
 
-                    }
-                    else
-                    {
-                        using (StreamWriter w = new StreamWriter("log2.txt", true))
-                        {
-                            w.WriteLine(FactoryName + "," + stringZip(FactoryName));
-                        }
-                    }
-                }
+            //        }
+            //        else
+            //        {
+            //            using (StreamWriter w = new StreamWriter("log2.txt", true))
+            //            {
+            //                w.WriteLine(FactoryName + "," + stringZip(FactoryName));
+            //            }
+            //        }
+            //    }
 
-                ctlist = cainzCustomers.ToList();
+            //    ctlist = cainzCustomers.ToList();
 
-                customerBindingSource.DataSource = ctlist;
+            //    customerBindingSource.DataSource = ctlist;
 
-            }
+            //}
 
-            //修改动作
-            using (var ctx = new entity.DB())
-            {
-                foreach (var item in ctlistforupdate)
-                {
-                    ctx.Customer.Attach(item);
-                    ctx.Entry(item).State = System.Data.Entity.EntityState.Modified;
-                    ctx.SaveChanges();
+            ////修改动作
+            //using (var ctx = new entity.DB())
+            //{
+            //    foreach (var item in ctlistforupdate)
+            //    {
+            //        ctx.Customer.Attach(item);
+            //        ctx.Entry(item).State = System.Data.Entity.EntityState.Modified;
+            //        ctx.SaveChanges();
 
-                }
-            }
+            //    }
+            //}
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -287,10 +287,11 @@ namespace OrderSheetCreator
 
         private CainzTrader GetTradeByTraderName(string name)
         {
+            if (name == "") return null;
             using (var db = new entity.DB())
             {
                 var c = (from item in db.CainzTrader
-                         where item.CateName.Contains(name)
+                         where item.TraderName.Contains(name)
                          select item).FirstOrDefault();
                 if (c != null)
                     return c;
@@ -304,13 +305,13 @@ namespace OrderSheetCreator
             return GetTradeByTraderName(FindTraderByFactory(name, this.gGongChangDic));
         }
 
-        private CainzCustomer GetFactoryByName(string name)
+        private CainzFactory GetFactoryByName(string name)
         {
             name = stringZip(name);
-            CainzCustomer cc = null;
+            CainzFactory cc = null;
             using (var db = new entity.DB())
             {
-                var c = (from item in db.CainzCustomer
+                var c = (from item in db.CainzFactory
                          where item.FactoryName.Contains(name)
                          select item).FirstOrDefault();
                 if (c != null)
@@ -359,15 +360,15 @@ namespace OrderSheetCreator
                 foreach (var Trader in gMaoYiShangDic)
                 {
                     string traderName = Trader.Key;
-                    CainzTrader cusc = db.CainzTrader.FirstOrDefault(item => item.CateName == traderName);
+                    CainzTrader cusc = db.CainzTrader.FirstOrDefault(item => item.TraderName == traderName);
                     if (cusc == null)
                     {
                         CainzTrader cc = new CainzTrader();
-                        cc.ParentNum = "130817052630";
-                        cc.SnNum = System.Guid.NewGuid().ToString();
-                        cc.CateName = Trader.Key.ToString().Trim();
-                        cc.IsDelete = 0;
+                        cc.TraderID = Guid.NewGuid();
+                        cc.TraderName = Trader.Key.ToString().Trim();
+                        cc.TraderShortName = PublicTools.stringZip(cc.TraderName);
                         cc.CreateTime = DateTime.Now;
+                        cc.IsDelete = 0;
                         db.CainzTrader.Add(cc);
                     }
                 }
@@ -376,7 +377,6 @@ namespace OrderSheetCreator
             }
         }
 
-        // 向 cainzcustomer 表 导入/更新数据
         private void btnImportFactory_Click(object sender, EventArgs e)
         {
 
@@ -385,47 +385,85 @@ namespace OrderSheetCreator
                 foreach (var f in this.FACTORYS)
                 {
                     string FactoryName = f.FactoryName;
-                    CainzCustomer f2 = db.CainzCustomer.FirstOrDefault(item => item.FactoryName == FactoryName);
-                    if (f2 == null)
+                    entity.CainzFactory factory = db.CainzFactory.FirstOrDefault(item => item.FactoryName == FactoryName);
+                    if (factory == null)
                     {
-                        f.FactoryNo = System.Guid.NewGuid().ToString();
-                        f.FirstNum = "130817052630";
-                        f.FactoryNameJP = Pinyin.GetInitials(f.FactoryName);
-                        db.CainzCustomer.Add(f);
-                        
+                        entity.CainzFactory _factory =new CainzFactory();
+                        _factory.FactoryID=Guid.NewGuid();
+                        _factory.FactoryName = FactoryName;
+                        _factory.FactoryNameJP = Pinyin.GetInitials(f.FactoryName);
+                        _factory.Deleted = 0;
+                        _factory.CreateTime = DateTime.Now;
+
+                        entity.CainzTrader ct = GetTraaterByFactoryName(_factory.FactoryName);
+
+
+                        if (ct != null)
+                        {
+                            _factory.CainzTraderTraderID = ct.TraderID;
+                            _factory.TraderID = ct.TraderID;
+                            _factory.TraderName = ct.TraderName;
+                            db.CainzFactory.Add(_factory);
+                        }
                     }
                 }
                 db.SaveChanges();
             }
         }
 
+        private entity.CainzTrader GetTraaterByFactoryName(string factoryName)
+        {
+            factoryName = factoryName.Replace('C', ' ').Trim();
+            CainzTrader trader = new CainzTrader();
+
+            string traderName = FindTraderByFactory(factoryName, gGongChangDic);
+            using (var db = new DB())
+            {
+                if (traderName != "")
+                {
+
+                    trader = db.CainzTrader.SingleOrDefault(item => item.TraderName == traderName);
+
+                }
+                else
+                {
+                    trader = null;
+                    using (StreamWriter w = new StreamWriter("log3.txt", true))
+                    {
+                        w.WriteLine(factoryName + "," + stringZip(factoryName));
+                    }
+                }
+            }
+
+            return trader;
+        }
+
         private void btnBlind_Click(object sender, EventArgs e)
         {
             if (gMaoYiShangDic.Count == 0) return;
             if (gGongChangDic.Count == 0) return;
-            List<CainzCustomer> ctlistforupdate = new List<CainzCustomer>();
-            List<CainzCustomer> ctlist = new List<CainzCustomer>();
+            List<CainzFactory> ctlistforupdate = new List<CainzFactory>();
+            List<CainzFactory> ctlist = new List<CainzFactory>();
             using (var db = new entity.DB())
             {
-                var factorys = from item in db.CainzCustomer
-                               where item.FirstNum == "130817052630"
+                var factorys = from item in db.CainzFactory
                                select item;
-                foreach (var cainzCus in factorys)
+                foreach (var factory in factorys)
                 {
-                    string factoryName = cainzCus.FactoryName.Replace('C', ' ').Trim();
+                    string factoryName = factory.FactoryName.Replace('C', ' ').Trim();
 
                     string traderName = FindTraderByFactory(factoryName, gGongChangDic);
 
                     if (traderName != "")
                     {
 
-                        var _maoyishang = db.CainzTrader.SingleOrDefault(item => item.CateName == traderName);
+                        var _maoyishang = db.CainzTrader.SingleOrDefault(item => item.TraderName == traderName);
 
                         if (_maoyishang != null)
                         {
-                            cainzCus.Trader = _maoyishang.CateName;
-                            cainzCus.TraderNo = _maoyishang.SnNum;
-                            ctlistforupdate.Add(cainzCus);
+                            factory.TraderName = _maoyishang.TraderName;
+                            factory.TraderID = _maoyishang.TraderID;
+                            ctlistforupdate.Add(factory);
                         }
 
                     }
@@ -449,7 +487,7 @@ namespace OrderSheetCreator
             {
                 foreach (var item in ctlistforupdate)
                 {
-                    ctx.CainzCustomer.Attach(item);
+                    ctx.CainzFactory.Attach(item);
                     ctx.Entry(item).State = System.Data.Entity.EntityState.Modified;
                     ctx.SaveChanges();
 
@@ -768,13 +806,13 @@ namespace OrderSheetCreator
                     {
                         i++;
                     }
-                    string factoryID = "";
+                    Guid factoryID;
                     if (gongchangString == "")
                     {
                         gongchangString = ist.SheetName.Trim();
                     }
 
-                    CainzCustomer cc = this.GetFactoryByName(gongchangString);
+                    CainzFactory cc = this.GetFactoryByName(gongchangString);
                     if (cc == null)
                     {
                         cc = this.GetFactoryByName(ist.SheetName.Trim());
@@ -782,12 +820,12 @@ namespace OrderSheetCreator
 
                     if (cc != null)
                     {
-                        factoryID = cc.FactoryNo;
+                        factoryID = cc.FactoryID;
                         gongchangString = cc.FactoryName;
                     }
 
                     string com = cdString + caizhiString + chicunString + danjiaString + yanseString + caizhiEXString + wuliaoString + gongchangString;
-                    double danjiaDouble = getCellDouble(danjiaNo, irow);
+                    double price = getCellDouble(danjiaNo, irow);
 
                     if (com.Length < 6) continue;
                     if (false == productHT.ContainsKey(com))
@@ -795,13 +833,11 @@ namespace OrderSheetCreator
                         using (var db = new entity.DB())
                         {
                             CainzProduct p = new CainzProduct();
-                            p.FactoryID = factoryID;
-                            p.FactoryName = gongchangString;
-                            p.Barcode = cdString;
-                            p.Color = yanseString;
-                            p.Material = caizhiString;
-                            p.Size = chicunString;
-                            p.Price = (System.Decimal)danjiaDouble;
+                            p.ProductBarcode = cdString;
+                            p.ProductColor = yanseString;
+                            p.ProductMaterial = caizhiString;
+                            p.ProductSize = chicunString;
+                            p.ProductPrice = (System.Decimal)price;
                             p.CreateTime = DateTime.Now;
                             db.CainzProduct.Add(p);
                             db.Entry(p).State = System.Data.Entity.EntityState.Added;
@@ -819,7 +855,7 @@ namespace OrderSheetCreator
         {
             using (var db = new entity.DB())
             {
-                var result = from p in db.CainzCustomer
+                var result = from p in db.CainzFactory
                              select p;
                 foreach (var p in result)
                 {
@@ -841,13 +877,13 @@ namespace OrderSheetCreator
             DirectoryInfo TheFolder = new DirectoryInfo("D://excel/");
             foreach (FileInfo NextFile in TheFolder.GetFiles())
             {
-                ReadExcelProductsAndInsert(NextFile.FullName);
+                ReadExcelProductsAndInsert(NextFile.FullName,NextFile.Name.Replace(".xls","").Split(' ')[1]);
             }
         }
 
         //添加
 
-        private void ReadExcelProductsAndInsert(string path)
+        private void ReadExcelProductsAndInsert(string path,string name)
         {
             IWorkbook wb = WorkbookFactory.Create(path);
 
@@ -857,6 +893,27 @@ namespace OrderSheetCreator
 
 
             ISheet ist = wb.GetSheetAt(0);
+
+            Guid traderID = Guid.Empty;
+            string traderName = "";
+            CainzTrader cc = this.GetTrderByFactoryName(name);
+
+            if (cc == null)
+            {
+                FTrader m = new FTrader(name);
+                if (m.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    traderID = FTrader.TRADER.TraderID;
+                    traderName = FTrader.TRADER.TraderName;
+                }
+            }
+            else
+            {
+                traderID = cc.TraderID;
+                traderName = cc.TraderName;
+            }
+
+            if (traderID == Guid.Empty) return;
 
             int rowofPage = ist.LastRowNum + 1;
 
@@ -874,6 +931,8 @@ namespace OrderSheetCreator
             //查找各个位置
             foreach (IRow row in ist)
             {
+
+
                 int cellCount = row.Cells.Count;
                 for (int cNo = 0; cNo < cellCount; cNo++)
                 {
@@ -938,6 +997,8 @@ namespace OrderSheetCreator
 
 
             Hashtable productHT = new Hashtable();
+            using (var db = new entity.DB())
+            {
 
             for (int j = titleRowNo + 1; j < rowofPage; j++)
             {
@@ -955,28 +1016,8 @@ namespace OrderSheetCreator
                 string caizhiEXString = getCellString(caizhiEXNo, irow);
                 string gongchangString = getCellString(gongchangNo, irow);
                 string wuliaoString = getCellString(wuliaoNo, irow);
-                string  traderid = "";
-                string tradername = "";
 
-                string  factoryID = "";
-                if (gongchangString == "")
-                {
-                    gongchangString = ist.SheetName.Trim();
-                }
 
-                CainzCustomer cc = this.GetFactoryByName(gongchangString);
-                if (cc == null)
-                {
-                    cc = this.GetFactoryByName(ist.SheetName.Trim());
-                }
-
-                if (cc != null)
-                {
-                    factoryID = cc.FactoryNo;
-                    gongchangString = cc.FactoryName;
-                    traderid = cc.TraderNo;
-                    tradername = cc.Trader;
-                }
 
                 string com = cdString + caizhiString + chicunString + danjiaString + yanseString + caizhiEXString + wuliaoString + gongchangString;
                 double danjiaDouble = getCellDouble(danjiaNo, irow);
@@ -984,29 +1025,36 @@ namespace OrderSheetCreator
                 if (com.Length < 6) continue;
                 if (false == productHT.ContainsKey(com))
                 {
-                    using (var db = new entity.DB())
-                    {
+
                         CainzProduct p = new CainzProduct();
-                        p.FactoryID = factoryID;
-                        p.FactoryName = gongchangString;
-                        p.Barcode = cdString;
-                        p.Color = yanseString;
-                        p.Material = caizhiString;
-                        p.Size = chicunString;
-                        p.Price = (System.Decimal)danjiaDouble;
+                        p.ProductID = Guid.NewGuid();
+                        p.ProductBarcode = cdString;
+                        p.ProductSize = yanseString;
+                        p.ProductMaterial = caizhiString;
+                        p.ProductSize = chicunString;
+                        p.ProductPrice = (System.Decimal)danjiaDouble;
+                        p.TraderID = traderID;
+                        p.TraderName = traderName;
+                        p.CainzTraderTraderID = traderID;
+                        p.Deleted = 0;
                         p.CreateTime = DateTime.Now;
-                        p.TraderID = traderid;
-                        p.TraderName = tradername;
-                        db.CainzProduct.Add(p);
-                        db.Entry(p).State = System.Data.Entity.EntityState.Added;
-                        db.SaveChanges();
-
+                        p.ModifyTime = DateTime.Now;
+                        p.Modified = 0;
+                        if (traderID != Guid.Empty)
+                        {
+                            db.CainzProduct.Add(p);
+                            db.Entry(p).State = System.Data.Entity.EntityState.Added;
+                        }
+                        productHT.Add(com, null);
                     }
+                
 
-                    productHT.Add(com, null);
                 }
 
+            db.SaveChanges();
+
             }
+
 
         }
 

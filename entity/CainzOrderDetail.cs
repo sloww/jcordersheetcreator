@@ -14,37 +14,32 @@ namespace entity
     
     public partial class CainzOrderDetail
     {
-        public int ID { get; set; }
-        public string SnNum { get; set; }
-        public int OrderNum { get; set; }
-        public string NitORI { get; set; }
-        public string ProductCD { get; set; }
+        public System.Guid OrderDetailID { get; set; }
+        public System.Guid OrderID { get; set; }
+        public Nullable<int> RowNo { get; set; }
+        public System.Guid ProductID { get; set; }
+        public string ProductBarcode { get; set; }
         public string ProductName { get; set; }
-        public string CdFileName { get; set; }
-        public string PopDesignNo { get; set; }
-        public string PopSize { get; set; }
-        public string PaperKind { get; set; }
-        public string PopCate { get; set; }
-        public string PopCateName { get; set; }
-        public string Colour { get; set; }
+        public string ProductMaterial { get; set; }
+        public string ProductSize { get; set; }
+        public string ProductColor { get; set; }
+        public Nullable<decimal> ProductPrice { get; set; }
         public Nullable<int> POPNum { get; set; }
-        public Nullable<int> RealNum { get; set; }
-        public int UnitNum { get; set; }
+        public Nullable<System.Guid> UnitID { get; set; }
         public string UnitName { get; set; }
         public Nullable<System.DateTime> ExpectDate { get; set; }
-        public decimal Price { get; set; }
-        public System.DateTime ProbabilityDate { get; set; }
-        public string ETD { get; set; }
-        public string Reference { get; set; }
-        public decimal PrintMoney { get; set; }
-        public decimal CheckMoney { get; set; }
-        public decimal InvoiceMoney { get; set; }
+        public string ExpectDateFormat { get; set; }
+        public decimal TotalMoney { get; set; }
         public string Sample { get; set; }
         public int Status { get; set; }
         public int IsDelete { get; set; }
         public System.DateTime CreateTime { get; set; }
         public string Remark { get; set; }
-        public string BatchNum { get; set; }
-        public Nullable<int> RowNo { get; set; }
+        public string BatchNo { get; set; }
+        public System.Guid CainzOrderOrderID { get; set; }
+        public System.Guid CainzProductProductID { get; set; }
+    
+        public virtual CainzOrder CainzOrder { get; set; }
+        public virtual CainzProduct CainzProduct { get; set; }
     }
 }

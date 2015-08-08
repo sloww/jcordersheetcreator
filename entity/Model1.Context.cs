@@ -25,12 +25,10 @@ namespace entity
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<CainzCustomer> CainzCustomer { get; set; }
+        public DbSet<CainzFactory> CainzFactory { get; set; }
+        public DbSet<CainzOrder> CainzOrder { get; set; }
         public DbSet<CainzOrderDetail> CainzOrderDetail { get; set; }
-        public DbSet<CainzOrders> CainzOrders { get; set; }
         public DbSet<CainzProduct> CainzProduct { get; set; }
         public DbSet<CainzTrader> CainzTrader { get; set; }
-        public DbSet<CusCategory> CusCategory { get; set; }
-        public DbSet<Customer> Customer { get; set; }
     }
 }

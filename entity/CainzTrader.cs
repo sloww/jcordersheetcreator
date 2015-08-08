@@ -14,12 +14,20 @@ namespace entity
     
     public partial class CainzTrader
     {
-        public int ID { get; set; }
-        public string SnNum { get; set; }
-        public string ParentNum { get; set; }
-        public string CateName { get; set; }
+        public CainzTrader()
+        {
+            this.CainzFactory = new HashSet<CainzFactory>();
+            this.CainzProduct = new HashSet<CainzProduct>();
+        }
+    
+        public System.Guid TraderID { get; set; }
+        public string TraderName { get; set; }
+        public string TraderShortName { get; set; }
         public int IsDelete { get; set; }
         public System.DateTime CreateTime { get; set; }
         public string Remark { get; set; }
+    
+        public virtual ICollection<CainzFactory> CainzFactory { get; set; }
+        public virtual ICollection<CainzProduct> CainzProduct { get; set; }
     }
 }

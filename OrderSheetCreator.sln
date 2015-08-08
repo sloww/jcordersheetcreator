@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OrderSheetCreator", "OrderS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "entity", "entity\entity.csproj", "{1CC5BAEC-4966-4023-AE1F-4C856F209899}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{356EC647-0B36-40D9-ADAE-26A3C1D6D76E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{1CC5BAEC-4966-4023-AE1F-4C856F209899}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CC5BAEC-4966-4023-AE1F-4C856F209899}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CC5BAEC-4966-4023-AE1F-4C856F209899}.Release|Any CPU.Build.0 = Release|Any CPU
+		{356EC647-0B36-40D9-ADAE-26A3C1D6D76E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{356EC647-0B36-40D9-ADAE-26A3C1D6D76E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{356EC647-0B36-40D9-ADAE-26A3C1D6D76E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{356EC647-0B36-40D9-ADAE-26A3C1D6D76E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,7 +11,7 @@ namespace OrderSheetCreator
 {
     public partial class FFactory : Form
     {
-        FCainzOrderD fd;
+        entity.CainzOrderDetail fd;
         private string FFACTORY_DATAGRIDVIEW_SETPATH = "客户查询表宽度设定.txt";
 
         public FFactory()
@@ -19,7 +19,7 @@ namespace OrderSheetCreator
             InitializeComponent();
         }
 
-        public FFactory(FCainzOrderD fd)
+        public FFactory(entity.CainzOrderDetail fd)
         {
             InitializeComponent();
             this.fd = fd;
@@ -33,17 +33,18 @@ namespace OrderSheetCreator
             {
                 using (var db = new entity.DB())
                 {
-                    var Query = from a in db.CainzCustomer
+                    var Query = from a in db.CainzFactory
                                        where a.FactoryName.Contains(txbSearch.Text) || a.FactoryNameJP.Contains(txbSearch.Text)
                                        select a;
-                    cainzCustomerBindingSource.DataSource = Query.Take(8).ToList();
+                    if(Query !=null)
+                        CainzFactoryBindingSource.DataSource = Query.Take(8).ToList();
 
                 }
                 PublicTools.RecountRowsNum(dataGridView1);
             }
             else
             {
-                cainzCustomerBindingSource.DataSource = new List<entity.CainzCustomer>();
+                CainzFactoryBindingSource.DataSource = new List<entity.CainzFactory>();
             }
         }
 
@@ -63,7 +64,7 @@ namespace OrderSheetCreator
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            FCainzOrderD.CC =(entity.CainzCustomer) cainzCustomerBindingSource.Current;
+            FCainzOrderD.CC = (entity.CainzFactory)CainzFactoryBindingSource.Current;
             this.Close();
         }
 
@@ -78,8 +79,8 @@ namespace OrderSheetCreator
             {
                 using (var db = new entity.DB())
                 {
-                    entity.CainzCustomer cp = (entity.CainzCustomer)cainzCustomerBindingSource.Current;
-                    db.CainzCustomer.Attach(cp);
+                    entity.CainzFactory cp = (entity.CainzFactory)CainzFactoryBindingSource.Current;
+                    db.CainzFactory.Attach(cp);
                     db.Entry(cp).State = System.Data.Entity.EntityState.Modified;
 
                     db.SaveChanges();
