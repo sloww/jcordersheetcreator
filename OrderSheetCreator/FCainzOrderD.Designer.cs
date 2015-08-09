@@ -43,7 +43,6 @@
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.btnExport = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbCancel = new System.Windows.Forms.ToolStripButton();
             this.btnTools = new System.Windows.Forms.ToolStripButton();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.label12 = new System.Windows.Forms.Label();
@@ -93,6 +92,14 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsdOrder = new System.Windows.Forms.BindingSource(this.components);
+            this.dgv = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.tmiDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsiAddNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsiFlag = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsiCanselFlag = new System.Windows.Forms.ToolStripMenuItem();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -102,6 +109,7 @@
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bsdOrder)).BeginInit();
+            this.dgv.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -116,7 +124,6 @@
             this.toolStripButton1,
             this.btnExport,
             this.toolStripSeparator2,
-            this.tsbCancel,
             this.btnTools,
             this.tsbSave});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
@@ -194,17 +201,6 @@
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 32);
-            // 
-            // tsbCancel
-            // 
-            this.tsbCancel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbCancel.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.tsbCancel.Image = ((System.Drawing.Image)(resources.GetObject("tsbCancel.Image")));
-            this.tsbCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbCancel.Name = "tsbCancel";
-            this.tsbCancel.Size = new System.Drawing.Size(92, 29);
-            this.tsbCancel.Text = "清空新建";
-            this.tsbCancel.Click += new System.EventHandler(this.tsbCancel_Click);
             // 
             // btnTools
             // 
@@ -341,7 +337,10 @@
             this.productPriceDataGridViewTextBoxColumn,
             this.totalMoneyDataGridViewTextBoxColumn,
             this.batchNoDataGridViewTextBoxColumn,
-            this.expectDateFormatDataGridViewTextBoxColumn});
+            this.expectDateFormatDataGridViewTextBoxColumn,
+            this.Column1,
+            this.Status});
+            this.dataGridView1.ContextMenuStrip = this.dgv;
             this.dataGridView1.DataSource = this.cainzOrderDetailBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
@@ -728,6 +727,64 @@
             // 
             this.bsdOrder.DataSource = typeof(entity.CainzOrder);
             // 
+            // dgv
+            // 
+            this.dgv.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tmiDelete,
+            this.tsiAddNew,
+            this.toolStripSeparator3,
+            this.tsiFlag,
+            this.tsiCanselFlag});
+            this.dgv.Name = "dgv";
+            this.dgv.Size = new System.Drawing.Size(137, 98);
+            // 
+            // tmiDelete
+            // 
+            this.tmiDelete.Name = "tmiDelete";
+            this.tmiDelete.Size = new System.Drawing.Size(136, 22);
+            this.tmiDelete.Text = "删除所选项";
+            this.tmiDelete.Click += new System.EventHandler(this.tmiDelete_Click);
+            // 
+            // tsiAddNew
+            // 
+            this.tsiAddNew.Name = "tsiAddNew";
+            this.tsiAddNew.Size = new System.Drawing.Size(136, 22);
+            this.tsiAddNew.Text = "新增产品";
+            this.tsiAddNew.Click += new System.EventHandler(this.tsiAddNew_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(133, 6);
+            // 
+            // tsiFlag
+            // 
+            this.tsiFlag.Name = "tsiFlag";
+            this.tsiFlag.Size = new System.Drawing.Size(136, 22);
+            this.tsiFlag.Text = "标记已发货";
+            this.tsiFlag.Click += new System.EventHandler(this.tsiFlag_Click);
+            // 
+            // tsiCanselFlag
+            // 
+            this.tsiCanselFlag.Name = "tsiCanselFlag";
+            this.tsiCanselFlag.Size = new System.Drawing.Size(136, 22);
+            this.tsiCanselFlag.Text = "撤销标记";
+            this.tsiCanselFlag.Click += new System.EventHandler(this.tsiCanselFlag_Click);
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "OrderDetailID";
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.Visible = false;
+            // 
             // FCainzOrderD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -742,6 +799,7 @@
             this.KeyPreview = true;
             this.Name = "FCainzOrderD";
             this.ShowIcon = false;
+            this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "   新增订单";
@@ -761,6 +819,7 @@
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bsdOrder)).EndInit();
+            this.dgv.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -769,7 +828,6 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton tsbCancel;
         private System.Windows.Forms.ToolStripButton tsbNew;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.Label label2;
@@ -828,5 +886,13 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn batchNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn expectDateFormatDataGridViewTextBoxColumn;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ContextMenuStrip dgv;
+        private System.Windows.Forms.ToolStripMenuItem tmiDelete;
+        private System.Windows.Forms.ToolStripMenuItem tsiAddNew;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem tsiFlag;
+        private System.Windows.Forms.ToolStripMenuItem tsiCanselFlag;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
     }
 }

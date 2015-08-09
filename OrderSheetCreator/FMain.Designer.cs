@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,8 +52,12 @@
             this.contactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.moneyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txbSearch = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cainzOrderBindingSource)).BeginInit();
@@ -70,6 +75,7 @@
             // menuStrip1
             // 
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.menuStrip1.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newOrderToolStripMenuItem,
             this.reportToolStripMenuItem,
@@ -101,6 +107,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnSearch);
+            this.panel2.Controls.Add(this.label1);
+            this.panel2.Controls.Add(this.txbSearch);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 31);
             this.panel2.Name = "panel2";
@@ -121,6 +130,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 77);
             this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.panel4.Size = new System.Drawing.Size(1102, 516);
             this.panel4.TabIndex = 3;
             // 
@@ -140,11 +150,12 @@
             this.createTimeDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.cainzOrderBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(10, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(1102, 516);
+            this.dataGridView1.Size = new System.Drawing.Size(1092, 516);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // cainzOrderBindingSource
             // 
@@ -153,8 +164,8 @@
             // sendDateDataGridViewTextBoxColumn
             // 
             this.sendDateDataGridViewTextBoxColumn.DataPropertyName = "SendDate";
-            dataGridViewCellStyle1.Format = "d";
-            this.sendDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle17.Format = "d";
+            this.sendDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle17;
             this.sendDateDataGridViewTextBoxColumn.HeaderText = "交货期(納品日)";
             this.sendDateDataGridViewTextBoxColumn.Name = "sendDateDataGridViewTextBoxColumn";
             // 
@@ -185,8 +196,8 @@
             // OrderDate
             // 
             this.OrderDate.DataPropertyName = "OrderDate";
-            dataGridViewCellStyle2.Format = "d";
-            this.OrderDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle18.Format = "d";
+            this.OrderDate.DefaultCellStyle = dataGridViewCellStyle18;
             this.OrderDate.HeaderText = "下单日期";
             this.OrderDate.Name = "OrderDate";
             // 
@@ -199,17 +210,49 @@
             // moneyDataGridViewTextBoxColumn
             // 
             this.moneyDataGridViewTextBoxColumn.DataPropertyName = "Money";
+            dataGridViewCellStyle19.Format = "N3";
+            dataGridViewCellStyle19.NullValue = null;
+            this.moneyDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle19;
             this.moneyDataGridViewTextBoxColumn.HeaderText = "订单总价";
             this.moneyDataGridViewTextBoxColumn.Name = "moneyDataGridViewTextBoxColumn";
             // 
             // createTimeDataGridViewTextBoxColumn
             // 
             this.createTimeDataGridViewTextBoxColumn.DataPropertyName = "CreateTime";
-            dataGridViewCellStyle3.Format = "d";
-            dataGridViewCellStyle3.NullValue = null;
-            this.createTimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle20.Format = "d";
+            dataGridViewCellStyle20.NullValue = null;
+            this.createTimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle20;
             this.createTimeDataGridViewTextBoxColumn.HeaderText = "创建日期";
             this.createTimeDataGridViewTextBoxColumn.Name = "createTimeDataGridViewTextBoxColumn";
+            // 
+            // txbSearch
+            // 
+            this.txbSearch.Font = new System.Drawing.Font("宋体", 12F);
+            this.txbSearch.Location = new System.Drawing.Point(90, 11);
+            this.txbSearch.Name = "txbSearch";
+            this.txbSearch.Size = new System.Drawing.Size(169, 26);
+            this.txbSearch.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("宋体", 12F);
+            this.label1.Location = new System.Drawing.Point(12, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 16);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "合同编号";
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("宋体", 12F);
+            this.btnSearch.Location = new System.Drawing.Point(281, 14);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 2;
+            this.btnSearch.Text = "查询";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // FMain
             // 
@@ -229,6 +272,8 @@
             this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cainzOrderBindingSource)).EndInit();
@@ -257,5 +302,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn contactDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn moneyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn createTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txbSearch;
     }
 }

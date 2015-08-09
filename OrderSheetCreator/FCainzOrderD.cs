@@ -20,17 +20,43 @@ namespace OrderSheetCreator
         FAdd fadd = new FAdd();
         private string FCainzOrderDdataGridViewSetPath = "订单表宽度设定.txt";
         private FDateTime FDT = new FDateTime();
+        private bool isModify = false;
         public FCainzOrderD()
         {
             InitializeComponent();
         }
 
-        private void tsbCancel_Click(object sender, EventArgs e)
+        public FCainzOrderD(entity.CainzOrder order)
         {
-            bdsCustomer.Clear();
-            cainzOrderDetailBindingSource.Clear();
-            //this.Close();
+            InitializeComponent();
+            using (var db = new entity.DB())
+            {
+
+                FCainzOrderD.FACTORY = (from a in db.CainzFactory
+                                        where a.FactoryID == order.FactoryID
+                                        select a).FirstOrDefault();
+                FCainzOrderD.ORDERDETAILLIST = new BindingList<entity.CainzOrderDetail>((from a in db.CainzOrderDetail
+                                                                                         where a.OrderID == order.OrderID
+                                                                                         select a).ToList());
+                txbDELdate.Tag =(DateTime) order.SendDate;
+                txbDELdate.Text = PublicTools.FormatDate((DateTime)order.SendDate);
+                txbIssuedDate.Tag=(DateTime)order.OrderDate;
+                txbIssuedDate.Text = PublicTools.FormatDate((DateTime)order.OrderDate);
+                txbName.Text = order.Contact;
+                if (txbAdd.Text.Length == 0)
+                {
+                    txbAdd.Text = order.Address;
+                }
+                txbOrder.Text = order.OrderExNo;
+                txbJingChenOrder.Text = order.OrderNo;
+
+                    
+            }
+
+            ReColorStatus();
+            isModify = true;
         }
+
 
         private void tsbSave_Click(object sender, EventArgs e)
         {
@@ -191,10 +217,10 @@ namespace OrderSheetCreator
             {
 
             }
-            ORDERDETAILLIST = new BindingList<entity.CainzOrderDetail>();
-            FACTORY = new entity.CainzFactory();
-            bdsCustomer.DataSource = FACTORY;
-            cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
+            //ORDERDETAILLIST = new BindingList<entity.CainzOrderDetail>();
+            //FACTORY = new entity.CainzFactory();
+            //bdsCustomer.DataSource = FACTORY;
+            //cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
             System.Diagnostics.Process.Start(copedExcelPath); 
 
         }
@@ -260,6 +286,7 @@ namespace OrderSheetCreator
             {
 
                 entity.CainzOrder order = new entity.CainzOrder();
+                //if(!isModify)
                 order.OrderID = Guid.NewGuid();
                 order.OrderNo = txbJingChenOrder.Text.Trim();
                 order.OrderExNo = txbOrder.Text.Trim();
@@ -296,6 +323,7 @@ namespace OrderSheetCreator
 
                 foreach (var odd in FCainzOrderD.ORDERDETAILLIST)
                 {
+                    odd.OrderDetailID = Guid.NewGuid();
                     odd.OrderID = order.OrderID;
                     odd.CainzOrderOrderID = odd.OrderID;
                     order.Money += odd.TotalMoney;
@@ -320,6 +348,58 @@ namespace OrderSheetCreator
             {
                 ((TextBox)sender).BackColor = Color.LightCoral;
             }
+        }
+
+        private void tsiAddNew_Click(object sender, EventArgs e)
+        {
+            this.tsbNew_Click(null, null);
+        }
+
+        private void tmiDelete_Click(object sender, EventArgs e)
+        {
+            var orderDetail = (entity.CainzOrderDetail)cainzOrderDetailBindingSource.Current;
+            if (orderDetail != null)
+            {
+                ORDERDETAILLIST.Remove(orderDetail);
+            }
+        }
+
+        private void tsiFlag_Click(object sender, EventArgs e)
+        {
+            var orderDetail = (entity.CainzOrderDetail)cainzOrderDetailBindingSource.Current;
+            if (orderDetail != null)
+            {
+                orderDetail.Status = 1;
+            }
+            ReColorStatus();
+        }
+
+        private void ReColorStatus()
+        {
+
+            foreach (DataGridViewRow i in dataGridView1.Rows)
+            {
+                var status = i.Cells["Status"].Value;
+                if (status != null && (int)status == 1)
+                {
+                    DataGridViewCellStyle dvcs = new DataGridViewCellStyle();
+                    dvcs.BackColor = Color.LightGreen;
+                    i.DefaultCellStyle = dvcs;
+
+                }
+            }
+
+        }
+
+        private void tsiCanselFlag_Click(object sender, EventArgs e)
+        {
+            var orderDetail = (entity.CainzOrderDetail)cainzOrderDetailBindingSource.Current;
+            if (orderDetail != null)
+            {
+                orderDetail.Status = 0;
+            }
+            ReColorStatus();
+
         }
     }
 }

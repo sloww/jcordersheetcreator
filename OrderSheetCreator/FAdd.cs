@@ -23,12 +23,12 @@ namespace OrderSheetCreator
         {
             InitializeComponent();
             this.IS_IN_ORDER = true;
-            txbMaterial.Text = cod.CainzProduct.ProductMaterial;
-            txbSize.Text = cod.CainzProduct.ProductSize;
+            txbMaterial.Text = cod.ProductMaterial;
+            txbSize.Text = cod.ProductSize;
             txbReMarK.Text = cod.Remark;
             txbCount.Text = cod.POPNum.ToString();
             txbPrice.Text = cod.ProductPrice.ToString();
-            txbColor.Text = cod.CainzProduct.ProductColor;
+            txbColor.Text = cod.ProductColor;
             txbCount.Focus();
             btnContinue.Text = "修改";
             txbSearchBarcode.Enabled = false;

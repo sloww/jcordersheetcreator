@@ -65,7 +65,10 @@ GO
 CREATE TABLE [dbo].[CainzOrder] (
     [OrderID] uniqueidentifier  NOT NULL,
     [OrderNo] varchar(50)  NULL,
+	[OrderExNo] varchar(50)  NULL,
     [FactoryID] uniqueidentifier  NULL,
+    [TraderName] nvarchar(300)  NULL,
+	[TraderID] uniqueidentifier  NULL,
     [FactoryName] nvarchar(300)  NULL,
     [Phone] varchar(500)  NULL,
     [Contact] nvarchar(300)  NULL,
