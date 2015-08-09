@@ -64,7 +64,7 @@ namespace OrderSheetCreator
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            FCainzOrderD.CC = (entity.CainzFactory)CainzFactoryBindingSource.Current;
+            FCainzOrderD.FACTORY = (entity.CainzFactory)CainzFactoryBindingSource.Current;
             this.Close();
         }
 

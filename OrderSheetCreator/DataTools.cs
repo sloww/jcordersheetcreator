@@ -92,7 +92,7 @@ namespace OrderSheetCreator
             }
             else if (cell.CellType == CellType.String)
             {
-                return cell.StringCellValue;
+                return cell.StringCellValue.Trim();
 
             }
             return "";
@@ -275,7 +275,8 @@ namespace OrderSheetCreator
 
         private string FindTraderByFactory(string s1, Dictionary<string, string> d1)
         {
-            if (d1.ContainsKey(s1)) return d1[s1];
+             if (d1.ContainsKey(s1)) return d1[s1];
+
             string s1zip = stringZip(s1);
             if (d1.ContainsKey(s1zip)) return d1[s1zip];
             foreach (var item in d1)
@@ -896,23 +897,29 @@ namespace OrderSheetCreator
 
             Guid traderID = Guid.Empty;
             string traderName = "";
-            CainzTrader cc = this.GetTrderByFactoryName(name);
 
-            if (cc == null)
+            using (var db = new DB())
             {
-                FTrader m = new FTrader(name);
-                if (m.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                string shortname = stringZip(name);
+                var query = (from a in db.CainzTrader
+                             where a.TraderName.Contains(shortname)
+                             select a).FirstOrDefault();
+                if (query != null)
                 {
-                    traderID = FTrader.TRADER.TraderID;
-                    traderName = FTrader.TRADER.TraderName;
+                    traderID = query.TraderID;
+                    traderName = query.TraderName;
                 }
-            }
-            else
-            {
-                traderID = cc.TraderID;
-                traderName = cc.TraderName;
-            }
+                else
+                {
+                    FTrader m = new FTrader(name);
+                    if (m.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        traderID = FTrader.TRADER.TraderID;
+                        traderName = FTrader.TRADER.TraderName;
+                    }
+                }
 
+            }
             if (traderID == Guid.Empty) return;
 
             int rowofPage = ist.LastRowNum + 1;
@@ -963,6 +970,7 @@ namespace OrderSheetCreator
                                     danjiaNo = icell.ColumnIndex;
                                 } break;
                             case "尺寸":
+                            case "尺寸（）":
                                 {
                                     chicunNo = icell.ColumnIndex;
                                 } break;
@@ -1019,7 +1027,7 @@ namespace OrderSheetCreator
 
 
 
-                string com = cdString + caizhiString + chicunString + danjiaString + yanseString + caizhiEXString + wuliaoString + gongchangString;
+                string com = cdString + caizhiString + chicunString + yanseString + caizhiEXString + wuliaoString;
                 double danjiaDouble = getCellDouble(danjiaNo, irow);
 
                 if (com.Length < 6) continue;
@@ -1029,7 +1037,7 @@ namespace OrderSheetCreator
                         CainzProduct p = new CainzProduct();
                         p.ProductID = Guid.NewGuid();
                         p.ProductBarcode = cdString;
-                        p.ProductSize = yanseString;
+                        p.ProductColor = yanseString;
                         p.ProductMaterial = caizhiString;
                         p.ProductSize = chicunString;
                         p.ProductPrice = (System.Decimal)danjiaDouble;
@@ -1043,7 +1051,6 @@ namespace OrderSheetCreator
                         if (traderID != Guid.Empty)
                         {
                             db.CainzProduct.Add(p);
-                            db.Entry(p).State = System.Data.Entity.EntityState.Added;
                         }
                         productHT.Add(com, null);
                     }

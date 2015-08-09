@@ -39,6 +39,10 @@ namespace entity
         public int IsDelete { get; set; }
         public System.DateTime CreateTime { get; set; }
         public System.Guid CainzFactoryFactoryID { get; set; }
+        public string OrderExNo { get; set; }
+        public string TraderName { get; set; }
+        public Nullable<System.Guid> TraderID { get; set; }
+        public Nullable<System.DateTime> OrderDate { get; set; }
     
         public virtual CainzFactory CainzFactory { get; set; }
         public virtual ICollection<CainzOrderDetail> CainzOrderDetail { get; set; }

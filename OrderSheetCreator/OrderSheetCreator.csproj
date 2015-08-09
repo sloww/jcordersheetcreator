@@ -125,6 +125,12 @@
     <Compile Include="FFactory.Designer.cs">
       <DependentUpon>FFactory.cs</DependentUpon>
     </Compile>
+    <Compile Include="FMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FMain.Designer.cs">
+      <DependentUpon>FMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="FTrader.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,6 +154,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FFactory.resx">
       <DependentUpon>FFactory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FMain.resx">
+      <DependentUpon>FMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FTrader.resx">
       <DependentUpon>FTrader.cs</DependentUpon>

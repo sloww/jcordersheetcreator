@@ -167,12 +167,16 @@ namespace OrderSheetCreator
             if (this.IS_IN_ORDER == false)
             {
                 entity.CainzOrderDetail cod = new entity.CainzOrderDetail();
+                cod.OrderDetailID = Guid.NewGuid();
                 cod.RowNo = FCainzOrderD.ORDERDETAILLIST.Count + 1;
+                cod.CainzProductProductID = ((entity.CainzProduct)productsBindingSource.Current).ProductID;
+                cod.ProductID = cod.CainzProductProductID;
                 cod.ProductBarcode = txbBarcode.Text;
                 cod.ProductMaterial= txbMaterial.Text;
                 cod.ProductColor = txbColor.Text;
                 cod.ProductSize = txbSize.Text;
                 cod.ProductPrice = _price;
+
                 cod.POPNum = count;
                 cod.Remark = txbReMarK.Text.Trim();
                 cod.CreateTime = DateTime.Now;
@@ -183,11 +187,15 @@ namespace OrderSheetCreator
                     if (DateTime.TryParse(txbIssuedDate.Text, out dt))
                     {
                         cod.ExpectDate = dt;
+                        cod.ExpectDateFormat = PublicTools.FormatDate(dt);
                     }
                 }
 
                 //注意最好计算！
                 cod.TotalMoney = (decimal)cod.ProductPrice * (decimal)cod.POPNum;
+                cod.IsDelete = 0;
+                cod.Status = 0;
+
                 FCainzOrderD.ORDERDETAILLIST.Add(cod);
             }
             else

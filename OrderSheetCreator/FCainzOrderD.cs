@@ -16,7 +16,7 @@ namespace OrderSheetCreator
         //全局订单明细列表
         public static BindingList<entity.CainzOrderDetail> ORDERDETAILLIST = new BindingList<entity.CainzOrderDetail>();
         //全局客户信息
-        public static entity.CainzCustomer CC = new entity.CainzCustomer();
+        public static entity.CainzFactory FACTORY = new entity.CainzFactory();
         FAdd fadd = new FAdd();
         private string FCainzOrderDdataGridViewSetPath = "订单表宽度设定.txt";
         private FDateTime FDT = new FDateTime();
@@ -27,7 +27,7 @@ namespace OrderSheetCreator
 
         private void tsbCancel_Click(object sender, EventArgs e)
         {
-            bindingSource1.Clear();
+            bdsCustomer.Clear();
             cainzOrderDetailBindingSource.Clear();
             //this.Close();
         }
@@ -43,7 +43,7 @@ namespace OrderSheetCreator
             PublicTools.SetColumsAutoModeNone(dataGridView1);
             cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
             PublicTools.RecoverColumnWidth(dataGridView1, FCainzOrderDdataGridViewSetPath);
-            bindingSource1.DataSource = CC;
+            bdsCustomer.DataSource = FACTORY;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
             this.ControlBox = true;
             using (entity.DB db = new entity.DB())
@@ -158,16 +158,16 @@ namespace OrderSheetCreator
             for(int i =0;i<totol;i++)
             {
                 IRow irow = ist.GetRow(i + 11);
-                irow.GetCell(1).SetCellValue(ORDERDETAILLIST[i].ProductCD);
+                irow.GetCell(1).SetCellValue(ORDERDETAILLIST[i].ProductBarcode);
                 irow.GetCell(2).SetCellValue(ORDERDETAILLIST[i].ProductName);
-                irow.GetCell(3).SetCellValue(ORDERDETAILLIST[i].PopSize);
-                irow.GetCell(4).SetCellValue(ORDERDETAILLIST[i].Colour);
-                irow.GetCell(5).SetCellValue(ORDERDETAILLIST[i].PaperKind);
-                irow.GetCell(6).SetCellValue(ORDERDETAILLIST[i].OrderNum);
-                totolCount += ORDERDETAILLIST[i].OrderNum;
-                irow.GetCell(7).SetCellValue(ORDERDETAILLIST[i].Price.ToString());
-                totolMoney += ORDERDETAILLIST[i].InvoiceMoney;
-                irow.GetCell(8).SetCellValue(ORDERDETAILLIST[i].InvoiceMoney.ToString());
+                irow.GetCell(3).SetCellValue(ORDERDETAILLIST[i].ProductSize);
+                irow.GetCell(4).SetCellValue(ORDERDETAILLIST[i].ProductColor);
+                irow.GetCell(5).SetCellValue(ORDERDETAILLIST[i].ProductMaterial);
+                irow.GetCell(6).SetCellValue((double)ORDERDETAILLIST[i].POPNum);
+                totolCount += (decimal)ORDERDETAILLIST[i].POPNum;
+                irow.GetCell(7).SetCellValue(ORDERDETAILLIST[i].ProductPrice.ToString());
+                totolMoney += ORDERDETAILLIST[i].TotalMoney;
+                irow.GetCell(8).SetCellValue(ORDERDETAILLIST[i].TotalMoney.ToString());
                 if (ORDERDETAILLIST[i].ExpectDate !=null)
                 {
                     irow.GetCell(9).SetCellValue(((DateTime)ORDERDETAILLIST[i].ExpectDate).ToString("yyyy-MM-dd"));
@@ -192,8 +192,9 @@ namespace OrderSheetCreator
 
             }
             ORDERDETAILLIST = new BindingList<entity.CainzOrderDetail>();
-            CC = new entity.CainzCustomer();
-            bindingSource1.DataSource = CC;
+            FACTORY = new entity.CainzFactory();
+            bdsCustomer.DataSource = FACTORY;
+            cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
             System.Diagnostics.Process.Start(copedExcelPath); 
 
         }
@@ -202,9 +203,9 @@ namespace OrderSheetCreator
         {
             FFactory ff = new FFactory();
             ff.ShowDialog();
-            if (CC != null)
+            if (FACTORY != null)
             {
-                bindingSource1.DataSource = CC;
+                bdsCustomer.DataSource = FACTORY;
                 bindingSource1_CurrentChanged(null, null);
             }
         }
@@ -227,6 +228,7 @@ namespace OrderSheetCreator
             FDT.Location = PublicTools.local(txbIssuedDate);
             FDT.ShowDialog();
             txbIssuedDate.Text = FDateTime.DateTimeSelect.ToShortDateString();
+            txbIssuedDate.Tag = FDateTime.DateTimeSelect;
         }
 
         private void txbDELdate_DoubleClick(object sender, EventArgs e)
@@ -234,6 +236,7 @@ namespace OrderSheetCreator
             FDT.Location = PublicTools.local(txbDELdate);
             FDT.ShowDialog();
             txbDELdate.Text = FDateTime.DateTimeSelect.ToShortDateString();
+            txbDELdate.Tag = FDateTime.DateTimeSelect;
         }
 
         private void txbTrader_DoubleClick(object sender, EventArgs e)
@@ -256,7 +259,66 @@ namespace OrderSheetCreator
             using (var db = new entity.DB())
             {
 
+                entity.CainzOrder order = new entity.CainzOrder();
+                order.OrderID = Guid.NewGuid();
+                order.OrderNo = txbJingChenOrder.Text.Trim();
+                order.OrderExNo = txbOrder.Text.Trim();
 
+                order.CreateTime = DateTime.Now;
+                order.IsDelete = 0;
+                order.Status = 0;
+
+
+                order.CainzFactoryFactoryID = FCainzOrderD.FACTORY.FactoryID;
+                order.FactoryID = order.CainzFactoryFactoryID;
+                order.FactoryName = txbFactory.Text.Trim();
+                order.Address = txbAdd.Text.Trim();
+
+                order.TraderName = FCainzOrderD.FACTORY.TraderName;
+                order.TraderID = FCainzOrderD.FACTORY.TraderID;
+
+
+
+                order.Contact = txbName.Text.Trim();
+                order.isDraft = 1;
+                if (txbDELdate.Tag != null)
+                {
+                    order.SendDate = (DateTime)txbDELdate.Tag;
+                }
+
+                if (txbIssuedDate.Tag != null)
+                {
+                    order.OrderDate = (DateTime)txbIssuedDate.Tag;
+                }
+
+
+                db.CainzOrder.Add(order);
+
+                foreach (var odd in FCainzOrderD.ORDERDETAILLIST)
+                {
+                    odd.OrderID = order.OrderID;
+                    odd.CainzOrderOrderID = odd.OrderID;
+                    order.Money += odd.TotalMoney;
+                }
+                db.CainzOrderDetail.AddRange(FCainzOrderD.ORDERDETAILLIST);
+
+                db.SaveChanges();
+
+                this.Close();
+
+
+            }
+        }
+
+        private void txbOrder_TextChanged(object sender, EventArgs e)
+        {
+            if (((TextBox)sender).Text.Length > 0)
+            {
+                ((TextBox)sender).BackColor = SystemColors.Control;
+            }
+            else
+            {
+                ((TextBox)sender).BackColor = Color.LightCoral;
             }
         }
     }

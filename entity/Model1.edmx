@@ -48,6 +48,10 @@
           <Property Name="IsDelete" Type="int" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="CainzFactoryFactoryID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="OrderExNo" Type="varchar" MaxLength="50" />
+          <Property Name="TraderName" Type="nvarchar" MaxLength="300" />
+          <Property Name="TraderID" Type="uniqueidentifier" />
+          <Property Name="OrderDate" Type="datetime" />
         </EntityType>
         <EntityType Name="CainzOrderDetail">
           <Key>
@@ -273,6 +277,10 @@
           <Property Name="CainzFactoryFactoryID" Type="Guid" Nullable="false" />
           <NavigationProperty Name="CainzFactory" Relationship="db001Model.FK_CainzFactoryCainzOrder" FromRole="CainzOrder" ToRole="CainzFactory" />
           <NavigationProperty Name="CainzOrderDetail" Relationship="db001Model.FK_CainzOrderCainzOrderDetail" FromRole="CainzOrder" ToRole="CainzOrderDetail" />
+          <Property Name="OrderExNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TraderName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="TraderID" Type="Guid" />
+          <Property Name="OrderDate" Type="DateTime" Precision="3" />
         </EntityType>
         <EntityType Name="CainzOrderDetail">
           <Key>
@@ -428,6 +436,10 @@
           <EntitySetMapping Name="CainzOrder">
             <EntityTypeMapping TypeName="db001Model.CainzOrder">
               <MappingFragment StoreEntitySet="CainzOrder">
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="TraderID" ColumnName="TraderID" />
+                <ScalarProperty Name="TraderName" ColumnName="TraderName" />
+                <ScalarProperty Name="OrderExNo" ColumnName="OrderExNo" />
                 <ScalarProperty Name="CainzFactoryFactoryID" ColumnName="CainzFactoryFactoryID" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
