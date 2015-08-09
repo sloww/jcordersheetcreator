@@ -39,9 +39,9 @@ namespace OrderSheetCreator
                                                                                          where a.OrderID == order.OrderID
                                                                                          select a).ToList());
                 txbDELdate.Tag =(DateTime) order.SendDate;
-                txbDELdate.Text = PublicTools.FormatDate((DateTime)order.SendDate);
+                txbDELdate.Text = PublicTools.FormatDateC((DateTime)order.SendDate);
                 txbIssuedDate.Tag=(DateTime)order.OrderDate;
-                txbIssuedDate.Text = PublicTools.FormatDate((DateTime)order.OrderDate);
+                txbIssuedDate.Text = PublicTools.FormatDateC((DateTime)order.OrderDate);
                 txbName.Text = order.Contact;
                 if (txbAdd.Text.Length == 0)
                 {
@@ -217,10 +217,6 @@ namespace OrderSheetCreator
             {
 
             }
-            //ORDERDETAILLIST = new BindingList<entity.CainzOrderDetail>();
-            //FACTORY = new entity.CainzFactory();
-            //bdsCustomer.DataSource = FACTORY;
-            //cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
             System.Diagnostics.Process.Start(copedExcelPath); 
 
         }
@@ -236,11 +232,6 @@ namespace OrderSheetCreator
             }
         }
 
-        private void btnTools_Click(object sender, EventArgs e)
-        {
-            DataTools dt = new DataTools();
-            dt.ShowDialog();
-        }
 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {

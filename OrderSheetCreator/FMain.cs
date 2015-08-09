@@ -135,5 +135,11 @@ namespace OrderSheetCreator
             OrderData_Load("");
 
         }
+
+        private void dataToolsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            DataTools m = new DataTools();
+            m.ShowDialog();
+        }
     }
 }

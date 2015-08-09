@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle41 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle42 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle43 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle44 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,6 +55,7 @@
             this.txbSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.dataToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -67,9 +68,9 @@
             // 
             this.panel1.Controls.Add(this.menuStrip1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Location = new System.Drawing.Point(10, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1102, 31);
+            this.panel1.Size = new System.Drawing.Size(1092, 31);
             this.panel1.TabIndex = 0;
             // 
             // menuStrip1
@@ -79,10 +80,12 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newOrderToolStripMenuItem,
             this.reportToolStripMenuItem,
-            this.helpToolStripMenuItem});
+            this.helpToolStripMenuItem,
+            this.dataToolsToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1102, 31);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1092, 31);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -111,27 +114,26 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.txbSearch);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 31);
+            this.panel2.Location = new System.Drawing.Point(10, 31);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1102, 46);
+            this.panel2.Size = new System.Drawing.Size(1092, 46);
             this.panel2.TabIndex = 1;
             // 
             // panel3
             // 
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 593);
+            this.panel3.Location = new System.Drawing.Point(10, 593);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1102, 28);
+            this.panel3.Size = new System.Drawing.Size(1092, 28);
             this.panel3.TabIndex = 2;
             // 
             // panel4
             // 
             this.panel4.Controls.Add(this.dataGridView1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(0, 77);
+            this.panel4.Location = new System.Drawing.Point(10, 77);
             this.panel4.Name = "panel4";
-            this.panel4.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.panel4.Size = new System.Drawing.Size(1102, 516);
+            this.panel4.Size = new System.Drawing.Size(1092, 516);
             this.panel4.TabIndex = 3;
             // 
             // dataGridView1
@@ -150,7 +152,7 @@
             this.createTimeDataGridViewTextBoxColumn});
             this.dataGridView1.DataSource = this.cainzOrderBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 0);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(1092, 516);
@@ -164,8 +166,8 @@
             // sendDateDataGridViewTextBoxColumn
             // 
             this.sendDateDataGridViewTextBoxColumn.DataPropertyName = "SendDate";
-            dataGridViewCellStyle17.Format = "d";
-            this.sendDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle41.Format = "d";
+            this.sendDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle41;
             this.sendDateDataGridViewTextBoxColumn.HeaderText = "交货期(納品日)";
             this.sendDateDataGridViewTextBoxColumn.Name = "sendDateDataGridViewTextBoxColumn";
             // 
@@ -196,8 +198,8 @@
             // OrderDate
             // 
             this.OrderDate.DataPropertyName = "OrderDate";
-            dataGridViewCellStyle18.Format = "d";
-            this.OrderDate.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle42.Format = "d";
+            this.OrderDate.DefaultCellStyle = dataGridViewCellStyle42;
             this.OrderDate.HeaderText = "下单日期";
             this.OrderDate.Name = "OrderDate";
             // 
@@ -210,25 +212,25 @@
             // moneyDataGridViewTextBoxColumn
             // 
             this.moneyDataGridViewTextBoxColumn.DataPropertyName = "Money";
-            dataGridViewCellStyle19.Format = "N3";
-            dataGridViewCellStyle19.NullValue = null;
-            this.moneyDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle19;
+            dataGridViewCellStyle43.Format = "N3";
+            dataGridViewCellStyle43.NullValue = null;
+            this.moneyDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle43;
             this.moneyDataGridViewTextBoxColumn.HeaderText = "订单总价";
             this.moneyDataGridViewTextBoxColumn.Name = "moneyDataGridViewTextBoxColumn";
             // 
             // createTimeDataGridViewTextBoxColumn
             // 
             this.createTimeDataGridViewTextBoxColumn.DataPropertyName = "CreateTime";
-            dataGridViewCellStyle20.Format = "d";
-            dataGridViewCellStyle20.NullValue = null;
-            this.createTimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle20;
+            dataGridViewCellStyle44.Format = "d";
+            dataGridViewCellStyle44.NullValue = null;
+            this.createTimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle44;
             this.createTimeDataGridViewTextBoxColumn.HeaderText = "创建日期";
             this.createTimeDataGridViewTextBoxColumn.Name = "createTimeDataGridViewTextBoxColumn";
             // 
             // txbSearch
             // 
             this.txbSearch.Font = new System.Drawing.Font("宋体", 12F);
-            this.txbSearch.Location = new System.Drawing.Point(90, 11);
+            this.txbSearch.Location = new System.Drawing.Point(97, 14);
             this.txbSearch.Name = "txbSearch";
             this.txbSearch.Size = new System.Drawing.Size(169, 26);
             this.txbSearch.TabIndex = 0;
@@ -236,23 +238,30 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("宋体", 12F);
-            this.label1.Location = new System.Drawing.Point(12, 17);
+            this.label1.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F);
+            this.label1.Location = new System.Drawing.Point(3, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 16);
+            this.label1.Size = new System.Drawing.Size(88, 25);
             this.label1.TabIndex = 1;
             this.label1.Text = "合同编号";
             // 
             // btnSearch
             // 
-            this.btnSearch.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnSearch.Location = new System.Drawing.Point(281, 14);
+            this.btnSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.btnSearch.Location = new System.Drawing.Point(287, 14);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 23);
             this.btnSearch.TabIndex = 2;
             this.btnSearch.Text = "查询";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // dataToolsToolStripMenuItem
+            // 
+            this.dataToolsToolStripMenuItem.Name = "dataToolsToolStripMenuItem";
+            this.dataToolsToolStripMenuItem.Size = new System.Drawing.Size(100, 27);
+            this.dataToolsToolStripMenuItem.Text = "数据管理";
+            this.dataToolsToolStripMenuItem.Click += new System.EventHandler(this.dataToolsToolStripMenuItem_Click);
             // 
             // FMain
             // 
@@ -265,6 +274,7 @@
             this.Controls.Add(this.panel1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FMain";
+            this.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
             this.Text = "Cainz 订单管理系统";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FMain_FormClosing);
             this.Load += new System.EventHandler(this.FMain_Load);
@@ -305,5 +315,6 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txbSearch;
+        private System.Windows.Forms.ToolStripMenuItem dataToolsToolStripMenuItem;
     }
 }
