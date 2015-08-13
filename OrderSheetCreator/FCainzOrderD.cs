@@ -21,6 +21,7 @@ namespace OrderSheetCreator
         private string FCainzOrderDdataGridViewSetPath = "订单表宽度设定.txt";
         private FDateTime FDT = new FDateTime();
         private bool isModify = false;
+        private bool isReadyToSave = false;
         public FCainzOrderD()
         {
             InitializeComponent();
@@ -56,7 +57,6 @@ namespace OrderSheetCreator
             ReColorStatus();
             isModify = true;
         }
-
 
         private void tsbSave_Click(object sender, EventArgs e)
         {
@@ -116,6 +116,12 @@ namespace OrderSheetCreator
         private void FCainzOrderD_FormClosing(object sender, FormClosingEventArgs e)
         {
             PublicTools.SaveColumnWidth(dataGridView1, this.FCainzOrderDdataGridViewSetPath);
+
+            if (MessageBox.Show("窗口关闭前，请确认是否已保存好订单？点击YES关闭窗体，点击NO取消关闭", "谨慎操作", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
+            {
+                e.Cancel = true;
+            }
+
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -232,28 +238,11 @@ namespace OrderSheetCreator
             }
         }
 
-
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
             string traderJC = PublicTools.stringZip(txbTrader.Text);
             string factoryJC = PublicTools.stringZip(txbFactory.Text);
             txbFile.Text = string.Format("{0}-{1}", traderJC, factoryJC);
-        }
-
-        private void txbIssuedDate_DoubleClick(object sender, EventArgs e)
-        {
-            FDT.Location = PublicTools.local(txbIssuedDate);
-            FDT.ShowDialog();
-            txbIssuedDate.Text = FDateTime.DateTimeSelect.ToShortDateString();
-            txbIssuedDate.Tag = FDateTime.DateTimeSelect;
-        }
-
-        private void txbDELdate_DoubleClick(object sender, EventArgs e)
-        {
-            FDT.Location = PublicTools.local(txbDELdate);
-            FDT.ShowDialog();
-            txbDELdate.Text = FDateTime.DateTimeSelect.ToShortDateString();
-            txbDELdate.Tag = FDateTime.DateTimeSelect;
         }
 
         private void txbTrader_DoubleClick(object sender, EventArgs e)
@@ -273,6 +262,7 @@ namespace OrderSheetCreator
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (orderValidate() == false) return;
             using (var db = new entity.DB())
             {
 
@@ -329,6 +319,43 @@ namespace OrderSheetCreator
             }
         }
 
+        private bool orderValidate()
+        {
+            bool r = true;
+            List<TextBox> toValidate = new List<TextBox>();
+            toValidate.Add(txbDELdate);
+            toValidate.Add(txbFactory);
+            toValidate.Add(txbAdd);
+            toValidate.Add(txbTrader);
+            toValidate.Add(txbIssuedDate);
+            toValidate.Add(txbName);
+            toValidate.Add(txbOrder);
+            toValidate.Add(txbJingChenOrder);
+            toValidate.Add(txbFile);
+
+            foreach (var item in toValidate)
+            {
+                if(item.TextLength==0)
+                {
+                    item.Focus();
+                    MessageBox.Show("红色标注部分不能通过验证保存，请检查");
+                    r = false;
+                    break;
+                }
+            }
+
+            if(dataGridView1.Rows.Count==0)
+            {
+                r = false;
+                MessageBox.Show("订单还没有添加产品明细，不能保存");
+            }
+
+            return r;
+
+
+
+        }
+
         private void txbOrder_TextChanged(object sender, EventArgs e)
         {
             if (((TextBox)sender).Text.Length > 0)
@@ -338,6 +365,7 @@ namespace OrderSheetCreator
             else
             {
                 ((TextBox)sender).BackColor = Color.LightCoral;
+                isReadyToSave = false;
             }
         }
 
@@ -391,6 +419,22 @@ namespace OrderSheetCreator
             }
             ReColorStatus();
 
+        }
+
+        private void txbIssuedDate_Click(object sender, EventArgs e)
+        {
+            FDT.Location = PublicTools.local(txbIssuedDate);
+            FDT.ShowDialog();
+            txbIssuedDate.Text = FDateTime.DateTimeSelect.ToShortDateString();
+            txbIssuedDate.Tag = FDateTime.DateTimeSelect;
+        }
+
+        private void txbDELdate_Click(object sender, EventArgs e)
+        {
+            FDT.Location = PublicTools.local(txbDELdate);
+            FDT.ShowDialog();
+            txbDELdate.Text = FDateTime.DateTimeSelect.ToShortDateString();
+            txbDELdate.Tag = FDateTime.DateTimeSelect;
         }
     }
 }

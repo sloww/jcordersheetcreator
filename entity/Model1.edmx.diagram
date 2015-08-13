@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="a1b1af25548740fb95d9ae8c93ed6394" Name="关系图1" ShowGrid="true" ZoomLevel="64">
+      <Diagram DiagramId="a1b1af25548740fb95d9ae8c93ed6394" Name="关系图1" ShowGrid="true" ZoomLevel="78">
         <EntityTypeShape EntityType="db001Model.CainzFactory" Width="1.5" PointX="3" PointY="2.25" />
         <EntityTypeShape EntityType="db001Model.CainzOrder" Width="1.5" PointX="5.25" PointY="1.75" />
         <EntityTypeShape EntityType="db001Model.CainzOrderDetail" Width="1.5" PointX="7.5" PointY="3.75" />

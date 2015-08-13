@@ -87,6 +87,8 @@ namespace OrderSheetCreator
                     cainzOrderBindingSource.DataSource = new List<entity.CainzOrder>();
                 }
             }
+            PublicTools.RecountRowsNum(dataGridView1);
+
         }
 
         private void FMain_FormClosing(object sender, FormClosingEventArgs e)
