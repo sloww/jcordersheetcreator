@@ -30,7 +30,7 @@ namespace OrderSheetCreator
         public FCainzOrderD(entity.CainzOrder order)
         {
             InitializeComponent();
-            using (var db = new entity.DB())
+            using (var db = PublicDB.getDB())
             {
 
                 FCainzOrderD.FACTORY = (from a in db.CainzFactory
@@ -58,11 +58,6 @@ namespace OrderSheetCreator
             isModify = true;
         }
 
-        private void tsbSave_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
         private void FCainzOrderD_Load(object sender, EventArgs e)
         {
             PublicTools.IniDatagridview(dataGridView1);
@@ -70,15 +65,20 @@ namespace OrderSheetCreator
             cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
             PublicTools.RecoverColumnWidth(dataGridView1, FCainzOrderDdataGridViewSetPath);
             bdsCustomer.DataSource = FACTORY;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
+            this.FormBorderStyle = FormBorderStyle.Sizable;
             this.ControlBox = true;
-            using (entity.DB db = new entity.DB())
-            {
 
+        }
 
-                lblSql.Text = db.Database.Connection.ConnectionString.Replace("ceshi123!@#","***").Trim();
-            }
-            lblVer.Text = " Ver 1.2 2015-8-5";
+        private void FCainzOrderD_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            PublicTools.SaveColumnWidth(dataGridView1, this.FCainzOrderDdataGridViewSetPath);
+
+        }
+
+        private void tsbSave_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void tsbNew_Click(object sender, EventArgs e)
@@ -111,17 +111,6 @@ namespace OrderSheetCreator
                         tsbSave_Click(null, null);
                     } break;
             }
-        }
-
-        private void FCainzOrderD_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            PublicTools.SaveColumnWidth(dataGridView1, this.FCainzOrderDdataGridViewSetPath);
-
-            if (MessageBox.Show("窗口关闭前，请确认是否已保存好订单？点击YES关闭窗体，点击NO取消关闭", "谨慎操作", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.No)
-            {
-                e.Cancel = true;
-            }
-
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -219,7 +208,7 @@ namespace OrderSheetCreator
                 wb.Write(fs);
             }
 
-            using (var db = new entity.DB())
+            using (var db = PublicDB.getDB())
             {
 
             }
@@ -263,7 +252,7 @@ namespace OrderSheetCreator
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (orderValidate() == false) return;
-            using (var db = new entity.DB())
+            using (var db = PublicDB.getDB())
             {
 
                 entity.CainzOrder order = new entity.CainzOrder();
@@ -318,7 +307,11 @@ namespace OrderSheetCreator
 
             }
         }
-
+        
+        /// <summary>
+        /// 订单保存前，验证各要素是否填写
+        /// </summary>
+        /// <returns></returns>
         private bool orderValidate()
         {
             bool r = true;
@@ -435,6 +428,21 @@ namespace OrderSheetCreator
             FDT.ShowDialog();
             txbDELdate.Text = FDateTime.DateTimeSelect.ToShortDateString();
             txbDELdate.Tag = FDateTime.DateTimeSelect;
+        }
+
+        private void FCainzOrderD_FormClosed(object sender, FormClosedEventArgs e)
+        {
+
+        }
+
+        private void dataGridView1_Paint(object sender, PaintEventArgs e)
+        {
+            decimal totol = 0;
+            foreach (var item in FCainzOrderD.ORDERDETAILLIST)
+            {
+                totol += item.TotalMoney; 
+            }
+            lblTotol.Text = string.Format("合计金额：{0}", totol);
         }
     }
 }

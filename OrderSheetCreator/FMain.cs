@@ -21,7 +21,7 @@ namespace OrderSheetCreator
             FCainzOrderD m = new FCainzOrderD();
             m.StartPosition = FormStartPosition.CenterParent;
             m.ShowDialog();
-            OrderData_Load("");
+            Search("");
 
         }
 
@@ -52,16 +52,19 @@ namespace OrderSheetCreator
             //回复dgv的宽度设置
             PublicTools.RecoverColumnWidth(dataGridView1, "Fmaindgv.config");
 
-            //OrderData_Load("");
-       
+
+            lblDBStatus.Text = string.Format("数据库信息：{0}", PublicDB.getIniConnInfo("config.ini"));
+
+
         }
 
-        private void OrderData_Load(string OrderExNo)
+        private void Search(string OrderExNo)
         {
             OrderExNo=OrderExNo.Trim();
-            using (var db = new entity.DB())
+            using (var db = PublicDB.getDB(60))
+
             {
-                List<entity.CainzOrder> orderList ;
+                List<entity.CainzOrder> orderList;
                 if (OrderExNo.Trim().Length == 0)
                 {
                     orderList = (from a in db.CainzOrder
@@ -77,7 +80,7 @@ namespace OrderSheetCreator
                                  select a).ToList();
                 }
 
-                if (orderList != null)
+                if (orderList != null && orderList.Count>0)
                 {
 
                     cainzOrderBindingSource.DataSource = orderList;
@@ -85,6 +88,8 @@ namespace OrderSheetCreator
                 else
                 {
                     cainzOrderBindingSource.DataSource = new List<entity.CainzOrder>();
+                    
+                   // MessageBox.Show("查询结果为空");
                 }
             }
             PublicTools.RecountRowsNum(dataGridView1);
@@ -123,7 +128,11 @@ namespace OrderSheetCreator
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            OrderData_Load(txbSearch.Text.Trim());
+            Search(txbSearch.Text.Trim());
+            if(dataGridView1.Rows.Count==0)
+            {
+                PublicTools.Message404("没有记录");
+            }
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -134,7 +143,7 @@ namespace OrderSheetCreator
                 FCainzOrderD m = new FCainzOrderD(order);
                 m.ShowDialog();
             }
-            OrderData_Load("");
+            Search("");
 
         }
 
@@ -142,6 +151,14 @@ namespace OrderSheetCreator
         {
             DataTools m = new DataTools();
             m.ShowDialog();
+        }
+
+        private void lblDBStatus_Click(object sender, EventArgs e)
+        {
+            FDatabase m = new FDatabase();
+            m.ShowDialog();
+            lblDBStatus.Text = string.Format("数据库信息：{0}", PublicDB.getIniConnInfo("config.ini"));
+
         }
     }
 }

@@ -31,7 +31,7 @@ namespace OrderSheetCreator
         {
             if (txbSearch.Text.Length > 0)
             {
-                using (var db = new entity.DB())
+                using (var db = PublicDB.getDB())
                 {
                     var Query = from a in db.CainzFactory
                                        where a.FactoryName.Contains(txbSearch.Text) || a.FactoryNameJP.Contains(txbSearch.Text)
@@ -75,9 +75,9 @@ namespace OrderSheetCreator
 
         private void btnSaveToDB_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("是否修改数据库，点击，YES，后修改不可恢复", "谨慎操作", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("是否修改数据库，点击，YES，后修改不可恢复", "谨慎操作", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
             {
-                using (var db = new entity.DB())
+                using (var db = PublicDB.getDB())
                 {
                     entity.CainzFactory cp = (entity.CainzFactory)CainzFactoryBindingSource.Current;
                     db.CainzFactory.Attach(cp);

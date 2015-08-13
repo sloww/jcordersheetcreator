@@ -79,8 +79,6 @@
             this.txbTrader = new System.Windows.Forms.TextBox();
             this.txbIssuedDate = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lblVer = new System.Windows.Forms.Label();
-            this.lblSql = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rowNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -97,6 +95,7 @@
             this.cainzOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bdsCustomer = new System.Windows.Forms.BindingSource(this.components);
             this.bsdOrder = new System.Windows.Forms.BindingSource(this.components);
+            this.lblTotol = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -162,6 +161,7 @@
             this.toolStripButton1.Name = "toolStripButton1";
             this.toolStripButton1.Size = new System.Drawing.Size(92, 29);
             this.toolStripButton1.Text = "导入订单";
+            this.toolStripButton1.Visible = false;
             // 
             // btnExport
             // 
@@ -332,6 +332,7 @@
             this.dataGridView1.Size = new System.Drawing.Size(1008, 420);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.Paint += new System.Windows.Forms.PaintEventHandler(this.dataGridView1_Paint);
             // 
             // Column1
             // 
@@ -625,33 +626,12 @@
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.lblVer);
-            this.panel3.Controls.Add(this.lblSql);
+            this.panel3.Controls.Add(this.lblTotol);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(10, 743);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1008, 21);
             this.panel3.TabIndex = 3;
-            // 
-            // lblVer
-            // 
-            this.lblVer.AutoSize = true;
-            this.lblVer.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblVer.Location = new System.Drawing.Point(47, 0);
-            this.lblVer.Name = "lblVer";
-            this.lblVer.Size = new System.Drawing.Size(47, 12);
-            this.lblVer.TabIndex = 1;
-            this.lblVer.Text = "label18";
-            // 
-            // lblSql
-            // 
-            this.lblSql.AutoSize = true;
-            this.lblSql.Dock = System.Windows.Forms.DockStyle.Left;
-            this.lblSql.Location = new System.Drawing.Point(0, 0);
-            this.lblSql.Name = "lblSql";
-            this.lblSql.Size = new System.Drawing.Size(47, 12);
-            this.lblSql.TabIndex = 0;
-            this.lblSql.Text = "label17";
             // 
             // panel4
             // 
@@ -750,6 +730,16 @@
             // 
             this.bsdOrder.DataSource = typeof(entity.CainzOrder);
             // 
+            // lblTotol
+            // 
+            this.lblTotol.AutoSize = true;
+            this.lblTotol.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblTotol.Location = new System.Drawing.Point(30, 3);
+            this.lblTotol.Name = "lblTotol";
+            this.lblTotol.Size = new System.Drawing.Size(64, 16);
+            this.lblTotol.TabIndex = 0;
+            this.lblTotol.Text = "label17";
+            // 
             // FCainzOrderD
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -766,10 +756,11 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "   新增订单";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FCainzOrderD_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FCainzOrderD_FormClosed);
             this.Load += new System.EventHandler(this.FCainzOrderD_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FCainzOrderD_KeyDown);
             this.toolStrip1.ResumeLayout(false);
@@ -831,8 +822,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ToolStripButton btnFactory;
         public System.Windows.Forms.BindingSource bdsCustomer;
-        private System.Windows.Forms.Label lblVer;
-        private System.Windows.Forms.Label lblSql;
  
         private System.Windows.Forms.ToolStripButton btnSave;
         private System.Windows.Forms.BindingSource bsdOrder;
@@ -856,5 +845,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsiCanselFlag;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.Label lblTotol;
     }
 }
