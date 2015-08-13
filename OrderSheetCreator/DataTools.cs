@@ -1070,5 +1070,120 @@ namespace OrderSheetCreator
 
         }
 
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            //List<entity.CainzFactory> query = new List<CainzFactory>();
+            using (var db = new entity.DB())
+            {
+                var query = (from a in db.CainzFactory
+                             select a).ToList();
+
+
+                using (var db2 = new entityTmp.db001Entities())
+                {
+                    foreach (entity.CainzFactory cf in query)
+                    {
+                        var factoryQuery = (from b in db2.CainzCustomer
+                                            where b.FactoryName.Equals(cf.FactoryName)
+                                            select b).FirstOrDefault();
+                        if (factoryQuery != null)
+                        {
+                            cf.Contact = factoryQuery.Contact.Trim();
+                            cf.FactoryAddress = factoryQuery.Address.Trim();
+                            cf.ContactPhone = factoryQuery.Phone.Trim();
+                            db.CainzFactory.Attach(cf);
+                            db.Entry(cf).State = System.Data.Entity.EntityState.Modified;
+                        }
+
+                    }
+                }
+
+
+                db.SaveChanges();
+            }
+
+            MessageBox.Show("finished");
+        }
+
+        private void btnsynicProduct_Click(object sender, EventArgs e)
+        {
+            int x, y, z,zz;
+            x = y = z = zz=0;
+            using (var db2 = new entityTmp.db001Entities())
+            {
+                var query = (from a in db2.CainzProduct
+                             where a.Modified == 1
+                             select a).ToList();
+                using (var db = new entity.DB())
+                {
+                    foreach (var cf in query)
+                    {
+                        var q = from b in db.CainzProduct
+                                where b.ProductBarcode == cf.Barcode
+                                select b;
+                        if (q != null && q.Count() == 1)
+                        {
+                            x++;
+                            entity.CainzProduct p = q.ToList()[0];
+                            p.Modified = 1;
+                            p.ModifyTime = DateTime.Now;
+                            p.ProductMaterial = cf.Material;
+                            p.ProductColor = cf.Color;
+                            p.ProductPrice = cf.Price;
+                            p.ProductSize = cf.Size;
+                            db.Entry(p).State = System.Data.Entity.EntityState.Modified;
+
+                        }
+                        else if (q == null && q.Count() > 0)
+                        {
+                            y++;
+                        }
+                        else
+                        {
+                            entity.CainzProduct p = new CainzProduct();
+
+                            p.ProductID = Guid.NewGuid();
+                            p.Modified = 1;
+                            p.ModifyTime = DateTime.Now;
+                            p.CreateTime = DateTime.Now;
+                            p.Deleted = 0;
+                            p.ProductName = "";
+                            p.ProductBarcode = cf.Barcode;
+                            p.ProductMaterial = cf.Material;
+                            p.ProductColor = cf.Color;
+                            p.ProductPrice = cf.Price;
+                            p.ProductSize = cf.Size;
+                            p.ProductID = Guid.NewGuid();
+                            var trader = db.CainzTrader.Where(t => t.TraderName == cf.TraderName).FirstOrDefault();
+                            if (trader != null)
+                            {
+                                p.TraderID = trader.TraderID;
+                                p.TraderName = trader.TraderName;
+                                p.CainzTraderTraderID = trader.TraderID;
+                                db.CainzProduct.Add(p);
+                            }
+                            else
+                            {
+                                MessageBox.Show(cf.Barcode);
+                                zz++;
+                            }
+                            z++;
+                        }
+
+                    }
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (Exception ee)
+                    {
+                        MessageBox.Show(ee.Message);
+                    }
+                }
+            }
+            MessageBox.Show("finished");
+
+        }
+
     }
 }

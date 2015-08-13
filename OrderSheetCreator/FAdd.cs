@@ -407,6 +407,7 @@ namespace OrderSheetCreator
             using (var db = new entity.DB())
             {
                 entity.CainzProduct cp = new entity.CainzProduct();
+                cp.ProductID = Guid.NewGuid();
                 cp.Deleted = 0;
                 cp.ProductBarcode = txbBarcode.Text.Trim();
                 cp.ProductColor = txbColor.Text.Trim();
@@ -416,9 +417,11 @@ namespace OrderSheetCreator
                 cp.ModifyTime = DateTime.Now;
                 cp.CreateTime = DateTime.Now;
                 cp.TraderID = ((entity.CainzProduct)productsBindingSource.Current).TraderID;
+                cp.CainzTraderTraderID = (Guid) cp.TraderID;
                 cp.TraderName = ((entity.CainzProduct)productsBindingSource.Current).TraderName;
                 db.CainzProduct.Add(cp);
                 db.SaveChanges();
+                MessageBox.Show("已添加该产品");
             }
 
             this.SearchBarcode();

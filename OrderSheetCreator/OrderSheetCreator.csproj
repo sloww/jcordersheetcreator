@@ -195,6 +195,10 @@
     <None Include="tslink.cn.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\entityTmp\entityTmp.csproj">
+      <Project>{1b3fa5a1-d276-4f34-b803-d83a2bd7eef2}</Project>
+      <Name>entityTmp</Name>
+    </ProjectReference>
     <ProjectReference Include="..\entity\entity.csproj">
       <Project>{1cc5baec-4966-4023-ae1f-4c856f209899}</Project>
       <Name>entity</Name>

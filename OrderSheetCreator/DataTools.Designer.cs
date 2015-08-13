@@ -46,6 +46,8 @@
             this.button7 = new System.Windows.Forms.Button();
             this.customerBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.btnGetAllProduct = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnsynicProduct = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.customerBindingSource)).BeginInit();
@@ -219,11 +221,33 @@
             this.btnGetAllProduct.UseVisualStyleBackColor = true;
             this.btnGetAllProduct.Click += new System.EventHandler(this.btnGetAllProduct_Click);
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(33, 222);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(122, 49);
+            this.btnUpdate.TabIndex = 13;
+            this.btnUpdate.Text = "更新工厂信息";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnsynicProduct
+            // 
+            this.btnsynicProduct.Location = new System.Drawing.Point(33, 304);
+            this.btnsynicProduct.Name = "btnsynicProduct";
+            this.btnsynicProduct.Size = new System.Drawing.Size(122, 49);
+            this.btnsynicProduct.TabIndex = 14;
+            this.btnsynicProduct.Text = "同步产品库信息";
+            this.btnsynicProduct.UseVisualStyleBackColor = true;
+            this.btnsynicProduct.Click += new System.EventHandler(this.btnsynicProduct_Click);
+            // 
             // DataTools
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1049, 510);
+            this.Controls.Add(this.btnsynicProduct);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnGetAllProduct);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
@@ -260,6 +284,8 @@
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnGetAllProduct;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.Button btnsynicProduct;
     }
 }
 
