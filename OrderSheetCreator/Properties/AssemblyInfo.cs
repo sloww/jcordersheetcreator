@@ -5,13 +5,13 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("订单生成器")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("Cainz 订单管理系统")]
+[assembly: AssemblyDescription("任何针对该软件的非授权使用、破解、反编译和攻击等不当行为，我公司保留依法申诉的权利。技术支持及申诉邮箱：wei.li@tslink.cn")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("太数智能科技（上海）有限公司")]
-[assembly: AssemblyProduct("订单生成器")]
-[assembly: AssemblyCopyright("Copyright ©  太数智能科技（上海）有限公司 2015")]
-[assembly: AssemblyTrademark("")]
+[assembly: AssemblyProduct("Cainz 订单管理系统")]
+[assembly: AssemblyCopyright("Copyright © TSlink.cn 2015")]
+[assembly: AssemblyTrademark("TS")]
 [assembly: AssemblyCulture("")]
 
 // 将 ComVisible 设置为 false 使此程序集中的类型
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // 可以指定所有这些值，也可以使用“生成号”和“修订号”的默认值，
 // 方法是按如下所示使用“*”:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
+[assembly: AssemblyVersion("1.1.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]

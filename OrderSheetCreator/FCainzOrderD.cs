@@ -323,6 +323,8 @@ namespace OrderSheetCreator
         {
             if (orderValidate() == false) return;
 
+            
+
             if (ORDER != null)
             {
                 ORDER.IsDelete = 1;
@@ -367,7 +369,6 @@ namespace OrderSheetCreator
             {
                 order.OrderDate = (DateTime)txbIssuedDate.Tag;
             }
-
 
 
             foreach (var odd in FCainzOrderD.ORDERDETAILLIST)

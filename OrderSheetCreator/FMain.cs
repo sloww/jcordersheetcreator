@@ -49,7 +49,7 @@ namespace OrderSheetCreator
 
             btnSearch_Click(null, null);
 
-
+            this.Text = string.Format("{0}  Ver.{1}", PublicTools.AssemblyProduct, PublicTools.AssemblyVersion);
 
         }
 

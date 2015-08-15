@@ -50,6 +50,11 @@
             this.lblDBStatus = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.caidan = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnOk = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnReady = new System.Windows.Forms.ToolStripMenuItem();
+            this.cainzOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sendDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,11 +67,6 @@
             this.createTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.caidan = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnOk = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnReady = new System.Windows.Forms.ToolStripMenuItem();
-            this.cainzOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -260,6 +260,41 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
+            // caidan
+            // 
+            this.caidan.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnDelete,
+            this.btnOk,
+            this.btnReady});
+            this.caidan.Name = "caidan";
+            this.caidan.Size = new System.Drawing.Size(149, 70);
+            this.caidan.Text = "删除订单";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(148, 22);
+            this.btnDelete.Text = "删除订单";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnOk
+            // 
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(148, 22);
+            this.btnOk.Text = "标记已发货";
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
+            // btnReady
+            // 
+            this.btnReady.Name = "btnReady";
+            this.btnReady.Size = new System.Drawing.Size(148, 22);
+            this.btnReady.Text = "标记为未发货";
+            this.btnReady.Click += new System.EventHandler(this.btnReady_Click);
+            // 
+            // cainzOrderBindingSource
+            // 
+            this.cainzOrderBindingSource.DataSource = typeof(entity.CainzOrder);
+            // 
             // Column1
             // 
             this.Column1.HeaderText = "序";
@@ -324,6 +359,7 @@
             // createTimeDataGridViewTextBoxColumn
             // 
             this.createTimeDataGridViewTextBoxColumn.DataPropertyName = "CreateTime";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle4.Format = "d";
             dataGridViewCellStyle4.NullValue = null;
             this.createTimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
@@ -341,41 +377,6 @@
             this.Status.HeaderText = "状态";
             this.Status.Name = "Status";
             this.Status.Visible = false;
-            // 
-            // caidan
-            // 
-            this.caidan.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnDelete,
-            this.btnOk,
-            this.btnReady});
-            this.caidan.Name = "caidan";
-            this.caidan.Size = new System.Drawing.Size(149, 70);
-            this.caidan.Text = "删除订单";
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(148, 22);
-            this.btnDelete.Text = "删除订单";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnOk
-            // 
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(148, 22);
-            this.btnOk.Text = "标记已发货";
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-            // 
-            // btnReady
-            // 
-            this.btnReady.Name = "btnReady";
-            this.btnReady.Size = new System.Drawing.Size(148, 22);
-            this.btnReady.Text = "标记为未发货";
-            this.btnReady.Click += new System.EventHandler(this.btnReady_Click);
-            // 
-            // cainzOrderBindingSource
-            // 
-            this.cainzOrderBindingSource.DataSource = typeof(entity.CainzOrder);
             // 
             // FMain
             // 
@@ -432,6 +433,7 @@
         private System.Windows.Forms.ToolStripMenuItem btnReady;
         private System.Windows.Forms.TextBox txbTraderForSearch;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn sendDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderNoDataGridViewTextBoxColumn;
@@ -444,6 +446,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn createTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusInfo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
