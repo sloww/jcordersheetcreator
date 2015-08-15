@@ -29,6 +29,25 @@ namespace OrderSheetCreator
             InitializeComponent();
             ORDERDETAILLIST.Clear();
             FACTORY = new entity.CainzFactory();
+
+            ///todo make faster
+            #region load 
+            PublicTools.IniDatagridview(dataGridView1);
+            PublicTools.IniDatagridview(dataGridView2);
+            dataGridView2.AllowUserToAddRows = true;
+            dataGridView2.Height = dataGridView2[0, 0].Size.Height + 2;
+            dataGridView2.AllowUserToResizeColumns = false;
+
+            PublicTools.SetColumsAutoModeNone(dataGridView1);
+            PublicTools.SetColumsAutoModeNone(dataGridView2);
+
+            cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
+            PublicTools.RecoverColumnWidth(dataGridView1, FCainzOrderDdataGridViewSetPath);
+            bdsCustomer.DataSource = FACTORY;
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.ControlBox = true;
+            dataGridView1_DataBindingComplete(null, null);
+            #endregion
         }
 
         public FCainzOrderD(entity.CainzOrder order)
@@ -50,14 +69,31 @@ namespace OrderSheetCreator
             }
 
             LoadOrder(order);
-
             ReColorStatus();
             isModify = true;
+
+            ///todo make faster
+            #region load 
+            PublicTools.IniDatagridview(dataGridView1);
+            PublicTools.IniDatagridview(dataGridView2);
+            dataGridView2.AllowUserToAddRows = true;
+            dataGridView2.Height = dataGridView2[0, 0].Size.Height + 2;
+            dataGridView2.AllowUserToResizeColumns = false;
+
+            PublicTools.SetColumsAutoModeNone(dataGridView1);
+            PublicTools.SetColumsAutoModeNone(dataGridView2);
+
+            cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
+            PublicTools.RecoverColumnWidth(dataGridView1, FCainzOrderDdataGridViewSetPath);
+            bdsCustomer.DataSource = FACTORY;
+            this.FormBorderStyle = FormBorderStyle.Sizable;
+            this.ControlBox = true;
+            dataGridView1_DataBindingComplete(null, null);
+            #endregion
         }
 
         private void LoadOrder(entity.CainzOrder order)
         {
-
             txbDELdate.Tag = (DateTime)order.SendDate;
             txbDELdate.Text = PublicTools.FormatDateC((DateTime)order.SendDate);
             txbIssuedDate.Tag = (DateTime)order.OrderDate;
@@ -71,19 +107,12 @@ namespace OrderSheetCreator
             txbJingChenOrder.Text = order.OrderNo;
             cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
             bdsCustomer.DataSource = FACTORY;
-
         }
 
         private void FCainzOrderD_Load(object sender, EventArgs e)
         {
-            PublicTools.IniDatagridview(dataGridView1);
-            PublicTools.SetColumsAutoModeNone(dataGridView1);
-            cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
-            PublicTools.RecoverColumnWidth(dataGridView1, FCainzOrderDdataGridViewSetPath);
-            bdsCustomer.DataSource = FACTORY;
-            this.FormBorderStyle = FormBorderStyle.Sizable;
-            this.ControlBox = true;
-
+            lblTotol.Text = "小技巧：在表格内，点击右键会出现快捷操作菜单";
+            ReColorStatus();
         }
 
         private void FCainzOrderD_FormClosing(object sender, FormClosingEventArgs e)
@@ -450,6 +479,7 @@ namespace OrderSheetCreator
             if (orderDetail != null)
             {
                 orderDetail.Status = 1;
+                cainzOrderDetailBindingSource.EndEdit();
             }
             ReColorStatus();
         }
@@ -462,11 +492,16 @@ namespace OrderSheetCreator
                 var status = i.Cells["Status"].Value;
                 if (status != null && (int)status == 1)
                 {
-                    DataGridViewCellStyle dvcs = new DataGridViewCellStyle();
+                    DataGridViewCellStyle dvcs = i.DefaultCellStyle.Clone();
                     dvcs.BackColor = Color.LightGreen;
                     i.DefaultCellStyle = dvcs;
-                    i.Cells[""].Value = "";
 
+                }
+                else
+                {
+                    DataGridViewCellStyle dvcs = i.DefaultCellStyle.Clone();
+                    dvcs.BackColor = Color.FromKnownColor(KnownColor.Window);
+                    i.DefaultCellStyle = dvcs;
                 }
             }
 
@@ -506,12 +541,9 @@ namespace OrderSheetCreator
 
         private void dataGridView1_Paint(object sender, PaintEventArgs e)
         {
-            decimal totol = 0;
-            foreach (var item in FCainzOrderD.ORDERDETAILLIST)
-            {
-                totol += item.TotalMoney;
-            }
-            lblTotol.Text = string.Format("合计金额：{0}", totol);
+
+
+
         }
 
         private void btnImportOrder_Click(object sender, EventArgs e)
@@ -634,7 +666,32 @@ namespace OrderSheetCreator
 
         }
 
-        
+        private void dataGridView1_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            for (int i = 0; i < 11; i++)
+            {
+                dataGridView2.Columns[i].Width = dataGridView1.Columns[i].Width;
+            }
+        }
+
+        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+
+
+        }
+
+        private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            decimal totolMoney = 0;
+            int totolCount = 0;
+            foreach (var item in FCainzOrderD.ORDERDETAILLIST)
+            {
+                totolMoney += item.TotalMoney;
+                totolCount += (int)item.POPNum;
+            }
+            dataGridView2[6, 0].Value = totolCount;
+            dataGridView2[8, 0].Value = totolMoney;
+        }
     }
     
 }
