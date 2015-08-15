@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace OrderSheetCreator
 {
@@ -47,6 +48,7 @@ namespace OrderSheetCreator
             lblDBStatus.Text = string.Format("数据库信息：{0}", PublicDB.getIniConnInfo("config.ini"));
 
             btnSearch_Click(null, null);
+
 
 
         }
@@ -100,9 +102,10 @@ namespace OrderSheetCreator
 
         private void lblDBStatus_Click(object sender, EventArgs e)
         {
-            FDatabase m = new FDatabase();
-            m.ShowDialog();
-            lblDBStatus.Text = string.Format("数据库信息：{0}", PublicDB.getIniConnInfo("config.ini"));
+
+                FDatabase m = new FDatabase();
+                m.ShowDialog();
+                lblDBStatus.Text = string.Format("数据库信息：{0}", PublicDB.getIniConnInfo("config.ini"));
 
         }
 
@@ -111,14 +114,17 @@ namespace OrderSheetCreator
             entity.CainzOrder order = (entity.CainzOrder)cainzOrderBindingSource.Current;
             if (order != null)
             {
-                using (var db = PublicDB.getDB())
+                if (MessageBox.Show(string.Format("是否删除该订单？ \n\n客户：{1} \n编号：{0} \n金额：{2}",order.OrderNo,order.FactoryName,order.Money.ToString("#.###")), "操作提醒", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    order.IsDelete = 1;
-                    db.CainzOrder.Attach(order);
-                    db.Entry(order).State = System.Data.Entity.EntityState.Modified;
-                    db.SaveChanges();
+                    using (var db = PublicDB.getDB())
+                    {
+                        order.IsDelete = 1;
+                        db.CainzOrder.Attach(order);
+                        db.Entry(order).State = System.Data.Entity.EntityState.Modified;
+                        db.SaveChanges();
+                    }
+                    btnSearch_Click(null, null);
                 }
-                btnSearch_Click(null, null);
 
             }
 
@@ -307,12 +313,16 @@ namespace OrderSheetCreator
 
         }
 
-        public class OrdersArgs
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            public entity.CainzOrder OrderForSearch;
-            public List<entity.CainzOrder> Orders;
+            AboutBox1 m = new AboutBox1();
+            m.ShowDialog();
         }
+    }
 
-
+    public class OrdersArgs
+    {
+        public entity.CainzOrder OrderForSearch;
+        public List<entity.CainzOrder> Orders;
     }
 }

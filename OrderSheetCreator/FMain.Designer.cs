@@ -29,16 +29,17 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txbTraderForSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -49,11 +50,6 @@
             this.lblDBStatus = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.caidan = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnOk = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnReady = new System.Windows.Forms.ToolStripMenuItem();
-            this.cainzOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sendDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -66,6 +62,11 @@
             this.createTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.caidan = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnOk = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnReady = new System.Windows.Forms.ToolStripMenuItem();
+            this.cainzOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -93,7 +94,8 @@
             this.newOrderToolStripMenuItem,
             this.reportToolStripMenuItem,
             this.helpToolStripMenuItem,
-            this.dataToolsToolStripMenuItem});
+            this.dataToolsToolStripMenuItem,
+            this.aboutToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
@@ -129,6 +131,13 @@
             this.dataToolsToolStripMenuItem.Text = "数据管理";
             this.dataToolsToolStripMenuItem.Visible = false;
             this.dataToolsToolStripMenuItem.Click += new System.EventHandler(this.dataToolsToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(62, 27);
+            this.aboutToolStripMenuItem.Text = "关于";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -251,6 +260,88 @@
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "序";
+            this.Column1.Name = "Column1";
+            // 
+            // sendDateDataGridViewTextBoxColumn
+            // 
+            this.sendDateDataGridViewTextBoxColumn.DataPropertyName = "SendDate";
+            dataGridViewCellStyle1.Format = "d";
+            this.sendDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.sendDateDataGridViewTextBoxColumn.HeaderText = "交货期(納品日)";
+            this.sendDateDataGridViewTextBoxColumn.Name = "sendDateDataGridViewTextBoxColumn";
+            // 
+            // orderNoDataGridViewTextBoxColumn
+            // 
+            this.orderNoDataGridViewTextBoxColumn.DataPropertyName = "OrderNo";
+            this.orderNoDataGridViewTextBoxColumn.HeaderText = "我司订单编号";
+            this.orderNoDataGridViewTextBoxColumn.Name = "orderNoDataGridViewTextBoxColumn";
+            // 
+            // OrderExNo
+            // 
+            this.OrderExNo.DataPropertyName = "OrderExNo";
+            this.OrderExNo.HeaderText = "合同编号";
+            this.OrderExNo.Name = "OrderExNo";
+            // 
+            // TraderName
+            // 
+            this.TraderName.DataPropertyName = "TraderName";
+            this.TraderName.HeaderText = "所属贸易公司";
+            this.TraderName.Name = "TraderName";
+            // 
+            // factoryNameDataGridViewTextBoxColumn
+            // 
+            this.factoryNameDataGridViewTextBoxColumn.DataPropertyName = "FactoryName";
+            this.factoryNameDataGridViewTextBoxColumn.HeaderText = "订购工厂";
+            this.factoryNameDataGridViewTextBoxColumn.Name = "factoryNameDataGridViewTextBoxColumn";
+            // 
+            // OrderDate
+            // 
+            this.OrderDate.DataPropertyName = "OrderDate";
+            dataGridViewCellStyle2.Format = "d";
+            this.OrderDate.DefaultCellStyle = dataGridViewCellStyle2;
+            this.OrderDate.HeaderText = "下单日期";
+            this.OrderDate.Name = "OrderDate";
+            // 
+            // contactDataGridViewTextBoxColumn
+            // 
+            this.contactDataGridViewTextBoxColumn.DataPropertyName = "Contact";
+            this.contactDataGridViewTextBoxColumn.HeaderText = "联系人(担当者)";
+            this.contactDataGridViewTextBoxColumn.Name = "contactDataGridViewTextBoxColumn";
+            // 
+            // moneyDataGridViewTextBoxColumn
+            // 
+            this.moneyDataGridViewTextBoxColumn.DataPropertyName = "Money";
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle3.Format = "N3";
+            dataGridViewCellStyle3.NullValue = "0";
+            this.moneyDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.moneyDataGridViewTextBoxColumn.HeaderText = "订单总价";
+            this.moneyDataGridViewTextBoxColumn.Name = "moneyDataGridViewTextBoxColumn";
+            // 
+            // createTimeDataGridViewTextBoxColumn
+            // 
+            this.createTimeDataGridViewTextBoxColumn.DataPropertyName = "CreateTime";
+            dataGridViewCellStyle4.Format = "d";
+            dataGridViewCellStyle4.NullValue = null;
+            this.createTimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
+            this.createTimeDataGridViewTextBoxColumn.HeaderText = "创建日期";
+            this.createTimeDataGridViewTextBoxColumn.Name = "createTimeDataGridViewTextBoxColumn";
+            // 
+            // statusInfo
+            // 
+            this.statusInfo.HeaderText = "发货状态";
+            this.statusInfo.Name = "statusInfo";
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "状态";
+            this.Status.Name = "Status";
+            this.Status.Visible = false;
+            // 
             // caidan
             // 
             this.caidan.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -285,88 +376,6 @@
             // cainzOrderBindingSource
             // 
             this.cainzOrderBindingSource.DataSource = typeof(entity.CainzOrder);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "序";
-            this.Column1.Name = "Column1";
-            // 
-            // sendDateDataGridViewTextBoxColumn
-            // 
-            this.sendDateDataGridViewTextBoxColumn.DataPropertyName = "SendDate";
-            dataGridViewCellStyle5.Format = "d";
-            this.sendDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
-            this.sendDateDataGridViewTextBoxColumn.HeaderText = "交货期(納品日)";
-            this.sendDateDataGridViewTextBoxColumn.Name = "sendDateDataGridViewTextBoxColumn";
-            // 
-            // orderNoDataGridViewTextBoxColumn
-            // 
-            this.orderNoDataGridViewTextBoxColumn.DataPropertyName = "OrderNo";
-            this.orderNoDataGridViewTextBoxColumn.HeaderText = "我司订单编号";
-            this.orderNoDataGridViewTextBoxColumn.Name = "orderNoDataGridViewTextBoxColumn";
-            // 
-            // OrderExNo
-            // 
-            this.OrderExNo.DataPropertyName = "OrderExNo";
-            this.OrderExNo.HeaderText = "合同编号";
-            this.OrderExNo.Name = "OrderExNo";
-            // 
-            // TraderName
-            // 
-            this.TraderName.DataPropertyName = "TraderName";
-            this.TraderName.HeaderText = "所属贸易公司";
-            this.TraderName.Name = "TraderName";
-            // 
-            // factoryNameDataGridViewTextBoxColumn
-            // 
-            this.factoryNameDataGridViewTextBoxColumn.DataPropertyName = "FactoryName";
-            this.factoryNameDataGridViewTextBoxColumn.HeaderText = "订购工厂";
-            this.factoryNameDataGridViewTextBoxColumn.Name = "factoryNameDataGridViewTextBoxColumn";
-            // 
-            // OrderDate
-            // 
-            this.OrderDate.DataPropertyName = "OrderDate";
-            dataGridViewCellStyle6.Format = "d";
-            this.OrderDate.DefaultCellStyle = dataGridViewCellStyle6;
-            this.OrderDate.HeaderText = "下单日期";
-            this.OrderDate.Name = "OrderDate";
-            // 
-            // contactDataGridViewTextBoxColumn
-            // 
-            this.contactDataGridViewTextBoxColumn.DataPropertyName = "Contact";
-            this.contactDataGridViewTextBoxColumn.HeaderText = "联系人(担当者)";
-            this.contactDataGridViewTextBoxColumn.Name = "contactDataGridViewTextBoxColumn";
-            // 
-            // moneyDataGridViewTextBoxColumn
-            // 
-            this.moneyDataGridViewTextBoxColumn.DataPropertyName = "Money";
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle7.Format = "N3";
-            dataGridViewCellStyle7.NullValue = "0";
-            this.moneyDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
-            this.moneyDataGridViewTextBoxColumn.HeaderText = "订单总价";
-            this.moneyDataGridViewTextBoxColumn.Name = "moneyDataGridViewTextBoxColumn";
-            // 
-            // createTimeDataGridViewTextBoxColumn
-            // 
-            this.createTimeDataGridViewTextBoxColumn.DataPropertyName = "CreateTime";
-            dataGridViewCellStyle8.Format = "d";
-            dataGridViewCellStyle8.NullValue = null;
-            this.createTimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
-            this.createTimeDataGridViewTextBoxColumn.HeaderText = "创建日期";
-            this.createTimeDataGridViewTextBoxColumn.Name = "createTimeDataGridViewTextBoxColumn";
-            // 
-            // statusInfo
-            // 
-            this.statusInfo.HeaderText = "发货状态";
-            this.statusInfo.Name = "statusInfo";
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "状态";
-            this.Status.Name = "Status";
-            this.Status.Visible = false;
             // 
             // FMain
             // 
@@ -435,5 +444,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn createTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusInfo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
