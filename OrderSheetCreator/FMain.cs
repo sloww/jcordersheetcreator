@@ -25,7 +25,7 @@ namespace OrderSheetCreator
 
         }
 
-        private void FMain_Load(object sender, EventArgs e)
+        private void FMain_Load(object sender, EventArgs e) 
         {
             //恢复保存的窗体大小
             if (Properties.Settings.Default.Maximised)
@@ -75,7 +75,7 @@ namespace OrderSheetCreator
                 else
                 {
                     orderList = (from a in db.CainzOrder
-                                 where a.IsDelete == 0 && a.OrderExNo.Contains(OrderExNo)
+                                 where a.IsDelete == 0 && (a.OrderExNo.Contains(OrderExNo) || a.OrderNo.Contains(OrderExNo))
                                  orderby a.OrderDate
                                  select a).ToList();
                 }
@@ -160,5 +160,24 @@ namespace OrderSheetCreator
             lblDBStatus.Text = string.Format("数据库信息：{0}", PublicDB.getIniConnInfo("config.ini"));
 
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            entity.CainzOrder order = (entity.CainzOrder)cainzOrderBindingSource.Current;
+            if(order !=null)
+            {
+                using (var db = PublicDB.getDB())
+                {
+                    order.IsDelete = 1;
+                    db.CainzOrder.Attach(order);
+                    db.Entry(order).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+                btnSearch_Click(null, null);
+
+            }
+
+        }
+
     }
 }

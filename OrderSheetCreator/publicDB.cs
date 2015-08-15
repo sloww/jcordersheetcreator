@@ -81,5 +81,30 @@ namespace OrderSheetCreator
             return coninfo;
         }
 
+        public static entity.CainzFactory GetFactoryByName(string factoryName)
+        {
+            entity.CainzFactory factory;
+            using (var db = PublicDB.getDB())
+            {
+                factory = (from a in db.CainzFactory
+                           where a.FactoryName.Equals(factoryName)
+                           select a).FirstOrDefault();
+            }
+            return factory;
+        }
+
+        public static entity.CainzProduct GetProductByBarcode(string barcode)
+        {
+            entity.CainzProduct product;
+            using (var db = PublicDB.getDB())
+            {
+                product = (from a in db.CainzProduct
+                           where a.ProductBarcode.Equals(barcode)
+                           select a).FirstOrDefault();
+            }
+            return product;
+
+        }
+
     }
 }

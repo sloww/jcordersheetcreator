@@ -17,7 +17,9 @@ namespace OrderSheetCreator
         public static BindingList<entity.CainzOrderDetail> ORDERDETAILLIST = new BindingList<entity.CainzOrderDetail>();
         //全局客户信息
         public static entity.CainzFactory FACTORY = new entity.CainzFactory();
-        FAdd fadd = new FAdd();
+        //全局订单信息
+        public entity.CainzOrder ORDER = null;
+        FProduct fadd = new FProduct();
         private string FCainzOrderDdataGridViewSetPath = "订单表宽度设定.txt";
         private FDateTime FDT = new FDateTime();
         private bool isModify = false;
@@ -30,6 +32,8 @@ namespace OrderSheetCreator
         public FCainzOrderD(entity.CainzOrder order)
         {
             InitializeComponent();
+            btnSave.Text = "修改订单";
+            ORDER = order;
             using (var db = PublicDB.getDB())
             {
 
@@ -38,24 +42,35 @@ namespace OrderSheetCreator
                                         select a).FirstOrDefault();
                 FCainzOrderD.ORDERDETAILLIST = new BindingList<entity.CainzOrderDetail>((from a in db.CainzOrderDetail
                                                                                          where a.OrderID == order.OrderID
+                                                                                         orderby a.RowNo
                                                                                          select a).ToList());
-                txbDELdate.Tag =(DateTime) order.SendDate;
-                txbDELdate.Text = PublicTools.FormatDateC((DateTime)order.SendDate);
-                txbIssuedDate.Tag=(DateTime)order.OrderDate;
-                txbIssuedDate.Text = PublicTools.FormatDateC((DateTime)order.OrderDate);
-                txbName.Text = order.Contact;
-                if (txbAdd.Text.Length == 0)
-                {
-                    txbAdd.Text = order.Address;
-                }
-                txbOrder.Text = order.OrderExNo;
-                txbJingChenOrder.Text = order.OrderNo;
-
-                    
             }
+
+            LoadOrder(order);
 
             ReColorStatus();
             isModify = true;
+        }
+
+        private void LoadOrder(entity.CainzOrder order)
+        {
+
+            txbDELdate.Tag = (DateTime)order.SendDate;
+            txbDELdate.Text = PublicTools.FormatDateC((DateTime)order.SendDate);
+            txbIssuedDate.Tag = (DateTime)order.OrderDate;
+            txbIssuedDate.Text = PublicTools.FormatDateC((DateTime)order.OrderDate);
+            txbName.Text = order.Contact;
+            if (txbAdd.Text.Length == 0)
+            {
+                txbAdd.Text = order.Address;
+            }
+            txbOrder.Text = order.OrderExNo;
+            txbJingChenOrder.Text = order.OrderNo;
+            cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
+            bdsCustomer.DataSource = FACTORY;
+
+
+
         }
 
         private void FCainzOrderD_Load(object sender, EventArgs e)
@@ -83,7 +98,7 @@ namespace OrderSheetCreator
 
         private void tsbNew_Click(object sender, EventArgs e)
         {
-            fadd = new FAdd();
+            fadd = new FProduct();
             fadd.ShowDialog();
             PublicTools.RecountRowsNum(dataGridView1);
 
@@ -96,26 +111,30 @@ namespace OrderSheetCreator
                 case Keys.F1:
                     {
                         btnFactory_Click(null, null);
-                    }break;
+                    }
+                    break;
                 case Keys.F2:
                     {
                         tsbNew_Click(null, null);
-                        
-                    }break;
+
+                    }
+                    break;
                 case Keys.F3:
                     {
                         btnExport_Click(null, null);
-                    }break;
+                    }
+                    break;
                 case Keys.F4:
                     {
                         tsbSave_Click(null, null);
-                    } break;
+                    }
+                    break;
             }
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            fadd = new FAdd((entity.CainzOrderDetail)cainzOrderDetailBindingSource.Current);
+            fadd = new FProduct((entity.CainzOrderDetail)cainzOrderDetailBindingSource.Current);
             fadd.ShowDialog();
             PublicTools.RecountRowsNum(dataGridView1);
 
@@ -128,13 +147,13 @@ namespace OrderSheetCreator
             {
                 MessageBox.Show("请添加订单项目");
                 return;
-            } 
-            if (txbTrader.Text.Trim().Length ==0)
+            }
+            if (txbTrader.Text.Trim().Length == 0)
             {
                 MessageBox.Show("请添加订购工厂信息");
                 return;
             }
-            string excelPath = Application.StartupPath+ @"\\cainzOrder.xls";
+            string excelPath = Application.StartupPath + @"\\cainzOrder.xls";
             string copedExcelPath = string.Format("{0}\\订单记录\\{1}{2}", Application.StartupPath, DateTime.Now.ToString("MMddHHmmss"), ".xls");
             if (File.Exists(excelPath))
             {
@@ -171,12 +190,12 @@ namespace OrderSheetCreator
             icOrder.SetCellValue(icOrder.StringCellValue + txbOrder.Text);
             icJingchenOrer.SetCellValue(icJingchenOrer.StringCellValue + txbJingChenOrder.Text);
 
-            icFile.SetCellValue(icFile.StringCellValue+ txbFile.Text);
+            icFile.SetCellValue(icFile.StringCellValue + txbFile.Text);
 
             int totol = ORDERDETAILLIST.Count;
             Decimal totolCount = 0;
             Decimal totolMoney = 0;
-            for(int i =0;i<totol;i++)
+            for (int i = 0; i < totol; i++)
             {
                 IRow irow = ist.GetRow(i + 11);
                 irow.GetCell(1).SetCellValue(ORDERDETAILLIST[i].ProductBarcode);
@@ -189,7 +208,7 @@ namespace OrderSheetCreator
                 irow.GetCell(7).SetCellValue(ORDERDETAILLIST[i].ProductPrice.ToString());
                 totolMoney += ORDERDETAILLIST[i].TotalMoney;
                 irow.GetCell(8).SetCellValue(ORDERDETAILLIST[i].TotalMoney.ToString());
-                if (ORDERDETAILLIST[i].ExpectDate !=null)
+                if (ORDERDETAILLIST[i].ExpectDate != null)
                 {
                     irow.GetCell(9).SetCellValue(((DateTime)ORDERDETAILLIST[i].ExpectDate).ToString("yyyy-MM-dd"));
                 }
@@ -201,7 +220,7 @@ namespace OrderSheetCreator
             IRow irowTotol = ist.GetRow(30);
             irowTotol.GetCell(6).SetCellValue(totolCount.ToString());
             irowTotol.GetCell(8).SetCellValue(totolMoney.ToString());
-            
+
 
             using (FileStream fs = new FileStream(copedExcelPath, FileMode.Open))
             {
@@ -212,7 +231,7 @@ namespace OrderSheetCreator
             {
 
             }
-            System.Diagnostics.Process.Start(copedExcelPath); 
+            System.Diagnostics.Process.Start(copedExcelPath);
 
         }
 
@@ -252,62 +271,77 @@ namespace OrderSheetCreator
         private void btnSave_Click(object sender, EventArgs e)
         {
             if (orderValidate() == false) return;
+
+            if (ORDER != null)
+            {
+                ORDER.IsDelete = 1;
+                using (var db = PublicDB.getDB())
+                {
+                    db.CainzOrder.Attach(ORDER);
+                    db.Entry(ORDER).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+
+            entity.CainzOrder order = new entity.CainzOrder();
+
+
+            order.OrderID = Guid.NewGuid();
+
+            order.OrderNo = txbJingChenOrder.Text.Trim();
+            order.OrderExNo = txbOrder.Text.Trim();
+
+            order.CreateTime = DateTime.Now;
+            order.IsDelete = 0;
+            order.Status = 0;
+            order.LastUpdate = DateTime.Now;
+
+
+            order.CainzFactoryFactoryID = FCainzOrderD.FACTORY.FactoryID;
+            order.FactoryID = order.CainzFactoryFactoryID;
+            order.FactoryName = txbFactory.Text.Trim();
+            order.Address = txbAdd.Text.Trim();
+
+            order.TraderName = FCainzOrderD.FACTORY.TraderName;
+            order.TraderID = FCainzOrderD.FACTORY.TraderID;
+
+            order.Contact = txbName.Text.Trim();
+            order.isDraft = 1;
+            if (txbDELdate.Tag != null)
+            {
+                order.SendDate = (DateTime)txbDELdate.Tag;
+            }
+
+            if (txbIssuedDate.Tag != null)
+            {
+                order.OrderDate = (DateTime)txbIssuedDate.Tag;
+            }
+
+
+
+            foreach (var odd in FCainzOrderD.ORDERDETAILLIST)
+            {
+
+                odd.OrderDetailID = Guid.NewGuid();
+
+                odd.OrderID = order.OrderID;
+                odd.CainzOrderOrderID = odd.OrderID;
+                order.Money += odd.TotalMoney;
+            }
+            order.CainzOrderDetail = FCainzOrderD.ORDERDETAILLIST.ToList();
+
             using (var db = PublicDB.getDB())
             {
 
-                entity.CainzOrder order = new entity.CainzOrder();
-                //if(!isModify)
-                order.OrderID = Guid.NewGuid();
-                order.OrderNo = txbJingChenOrder.Text.Trim();
-                order.OrderExNo = txbOrder.Text.Trim();
-
-                order.CreateTime = DateTime.Now;
-                order.IsDelete = 0;
-                order.Status = 0;
-
-
-                order.CainzFactoryFactoryID = FCainzOrderD.FACTORY.FactoryID;
-                order.FactoryID = order.CainzFactoryFactoryID;
-                order.FactoryName = txbFactory.Text.Trim();
-                order.Address = txbAdd.Text.Trim();
-
-                order.TraderName = FCainzOrderD.FACTORY.TraderName;
-                order.TraderID = FCainzOrderD.FACTORY.TraderID;
-
-
-
-                order.Contact = txbName.Text.Trim();
-                order.isDraft = 1;
-                if (txbDELdate.Tag != null)
-                {
-                    order.SendDate = (DateTime)txbDELdate.Tag;
-                }
-
-                if (txbIssuedDate.Tag != null)
-                {
-                    order.OrderDate = (DateTime)txbIssuedDate.Tag;
-                }
-
-
                 db.CainzOrder.Add(order);
 
-                foreach (var odd in FCainzOrderD.ORDERDETAILLIST)
-                {
-                    odd.OrderDetailID = Guid.NewGuid();
-                    odd.OrderID = order.OrderID;
-                    odd.CainzOrderOrderID = odd.OrderID;
-                    order.Money += odd.TotalMoney;
-                }
-                db.CainzOrderDetail.AddRange(FCainzOrderD.ORDERDETAILLIST);
-
                 db.SaveChanges();
-
-                this.Close();
-
-
             }
+
+            this.Close();
+
         }
-        
+
         /// <summary>
         /// 订单保存前，验证各要素是否填写
         /// </summary>
@@ -328,7 +362,7 @@ namespace OrderSheetCreator
 
             foreach (var item in toValidate)
             {
-                if(item.TextLength==0)
+                if (item.TextLength == 0)
                 {
                     item.Focus();
                     MessageBox.Show("红色标注部分不能通过验证保存，请检查");
@@ -337,7 +371,7 @@ namespace OrderSheetCreator
                 }
             }
 
-            if(dataGridView1.Rows.Count==0)
+            if (dataGridView1.Rows.Count == 0)
             {
                 r = false;
                 MessageBox.Show("订单还没有添加产品明细，不能保存");
@@ -440,9 +474,130 @@ namespace OrderSheetCreator
             decimal totol = 0;
             foreach (var item in FCainzOrderD.ORDERDETAILLIST)
             {
-                totol += item.TotalMoney; 
+                totol += item.TotalMoney;
             }
             lblTotol.Text = string.Format("合计金额：{0}", totol);
         }
+
+        private void btnImportOrder_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.DefaultExt = ".xls";
+            ofd.Filter = "xls file|*.xls";
+            if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                entity.CainzOrder order = new entity.CainzOrder();
+                try
+                {
+                    ReadOrderSheet(ofd.FileName, out order);
+                }
+                catch(Exception ee)
+                {
+                    MessageBox.Show("报错信息："+ee.Message,"导入失败",MessageBoxButtons.OK,MessageBoxIcon.Error,MessageBoxDefaultButton.Button1);
+                }
+
+            }
+
+        }
+
+        public  void ReadOrderSheet(string excelPath,out entity.CainzOrder order)
+        {
+            order = new entity.CainzOrder();
+            IWorkbook wb = WorkbookFactory.Create(excelPath);
+            if (wb.NumberOfSheets < 2) return;
+
+            ISheet ist = wb.GetSheetAt(1);
+            int rowofPage = ist.LastRowNum + 1;
+
+            string _IssuedDate = PublicTools.GetCellString(ist, 'a', 2).Replace("下单日期：", "").Trim();
+            string _TraderName = PublicTools.GetCellString(ist, 'a', 3).Replace("所属贸易公司：", "").Trim();
+            string _factoryName = PublicTools.GetCellString(ist, 'a', 4).Replace("订购工厂：", "").Trim();
+            string _factoryAdd = PublicTools.GetCellString(ist, 'a', 5).Replace("交货地址/电话：", "").Trim();
+            string _factoryContact = PublicTools.GetCellString(ist, 'a', 6).Replace("联系人：", "").Trim();
+            string _DELdate = PublicTools.GetCellString(ist, 'e', 6).Replace("交货期：", "").Trim();
+            string _FileName = PublicTools.GetCellString(ist, 'f', 9).Replace("文件位置：", "").Trim();
+
+            string _OrderNo = PublicTools.GetCellString(ist, 'a', 8).Replace("合 同  编 号:", "").Trim();
+            string _OrderJCNo = PublicTools.GetCellString(ist, 'a', 9).Replace("我司订单编号：", "").Trim();
+
+            order.OrderID = Guid.NewGuid();
+            order.Address = _factoryAdd;
+            entity.CainzFactory factory =PublicDB.GetFactoryByName(_factoryName);
+            if(factory !=null)
+            {
+                order.CainzFactoryFactoryID = factory.FactoryID;
+                order.FactoryID = factory.FactoryID;
+                order.FactoryName = factory.FactoryName;
+                order.CainzFactory = factory;
+            }
+            order.IsDelete = 0;
+            order.isDraft = 0;
+            order.LastUpdate = DateTime.Now;
+            order.OrderDate = DateTime.Parse(_IssuedDate);
+            order.OrderExNo = _OrderJCNo;
+            order.OrderNo = _OrderNo;
+            order.TraderName = _TraderName;
+
+            order.CreateTime = DateTime.Now;
+
+            order.SendDate = DateTime.Parse(_DELdate);
+            order.Status = 0;
+            
+            //order.Money =( (Decimal)PublicTools.GetCellNumic(ist, 'i', 31);
+            
+            for(int i = 12;i<31;i++)
+            {
+                entity.CainzOrderDetail detail =new entity.CainzOrderDetail();
+                detail.OrderDetailID = Guid.NewGuid();
+                detail.OrderID=order.OrderID;
+                detail.IsDelete=0;
+                detail.CreateTime=DateTime.Now;
+                detail.RowNo=i-11;
+                detail.Status=0;
+
+                detail.ProductBarcode = PublicTools.GetCellString(ist, 'b', i);
+                if (detail.ProductBarcode != string.Empty)
+                {
+                    entity.CainzProduct _product = PublicDB.GetProductByBarcode(detail.ProductBarcode);
+                    if (_product != null)
+                    {
+                        detail.CainzProductProductID = _product.ProductID;
+                        detail.ProductID = _product.ProductID;
+                        detail.ProductName = PublicTools.GetCellString(ist, 'c', i);
+                        detail.ProductSize = PublicTools.GetCellString(ist, 'd', i);
+                        detail.ProductColor = PublicTools.GetCellString(ist, 'e', i);
+                        detail.ProductMaterial = PublicTools.GetCellString(ist, 'f', i);
+
+                        detail.POPNum = (int)PublicTools.GetCellNumic(ist, 'g', i);
+                        detail.ProductPrice = (Decimal)PublicTools.GetCellNumic(ist, 'h', i);
+                        detail.TotalMoney = (Decimal)PublicTools.GetCellNumic(ist, 'i', i);
+                        string eDate = PublicTools.GetCellString(ist, 'j', i);
+                        if (eDate != string.Empty)
+                        {
+                            detail.ExpectDate = DateTime.Parse(eDate);
+
+                        }
+                        detail.ExpectDateFormat = PublicTools.GetCellString(ist, 'j', i);
+                        detail.Remark = PublicTools.GetCellString(ist, 'l', i);
+                        order.CainzOrderDetail.Add(detail);
+                    }
+
+                }
+                else
+                {
+                    break;
+                }
+
+            }
+
+
+
+            FCainzOrderD.FACTORY = order.CainzFactory;
+            FCainzOrderD.ORDERDETAILLIST = new BindingList<entity.CainzOrderDetail>(order.CainzOrderDetail.ToList());
+
+            LoadOrder(order);
+
+        }
     }
+    
 }

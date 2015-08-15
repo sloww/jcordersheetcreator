@@ -30,15 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FCainzOrderD));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnFactory = new System.Windows.Forms.ToolStripButton();
             this.tsbNew = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btnImportOrder = new System.Windows.Forms.ToolStripButton();
             this.btnExport = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.btnSave = new System.Windows.Forms.ToolStripButton();
@@ -52,14 +52,13 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tmiDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tsiAddNew = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsiFlag = new System.Windows.Forms.ToolStripMenuItem();
             this.tsiCanselFlag = new System.Windows.Forms.ToolStripMenuItem();
+            this.cainzOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -71,6 +70,7 @@
             this.txbFile = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txbAdd = new System.Windows.Forms.TextBox();
+            this.bdsCustomer = new System.Windows.Forms.BindingSource(this.components);
             this.txbJingChenOrder = new System.Windows.Forms.TextBox();
             this.txbOrder = new System.Windows.Forms.TextBox();
             this.txbName = new System.Windows.Forms.TextBox();
@@ -79,8 +79,10 @@
             this.txbTrader = new System.Windows.Forms.TextBox();
             this.txbIssuedDate = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblTotol = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bsdOrder = new System.Windows.Forms.BindingSource(this.components);
             this.rowNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productBarcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -92,19 +94,17 @@
             this.totalMoneyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.batchNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.expectDateFormatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cainzOrderDetailBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.bdsCustomer = new System.Windows.Forms.BindingSource(this.components);
-            this.bsdOrder = new System.Windows.Forms.BindingSource(this.components);
-            this.lblTotol = new System.Windows.Forms.Label();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.dgv.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cainzOrderDetailBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsCustomer)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.cainzOrderDetailBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsCustomer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsdOrder)).BeginInit();
             this.SuspendLayout();
             // 
@@ -115,7 +115,7 @@
             this.btnFactory,
             this.tsbNew,
             this.toolStripSeparator1,
-            this.toolStripButton1,
+            this.btnImportOrder,
             this.btnExport,
             this.toolStripSeparator2,
             this.btnSave});
@@ -152,16 +152,16 @@
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 32);
             // 
-            // toolStripButton1
+            // btnImportOrder
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(92, 29);
-            this.toolStripButton1.Text = "导入订单";
-            this.toolStripButton1.Visible = false;
+            this.btnImportOrder.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.btnImportOrder.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnImportOrder.Image = ((System.Drawing.Image)(resources.GetObject("btnImportOrder.Image")));
+            this.btnImportOrder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnImportOrder.Name = "btnImportOrder";
+            this.btnImportOrder.Size = new System.Drawing.Size(92, 29);
+            this.btnImportOrder.Text = "导入订单";
+            this.btnImportOrder.Click += new System.EventHandler(this.btnImportOrder_Click);
             // 
             // btnExport
             // 
@@ -283,14 +283,14 @@
             // 
             this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.rowNoDataGridViewTextBoxColumn,
@@ -308,45 +308,31 @@
             this.Status});
             this.dataGridView1.ContextMenuStrip = this.dgv;
             this.dataGridView1.DataSource = this.cainzOrderDetailBindingSource;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowTemplate.Height = 23;
             this.dataGridView1.Size = new System.Drawing.Size(1008, 420);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.Paint += new System.Windows.Forms.PaintEventHandler(this.dataGridView1_Paint);
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "OrderDetailID";
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.Visible = false;
             // 
             // dgv
             // 
@@ -391,6 +377,10 @@
             this.tsiCanselFlag.Size = new System.Drawing.Size(136, 22);
             this.tsiCanselFlag.Text = "撤销标记";
             this.tsiCanselFlag.Click += new System.EventHandler(this.tsiCanselFlag_Click);
+            // 
+            // cainzOrderDetailBindingSource
+            // 
+            this.cainzOrderDetailBindingSource.DataSource = typeof(entity.CainzOrderDetail);
             // 
             // label3
             // 
@@ -533,6 +523,11 @@
             this.txbAdd.TextChanged += new System.EventHandler(this.txbOrder_TextChanged);
             this.txbAdd.DoubleClick += new System.EventHandler(this.txbAdd_DoubleClick);
             // 
+            // bdsCustomer
+            // 
+            this.bdsCustomer.DataSource = typeof(entity.CainzFactory);
+            this.bdsCustomer.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
+            // 
             // txbJingChenOrder
             // 
             this.txbJingChenOrder.BackColor = System.Drawing.Color.LightCoral;
@@ -633,6 +628,16 @@
             this.panel3.Size = new System.Drawing.Size(1008, 21);
             this.panel3.TabIndex = 3;
             // 
+            // lblTotol
+            // 
+            this.lblTotol.AutoSize = true;
+            this.lblTotol.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblTotol.Location = new System.Drawing.Point(30, 3);
+            this.lblTotol.Name = "lblTotol";
+            this.lblTotol.Size = new System.Drawing.Size(64, 16);
+            this.lblTotol.TabIndex = 0;
+            this.lblTotol.Text = "label17";
+            // 
             // panel4
             // 
             this.panel4.Controls.Add(this.dataGridView1);
@@ -645,11 +650,15 @@
             // dataGridViewTextBoxColumn1
             // 
             this.dataGridViewTextBoxColumn1.DataPropertyName = "RowNo";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewTextBoxColumn1.HeaderText = "编号(NO.)";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
             this.dataGridViewTextBoxColumn1.Width = 60;
+            // 
+            // bsdOrder
+            // 
+            this.bsdOrder.DataSource = typeof(entity.CainzOrder);
             // 
             // rowNoDataGridViewTextBoxColumn
             // 
@@ -660,13 +669,13 @@
             // productBarcodeDataGridViewTextBoxColumn
             // 
             this.productBarcodeDataGridViewTextBoxColumn.DataPropertyName = "ProductBarcode";
-            this.productBarcodeDataGridViewTextBoxColumn.HeaderText = "商品条形码号(JAN)";
+            this.productBarcodeDataGridViewTextBoxColumn.HeaderText = "商品条形码号";
             this.productBarcodeDataGridViewTextBoxColumn.Name = "productBarcodeDataGridViewTextBoxColumn";
             // 
             // productNameDataGridViewTextBoxColumn
             // 
             this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
-            this.productNameDataGridViewTextBoxColumn.HeaderText = "物料名称(型番)";
+            this.productNameDataGridViewTextBoxColumn.HeaderText = "型番";
             this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
             // 
             // productSizeDataGridViewTextBoxColumn
@@ -717,28 +726,19 @@
             this.expectDateFormatDataGridViewTextBoxColumn.HeaderText = "希望交货期";
             this.expectDateFormatDataGridViewTextBoxColumn.Name = "expectDateFormatDataGridViewTextBoxColumn";
             // 
-            // cainzOrderDetailBindingSource
+            // Column1
             // 
-            this.cainzOrderDetailBindingSource.DataSource = typeof(entity.CainzOrderDetail);
+            this.Column1.DataPropertyName = "OrderDetailID";
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
             // 
-            // bdsCustomer
+            // Status
             // 
-            this.bdsCustomer.DataSource = typeof(entity.CainzFactory);
-            this.bdsCustomer.CurrentChanged += new System.EventHandler(this.bindingSource1_CurrentChanged);
-            // 
-            // bsdOrder
-            // 
-            this.bsdOrder.DataSource = typeof(entity.CainzOrder);
-            // 
-            // lblTotol
-            // 
-            this.lblTotol.AutoSize = true;
-            this.lblTotol.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblTotol.Location = new System.Drawing.Point(30, 3);
-            this.lblTotol.Name = "lblTotol";
-            this.lblTotol.Size = new System.Drawing.Size(64, 16);
-            this.lblTotol.TabIndex = 0;
-            this.lblTotol.Text = "label17";
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.Visible = false;
             // 
             // FCainzOrderD
             // 
@@ -768,13 +768,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.dgv.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.cainzOrderDetailBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bdsCustomer)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.cainzOrderDetailBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bdsCustomer)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bsdOrder)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -825,6 +825,14 @@
  
         private System.Windows.Forms.ToolStripButton btnSave;
         private System.Windows.Forms.BindingSource bsdOrder;
+        private System.Windows.Forms.ToolStripButton btnImportOrder;
+        private System.Windows.Forms.ContextMenuStrip dgv;
+        private System.Windows.Forms.ToolStripMenuItem tmiDelete;
+        private System.Windows.Forms.ToolStripMenuItem tsiAddNew;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem tsiFlag;
+        private System.Windows.Forms.ToolStripMenuItem tsiCanselFlag;
+        private System.Windows.Forms.Label lblTotol;
         private System.Windows.Forms.DataGridViewTextBoxColumn rowNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productBarcodeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
@@ -836,15 +844,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn totalMoneyDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn batchNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn expectDateFormatDataGridViewTextBoxColumn;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.ContextMenuStrip dgv;
-        private System.Windows.Forms.ToolStripMenuItem tmiDelete;
-        private System.Windows.Forms.ToolStripMenuItem tsiAddNew;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem tsiFlag;
-        private System.Windows.Forms.ToolStripMenuItem tsiCanselFlag;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.Label lblTotol;
     }
 }

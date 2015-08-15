@@ -7,11 +7,88 @@ using System.Drawing;
 using System.IO;
 using System.Security.Cryptography;
 using System.Runtime.InteropServices;
+using NPOI.SS.UserModel;
 
 namespace OrderSheetCreator
 {
     public static class PublicTools
     {
+        public static double GetCellNumic(ISheet sheet, char x, int y)
+        {
+            double _r = double.MinValue;
+
+            ICell cell = sheet.GetRow(y - 1).GetCell(GetCellIntFromChar(x) - 1);
+            if(cell!=null)
+            switch (cell.CellType)
+            {
+                case CellType.String:
+                    {
+                        _r = double.Parse(cell.StringCellValue.Trim());
+
+                    } break;
+                case CellType.Numeric:
+                    {
+                        _r = cell.NumericCellValue;
+                    } break;
+                default:
+                    {
+
+                    } break;
+            }
+
+            return _r;
+
+        }
+
+        public static string GetCellString(ISheet sheet, char x, int y)
+        {
+            string _r = string.Empty;
+
+            ICell cell = sheet.GetRow(y - 1).GetCell(GetCellIntFromChar(x) - 1,MissingCellPolicy.CREATE_NULL_AS_BLANK);
+            switch (cell.CellType)
+            {
+                case CellType.String:
+                    {
+                        _r = cell.StringCellValue.Trim();
+
+                    } break;
+                case CellType.Numeric:
+                    {
+                        _r = cell.NumericCellValue.ToString();
+                    } break;
+                case CellType.Blank:
+                    {
+                        _r = string.Empty;
+                    }
+                    break;
+                default:
+                    {
+                        _r = string.Empty;
+
+                    } break;
+            }
+
+            return _r;
+
+        }
+
+        public static int GetCellIntFromChar(char x)
+        {
+            int offsetLower = ((int)'a') - 1;
+            int offsetUpper = ((int)'A') - 1;
+            
+            if (Char.IsLower(x))
+            {
+                return ((int)x) - offsetLower;
+            }
+            
+            if(Char.IsUpper(x))
+            {
+                return ((int)x) - offsetUpper;
+            }
+
+            return int.MinValue;
+        }
         public static void  Message404(string con)
         {
             MessageBox.Show(con, "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -89,7 +166,7 @@ namespace OrderSheetCreator
             dgv.AllowUserToAddRows = false;
             dgv.AllowUserToResizeRows = false;
             dgv.BackgroundColor = Color.FromKnownColor(KnownColor.Control);
-            dgv.BorderStyle = BorderStyle.None;
+            dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dgv.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             dgv.DefaultCellStyle.Padding = new Padding(2);

@@ -9,17 +9,17 @@ using System.Windows.Forms;
 
 namespace OrderSheetCreator
 {
-    public partial class FAdd : Form
+    public partial class FProduct : Form
     {
         private string FADD_DATAGRIDVIEW_SETPATH = "产品查询表宽度设定.txt";
         private TextBox TXBMATERIAL_TMP = new TextBox();
         private bool IS_IN_ORDER = false;
 
-        public FAdd()
+        public FProduct()
         {
             InitializeComponent();
         }
-        public FAdd(entity.CainzOrderDetail cod)
+        public FProduct(entity.CainzOrderDetail cod)
         {
             InitializeComponent();
             this.IS_IN_ORDER = true;
@@ -40,6 +40,7 @@ namespace OrderSheetCreator
             txbColor.Enabled = false;
             txbSize.Enabled = false;
             txbBarcode.Text = cod.ProductBarcode;
+            btnShow.Visible = false;
             
 
         }
@@ -413,6 +414,7 @@ namespace OrderSheetCreator
                 cp.ProductColor = txbColor.Text.Trim();
                 cp.ProductMaterial = txbMaterial.Text.Trim();
                 cp.ProductPrice = decimal.Parse(txbPrice.Text.Trim());
+                cp.ProductName = txbProductName.Text.Trim();
                 cp.Modified = 1;
                 cp.ModifyTime = DateTime.Now;
                 cp.CreateTime = DateTime.Now;
