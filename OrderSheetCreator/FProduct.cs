@@ -14,6 +14,8 @@ namespace OrderSheetCreator
         private string FADD_DATAGRIDVIEW_SETPATH = "产品查询表宽度设定.txt";
         private TextBox TXBMATERIAL_TMP = new TextBox();
         private bool IS_IN_ORDER = false;
+        private entity.CainzTrader cTrader;
+        private List<entity.CainzProduct> cProductList;
 
         public FProduct()
         {
@@ -21,6 +23,17 @@ namespace OrderSheetCreator
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.ControlBox = false;
         }
+
+        public FProduct(entity.CainzTrader trader)
+        {
+            InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.ControlBox = false;
+            cTrader = trader;
+            this.Text = string.Format("{0} ({1})", this.Text, cTrader.TraderName);
+
+        }
+
         public FProduct(entity.CainzOrderDetail cod)
         {
             InitializeComponent();
@@ -69,11 +82,23 @@ namespace OrderSheetCreator
             {
                 using (var db = PublicDB.getDB())
                 {
-                    var productQuery = from a in db.CainzProduct
-                                       where a.ProductBarcode.Contains(txbSearchBarcode.Text) && a.Deleted == 0
-                                       orderby a.ProductBarcode, a.ProductPrice
-                                       select a;
-                    productsBindingSource.DataSource = productQuery.Take(5).ToList();
+
+                    if (ckbIsLock.Checked && cTrader !=null) {
+                        cProductList = (from a in db.CainzProduct
+                                        where a.ProductBarcode.Contains(txbSearchBarcode.Text) && a.Deleted == 0 && a.TraderID == cTrader.TraderID
+                                        orderby a.ProductBarcode, a.ProductPrice
+                                        select a).Take(5).ToList();
+                    }
+                    else
+                    {
+                        cProductList = (from a in db.CainzProduct
+                                        where a.ProductBarcode.Contains(txbSearchBarcode.Text) && a.Deleted == 0
+                                        orderby a.ProductBarcode, a.ProductPrice
+                                        select a).Take(5).ToList();
+
+                    }
+
+                    productsBindingSource.DataSource = cProductList;
 
                 }
                 PublicTools.RecountRowsNum(dataGridView1);

@@ -99,7 +99,24 @@ namespace OrderSheetCreator
 
         private void tsbNew_Click(object sender, EventArgs e)
         {
-            fadd = new FProduct();
+            if (FCainzOrderD.FACTORY != null && FCainzOrderD.FACTORY.TraderID != Guid.Empty)
+            {
+                using (var db = PublicDB.getDB())
+                {
+                    entity.CainzTrader trader = db.CainzTrader.Where(a => a.TraderID == FCainzOrderD.FACTORY.TraderID).FirstOrDefault();
+                    if (trader != null) {
+                        fadd = new FProduct(trader);
+                    }
+                    else
+                    {
+                        fadd = new FProduct();
+                    }
+                }
+            }
+            else
+            {
+                fadd = new FProduct();
+            }
             fadd.ShowDialog();
             PublicTools.RecountRowsNum(dataGridView1);
 
