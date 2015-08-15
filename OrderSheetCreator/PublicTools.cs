@@ -5,15 +5,210 @@ using System.Text;
 using System.Windows.Forms;
 using System.Drawing;
 using System.IO;
+using System.Security.Cryptography;
+using System.Runtime.InteropServices;
+using NPOI.SS.UserModel;
+using System.Reflection;
 
 namespace OrderSheetCreator
 {
     public static class PublicTools
     {
+
+        #region 程序集特性访问器
+
+        public static string AssemblyTitle
+        {
+            get
+            {
+                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+                if (attributes.Length > 0)
+                {
+                    AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
+                    if (titleAttribute.Title != "")
+                    {
+                        return titleAttribute.Title;
+                    }
+                }
+                return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
+            }
+        }
+
+        public static string AssemblyVersion
+        {
+            get
+            {
+                return Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            }
+        }
+
+        public static string AssemblyDescription
+        {
+            get
+            {
+                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    return "";
+                }
+                return ((AssemblyDescriptionAttribute)attributes[0]).Description;
+            }
+        }
+
+        public static string AssemblyProduct
+        {
+            get
+            {
+                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    return "";
+                }
+                return ((AssemblyProductAttribute)attributes[0]).Product;
+            }
+        }
+
+        public static string AssemblyCopyright
+        {
+            get
+            {
+                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    return "";
+                }
+                return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
+            }
+        }
+
+        public static string AssemblyCompany
+        {
+            get
+            {
+                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
+                if (attributes.Length == 0)
+                {
+                    return "";
+                }
+                return ((AssemblyCompanyAttribute)attributes[0]).Company;
+            }
+        }
+        #endregion
+        public static double GetCellNumic(ISheet sheet, char x, int y)
+        {
+            double _r = double.MinValue;
+
+            ICell cell = sheet.GetRow(y - 1).GetCell(GetCellIntFromChar(x) - 1);
+            if(cell!=null)
+            switch (cell.CellType)
+            {
+                case CellType.String:
+                    {
+                        _r = double.Parse(cell.StringCellValue.Trim());
+
+                    } break;
+                case CellType.Numeric:
+                    {
+                        _r = cell.NumericCellValue;
+                    } break;
+                default:
+                    {
+
+                    } break;
+            }
+
+            return _r;
+
+        }
+
+        public static string GetCellString(ISheet sheet, char x, int y)
+        {
+            string _r = string.Empty;
+
+            ICell cell = sheet.GetRow(y - 1).GetCell(GetCellIntFromChar(x) - 1,MissingCellPolicy.CREATE_NULL_AS_BLANK);
+            switch (cell.CellType)
+            {
+                case CellType.String:
+                    {
+                        _r = cell.StringCellValue.Trim();
+
+                    } break;
+                case CellType.Numeric:
+                    {
+                        _r = cell.NumericCellValue.ToString();
+                    } break;
+                case CellType.Blank:
+                    {
+                        _r = string.Empty;
+                    }
+                    break;
+                default:
+                    {
+                        _r = string.Empty;
+
+                    } break;
+            }
+
+            return _r;
+
+        }
+
+        public static int GetCellIntFromChar(char x)
+        {
+            int offsetLower = ((int)'a') - 1;
+            int offsetUpper = ((int)'A') - 1;
+            
+            if (Char.IsLower(x))
+            {
+                return ((int)x) - offsetLower;
+            }
+            
+            if(Char.IsUpper(x))
+            {
+                return ((int)x) - offsetUpper;
+            }
+
+            return int.MinValue;
+        }
+        public static void  Message404(string con)
+        {
+            MessageBox.Show(con, "提示信息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public static void SetFitCharFont(Font MaxFont, int TotolSpace, string StringCon, out Font FitFont, out int StartOffset)
+        {
+            FitFont = MaxFont;
+            StartOffset = 1;
+            while (true)
+            {
+                int StringWidth = TextRenderer.MeasureText(StringCon, FitFont).Width;
+                if (StringWidth < TotolSpace - 2)
+                {
+                    break;
+                }
+                else
+                {
+                    FitFont = new Font(FitFont.FontFamily, FitFont.Size - 2, FitFont.Unit);
+                }
+            }
+
+            StartOffset = (TotolSpace - TextRenderer.MeasureText(StringCon, FitFont).Width) / (int)(2 * 3.8);
+        }
+
+        /// <summary>
+        /// yyyyMMdd
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         public static string FormatDate(DateTime dt)
         {
             return dt.ToString("yyyyMMdd");
         }
+        /// <summary>
+        /// yyyy-MM-dd
+        /// </summary>
+        /// <param name="dt"></param>
+        /// <returns></returns>
         public static string FormatDateC(DateTime dt)
         {
             return dt.ToString("yyyy-MM-dd");
@@ -52,10 +247,14 @@ namespace OrderSheetCreator
             dgv.AllowUserToAddRows = false;
             dgv.AllowUserToResizeRows = false;
             dgv.BackgroundColor = Color.FromKnownColor(KnownColor.Control);
-            dgv.BorderStyle = BorderStyle.None;
+            dgv.BorderStyle = System.Windows.Forms.BorderStyle.None;
             dgv.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
             dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             dgv.DefaultCellStyle.Padding = new Padding(2);
+
+            var dgvColumnHeaderStyle = new DataGridViewCellStyle();
+            dgvColumnHeaderStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv.ColumnHeadersDefaultCellStyle = dgvColumnHeaderStyle;
 
 
         }
@@ -82,7 +281,12 @@ namespace OrderSheetCreator
 
         public static void RecoverColumnWidth(DataGridView dgv, string path)
         {
-            if (File.Exists(path) == false) return;
+            if (File.Exists(path) == false)
+            {
+
+                return;
+            }
+
             using (StreamReader w = new StreamReader(path))
             {
                 while (!w.EndOfStream)
@@ -104,7 +308,6 @@ namespace OrderSheetCreator
                 }
             }
         }
-
 
         public static void ReSizeTextbox(Control ctl)
         {
@@ -140,5 +343,186 @@ namespace OrderSheetCreator
 
             return p;
         }
+    }
+
+    public class INIClass
+    {
+        public string inipath;
+        [DllImport("kernel32")]
+        private static extern long WritePrivateProfileString(string section, string key, string val, string filePath);
+        [DllImport("kernel32")]
+        private static extern int GetPrivateProfileString(string section, string key, string def, StringBuilder retVal, int size, string filePath);
+        /// <summary>
+        /// 构造方法
+        /// </summary>
+        /// <param name="INIPath">文件路径</param>
+        public INIClass(string INIPath)
+        {
+            inipath = AppDomain.CurrentDomain.BaseDirectory + INIPath;
+        }
+        /// <summary>
+        /// 写入INI文件
+        /// </summary>
+        /// <param name="Section">项目名称(如 [TypeName] )</param>
+        /// <param name="Key">键</param>
+        /// <param name="Value">值</param>
+        public void IniWriteValue(string Section, string Key, string Value)
+        {
+            WritePrivateProfileString(Section, Key, Value, this.inipath);
+        }
+        /// <summary>
+        /// 读出INI文件
+        /// </summary>
+        /// <param name="Section">项目名称(如 [TypeName] )</param>
+        /// <param name="Key">键</param>
+        public string IniReadValue(string Section, string Key)
+        {
+            if (ExistINIFile() == false) return "";
+            StringBuilder temp = new StringBuilder(500);
+            int i = GetPrivateProfileString(Section, Key, "", temp, 500, this.inipath);
+            return temp.ToString();
+        }
+        /// <summary>
+        /// 验证文件是否存在
+        /// </summary>
+        /// <returns>布尔值</returns>
+        public bool ExistINIFile()
+        {
+            bool tmp = File.Exists(inipath);
+            return tmp;
+        }
+    }
+
+    public class EncAndDec
+    {
+        //加密/解密钥匙
+        const string KEY_64 = "tslinkcn";//注意了，是8个字符，64位    
+        const string IV_64 = "ncknilst";//注意了，是8个字符，64位
+
+        const string ClientLocal_KEY_64 = "12345678";
+        const string ClientLocal_IV_64 = "12345679";
+
+        /// <summary>
+        /// 加密的方法，通过2个密匙进行加密
+        /// </summary>
+        /// <param name="data">加密的数据</param>
+        /// <returns>返回加密后的字符串</returns>
+        public static string Encode(string data)
+        {
+            EncAndDec ed = new EncAndDec();
+            return ed.Encode(data, KEY_64, IV_64);
+        }
+        /// <summary>
+        /// 解密的方法
+        /// </summary>
+        /// <param name="data">解密的数据</param>
+        /// <returns>返回加密前的字符串</returns>
+        public static string Decode(string data)
+        {
+            EncAndDec ed = new EncAndDec();
+            return ed.Decode(data, KEY_64, IV_64);
+        }
+
+        /// <summary>
+        /// 客户本地加密的方法，通过2个密匙进行加密
+        /// </summary>
+        /// <param name="data">加密的数据</param>
+        /// <returns>返回加密后的字符串</returns>
+        public static string EncodeClientLocal(string data)
+        {
+            EncAndDec ed = new EncAndDec();
+            return ed.Encode(data, ClientLocal_KEY_64, ClientLocal_IV_64);
+        }
+        /// <summary>
+        /// 客户本地解密的方法
+        /// </summary>
+        /// <param name="data">解密的数据</param>
+        /// <returns>返回加密前的字符串</returns>
+        public static string DecodeClientLocal(string data)
+        {
+            EncAndDec ed = new EncAndDec();
+            return ed.Decode(data, ClientLocal_KEY_64, ClientLocal_IV_64);
+        }
+
+        #region DEC加密的方法
+        /// <summary>
+        /// 加密的方法，通过2个密匙进行加密
+        /// </summary>
+        /// <param name="data">通过Md5加密一次</param>
+        /// <param name="KEY_64"></param>
+        /// <param name="IV_64"></param>
+        /// <returns></returns>
+        private string Encode(string data, string KEY_64, string IV_64)
+        {
+
+            KEY_64 = ToMD5(KEY_64);
+            IV_64 = ToMD5(IV_64);
+            byte[] byKey = System.Text.ASCIIEncoding.ASCII.GetBytes(KEY_64);
+            byte[] byIV = System.Text.ASCIIEncoding.ASCII.GetBytes(IV_64);
+
+            DESCryptoServiceProvider cryptoProvider = new DESCryptoServiceProvider();
+            int i = cryptoProvider.KeySize;
+            MemoryStream ms = new MemoryStream();
+            CryptoStream cst = new CryptoStream(ms, cryptoProvider.CreateEncryptor(byKey, byIV), CryptoStreamMode.Write);
+
+            StreamWriter sw = new StreamWriter(cst);
+            sw.Write(data);
+            sw.Flush();
+            cst.FlushFinalBlock();
+            sw.Flush();
+            return Convert.ToBase64String(ms.GetBuffer(), 0, (int)ms.Length);
+
+        }
+        /// <summary>
+        /// 解密的方法（）
+        /// </summary>
+        /// <param name="data"></param>
+        /// <param name="KEY_64"></param>
+        /// <param name="IV_64"></param>
+        /// <returns></returns>
+        private string Decode(string data, string KEY_64, string IV_64)
+        {
+            if (data == "") return "";
+            KEY_64 = ToMD5(KEY_64);
+            IV_64 = ToMD5(IV_64);
+            byte[] byKey = System.Text.ASCIIEncoding.ASCII.GetBytes(KEY_64);
+            byte[] byIV = System.Text.ASCIIEncoding.ASCII.GetBytes(IV_64);
+
+            byte[] byEnc;
+            try
+            {
+                byEnc = Convert.FromBase64String(data);
+            }
+            catch
+            {
+                return null;
+            }
+
+            DESCryptoServiceProvider cryptoProvider = new DESCryptoServiceProvider();
+            MemoryStream ms = new MemoryStream(byEnc);
+            CryptoStream cst = new CryptoStream(ms, cryptoProvider.CreateDecryptor(byKey, byIV), CryptoStreamMode.Read);
+            StreamReader sr = new StreamReader(cst);
+            return sr.ReadToEnd();
+        }
+        #endregion
+
+        #region MD5加密
+        /// <summary>
+        /// 转换MD5密码
+        /// </summary>
+        /// <param name="pass"></param>
+        /// <returns></returns>
+        public static string ToMD5(string KEY)
+        {
+            byte[] result = Encoding.Default.GetBytes(KEY);
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] output = md5.ComputeHash(result);
+
+            string KEY_64 = BitConverter.ToString(output).Replace("-", "").Substring(0, 8);
+            return KEY_64;
+
+        }
+        #endregion
+
     }
 }

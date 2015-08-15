@@ -23,7 +23,7 @@ namespace OrderSheetCreator
 
         private void txbSearch_TextChanged(object sender, EventArgs e)
         {
-            using (var db = new entity.DB())
+            using (var db = PublicDB.getDB())
             {
                 cainzTraderBindingSource.DataSource = (from a in db.CainzTrader
                                                        where a.TraderName.Contains(txbSearch.Text)

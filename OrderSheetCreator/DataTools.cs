@@ -32,7 +32,7 @@ namespace OrderSheetCreator
         private void button1_Click(object sender, EventArgs e)
         {
             
-            //using (var ctx = new entity.DB())
+            //using (var ctx = PublicDB.getDB())
             //{
             //    foreach (var maoyi in gMaoYiShangDic)
             //    {
@@ -198,7 +198,7 @@ namespace OrderSheetCreator
             //if (gGongChangDic.Count == 0) return;
             //List<Customer> ctlistforupdate = new List<Customer>();
             //List<Customer> ctlist = new List<Customer>();
-            //using (var ctx = new entity.DB())
+            //using (var ctx = PublicDB.getDB())
             //{
             //    var cainzCustomers = from item in ctx.Customer
             //                         where item.FirstNum == "130817052630"
@@ -235,7 +235,7 @@ namespace OrderSheetCreator
             //}
 
             ////修改动作
-            //using (var ctx = new entity.DB())
+            //using (var ctx = PublicDB.getDB())
             //{
             //    foreach (var item in ctlistforupdate)
             //    {
@@ -289,7 +289,7 @@ namespace OrderSheetCreator
         private CainzTrader GetTradeByTraderName(string name)
         {
             if (name == "") return null;
-            using (var db = new entity.DB())
+            using (var db = PublicDB.getDB())
             {
                 var c = (from item in db.CainzTrader
                          where item.TraderName.Contains(name)
@@ -310,7 +310,7 @@ namespace OrderSheetCreator
         {
             name = stringZip(name);
             CainzFactory cc = null;
-            using (var db = new entity.DB())
+            using (var db = PublicDB.getDB())
             {
                 var c = (from item in db.CainzFactory
                          where item.FactoryName.Contains(name)
@@ -355,7 +355,7 @@ namespace OrderSheetCreator
         //导入 到新表 Trader 
         private void btnCainzMaoyis_Click(object sender, EventArgs e)
         {
-            using (var db = new entity.DB())
+            using (var db = PublicDB.getDB())
             {
                 //遍历贸易商表列表,通过名称查找，如果不存在则添加
                 foreach (var Trader in gMaoYiShangDic)
@@ -381,7 +381,7 @@ namespace OrderSheetCreator
         private void btnImportFactory_Click(object sender, EventArgs e)
         {
 
-            using (var db = new entity.DB())
+            using (var db = PublicDB.getDB())
             {
                 foreach (var f in this.FACTORYS)
                 {
@@ -445,7 +445,7 @@ namespace OrderSheetCreator
             if (gGongChangDic.Count == 0) return;
             List<CainzFactory> ctlistforupdate = new List<CainzFactory>();
             List<CainzFactory> ctlist = new List<CainzFactory>();
-            using (var db = new entity.DB())
+            using (var db = PublicDB.getDB())
             {
                 var factorys = from item in db.CainzFactory
                                select item;
@@ -484,7 +484,7 @@ namespace OrderSheetCreator
             }
 
             //修改动作
-            using (var ctx = new entity.DB())
+            using (var ctx = PublicDB.getDB())
             {
                 foreach (var item in ctlistforupdate)
                 {
@@ -831,7 +831,7 @@ namespace OrderSheetCreator
                     if (com.Length < 6) continue;
                     if (false == productHT.ContainsKey(com))
                     {
-                        using (var db = new entity.DB())
+                        using (var db = PublicDB.getDB())
                         {
                             CainzProduct p = new CainzProduct();
                             p.ProductBarcode = cdString;
@@ -854,7 +854,7 @@ namespace OrderSheetCreator
 
         private void button6_Click(object sender, EventArgs e)
         {
-            using (var db = new entity.DB())
+            using (var db = PublicDB.getDB())
             {
                 var result = from p in db.CainzFactory
                              select p;
@@ -1005,7 +1005,7 @@ namespace OrderSheetCreator
 
 
             Hashtable productHT = new Hashtable();
-            using (var db = new entity.DB())
+            using (var db = PublicDB.getDB())
             {
 
             for (int j = titleRowNo + 1; j < rowofPage; j++)
@@ -1073,7 +1073,7 @@ namespace OrderSheetCreator
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             //List<entity.CainzFactory> query = new List<CainzFactory>();
-            using (var db = new entity.DB())
+            using (var db = PublicDB.getDB())
             {
                 var query = (from a in db.CainzFactory
                              select a).ToList();
@@ -1114,7 +1114,7 @@ namespace OrderSheetCreator
                 var query = (from a in db2.CainzProduct
                              where a.Modified == 1
                              select a).ToList();
-                using (var db = new entity.DB())
+                using (var db = PublicDB.getDB())
                 {
                     foreach (var cf in query)
                     {

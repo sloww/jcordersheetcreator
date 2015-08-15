@@ -1,6 +1,6 @@
 ﻿namespace OrderSheetCreator
 {
-    partial class FAdd
+    partial class FProduct
     {
         /// <summary>
         /// Required designer variable.
@@ -40,7 +40,6 @@
             this.btnSaveToDB = new System.Windows.Forms.Button();
             this.txbCount = new System.Windows.Forms.TextBox();
             this.txbPrice = new System.Windows.Forms.TextBox();
-            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txbColor = new System.Windows.Forms.TextBox();
             this.txbSize = new System.Windows.Forms.TextBox();
             this.txbMaterial = new System.Windows.Forms.TextBox();
@@ -50,6 +49,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblMaterial = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txbProductName = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnHidden = new System.Windows.Forms.Button();
             this.btnDBnew = new System.Windows.Forms.Button();
@@ -64,11 +64,11 @@
             this.txbIssuedDate = new System.Windows.Forms.TextBox();
             this.txbReMarK = new System.Windows.Forms.TextBox();
             this.btnContinue = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.txbBarcode = new System.Windows.Forms.TextBox();
             this.btnShow = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Material = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -77,12 +77,15 @@
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Modified = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModifyTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -136,7 +139,7 @@
             this.btnClose.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnClose.Font = new System.Drawing.Font("宋体", 12F);
             this.btnClose.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnClose.Location = new System.Drawing.Point(748, 3);
+            this.btnClose.Location = new System.Drawing.Point(731, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(126, 38);
             this.btnClose.TabIndex = 21;
@@ -184,34 +187,28 @@
             this.txbPrice.TabStop = false;
             this.txbPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPrice_KeyPress);
             // 
-            // productsBindingSource
-            // 
-            this.productsBindingSource.DataSource = typeof(entity.CainzProduct);
-            this.productsBindingSource.CurrentItemChanged += new System.EventHandler(this.productsBindingSource_CurrentItemChanged);
-            // 
             // txbColor
             // 
             this.txbColor.BackColor = System.Drawing.SystemColors.Control;
             this.txbColor.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbColor.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "ProductColor", true));
             this.txbColor.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbColor.Location = new System.Drawing.Point(65, 135);
+            this.txbColor.Location = new System.Drawing.Point(69, 142);
             this.txbColor.Name = "txbColor";
-            this.txbColor.Size = new System.Drawing.Size(259, 26);
+            this.txbColor.Size = new System.Drawing.Size(275, 26);
             this.txbColor.TabIndex = 10;
             this.txbColor.TabStop = false;
             this.txbColor.TextChanged += new System.EventHandler(this.txbColor_TextChanged);
             // 
             // txbSize
             // 
-            this.txbSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txbSize.BackColor = System.Drawing.SystemColors.Control;
             this.txbSize.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "ProductSize", true));
             this.txbSize.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbSize.Location = new System.Drawing.Point(65, 93);
+            this.txbSize.Location = new System.Drawing.Point(65, 186);
             this.txbSize.Name = "txbSize";
-            this.txbSize.Size = new System.Drawing.Size(259, 26);
+            this.txbSize.Size = new System.Drawing.Size(275, 26);
             this.txbSize.TabIndex = 9;
             this.txbSize.TabStop = false;
             // 
@@ -221,9 +218,9 @@
             this.txbMaterial.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbMaterial.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "ProductMaterial", true));
             this.txbMaterial.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbMaterial.Location = new System.Drawing.Point(65, 52);
+            this.txbMaterial.Location = new System.Drawing.Point(65, 98);
             this.txbMaterial.Name = "txbMaterial";
-            this.txbMaterial.Size = new System.Drawing.Size(282, 26);
+            this.txbMaterial.Size = new System.Drawing.Size(275, 26);
             this.txbMaterial.TabIndex = 8;
             this.txbMaterial.TabStop = false;
             this.txbMaterial.TextChanged += new System.EventHandler(this.txbMaterial_TextChanged);
@@ -251,7 +248,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(8, 136);
+            this.label4.Location = new System.Drawing.Point(8, 186);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 25);
             this.label4.TabIndex = 5;
@@ -261,7 +258,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(8, 94);
+            this.label3.Location = new System.Drawing.Point(8, 142);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(55, 25);
             this.label3.TabIndex = 4;
@@ -271,7 +268,7 @@
             // 
             this.lblMaterial.AutoSize = true;
             this.lblMaterial.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblMaterial.Location = new System.Drawing.Point(8, 52);
+            this.lblMaterial.Location = new System.Drawing.Point(8, 98);
             this.lblMaterial.Name = "lblMaterial";
             this.lblMaterial.Size = new System.Drawing.Size(55, 25);
             this.lblMaterial.TabIndex = 3;
@@ -279,6 +276,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txbProductName);
             this.panel2.Controls.Add(this.panel4);
             this.panel2.Controls.Add(this.ckbIsLock);
             this.panel2.Controls.Add(this.label2);
@@ -294,6 +292,7 @@
             this.panel2.Controls.Add(this.btnContinue);
             this.panel2.Controls.Add(this.txbCount);
             this.panel2.Controls.Add(this.txbPrice);
+            this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.lblMaterial);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.txbSize);
@@ -303,10 +302,22 @@
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.btnShow);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 310);
+            this.panel2.Location = new System.Drawing.Point(0, 302);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(877, 273);
+            this.panel2.Size = new System.Drawing.Size(877, 325);
             this.panel2.TabIndex = 4;
+            // 
+            // txbProductName
+            // 
+            this.txbProductName.BackColor = System.Drawing.SystemColors.Control;
+            this.txbProductName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbProductName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "ProductName", true));
+            this.txbProductName.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txbProductName.Location = new System.Drawing.Point(65, 54);
+            this.txbProductName.Name = "txbProductName";
+            this.txbProductName.Size = new System.Drawing.Size(275, 26);
+            this.txbProductName.TabIndex = 22;
+            this.txbProductName.TabStop = false;
             // 
             // panel4
             // 
@@ -317,9 +328,9 @@
             this.panel4.Controls.Add(this.btnDeletedb);
             this.panel4.Controls.Add(this.btnSaveToDB);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 272);
+            this.panel4.Location = new System.Drawing.Point(0, 276);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(877, 1);
+            this.panel4.Size = new System.Drawing.Size(877, 49);
             this.panel4.TabIndex = 19;
             // 
             // btnHidden
@@ -366,7 +377,7 @@
             this.ckbIsLock.AutoSize = true;
             this.ckbIsLock.Checked = true;
             this.ckbIsLock.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbIsLock.Location = new System.Drawing.Point(363, 192);
+            this.ckbIsLock.Location = new System.Drawing.Point(362, 230);
             this.ckbIsLock.Name = "ckbIsLock";
             this.ckbIsLock.Size = new System.Drawing.Size(108, 16);
             this.ckbIsLock.TabIndex = 20;
@@ -397,7 +408,7 @@
             this.txbTrader.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbTrader.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "TraderName", true));
             this.txbTrader.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbTrader.Location = new System.Drawing.Point(87, 182);
+            this.txbTrader.Location = new System.Drawing.Point(87, 230);
             this.txbTrader.Name = "txbTrader";
             this.txbTrader.Size = new System.Drawing.Size(237, 26);
             this.txbTrader.TabIndex = 10;
@@ -408,7 +419,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label9.Location = new System.Drawing.Point(8, 182);
+            this.label9.Location = new System.Drawing.Point(8, 230);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(88, 25);
             this.label9.TabIndex = 18;
@@ -417,7 +428,7 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnDelete.Location = new System.Drawing.Point(748, 136);
+            this.btnDelete.Location = new System.Drawing.Point(731, 136);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(126, 38);
             this.btnDelete.TabIndex = 17;
@@ -444,6 +455,7 @@
             this.txbIssuedDate.Name = "txbIssuedDate";
             this.txbIssuedDate.Size = new System.Drawing.Size(172, 26);
             this.txbIssuedDate.TabIndex = 15;
+            this.txbIssuedDate.Click += new System.EventHandler(this.txbIssuedDate_Click);
             this.txbIssuedDate.DoubleClick += new System.EventHandler(this.txbIssuedDate_DoubleClick);
             this.txbIssuedDate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbIssuedDate_KeyPress);
             // 
@@ -460,13 +472,23 @@
             // btnContinue
             // 
             this.btnContinue.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnContinue.Location = new System.Drawing.Point(748, 41);
+            this.btnContinue.Location = new System.Drawing.Point(731, 41);
             this.btnContinue.Name = "btnContinue";
             this.btnContinue.Size = new System.Drawing.Size(126, 38);
             this.btnContinue.TabIndex = 13;
             this.btnContinue.Text = "添加到订单";
             this.btnContinue.UseVisualStyleBackColor = true;
             this.btnContinue.Click += new System.EventHandler(this.btnContinue_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label10.Location = new System.Drawing.Point(9, 54);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(55, 25);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "型番:";
             // 
             // txbBarcode
             // 
@@ -476,7 +498,7 @@
             this.txbBarcode.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.txbBarcode.Location = new System.Drawing.Point(65, 10);
             this.txbBarcode.Name = "txbBarcode";
-            this.txbBarcode.Size = new System.Drawing.Size(259, 26);
+            this.txbBarcode.Size = new System.Drawing.Size(275, 26);
             this.txbBarcode.TabIndex = 8;
             this.txbBarcode.TabStop = false;
             this.txbBarcode.TextChanged += new System.EventHandler(this.txbBarcode_TextChanged);
@@ -486,7 +508,7 @@
             this.btnShow.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnShow.Font = new System.Drawing.Font("宋体", 12F);
             this.btnShow.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnShow.Location = new System.Drawing.Point(748, 231);
+            this.btnShow.Location = new System.Drawing.Point(751, 284);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(126, 38);
             this.btnShow.TabIndex = 21;
@@ -500,7 +522,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 48);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(877, 262);
+            this.panel3.Size = new System.Drawing.Size(877, 254);
             this.panel3.TabIndex = 5;
             // 
             // dataGridView1
@@ -512,6 +534,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Barcode,
+            this.productNameDataGridViewTextBoxColumn,
             this.Material,
             this.Color,
             this.popSize,
@@ -524,16 +547,8 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(877, 262);
+            this.dataGridView1.Size = new System.Drawing.Size(877, 254);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Barcode";
-            this.dataGridViewTextBoxColumn1.HeaderText = "条码";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
             // 
             // Column1
             // 
@@ -608,18 +623,38 @@
             this.ModifyTime.Name = "ModifyTime";
             this.ModifyTime.ReadOnly = true;
             // 
-            // FAdd
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Barcode";
+            this.dataGridViewTextBoxColumn1.HeaderText = "条码";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // productNameDataGridViewTextBoxColumn
+            // 
+            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
+            this.productNameDataGridViewTextBoxColumn.HeaderText = "型番";
+            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
+            this.productNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // productsBindingSource
+            // 
+            this.productsBindingSource.DataSource = typeof(entity.CainzProduct);
+            this.productsBindingSource.CurrentItemChanged += new System.EventHandler(this.productsBindingSource_CurrentItemChanged);
+            // 
+            // FProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(877, 583);
+            this.ClientSize = new System.Drawing.Size(877, 627);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.KeyPreview = true;
-            this.Name = "FAdd";
+            this.Name = "FProduct";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
@@ -630,12 +665,12 @@
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FAdd_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -680,8 +715,11 @@
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.CheckBox ckbAutoEnter;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txbProductName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Barcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn productNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Material;
         private System.Windows.Forms.DataGridViewTextBoxColumn Color;
         private System.Windows.Forms.DataGridViewTextBoxColumn popSize;

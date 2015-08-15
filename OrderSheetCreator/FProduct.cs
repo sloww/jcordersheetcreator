@@ -9,17 +9,32 @@ using System.Windows.Forms;
 
 namespace OrderSheetCreator
 {
-    public partial class FAdd : Form
+    public partial class FProduct : Form
     {
         private string FADD_DATAGRIDVIEW_SETPATH = "产品查询表宽度设定.txt";
         private TextBox TXBMATERIAL_TMP = new TextBox();
         private bool IS_IN_ORDER = false;
+        private entity.CainzTrader cTrader;
+        private List<entity.CainzProduct> cProductList;
 
-        public FAdd()
+        public FProduct()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.ControlBox = false;
         }
-        public FAdd(entity.CainzOrderDetail cod)
+
+        public FProduct(entity.CainzTrader trader)
+        {
+            InitializeComponent();
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.ControlBox = false;
+            cTrader = trader;
+            this.Text = string.Format("{0} ({1})", this.Text, cTrader.TraderName);
+
+        }
+
+        public FProduct(entity.CainzOrderDetail cod)
         {
             InitializeComponent();
             this.IS_IN_ORDER = true;
@@ -29,6 +44,7 @@ namespace OrderSheetCreator
             txbCount.Text = cod.POPNum.ToString();
             txbPrice.Text = cod.ProductPrice.ToString();
             txbColor.Text = cod.ProductColor;
+
             txbCount.Focus();
             btnContinue.Text = "修改";
             txbSearchBarcode.Enabled = false;
@@ -39,8 +55,24 @@ namespace OrderSheetCreator
             txbMaterial.Enabled = false;
             txbColor.Enabled = false;
             txbSize.Enabled = false;
+            txbProductName.Enabled = false;
+
             txbBarcode.Text = cod.ProductBarcode;
-            
+            entity.CainzTrader trader = PublicDB.GetTraderByBarcode(cod.ProductBarcode);
+            if (trader != null)
+            {
+                txbTrader.Text = trader.TraderName;
+            }
+            btnShow.Visible = false;
+            panel1.Visible = false;
+            panel4.Visible = false;
+            panel3.Visible = false;
+            this.ControlBox = true;
+            this.Size = panel2.Size;
+            panel2.Dock = DockStyle.Fill;
+            this.Refresh();
+            this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
 
         }
 
@@ -48,13 +80,25 @@ namespace OrderSheetCreator
         {
             if (txbSearchBarcode.Text.Length > 0)
             {
-                using (var db = new entity.DB())
+                using (var db = PublicDB.getDB())
                 {
-                    var productQuery = from a in db.CainzProduct
-                                       where a.ProductBarcode.Contains(txbSearchBarcode.Text) && a.Deleted == 0
-                                       orderby a.ProductBarcode, a.ProductPrice
-                                       select a;
-                    productsBindingSource.DataSource = productQuery.Take(5).ToList();
+
+                    if (ckbIsLock.Checked && cTrader !=null) {
+                        cProductList = (from a in db.CainzProduct
+                                        where a.ProductBarcode.Contains(txbSearchBarcode.Text) && a.Deleted == 0 && a.TraderID == cTrader.TraderID
+                                        orderby a.ProductBarcode, a.ProductPrice
+                                        select a).Take(5).ToList();
+                    }
+                    else
+                    {
+                        cProductList = (from a in db.CainzProduct
+                                        where a.ProductBarcode.Contains(txbSearchBarcode.Text) && a.Deleted == 0
+                                        orderby a.ProductBarcode, a.ProductPrice
+                                        select a).Take(5).ToList();
+
+                    }
+
+                    productsBindingSource.DataSource = cProductList;
 
                 }
                 PublicTools.RecountRowsNum(dataGridView1);
@@ -76,8 +120,7 @@ namespace OrderSheetCreator
 
         private void FAdd_Load(object sender, EventArgs e)
         {
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.ControlBox = false;
+
             PublicTools.IniDatagridview(dataGridView1);
             PublicTools.SetColumsAutoModeNone(dataGridView1);
             PublicTools.RecoverColumnWidth(dataGridView1, this.FADD_DATAGRIDVIEW_SETPATH);
@@ -323,7 +366,7 @@ namespace OrderSheetCreator
         {
             if (MessageBox.Show("是否修改该产品数据库，点击，YES，后修改不可恢复", "谨慎操作", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
             {
-                using (var db = new entity.DB())
+                using (var db = PublicDB.getDB())
                 {
                     entity.CainzProduct cp = (entity.CainzProduct)productsBindingSource.Current;
                     cp.Modified = 1;
@@ -346,7 +389,7 @@ namespace OrderSheetCreator
         {
             if (MessageBox.Show("是否删除从数据库删除该行记录，点击，YES，后删除不可恢复", "谨慎操作", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == System.Windows.Forms.DialogResult.Yes)
             {
-                using (var db = new entity.DB())
+                using (var db = PublicDB.getDB())
                 {
                     entity.CainzProduct cp = (entity.CainzProduct)productsBindingSource.Current;
                     cp.Deleted = 1;
@@ -404,7 +447,7 @@ namespace OrderSheetCreator
 
         private void btnDBnew_Click(object sender, EventArgs e)
         {
-            using (var db = new entity.DB())
+            using (var db = PublicDB.getDB())
             {
                 entity.CainzProduct cp = new entity.CainzProduct();
                 cp.ProductID = Guid.NewGuid();
@@ -413,6 +456,7 @@ namespace OrderSheetCreator
                 cp.ProductColor = txbColor.Text.Trim();
                 cp.ProductMaterial = txbMaterial.Text.Trim();
                 cp.ProductPrice = decimal.Parse(txbPrice.Text.Trim());
+                cp.ProductName = txbProductName.Text.Trim();
                 cp.Modified = 1;
                 cp.ModifyTime = DateTime.Now;
                 cp.CreateTime = DateTime.Now;
@@ -436,15 +480,17 @@ namespace OrderSheetCreator
         private void txbIssuedDate_DoubleClick(object sender, EventArgs e)
         {
 
-            FDateTime fdt = new FDateTime();
-            fdt.Location = PublicTools.local(txbIssuedDate);
-            fdt.ShowDialog();
-            txbIssuedDate.Text = FDateTime.DateTimeSelect.ToShortDateString();
+
 
            
         }
 
-
-
+        private void txbIssuedDate_Click(object sender, EventArgs e)
+        {
+            FDateTime fdt = new FDateTime();
+            fdt.Location = PublicTools.local(txbIssuedDate);
+            fdt.ShowDialog();
+            txbIssuedDate.Text = FDateTime.DateTimeSelect.ToShortDateString();
+        }
     }
 }
