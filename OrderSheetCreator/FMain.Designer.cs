@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FMain));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FMain));
             this.panel1 = new System.Windows.Forms.Panel();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.newOrderToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,12 +50,8 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.lblDBStatus = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.caidan = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnOk = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnReady = new System.Windows.Forms.ToolStripMenuItem();
-            this.cainzOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sendDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -68,11 +64,17 @@
             this.createTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.caidan = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnOk = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnReady = new System.Windows.Forms.ToolStripMenuItem();
+            this.cainzOrderBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.caidan.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cainzOrderBindingSource)).BeginInit();
@@ -227,12 +229,24 @@
             // 
             // panel4
             // 
+            this.panel4.Controls.Add(this.pictureBox1);
             this.panel4.Controls.Add(this.dataGridView1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(10, 77);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1092, 518);
             this.panel4.TabIndex = 3;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(453, 195);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 16);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
             // 
             // dataGridView1
             // 
@@ -260,41 +274,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(1092, 518);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
-            // 
-            // caidan
-            // 
-            this.caidan.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnDelete,
-            this.btnOk,
-            this.btnReady});
-            this.caidan.Name = "caidan";
-            this.caidan.Size = new System.Drawing.Size(149, 70);
-            this.caidan.Text = "删除订单";
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(148, 22);
-            this.btnDelete.Text = "删除订单";
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
-            // 
-            // btnOk
-            // 
-            this.btnOk.Name = "btnOk";
-            this.btnOk.Size = new System.Drawing.Size(148, 22);
-            this.btnOk.Text = "标记已发货";
-            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
-            // 
-            // btnReady
-            // 
-            this.btnReady.Name = "btnReady";
-            this.btnReady.Size = new System.Drawing.Size(148, 22);
-            this.btnReady.Text = "标记为未发货";
-            this.btnReady.Click += new System.EventHandler(this.btnReady_Click);
-            // 
-            // cainzOrderBindingSource
-            // 
-            this.cainzOrderBindingSource.DataSource = typeof(entity.CainzOrder);
             // 
             // Column1
             // 
@@ -379,6 +358,41 @@
             this.Status.Name = "Status";
             this.Status.Visible = false;
             // 
+            // caidan
+            // 
+            this.caidan.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnDelete,
+            this.btnOk,
+            this.btnReady});
+            this.caidan.Name = "caidan";
+            this.caidan.Size = new System.Drawing.Size(149, 70);
+            this.caidan.Text = "删除订单";
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(148, 22);
+            this.btnDelete.Text = "删除订单";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // btnOk
+            // 
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(148, 22);
+            this.btnOk.Text = "标记已发货";
+            this.btnOk.Click += new System.EventHandler(this.btnOk_Click);
+            // 
+            // btnReady
+            // 
+            this.btnReady.Name = "btnReady";
+            this.btnReady.Size = new System.Drawing.Size(148, 22);
+            this.btnReady.Text = "标记为未发货";
+            this.btnReady.Click += new System.EventHandler(this.btnReady_Click);
+            // 
+            // cainzOrderBindingSource
+            // 
+            this.cainzOrderBindingSource.DataSource = typeof(entity.CainzOrder);
+            // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -393,6 +407,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FMain";
             this.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cainz 订单管理系统 v1.0.3 150815";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FMain_FormClosing);
             this.Load += new System.EventHandler(this.FMain_Load);
@@ -405,6 +420,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.caidan.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.cainzOrderBindingSource)).EndInit();
@@ -448,5 +465,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn createTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusInfo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

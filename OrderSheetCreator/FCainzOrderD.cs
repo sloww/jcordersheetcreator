@@ -111,8 +111,8 @@ namespace OrderSheetCreator
 
         private void FCainzOrderD_Load(object sender, EventArgs e)
         {
-            lblTotol.Text = "小技巧：在表格内，点击右键会出现快捷操作菜单";
             ReColorStatus();
+            pictureBox2.Visible = false;
         }
 
         private void FCainzOrderD_FormClosing(object sender, FormClosingEventArgs e)
@@ -323,8 +323,20 @@ namespace OrderSheetCreator
         {
             if (orderValidate() == false) return;
 
-            
+            this.Frozen(true);
+            BackgroundWorker worker = new BackgroundWorker();
+            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+            worker.DoWork += Worker_DoWork;
+            worker.RunWorkerAsync();
+        }
 
+        private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void Worker_DoWork(object sender, DoWorkEventArgs e)
+        {
             if (ORDER != null)
             {
                 ORDER.IsDelete = 1;
@@ -348,8 +360,6 @@ namespace OrderSheetCreator
             order.IsDelete = 0;
             order.Status = 0;
             order.LastUpdate = DateTime.Now;
-
-
             order.CainzFactoryFactoryID = FCainzOrderD.FACTORY.FactoryID;
             order.FactoryID = order.CainzFactoryFactoryID;
             order.FactoryName = txbFactory.Text.Trim();
@@ -389,9 +399,7 @@ namespace OrderSheetCreator
 
                 db.SaveChanges();
             }
-
-            this.Close();
-
+            //throw new NotImplementedException();
         }
 
         /// <summary>
@@ -535,17 +543,7 @@ namespace OrderSheetCreator
             txbDELdate.Tag = FDateTime.DateTimeSelect;
         }
 
-        private void FCainzOrderD_FormClosed(object sender, FormClosedEventArgs e)
-        {
 
-        }
-
-        private void dataGridView1_Paint(object sender, PaintEventArgs e)
-        {
-
-
-
-        }
 
         private void btnImportOrder_Click(object sender, EventArgs e)
         {
@@ -675,11 +673,7 @@ namespace OrderSheetCreator
             }
         }
 
-        private void dataGridView1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
 
-
-        }
 
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
@@ -692,6 +686,41 @@ namespace OrderSheetCreator
             }
             dataGridView2[6, 0].Value = totolCount;
             dataGridView2[8, 0].Value = totolMoney;
+        }
+
+        private void Frozen(bool isEnable)
+        {
+            if (isEnable)
+            {
+                if (this.WindowState == FormWindowState.Maximized)
+                {
+                    Rectangle ScreenArea = System.Windows.Forms.Screen.GetWorkingArea(this);
+
+                    pictureBox2.Location = new Point((ScreenArea.Width - pictureBox2.Width) / 2, (ScreenArea.Height - pictureBox2.Height) / 2 - 200);
+                    pictureBox2.Visible = true;
+
+                }
+                else if (this.WindowState == FormWindowState.Normal)
+                {
+                    pictureBox2.Location = new Point((this.Size.Width - pictureBox2.Width) / 2, (this.Size.Height - pictureBox2.Height) / 2 - 200);
+                    pictureBox2.Visible = true;
+
+                }
+                toolStrip1.Enabled = false;
+                panel2.Visible = false;
+                dataGridView1.Visible = false;
+                dataGridView2.Visible = false;
+
+            }
+            else
+            {
+                panel2.Visible = true;
+                dataGridView1.Visible = true;
+                dataGridView2.Visible = true;
+                pictureBox2.Visible = true;
+
+            }
+            this.Refresh();
         }
     }
     

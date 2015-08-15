@@ -15,16 +15,14 @@ namespace OrderSheetCreator
         public FMain()
         {
             InitializeComponent();
-        }
-
-        private void FMain_Load(object sender, EventArgs e) 
-        {
+            
             //恢复保存的窗体大小
             if (Properties.Settings.Default.Maximised)
             {
                 WindowState = FormWindowState.Maximized;
                 Location = Properties.Settings.Default.Location;
                 Size = Properties.Settings.Default.Size;
+
             }
             else if (Properties.Settings.Default.Minimised)
             {
@@ -36,6 +34,7 @@ namespace OrderSheetCreator
             {
                 Location = Properties.Settings.Default.Location;
                 Size = Properties.Settings.Default.Size;
+
             }
 
             //初始化dgv
@@ -44,6 +43,11 @@ namespace OrderSheetCreator
             //回复dgv的宽度设置
             PublicTools.RecoverColumnWidth(dataGridView1, "Fmaindgv.config");
 
+            
+        }
+
+        private void FMain_Load(object sender, EventArgs e) 
+        {
 
             lblDBStatus.Text = string.Format("数据库信息：{0}", PublicDB.getIniConnInfo("config.ini"));
 
@@ -52,6 +56,7 @@ namespace OrderSheetCreator
             this.Text = string.Format("{0}  Ver.{1}", PublicTools.AssemblyProduct, PublicTools.AssemblyVersion);
 
         }
+
 
         private void FMain_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -88,7 +93,7 @@ namespace OrderSheetCreator
             FCainzOrderD m = new FCainzOrderD();
             m.StartPosition = FormStartPosition.CenterParent;
             m.ShowDialog();
-            SearchOrder("", "");
+            btnSearch_Click(null, null);
 
         }
 
@@ -179,7 +184,7 @@ namespace OrderSheetCreator
 
         private void SearchForMain()
         {
-            btnSearch.Enabled = false;
+            Frozen(true);
             entity.CainzOrder _orderForSearch = new entity.CainzOrder();
             _orderForSearch.OrderExNo = txbSearch.Text.Trim();
             _orderForSearch.TraderName = txbTraderForSearch.Text.Trim();
@@ -218,22 +223,10 @@ namespace OrderSheetCreator
             }
         }
 
-        private void SearchOrder(string OrderExNo, string TraderName)
-        {
-            entity.CainzOrder _orderForSearch = new entity.CainzOrder();
-            _orderForSearch.OrderExNo= OrderExNo.Trim();
-            _orderForSearch.TraderName = TraderName;
-
-            BackgroundWorker work = new BackgroundWorker();
-            work.DoWork += Work_DoWork;
-            work.RunWorkerCompleted += Work_RunWorkerCompleted;
-            OrdersArgs oa = new OrdersArgs();
-            oa.OrderForSearch = _orderForSearch;
-            work.RunWorkerAsync(oa);
-        }
 
         private void Work_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
+            this.Frozen(false);
             BindingList<entity.CainzOrder> _ol = (BindingList<entity.CainzOrder>)e.Result;
             if (_ol != null && _ol.Count > 0)
             {
@@ -247,7 +240,6 @@ namespace OrderSheetCreator
             }
             PublicTools.RecountRowsNum(dataGridView1);
             ReColorStatus();
-            btnSearch.Enabled = true;
         }
 
         private void Work_DoWork(object sender, DoWorkEventArgs e)
@@ -283,7 +275,7 @@ namespace OrderSheetCreator
                 Application.DoEvents();
                 m.ShowDialog();
             }
-            SearchOrder("","");
+            btnSearch_Click(null, null);
 
         }
 
@@ -318,6 +310,42 @@ namespace OrderSheetCreator
             AboutBox1 m = new AboutBox1();
             m.ShowDialog();
         }
+
+        private void Frozen(bool isEnable)
+        {
+            if(isEnable)
+            {
+                if(this.WindowState == FormWindowState.Maximized)
+                {
+                    Rectangle ScreenArea = System.Windows.Forms.Screen.GetWorkingArea(this);
+
+                    pictureBox1.Location = new Point((ScreenArea.Width - pictureBox1.Width) / 2, (ScreenArea.Height - pictureBox1.Height) / 2 - 200);
+                    pictureBox1.Visible = true;
+
+                }
+                else if(this.WindowState == FormWindowState.Normal)
+                {
+                    pictureBox1.Location = new Point((this.Size.Width - pictureBox1.Width) / 2, (this.Size.Height - pictureBox1.Height) / 2 - 200);
+                    pictureBox1.Visible = true;
+
+                }
+
+                panel1.Enabled = false;
+                panel2.Enabled = false;
+                panel3.Enabled = false;
+                
+            }
+            else
+            {
+                panel1.Enabled = true;
+                panel2.Enabled = true;
+                panel3.Enabled = true;
+                pictureBox1.Visible = false;
+
+            }
+            this.Refresh();
+        }
+
     }
 
     public class OrdersArgs
