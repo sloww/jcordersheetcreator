@@ -40,7 +40,6 @@
             this.btnSaveToDB = new System.Windows.Forms.Button();
             this.txbCount = new System.Windows.Forms.TextBox();
             this.txbPrice = new System.Windows.Forms.TextBox();
-            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txbColor = new System.Windows.Forms.TextBox();
             this.txbSize = new System.Windows.Forms.TextBox();
             this.txbMaterial = new System.Windows.Forms.TextBox();
@@ -50,6 +49,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblMaterial = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.txbProductName = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.btnHidden = new System.Windows.Forms.Button();
             this.btnDBnew = new System.Windows.Forms.Button();
@@ -64,28 +64,28 @@
             this.txbIssuedDate = new System.Windows.Forms.TextBox();
             this.txbReMarK = new System.Windows.Forms.TextBox();
             this.btnContinue = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
             this.txbBarcode = new System.Windows.Forms.TextBox();
             this.btnShow = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txbProductName = new System.Windows.Forms.TextBox();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Material = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Color = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.popSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Modified = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ModifyTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -139,7 +139,7 @@
             this.btnClose.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnClose.Font = new System.Drawing.Font("宋体", 12F);
             this.btnClose.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnClose.Location = new System.Drawing.Point(748, 3);
+            this.btnClose.Location = new System.Drawing.Point(731, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(126, 38);
             this.btnClose.TabIndex = 21;
@@ -187,11 +187,6 @@
             this.txbPrice.TabStop = false;
             this.txbPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPrice_KeyPress);
             // 
-            // productsBindingSource
-            // 
-            this.productsBindingSource.DataSource = typeof(entity.CainzProduct);
-            this.productsBindingSource.CurrentItemChanged += new System.EventHandler(this.productsBindingSource_CurrentItemChanged);
-            // 
             // txbColor
             // 
             this.txbColor.BackColor = System.Drawing.SystemColors.Control;
@@ -207,7 +202,6 @@
             // 
             // txbSize
             // 
-            this.txbSize.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txbSize.BackColor = System.Drawing.SystemColors.Control;
             this.txbSize.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbSize.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "ProductSize", true));
@@ -313,6 +307,18 @@
             this.panel2.Size = new System.Drawing.Size(877, 325);
             this.panel2.TabIndex = 4;
             // 
+            // txbProductName
+            // 
+            this.txbProductName.BackColor = System.Drawing.SystemColors.Control;
+            this.txbProductName.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txbProductName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "ProductName", true));
+            this.txbProductName.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.txbProductName.Location = new System.Drawing.Point(65, 54);
+            this.txbProductName.Name = "txbProductName";
+            this.txbProductName.Size = new System.Drawing.Size(275, 26);
+            this.txbProductName.TabIndex = 22;
+            this.txbProductName.TabStop = false;
+            // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.Control;
@@ -371,7 +377,7 @@
             this.ckbIsLock.AutoSize = true;
             this.ckbIsLock.Checked = true;
             this.ckbIsLock.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbIsLock.Location = new System.Drawing.Point(363, 192);
+            this.ckbIsLock.Location = new System.Drawing.Point(362, 230);
             this.ckbIsLock.Name = "ckbIsLock";
             this.ckbIsLock.Size = new System.Drawing.Size(108, 16);
             this.ckbIsLock.TabIndex = 20;
@@ -422,7 +428,7 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnDelete.Location = new System.Drawing.Point(748, 136);
+            this.btnDelete.Location = new System.Drawing.Point(731, 136);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(126, 38);
             this.btnDelete.TabIndex = 17;
@@ -449,6 +455,7 @@
             this.txbIssuedDate.Name = "txbIssuedDate";
             this.txbIssuedDate.Size = new System.Drawing.Size(172, 26);
             this.txbIssuedDate.TabIndex = 15;
+            this.txbIssuedDate.Click += new System.EventHandler(this.txbIssuedDate_Click);
             this.txbIssuedDate.DoubleClick += new System.EventHandler(this.txbIssuedDate_DoubleClick);
             this.txbIssuedDate.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbIssuedDate_KeyPress);
             // 
@@ -465,13 +472,23 @@
             // btnContinue
             // 
             this.btnContinue.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnContinue.Location = new System.Drawing.Point(748, 41);
+            this.btnContinue.Location = new System.Drawing.Point(731, 41);
             this.btnContinue.Name = "btnContinue";
             this.btnContinue.Size = new System.Drawing.Size(126, 38);
             this.btnContinue.TabIndex = 13;
             this.btnContinue.Text = "添加到订单";
             this.btnContinue.UseVisualStyleBackColor = true;
             this.btnContinue.Click += new System.EventHandler(this.btnContinue_Click);
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label10.Location = new System.Drawing.Point(9, 54);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(55, 25);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "型番:";
             // 
             // txbBarcode
             // 
@@ -533,36 +550,6 @@
             this.dataGridView1.Size = new System.Drawing.Size(877, 254);
             this.dataGridView1.TabIndex = 0;
             // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.dataGridViewTextBoxColumn1.DataPropertyName = "Barcode";
-            this.dataGridViewTextBoxColumn1.HeaderText = "条码";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label10.Location = new System.Drawing.Point(9, 54);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 25);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "型番:";
-            // 
-            // txbProductName
-            // 
-            this.txbProductName.BackColor = System.Drawing.SystemColors.Control;
-            this.txbProductName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbProductName.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.productsBindingSource, "ProductName", true));
-            this.txbProductName.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbProductName.Location = new System.Drawing.Point(65, 54);
-            this.txbProductName.Name = "txbProductName";
-            this.txbProductName.Size = new System.Drawing.Size(275, 26);
-            this.txbProductName.TabIndex = 22;
-            this.txbProductName.TabStop = false;
-            // 
             // Column1
             // 
             this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -581,13 +568,6 @@
             this.Barcode.Name = "Barcode";
             this.Barcode.ReadOnly = true;
             this.Barcode.Width = 54;
-            // 
-            // productNameDataGridViewTextBoxColumn
-            // 
-            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
-            this.productNameDataGridViewTextBoxColumn.HeaderText = "型番";
-            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
-            this.productNameDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // Material
             // 
@@ -643,6 +623,26 @@
             this.ModifyTime.Name = "ModifyTime";
             this.ModifyTime.ReadOnly = true;
             // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Barcode";
+            this.dataGridViewTextBoxColumn1.HeaderText = "条码";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            // 
+            // productNameDataGridViewTextBoxColumn
+            // 
+            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
+            this.productNameDataGridViewTextBoxColumn.HeaderText = "型番";
+            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
+            this.productNameDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // productsBindingSource
+            // 
+            this.productsBindingSource.DataSource = typeof(entity.CainzProduct);
+            this.productsBindingSource.CurrentItemChanged += new System.EventHandler(this.productsBindingSource_CurrentItemChanged);
+            // 
             // FProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -665,12 +665,12 @@
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FAdd_KeyPress);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.productsBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

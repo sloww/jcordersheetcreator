@@ -27,6 +27,8 @@ namespace OrderSheetCreator
         public FCainzOrderD()
         {
             InitializeComponent();
+            ORDERDETAILLIST.Clear();
+            FACTORY = new entity.CainzFactory();
         }
 
         public FCainzOrderD(entity.CainzOrder order)
@@ -34,6 +36,7 @@ namespace OrderSheetCreator
             InitializeComponent();
             btnSave.Text = "修改订单";
             ORDER = order;
+
             using (var db = PublicDB.getDB())
             {
 
@@ -68,8 +71,6 @@ namespace OrderSheetCreator
             txbJingChenOrder.Text = order.OrderNo;
             cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
             bdsCustomer.DataSource = FACTORY;
-
-
 
         }
 
@@ -203,11 +204,19 @@ namespace OrderSheetCreator
                 irow.GetCell(3).SetCellValue(ORDERDETAILLIST[i].ProductSize);
                 irow.GetCell(4).SetCellValue(ORDERDETAILLIST[i].ProductColor);
                 irow.GetCell(5).SetCellValue(ORDERDETAILLIST[i].ProductMaterial);
-                irow.GetCell(6).SetCellValue((double)ORDERDETAILLIST[i].POPNum);
+                ICell cell6 = irow.GetCell(6);
+                cell6.SetCellType(CellType.Numeric);
+                cell6.SetCellValue((double)ORDERDETAILLIST[i].POPNum);
+
+                ICell cell7 = irow.GetCell(7);
+                cell7.SetCellType(CellType.Numeric);
+
                 totolCount += (decimal)ORDERDETAILLIST[i].POPNum;
-                irow.GetCell(7).SetCellValue(ORDERDETAILLIST[i].ProductPrice.ToString());
+                cell7.SetCellValue((double)ORDERDETAILLIST[i].ProductPrice);
+
                 totolMoney += ORDERDETAILLIST[i].TotalMoney;
-                irow.GetCell(8).SetCellValue(ORDERDETAILLIST[i].TotalMoney.ToString());
+
+                irow.GetCell(8).SetCellValue((double)ORDERDETAILLIST[i].TotalMoney);
                 if (ORDERDETAILLIST[i].ExpectDate != null)
                 {
                     irow.GetCell(9).SetCellValue(((DateTime)ORDERDETAILLIST[i].ExpectDate).ToString("yyyy-MM-dd"));
@@ -218,8 +227,8 @@ namespace OrderSheetCreator
 
             //合计写
             IRow irowTotol = ist.GetRow(30);
-            irowTotol.GetCell(6).SetCellValue(totolCount.ToString());
-            irowTotol.GetCell(8).SetCellValue(totolMoney.ToString());
+            irowTotol.GetCell(6).SetCellValue((double)totolCount);
+            irowTotol.GetCell(8).SetCellValue((double)totolMoney);
 
 
             using (FileStream fs = new FileStream(copedExcelPath, FileMode.Open))
@@ -227,10 +236,6 @@ namespace OrderSheetCreator
                 wb.Write(fs);
             }
 
-            using (var db = PublicDB.getDB())
-            {
-
-            }
             System.Diagnostics.Process.Start(copedExcelPath);
 
         }
@@ -377,7 +382,19 @@ namespace OrderSheetCreator
                 MessageBox.Show("订单还没有添加产品明细，不能保存");
             }
 
+            var reg =new System.Text.RegularExpressions.Regex(@"C-\d{4}-\d{4}", System.Text.RegularExpressions.RegexOptions.ExplicitCapture);
+            if (reg.IsMatch(txbJingChenOrder.Text) == false)
+            {
+                r = false;
+                MessageBox.Show("景辰订单编号格式不对，请重新填写");
+                txbJingChenOrder.SelectAll();
+                txbJingChenOrder.Focus();
+
+            }
+
             return r;
+
+            
 
 
 
@@ -431,6 +448,7 @@ namespace OrderSheetCreator
                     DataGridViewCellStyle dvcs = new DataGridViewCellStyle();
                     dvcs.BackColor = Color.LightGreen;
                     i.DefaultCellStyle = dvcs;
+                    i.Cells[""].Value = "";
 
                 }
             }
@@ -598,6 +616,8 @@ namespace OrderSheetCreator
             LoadOrder(order);
 
         }
+
+        
     }
     
 }

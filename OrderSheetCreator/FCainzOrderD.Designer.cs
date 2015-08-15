@@ -52,6 +52,19 @@
             this.label14 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.rowNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productBarcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productSizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productColorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productMaterialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pOPNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.productPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.totalMoneyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.batchNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.expectDateFormatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgv = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.tmiDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.tsiAddNew = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,19 +96,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bsdOrder = new System.Windows.Forms.BindingSource(this.components);
-            this.rowNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productBarcodeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productSizeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productColorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productMaterialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.pOPNumDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.productPriceDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalMoneyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.batchNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.expectDateFormatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -334,6 +334,86 @@
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.dataGridView1.Paint += new System.Windows.Forms.PaintEventHandler(this.dataGridView1_Paint);
             // 
+            // rowNoDataGridViewTextBoxColumn
+            // 
+            this.rowNoDataGridViewTextBoxColumn.DataPropertyName = "RowNo";
+            this.rowNoDataGridViewTextBoxColumn.HeaderText = "编号(NO.)";
+            this.rowNoDataGridViewTextBoxColumn.Name = "rowNoDataGridViewTextBoxColumn";
+            // 
+            // productBarcodeDataGridViewTextBoxColumn
+            // 
+            this.productBarcodeDataGridViewTextBoxColumn.DataPropertyName = "ProductBarcode";
+            this.productBarcodeDataGridViewTextBoxColumn.HeaderText = "商品条形码号";
+            this.productBarcodeDataGridViewTextBoxColumn.Name = "productBarcodeDataGridViewTextBoxColumn";
+            // 
+            // productNameDataGridViewTextBoxColumn
+            // 
+            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
+            this.productNameDataGridViewTextBoxColumn.HeaderText = "型番";
+            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
+            // 
+            // productSizeDataGridViewTextBoxColumn
+            // 
+            this.productSizeDataGridViewTextBoxColumn.DataPropertyName = "ProductSize";
+            this.productSizeDataGridViewTextBoxColumn.HeaderText = "尺寸(mm) (SIZE)";
+            this.productSizeDataGridViewTextBoxColumn.Name = "productSizeDataGridViewTextBoxColumn";
+            // 
+            // productColorDataGridViewTextBoxColumn
+            // 
+            this.productColorDataGridViewTextBoxColumn.DataPropertyName = "ProductColor";
+            this.productColorDataGridViewTextBoxColumn.HeaderText = "颜色(COLOR)";
+            this.productColorDataGridViewTextBoxColumn.Name = "productColorDataGridViewTextBoxColumn";
+            // 
+            // productMaterialDataGridViewTextBoxColumn
+            // 
+            this.productMaterialDataGridViewTextBoxColumn.DataPropertyName = "ProductMaterial";
+            this.productMaterialDataGridViewTextBoxColumn.HeaderText = "材质及其他要求(kind of paper)";
+            this.productMaterialDataGridViewTextBoxColumn.Name = "productMaterialDataGridViewTextBoxColumn";
+            // 
+            // pOPNumDataGridViewTextBoxColumn
+            // 
+            this.pOPNumDataGridViewTextBoxColumn.DataPropertyName = "POPNum";
+            this.pOPNumDataGridViewTextBoxColumn.HeaderText = "订购数量（PCS）";
+            this.pOPNumDataGridViewTextBoxColumn.Name = "pOPNumDataGridViewTextBoxColumn";
+            // 
+            // productPriceDataGridViewTextBoxColumn
+            // 
+            this.productPriceDataGridViewTextBoxColumn.DataPropertyName = "ProductPrice";
+            this.productPriceDataGridViewTextBoxColumn.HeaderText = "单价（元）(price)";
+            this.productPriceDataGridViewTextBoxColumn.Name = "productPriceDataGridViewTextBoxColumn";
+            // 
+            // totalMoneyDataGridViewTextBoxColumn
+            // 
+            this.totalMoneyDataGridViewTextBoxColumn.DataPropertyName = "TotalMoney";
+            this.totalMoneyDataGridViewTextBoxColumn.HeaderText = "合计金额 (Amount)";
+            this.totalMoneyDataGridViewTextBoxColumn.Name = "totalMoneyDataGridViewTextBoxColumn";
+            // 
+            // batchNoDataGridViewTextBoxColumn
+            // 
+            this.batchNoDataGridViewTextBoxColumn.DataPropertyName = "BatchNo";
+            this.batchNoDataGridViewTextBoxColumn.HeaderText = "产品批号";
+            this.batchNoDataGridViewTextBoxColumn.Name = "batchNoDataGridViewTextBoxColumn";
+            // 
+            // expectDateFormatDataGridViewTextBoxColumn
+            // 
+            this.expectDateFormatDataGridViewTextBoxColumn.DataPropertyName = "ExpectDateFormat";
+            this.expectDateFormatDataGridViewTextBoxColumn.HeaderText = "希望交货期";
+            this.expectDateFormatDataGridViewTextBoxColumn.Name = "expectDateFormatDataGridViewTextBoxColumn";
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "OrderDetailID";
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            this.Column1.Visible = false;
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "Status";
+            this.Status.Name = "Status";
+            this.Status.Visible = false;
+            // 
             // dgv
             // 
             this.dgv.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -533,6 +613,7 @@
             this.txbJingChenOrder.BackColor = System.Drawing.Color.LightCoral;
             this.txbJingChenOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbJingChenOrder.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbJingChenOrder.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txbJingChenOrder.Location = new System.Drawing.Point(220, 255);
             this.txbJingChenOrder.Name = "txbJingChenOrder";
             this.txbJingChenOrder.Size = new System.Drawing.Size(151, 19);
@@ -545,6 +626,7 @@
             this.txbOrder.BackColor = System.Drawing.Color.LightCoral;
             this.txbOrder.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txbOrder.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
+            this.txbOrder.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.txbOrder.Location = new System.Drawing.Point(220, 225);
             this.txbOrder.Name = "txbOrder";
             this.txbOrder.Size = new System.Drawing.Size(151, 19);
@@ -659,86 +741,6 @@
             // bsdOrder
             // 
             this.bsdOrder.DataSource = typeof(entity.CainzOrder);
-            // 
-            // rowNoDataGridViewTextBoxColumn
-            // 
-            this.rowNoDataGridViewTextBoxColumn.DataPropertyName = "RowNo";
-            this.rowNoDataGridViewTextBoxColumn.HeaderText = "编号(NO.)";
-            this.rowNoDataGridViewTextBoxColumn.Name = "rowNoDataGridViewTextBoxColumn";
-            // 
-            // productBarcodeDataGridViewTextBoxColumn
-            // 
-            this.productBarcodeDataGridViewTextBoxColumn.DataPropertyName = "ProductBarcode";
-            this.productBarcodeDataGridViewTextBoxColumn.HeaderText = "商品条形码号";
-            this.productBarcodeDataGridViewTextBoxColumn.Name = "productBarcodeDataGridViewTextBoxColumn";
-            // 
-            // productNameDataGridViewTextBoxColumn
-            // 
-            this.productNameDataGridViewTextBoxColumn.DataPropertyName = "ProductName";
-            this.productNameDataGridViewTextBoxColumn.HeaderText = "型番";
-            this.productNameDataGridViewTextBoxColumn.Name = "productNameDataGridViewTextBoxColumn";
-            // 
-            // productSizeDataGridViewTextBoxColumn
-            // 
-            this.productSizeDataGridViewTextBoxColumn.DataPropertyName = "ProductSize";
-            this.productSizeDataGridViewTextBoxColumn.HeaderText = "尺寸(mm) (SIZE)";
-            this.productSizeDataGridViewTextBoxColumn.Name = "productSizeDataGridViewTextBoxColumn";
-            // 
-            // productColorDataGridViewTextBoxColumn
-            // 
-            this.productColorDataGridViewTextBoxColumn.DataPropertyName = "ProductColor";
-            this.productColorDataGridViewTextBoxColumn.HeaderText = "颜色(COLOR)";
-            this.productColorDataGridViewTextBoxColumn.Name = "productColorDataGridViewTextBoxColumn";
-            // 
-            // productMaterialDataGridViewTextBoxColumn
-            // 
-            this.productMaterialDataGridViewTextBoxColumn.DataPropertyName = "ProductMaterial";
-            this.productMaterialDataGridViewTextBoxColumn.HeaderText = "材质及其他要求(kind of paper)";
-            this.productMaterialDataGridViewTextBoxColumn.Name = "productMaterialDataGridViewTextBoxColumn";
-            // 
-            // pOPNumDataGridViewTextBoxColumn
-            // 
-            this.pOPNumDataGridViewTextBoxColumn.DataPropertyName = "POPNum";
-            this.pOPNumDataGridViewTextBoxColumn.HeaderText = "订购数量（PCS）";
-            this.pOPNumDataGridViewTextBoxColumn.Name = "pOPNumDataGridViewTextBoxColumn";
-            // 
-            // productPriceDataGridViewTextBoxColumn
-            // 
-            this.productPriceDataGridViewTextBoxColumn.DataPropertyName = "ProductPrice";
-            this.productPriceDataGridViewTextBoxColumn.HeaderText = "单价（元）(price)";
-            this.productPriceDataGridViewTextBoxColumn.Name = "productPriceDataGridViewTextBoxColumn";
-            // 
-            // totalMoneyDataGridViewTextBoxColumn
-            // 
-            this.totalMoneyDataGridViewTextBoxColumn.DataPropertyName = "TotalMoney";
-            this.totalMoneyDataGridViewTextBoxColumn.HeaderText = "合计金额 (Amount)";
-            this.totalMoneyDataGridViewTextBoxColumn.Name = "totalMoneyDataGridViewTextBoxColumn";
-            // 
-            // batchNoDataGridViewTextBoxColumn
-            // 
-            this.batchNoDataGridViewTextBoxColumn.DataPropertyName = "BatchNo";
-            this.batchNoDataGridViewTextBoxColumn.HeaderText = "产品批号";
-            this.batchNoDataGridViewTextBoxColumn.Name = "batchNoDataGridViewTextBoxColumn";
-            // 
-            // expectDateFormatDataGridViewTextBoxColumn
-            // 
-            this.expectDateFormatDataGridViewTextBoxColumn.DataPropertyName = "ExpectDateFormat";
-            this.expectDateFormatDataGridViewTextBoxColumn.HeaderText = "希望交货期";
-            this.expectDateFormatDataGridViewTextBoxColumn.Name = "expectDateFormatDataGridViewTextBoxColumn";
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "OrderDetailID";
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
-            this.Column1.Visible = false;
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "Status";
-            this.Status.Name = "Status";
-            this.Status.Visible = false;
             // 
             // FCainzOrderD
             // 

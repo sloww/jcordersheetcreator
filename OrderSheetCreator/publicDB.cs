@@ -106,5 +106,27 @@ namespace OrderSheetCreator
 
         }
 
+        public static CainzTrader GetTraderByBarcode(string barcode)
+        {
+            CainzProduct product = null;
+            CainzTrader trader = null;
+            using (var db = PublicDB.getDB())
+            {
+                product = (from a in db.CainzProduct
+                           where a.ProductBarcode.Equals(barcode)
+                           select a).FirstOrDefault();
+                if(product!=null)
+                {
+                    trader = (from a in db.CainzTrader
+                              where a.TraderID == product.TraderID
+                              select a).FirstOrDefault();
+                }
+                
+                
+            }
+            return trader;
+
+        }
+
     }
 }

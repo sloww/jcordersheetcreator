@@ -18,6 +18,8 @@ namespace OrderSheetCreator
         public FProduct()
         {
             InitializeComponent();
+            this.FormBorderStyle = FormBorderStyle.FixedSingle;
+            this.ControlBox = false;
         }
         public FProduct(entity.CainzOrderDetail cod)
         {
@@ -29,6 +31,7 @@ namespace OrderSheetCreator
             txbCount.Text = cod.POPNum.ToString();
             txbPrice.Text = cod.ProductPrice.ToString();
             txbColor.Text = cod.ProductColor;
+
             txbCount.Focus();
             btnContinue.Text = "修改";
             txbSearchBarcode.Enabled = false;
@@ -39,9 +42,24 @@ namespace OrderSheetCreator
             txbMaterial.Enabled = false;
             txbColor.Enabled = false;
             txbSize.Enabled = false;
+            txbProductName.Enabled = false;
+
             txbBarcode.Text = cod.ProductBarcode;
+            entity.CainzTrader trader = PublicDB.GetTraderByBarcode(cod.ProductBarcode);
+            if (trader != null)
+            {
+                txbTrader.Text = trader.TraderName;
+            }
             btnShow.Visible = false;
-            
+            panel1.Visible = false;
+            panel4.Visible = false;
+            panel3.Visible = false;
+            this.ControlBox = true;
+            this.Size = panel2.Size;
+            panel2.Dock = DockStyle.Fill;
+            this.Refresh();
+            this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
 
         }
 
@@ -77,8 +95,7 @@ namespace OrderSheetCreator
 
         private void FAdd_Load(object sender, EventArgs e)
         {
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.ControlBox = false;
+
             PublicTools.IniDatagridview(dataGridView1);
             PublicTools.SetColumsAutoModeNone(dataGridView1);
             PublicTools.RecoverColumnWidth(dataGridView1, this.FADD_DATAGRIDVIEW_SETPATH);
@@ -438,15 +455,17 @@ namespace OrderSheetCreator
         private void txbIssuedDate_DoubleClick(object sender, EventArgs e)
         {
 
-            FDateTime fdt = new FDateTime();
-            fdt.Location = PublicTools.local(txbIssuedDate);
-            fdt.ShowDialog();
-            txbIssuedDate.Text = FDateTime.DateTimeSelect.ToShortDateString();
+
 
            
         }
 
-
-
+        private void txbIssuedDate_Click(object sender, EventArgs e)
+        {
+            FDateTime fdt = new FDateTime();
+            fdt.Location = PublicTools.local(txbIssuedDate);
+            fdt.ShowDialog();
+            txbIssuedDate.Text = FDateTime.DateTimeSelect.ToShortDateString();
+        }
     }
 }

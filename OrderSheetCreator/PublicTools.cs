@@ -171,6 +171,10 @@ namespace OrderSheetCreator
             dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             dgv.DefaultCellStyle.Padding = new Padding(2);
 
+            var dgvColumnHeaderStyle = new DataGridViewCellStyle();
+            dgvColumnHeaderStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgv.ColumnHeadersDefaultCellStyle = dgvColumnHeaderStyle;
+
 
         }
 

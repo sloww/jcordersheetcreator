@@ -21,7 +21,7 @@ namespace OrderSheetCreator
             FCainzOrderD m = new FCainzOrderD();
             m.StartPosition = FormStartPosition.CenterParent;
             m.ShowDialog();
-            Search("");
+            SearchOrder("","");
 
         }
 
@@ -58,29 +58,22 @@ namespace OrderSheetCreator
 
         }
 
-        private void Search(string OrderExNo)
+        private void SearchOrder(string OrderExNo, string TraderName)
         {
-            OrderExNo=OrderExNo.Trim();
+            OrderExNo = OrderExNo.Trim();
+            TraderName = TraderName.Trim();
             using (var db = PublicDB.getDB(60))
-
             {
                 List<entity.CainzOrder> orderList;
-                if (OrderExNo.Trim().Length == 0)
-                {
-                    orderList = (from a in db.CainzOrder
-                                 where a.IsDelete == 0 && (a.Status == 0 || a.Status == 1)
-                                 orderby a.OrderDate
-                                 select a).ToList();
-                }
-                else
-                {
-                    orderList = (from a in db.CainzOrder
-                                 where a.IsDelete == 0 && (a.OrderExNo.Contains(OrderExNo) || a.OrderNo.Contains(OrderExNo))
-                                 orderby a.OrderDate
-                                 select a).ToList();
-                }
 
-                if (orderList != null && orderList.Count>0)
+                orderList = (from a in db.CainzOrder
+                             where a.IsDelete == 0 && (a.Status == 0 || a.Status == 1) & (a.OrderExNo.Contains(OrderExNo) || a.OrderNo.Contains(OrderExNo)) && a.TraderName.Contains(TraderName)
+                             orderby a.OrderDate
+                             select a).ToList();
+
+
+
+                if (orderList != null && orderList.Count > 0)
                 {
 
                     cainzOrderBindingSource.DataSource = orderList;
@@ -88,8 +81,8 @@ namespace OrderSheetCreator
                 else
                 {
                     cainzOrderBindingSource.DataSource = new List<entity.CainzOrder>();
-                    
-                   // MessageBox.Show("查询结果为空");
+
+                    // MessageBox.Show("查询结果为空");
                 }
             }
             PublicTools.RecountRowsNum(dataGridView1);
@@ -128,11 +121,7 @@ namespace OrderSheetCreator
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            Search(txbSearch.Text.Trim());
-            if(dataGridView1.Rows.Count==0)
-            {
-                PublicTools.Message404("没有记录");
-            }
+            SearchForMain();
         }
 
         private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -143,7 +132,7 @@ namespace OrderSheetCreator
                 FCainzOrderD m = new FCainzOrderD(order);
                 m.ShowDialog();
             }
-            Search("");
+            SearchOrder("","");
 
         }
 
@@ -179,5 +168,91 @@ namespace OrderSheetCreator
 
         }
 
+        private void ReColorStatus()
+        {
+
+            foreach (DataGridViewRow i in dataGridView1.Rows)
+            {
+                var status = i.Cells["Status"].Value;
+                if (status != null && (int)status == 1)
+                {
+                    if ((int)status == 1)
+                    {
+                        DataGridViewCellStyle dvcs = new DataGridViewCellStyle();
+                        dvcs.BackColor = Color.LightGreen;
+                        i.DefaultCellStyle = dvcs;
+                        i.Cells["statusInfo"].Value = "已发货";
+                    }
+                    else if ((int)status == 0)
+                    {
+                        i.Cells["statusInfo"].Value = "未发货";
+
+                    }
+
+                }
+            }
+
+        }
+
+        private void btnOk_Click(object sender, EventArgs e)
+        {
+            entity.CainzOrder order = (entity.CainzOrder)cainzOrderBindingSource.Current;
+            if (order != null)
+            {
+                using (var db = PublicDB.getDB())
+                {
+                    order.Status = 1;
+                    db.CainzOrder.Attach(order);
+                    db.Entry(order).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+                btnSearch_Click(null, null);
+
+            }
+        }
+
+        private void btnReady_Click(object sender, EventArgs e)
+        {
+            entity.CainzOrder order = (entity.CainzOrder)cainzOrderBindingSource.Current;
+            if (order != null)
+            {
+                using (var db = PublicDB.getDB())
+                {
+                    order.Status = 0;
+                    db.CainzOrder.Attach(order);
+                    db.Entry(order).State = System.Data.Entity.EntityState.Modified;
+                    db.SaveChanges();
+                }
+                btnSearch_Click(null, null);
+
+            }
+        }
+
+        private void txbSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar ==(char)Keys.Enter)
+            {
+                btnSearch_Click(null, null);
+
+            }
+        }
+
+        private void txbTraderForSearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                btnSearch_Click(null, null);
+            }
+        }
+
+        private void SearchForMain()
+        {
+            SearchOrder(txbSearch.Text.Trim(), txbTraderForSearch.Text.Trim());
+            if (dataGridView1.Rows.Count == 0)
+            {
+                PublicTools.Message404("没有记录");
+            }
+            ReColorStatus();
+        }
     }
 }
