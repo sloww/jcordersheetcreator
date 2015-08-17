@@ -121,6 +121,36 @@ namespace OrderSheetCreator
 
         }
 
+        public static double GetCellNumic(IRow row, char x, int y)
+        {
+            double _r = double.MinValue;
+
+            ICell cell = row.Cells[y - 1];
+            if (cell != null)
+                switch (cell.CellType)
+                {
+                    case CellType.String:
+                        {
+                            _r = double.Parse(cell.StringCellValue.Trim());
+
+                        }
+                        break;
+                    case CellType.Numeric:
+                        {
+                            _r = cell.NumericCellValue;
+                        }
+                        break;
+                    default:
+                        {
+
+                        }
+                        break;
+                }
+
+            return _r;
+
+        }
+
         public static string GetCellString(ISheet sheet, char x, int y)
         {
             string _r = string.Empty;
