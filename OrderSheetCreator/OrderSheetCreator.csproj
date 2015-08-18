@@ -29,7 +29,7 @@
     <SuiteName>企业管理套件</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>6</ApplicationRevision>
+    <ApplicationRevision>7</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -129,6 +129,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -187,6 +188,12 @@
     <Compile Include="FMain.Designer.cs">
       <DependentUpon>FMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FReg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FReg.Designer.cs">
+      <DependentUpon>FReg.cs</DependentUpon>
+    </Compile>
     <Compile Include="FTrader.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -220,6 +227,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FReg.resx">
+      <DependentUpon>FReg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FTrader.resx">
       <DependentUpon>FTrader.cs</DependentUpon>

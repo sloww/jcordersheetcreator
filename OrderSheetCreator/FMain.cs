@@ -32,9 +32,29 @@ namespace OrderSheetCreator
 
             lblDBStatus.Text = string.Format("数据库信息：{0}", PublicDB.getIniConnInfo("config.ini"));
 
-            btnSearch_Click(null, null);
+
 
             this.Text = string.Format("{0}  Ver.{1}", PublicTools.AssemblyProduct, PublicTools.AssemblyVersion);
+
+            if (FReg.isReg())
+            {
+
+                btnSearch_Click(null, null);
+            }
+            else
+            {
+                FReg m = new FReg();
+                if (m.ShowDialog() == DialogResult.OK)
+                {
+                    btnSearch_Click(null, null);
+
+                }
+                else
+                {
+                    this.Close();
+                    Application.Exit();
+                }
+            }
 
         }
 
