@@ -15,6 +15,58 @@ namespace OrderSheetCreator
     public static class PublicTools
     {
 
+        public static void RecoverFormSize(Form form)
+        {
+            //恢复保存的窗体大小
+            if (Properties.Settings.Default.Maximised)
+            {
+                form.WindowState = FormWindowState.Maximized;
+                form.Location = Properties.Settings.Default.Location;
+                form.Size = Properties.Settings.Default.Size;
+
+            }
+            else if (Properties.Settings.Default.Minimised)
+            {
+                form.WindowState = FormWindowState.Minimized;
+                form.Location = Properties.Settings.Default.Location;
+                form.Size = Properties.Settings.Default.Size;
+            }
+            else
+            {
+                form.Location = Properties.Settings.Default.Location;
+                form.Size = Properties.Settings.Default.Size;
+
+            }
+        }
+
+        public static void SaveFormSize(Form form)
+        {
+            //保存窗体的设置
+            if (form.WindowState == FormWindowState.Maximized)
+            {
+                Properties.Settings.Default.Location = form.RestoreBounds.Location;
+                Properties.Settings.Default.Size = form.RestoreBounds.Size;
+                Properties.Settings.Default.Maximised = true;
+                Properties.Settings.Default.Minimised = false;
+            }
+            else if (form.WindowState == FormWindowState.Normal)
+            {
+                Properties.Settings.Default.Location = form.Location;
+                Properties.Settings.Default.Size = form.Size;
+                Properties.Settings.Default.Maximised = false;
+                Properties.Settings.Default.Minimised = false;
+            }
+            else
+            {
+                Properties.Settings.Default.Location = form.RestoreBounds.Location;
+                Properties.Settings.Default.Size = form.RestoreBounds.Size;
+                Properties.Settings.Default.Maximised = false;
+                Properties.Settings.Default.Minimised = true;
+            }
+            Properties.Settings.Default.Save();
+        }
+
+
         #region 程序集特性访问器
 
         public static string AssemblyTitle

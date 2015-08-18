@@ -86,7 +86,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(10, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1092, 31);
+            this.panel1.Size = new System.Drawing.Size(1174, 31);
             this.panel1.TabIndex = 0;
             // 
             // menuStrip1
@@ -102,7 +102,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1092, 31);
+            this.menuStrip1.Size = new System.Drawing.Size(1174, 31);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -152,7 +152,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(10, 31);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1092, 46);
+            this.panel2.Size = new System.Drawing.Size(1174, 46);
             this.panel2.TabIndex = 1;
             // 
             // txbTraderForSearch
@@ -209,9 +209,9 @@
             // 
             this.panel3.Controls.Add(this.lblDBStatus);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(10, 595);
+            this.panel3.Location = new System.Drawing.Point(10, 735);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1092, 26);
+            this.panel3.Size = new System.Drawing.Size(1174, 26);
             this.panel3.TabIndex = 2;
             // 
             // lblDBStatus
@@ -225,7 +225,6 @@
             this.lblDBStatus.TabIndex = 0;
             this.lblDBStatus.Text = "label2";
             this.lblDBStatus.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.lblDBStatus.Click += new System.EventHandler(this.lblDBStatus_Click);
             // 
             // panel4
             // 
@@ -234,7 +233,7 @@
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(10, 77);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(1092, 518);
+            this.panel4.Size = new System.Drawing.Size(1174, 658);
             this.panel4.TabIndex = 3;
             // 
             // pictureBox1
@@ -271,7 +270,7 @@
             this.dataGridView1.Location = new System.Drawing.Point(0, 0);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(1092, 518);
+            this.dataGridView1.Size = new System.Drawing.Size(1174, 658);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
@@ -397,7 +396,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1102, 621);
+            this.ClientSize = new System.Drawing.Size(1184, 761);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -411,6 +410,7 @@
             this.Text = "Cainz 订单管理系统 v1.0.3 150815";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FMain_FormClosing);
             this.Load += new System.EventHandler(this.FMain_Load);
+            this.SizeChanged += new System.EventHandler(this.FMain_SizeChanged);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

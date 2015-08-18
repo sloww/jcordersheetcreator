@@ -15,27 +15,8 @@ namespace OrderSheetCreator
         public FMain()
         {
             InitializeComponent();
-            
-            //恢复保存的窗体大小
-            if (Properties.Settings.Default.Maximised)
-            {
-                WindowState = FormWindowState.Maximized;
-                Location = Properties.Settings.Default.Location;
-                Size = Properties.Settings.Default.Size;
 
-            }
-            else if (Properties.Settings.Default.Minimised)
-            {
-                WindowState = FormWindowState.Minimized;
-                Location = Properties.Settings.Default.Location;
-                Size = Properties.Settings.Default.Size;
-            }
-            else
-            {
-                Location = Properties.Settings.Default.Location;
-                Size = Properties.Settings.Default.Size;
-
-            }
+            PublicTools.RecoverFormSize(this);
 
             //初始化dgv
             PublicTools.IniDatagridview(dataGridView1);
@@ -64,28 +45,7 @@ namespace OrderSheetCreator
             PublicTools.SaveColumnWidth(dataGridView1, "Fmaindgv.config");
 
             //保存窗体的设置
-            if (WindowState == FormWindowState.Maximized)
-            {
-                Properties.Settings.Default.Location = RestoreBounds.Location;
-                Properties.Settings.Default.Size = RestoreBounds.Size;
-                Properties.Settings.Default.Maximised = true;
-                Properties.Settings.Default.Minimised = false;
-            }
-            else if (WindowState == FormWindowState.Normal)
-            {
-                Properties.Settings.Default.Location = Location;
-                Properties.Settings.Default.Size = Size;
-                Properties.Settings.Default.Maximised = false;
-                Properties.Settings.Default.Minimised = false;
-            }
-            else
-            {
-                Properties.Settings.Default.Location = RestoreBounds.Location;
-                Properties.Settings.Default.Size = RestoreBounds.Size;
-                Properties.Settings.Default.Maximised = false;
-                Properties.Settings.Default.Minimised = true;
-            }
-            Properties.Settings.Default.Save();
+            PublicTools.SaveFormSize(this);
         }
 
         private void newOrderToolStripMenuItem_Click(object sender, EventArgs e)
@@ -274,6 +234,7 @@ namespace OrderSheetCreator
                 FCainzOrderD m = new FCainzOrderD(order);
                 Application.DoEvents();
                 m.ShowDialog();
+                PublicTools.RecoverFormSize(this);
             }
             btnSearch_Click(null, null);
 
@@ -346,6 +307,10 @@ namespace OrderSheetCreator
             this.Refresh();
         }
 
+        private void FMain_SizeChanged(object sender, EventArgs e)
+        {
+            PublicTools.SaveFormSize(this);
+        }
     }
 
     public class OrdersArgs

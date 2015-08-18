@@ -111,6 +111,8 @@ namespace OrderSheetCreator
 
         private void FCainzOrderD_Load(object sender, EventArgs e)
         {
+            PublicTools.RecoverFormSize(this);
+
             ReColorStatus();
             pictureBox2.Visible = false;
         }
@@ -118,6 +120,30 @@ namespace OrderSheetCreator
         private void FCainzOrderD_FormClosing(object sender, FormClosingEventArgs e)
         {
             PublicTools.SaveColumnWidth(dataGridView1, this.FCainzOrderDdataGridViewSetPath);
+
+            //保存窗体的设置
+            if (WindowState == FormWindowState.Maximized)
+            {
+                Properties.Settings.Default.Location = RestoreBounds.Location;
+                Properties.Settings.Default.Size = RestoreBounds.Size;
+                Properties.Settings.Default.Maximised = true;
+                Properties.Settings.Default.Minimised = false;
+            }
+            else if (WindowState == FormWindowState.Normal)
+            {
+                Properties.Settings.Default.Location = Location;
+                Properties.Settings.Default.Size = Size;
+                Properties.Settings.Default.Maximised = false;
+                Properties.Settings.Default.Minimised = false;
+            }
+            else
+            {
+                Properties.Settings.Default.Location = RestoreBounds.Location;
+                Properties.Settings.Default.Size = RestoreBounds.Size;
+                Properties.Settings.Default.Maximised = false;
+                Properties.Settings.Default.Minimised = true;
+            }
+            Properties.Settings.Default.Save();
 
         }
 
@@ -201,13 +227,15 @@ namespace OrderSheetCreator
                 return;
             }
             string excelPath = Application.StartupPath + @"\\cainzOrder.xls";
-            string copedExcelPath = string.Format("{0}\\订单记录\\{1}{2}", Application.StartupPath, DateTime.Now.ToString("MMddHHmmss"), ".xls");
+            string copedExcelPath = string.Format("{0}\\{1}{2}", Application.StartupPath, DateTime.Now.ToString("MMddHHmmss"), ".xls");
             if (File.Exists(excelPath))
             {
                 File.Copy(excelPath, copedExcelPath, true);
             }
+
             if (File.Exists(copedExcelPath) == false)
             {
+                MessageBox.Show("找不到模板文件！无法导出","",MessageBoxButtons.OK,MessageBoxIcon.Warning,MessageBoxDefaultButton.Button1);
                 return;
             }
 
@@ -226,7 +254,7 @@ namespace OrderSheetCreator
             ICell icFile = ist.GetRow(8).GetCell(5);
 
             ICell icOrder = ist.GetRow(7).GetCell(0);
-            ICell icJingchenOrer = ist.GetRow(8).GetCell(0);
+            ICell icJingchenOrder = ist.GetRow(8).GetCell(0);
 
             icTrader.SetCellValue(icTrader.StringCellValue + txbTrader.Text);
             icFactroy.SetCellValue(icFactroy.StringCellValue + txbFactory.Text);
@@ -235,7 +263,7 @@ namespace OrderSheetCreator
             icIssuedDate.SetCellValue(icIssuedDate.StringCellValue + txbIssuedDate.Text);
             icDELDate.SetCellValue(icDELDate.StringCellValue + txbDELdate.Text);
             icOrder.SetCellValue(icOrder.StringCellValue + txbOrder.Text);
-            icJingchenOrer.SetCellValue(icJingchenOrer.StringCellValue + txbJingChenOrder.Text);
+            icJingchenOrder.SetCellValue(icJingchenOrder.StringCellValue + txbJingChenOrder.Text);
 
             icFile.SetCellValue(icFile.StringCellValue + txbFile.Text);
 
@@ -721,6 +749,11 @@ namespace OrderSheetCreator
 
             }
             this.Refresh();
+        }
+
+        private void FCainzOrderD_SizeChanged(object sender, EventArgs e)
+        {
+            PublicTools.SaveFormSize(this);
         }
     }
     
