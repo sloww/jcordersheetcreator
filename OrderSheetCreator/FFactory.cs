@@ -80,6 +80,7 @@ namespace OrderSheetCreator
                 using (var db = PublicDB.getDB())
                 {
                     entity.CainzFactory cp = (entity.CainzFactory)CainzFactoryBindingSource.Current;
+                    cp.ImageFile = txbFilePath.Text.Trim();
                     db.CainzFactory.Attach(cp);
                     db.Entry(cp).State = System.Data.Entity.EntityState.Modified;
 
@@ -97,7 +98,17 @@ namespace OrderSheetCreator
         private void btnShow_Click(object sender, EventArgs e)
         {
             panel4.Visible = true;
+            panel4.BringToFront();
             panel4.Height = 49;
+        }
+
+        private void btnAdvice_Click(object sender, EventArgs e)
+        {
+            entity.CainzFactory _factory =(entity.CainzFactory) CainzFactoryBindingSource.Current;
+            if (_factory !=null)
+            {
+                txbFilePath.Text = string.Format("{0}-{1}", PublicTools.stringZip(_factory.TraderName), PublicTools.stringZip(_factory.FactoryName));
+            }
         }
     }
 }

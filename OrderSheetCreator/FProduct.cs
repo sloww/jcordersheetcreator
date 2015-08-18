@@ -56,6 +56,7 @@ namespace OrderSheetCreator
             txbColor.Enabled = false;
             txbSize.Enabled = false;
             txbProductName.Enabled = false;
+            txbTrader.Enabled = false;
 
             txbBarcode.Text = cod.ProductBarcode;
             entity.CainzTrader trader = PublicDB.GetTraderByBarcode(cod.ProductBarcode);
@@ -67,11 +68,12 @@ namespace OrderSheetCreator
             panel1.Visible = false;
             panel4.Visible = false;
             panel3.Visible = false;
+            this.ckbIsLock.Visible = false;
             this.ControlBox = true;
             this.Size = panel2.Size;
             panel2.Dock = DockStyle.Fill;
             this.Refresh();
-            this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
 
         }

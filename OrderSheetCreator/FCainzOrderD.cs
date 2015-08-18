@@ -226,8 +226,12 @@ namespace OrderSheetCreator
                 MessageBox.Show("请添加订购工厂信息");
                 return;
             }
-            string excelPath = Application.StartupPath + @"\\cainzOrder.xls";
+
+            btnSave_Click(null, null);
+            //OrderSheetCreator.Properties.Resources.ResourceManager.GetObject("cainzOrder.xls");
+            string excelPath = Application.StartupPath + @"\cainzOrder.xls";
             string copedExcelPath = string.Format("{0}\\{1}{2}", Application.StartupPath, DateTime.Now.ToString("MMddHHmmss"), ".xls");
+
             if (File.Exists(excelPath))
             {
                 File.Copy(excelPath, copedExcelPath, true);
@@ -235,7 +239,7 @@ namespace OrderSheetCreator
 
             if (File.Exists(copedExcelPath) == false)
             {
-                MessageBox.Show("找不到模板文件！无法导出","",MessageBoxButtons.OK,MessageBoxIcon.Warning,MessageBoxDefaultButton.Button1);
+                MessageBox.Show("找不到模板文件！无法导出","提示",MessageBoxButtons.OK,MessageBoxIcon.Warning,MessageBoxDefaultButton.Button1);
                 return;
             }
 
@@ -327,9 +331,9 @@ namespace OrderSheetCreator
 
         private void bindingSource1_CurrentChanged(object sender, EventArgs e)
         {
-            string traderJC = PublicTools.stringZip(txbTrader.Text);
-            string factoryJC = PublicTools.stringZip(txbFactory.Text);
-            txbFile.Text = string.Format("{0}-{1}", traderJC, factoryJC);
+            //string traderJC = PublicTools.stringZip(txbTrader.Text);
+            //string factoryJC = PublicTools.stringZip(txbFactory.Text);
+            //txbFile.Text = string.Format("{0}-{1}", traderJC, factoryJC);
         }
 
         private void txbTrader_DoubleClick(object sender, EventArgs e)

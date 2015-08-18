@@ -23,6 +23,8 @@
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="Deleted" Type="int" Nullable="false" />
           <Property Name="CainzTraderTraderID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FilePath" Type="varchar" MaxLength="200" />
+          <Property Name="ImageFile" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="CainzOrder">
           <Key>
@@ -250,6 +252,7 @@
           <Property Name="CainzTraderTraderID" Type="Guid" Nullable="false" />
           <NavigationProperty Name="CainzOrder" Relationship="db001Model.FK_CainzFactoryCainzOrder" FromRole="CainzFactory" ToRole="CainzOrder" />
           <NavigationProperty Name="CainzTrader" Relationship="db001Model.FK_CainzTraderCainzFactory" FromRole="CainzFactory" ToRole="CainzTrader" />
+          <Property Name="ImageFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CainzOrder">
           <Key>
@@ -416,6 +419,7 @@
           <EntitySetMapping Name="CainzFactory">
             <EntityTypeMapping TypeName="db001Model.CainzFactory">
               <MappingFragment StoreEntitySet="CainzFactory">
+                <ScalarProperty Name="ImageFile" ColumnName="ImageFile" />
                 <ScalarProperty Name="CainzTraderTraderID" ColumnName="CainzTraderTraderID" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
