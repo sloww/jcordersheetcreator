@@ -71,6 +71,7 @@ namespace OrderSheetCreator
         private void newOrderToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FCainzOrderD m = new FCainzOrderD();
+            PublicTools.RecoverFormSize(m);
             m.StartPosition = FormStartPosition.CenterParent;
             m.ShowDialog();
             btnSearch_Click(null, null);
@@ -107,6 +108,21 @@ namespace OrderSheetCreator
                         db.CainzOrder.Attach(order);
                         db.Entry(order).State = System.Data.Entity.EntityState.Modified;
                         db.SaveChanges();
+
+                        var q = (from item in db.CainzOrderDetail
+                                 where item.CainzOrderOrderID == order.OrderID
+                                 select item).ToArray();
+                        if (q != null && q.Count() > 0)
+                        {
+                            foreach (var item in q)
+                            {
+                                item.IsDelete = 1;
+                                db.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                                db.SaveChanges();
+                            }
+
+
+                        }
                     }
                     btnSearch_Click(null, null);
                 }
@@ -331,6 +347,35 @@ namespace OrderSheetCreator
         {
             PublicTools.SaveFormSize(this);
         }
+
+        private void clearToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var db = PublicDB.getDB())
+            {
+
+
+                var ods = (from item in db.CainzOrderDetail
+                         where item.IsDelete !=1
+                         select item).ToArray();
+                if (ods != null && ods.Count() > 0)
+                {
+                    foreach (var od in ods)
+                    {
+                        var o = (from item in db.CainzOrder
+                                 where item.IsDelete == 1 && item.OrderID == od.OrderID
+                                 select item).ToArray();
+                        if (o != null && o.Count() > 0)
+                        {
+                            od.IsDelete = 1;
+                            db.Entry(od).State = System.Data.Entity.EntityState.Modified;
+
+                        }
+                    }
+                    db.SaveChanges();
+                }
+
+                }
+            }
     }
 
     public class OrdersArgs

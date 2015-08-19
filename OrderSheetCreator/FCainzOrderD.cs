@@ -48,6 +48,9 @@ namespace OrderSheetCreator
             this.ControlBox = true;
             dataGridView1_DataBindingComplete(null, null);
             #endregion
+
+            PublicTools.RecoverFormSize(this);
+
         }
 
         public FCainzOrderD(entity.CainzOrder order)
@@ -90,6 +93,9 @@ namespace OrderSheetCreator
             this.ControlBox = true;
             dataGridView1_DataBindingComplete(null, null);
             #endregion
+
+            PublicTools.RecoverFormSize(this);
+
         }
 
         private void LoadOrder(entity.CainzOrder order)
@@ -111,7 +117,6 @@ namespace OrderSheetCreator
 
         private void FCainzOrderD_Load(object sender, EventArgs e)
         {
-            PublicTools.RecoverFormSize(this);
 
             ReColorStatus();
             pictureBox2.Visible = false;
@@ -216,6 +221,8 @@ namespace OrderSheetCreator
 
         private void btnExport_Click(object sender, EventArgs e)
         {
+            if (this.SaveOrder() == false) return;
+
             if (ORDERDETAILLIST.Count == 0)
             {
                 MessageBox.Show("请添加订单项目");
@@ -227,7 +234,6 @@ namespace OrderSheetCreator
                 return;
             }
 
-            btnSave_Click(null, null);
             //OrderSheetCreator.Properties.Resources.ResourceManager.GetObject("cainzOrder.xls");
             string excelPath = Application.StartupPath + @"\cainzOrder.xls";
             string copedExcelPath = string.Format("{0}\\{1}{2}", Application.StartupPath, DateTime.Now.ToString("MMddHHmmss"), ".xls");
@@ -297,7 +303,7 @@ namespace OrderSheetCreator
                 irow.GetCell(8).SetCellValue((double)ORDERDETAILLIST[i].TotalMoney);
                 if (ORDERDETAILLIST[i].ExpectDate != null)
                 {
-                    irow.GetCell(9).SetCellValue(((DateTime)ORDERDETAILLIST[i].ExpectDate).ToString("yyyy-MM-dd"));
+                    irow.GetCell(9).SetCellValue(PublicTools.FormatDateC(((DateTime)ORDERDETAILLIST[i].ExpectDate)));
                 }
                 irow.GetCell(10).SetCellValue("");
                 irow.GetCell(11).SetCellValue(ORDERDETAILLIST[i].Remark);
@@ -353,13 +359,27 @@ namespace OrderSheetCreator
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (orderValidate() == false) return;
+            SaveOrder();
 
-            this.Frozen(true);
-            BackgroundWorker worker = new BackgroundWorker();
-            worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
-            worker.DoWork += Worker_DoWork;
-            worker.RunWorkerAsync();
+        }
+
+        private bool SaveOrder()
+        {
+            bool r = false;
+            if (orderValidate() == false)
+            {
+                r = false;
+            }
+                else { 
+
+                this.Frozen(true);
+                BackgroundWorker worker = new BackgroundWorker();
+                worker.RunWorkerCompleted += Worker_RunWorkerCompleted;
+                worker.DoWork += Worker_DoWork;
+                worker.RunWorkerAsync();
+                r = true;
+            }
+            return r;
         }
 
         private void Worker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -376,8 +396,26 @@ namespace OrderSheetCreator
                 {
                     db.CainzOrder.Attach(ORDER);
                     db.Entry(ORDER).State = System.Data.Entity.EntityState.Modified;
+
+                    
                     db.SaveChanges();
+
+                    var q = (from item in db.CainzOrderDetail
+                             where item.CainzOrderOrderID == ORDER.OrderID
+                             select item).ToArray();
+                    if (q != null && q.Count() > 0)
+                    {
+                        foreach (var item in q)
+                        {
+                            item.IsDelete = 1;
+                            db.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                            db.SaveChanges();
+                        }
+
+                        
+                    }
                 }
+
             }
 
             entity.CainzOrder order = new entity.CainzOrder();
@@ -563,7 +601,7 @@ namespace OrderSheetCreator
         {
             FDT.Location = PublicTools.local(txbIssuedDate);
             FDT.ShowDialog();
-            txbIssuedDate.Text = FDateTime.DateTimeSelect.ToShortDateString();
+            txbIssuedDate.Text = PublicTools.FormatDateC(FDateTime.DateTimeSelect);
             txbIssuedDate.Tag = FDateTime.DateTimeSelect;
         }
 
@@ -571,7 +609,7 @@ namespace OrderSheetCreator
         {
             FDT.Location = PublicTools.local(txbDELdate);
             FDT.ShowDialog();
-            txbDELdate.Text = FDateTime.DateTimeSelect.ToShortDateString();
+            txbDELdate.Text = PublicTools.FormatDateC(FDateTime.DateTimeSelect);
             txbDELdate.Tag = FDateTime.DateTimeSelect;
         }
 
