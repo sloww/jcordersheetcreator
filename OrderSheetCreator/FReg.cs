@@ -80,5 +80,14 @@ namespace OrderSheetCreator
             }
             return r;
         }
+
+        public static string code()
+        {
+            Hardware hd = new Hardware();
+            string _cpuInfo = hd.GetCpuInfo();
+            string _diskInfo = hd.GetDiskID();
+            string _createNo = EncAndDec.toDigital(EncAndDec.Encode(_cpuInfo + _diskInfo));
+            return _createNo;
+        }
     }
 }

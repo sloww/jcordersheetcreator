@@ -12,6 +12,7 @@ namespace OrderSheetCreator
 {
     public partial class FMain : Form
     {
+        Dictionary<string, int> dicColumnWidth = new Dictionary<string, int>();
         public FMain()
         {
             InitializeComponent();
@@ -22,38 +23,62 @@ namespace OrderSheetCreator
             PublicTools.IniDatagridview(dataGridView1);
 
             //回复dgv的宽度设置
-            PublicTools.RecoverColumnWidth(dataGridView1, "Fmaindgv.config");
-
+            //PublicTools.RecoverColumnWidth(dataGridView1, "Fmaindgv.config");
+            PublicTools.RecoverColumnWidth(dataGridView1, Program.Code, Program.AppName,this.Name);
+           PublicTools.saveWidthTmp(dataGridView1,dicColumnWidth);
             
         }
+
 
         private void FMain_Load(object sender, EventArgs e) 
         {
 
             lblDBStatus.Text = string.Format("数据库信息：{0}", PublicDB.getIniConnInfo("config.ini"));
 
-
-
             this.Text = string.Format("{0}  Ver.{1}", PublicTools.AssemblyProduct, PublicTools.AssemblyVersion);
 
-            if (FReg.isReg())
+            if (PublicDB.isRegInDb(Program.Code, "Cainz") == false)
             {
-
-                btnSearch_Click(null, null);
-            }
-            else
-            {
-                FReg m = new FReg();
-                if (m.ShowDialog() == DialogResult.OK)
+                if (FReg.isReg())
                 {
-                    btnSearch_Click(null, null);
 
+                    btnSearch_Click(null, null);
                 }
                 else
                 {
-                    this.Close();
-                    Application.Exit();
+                    FReg m = new FReg();
+                    if (m.ShowDialog() == DialogResult.OK)
+                    {
+                        
+                        using(var db =PublicDB.getDB())
+                        {
+                            entity.PubCode pc= new entity.PubCode();
+                            pc.RegCode = Program.Code;
+                            pc.RegApp = Program.AppName;
+                            db.PubCode.Add(pc);
+                            try
+                            {
+                                db.SaveChanges();
+                            }
+                            catch (Exception ee)
+                            {
+                                MessageBox.Show(ee.Message);
+                            }
+                        }
+                        btnSearch_Click(null, null);
+
+                    }
+                    else
+                    {
+                        this.Close();
+                        Application.Exit();
+                    }
                 }
+            }
+            else
+            {
+                btnSearch_Click(null, null);
+
             }
 
         }
@@ -62,7 +87,11 @@ namespace OrderSheetCreator
         private void FMain_FormClosing(object sender, FormClosingEventArgs e)
         {
             //保存dgv的设置
-            PublicTools.SaveColumnWidth(dataGridView1, "Fmaindgv.config");
+            //PublicTools.SaveColumnWidth(dataGridView1, "Fmaindgv.config");
+            if (PublicTools.isWidthChange(dataGridView1, dicColumnWidth))
+            {
+                PublicTools.SaveColumnWidth(dataGridView1, Program.Code, Program.AppName, this.Name);
+            }
 
             //保存窗体的设置
             PublicTools.SaveFormSize(this);
@@ -73,7 +102,10 @@ namespace OrderSheetCreator
             FCainzOrderD m = new FCainzOrderD();
             PublicTools.RecoverFormSize(m);
             m.StartPosition = FormStartPosition.CenterParent;
+            this.Visible = false;
             m.ShowDialog();
+            PublicTools.RecoverFormSize(this);
+            this.Visible = true;
             btnSearch_Click(null, null);
 
         }
@@ -210,9 +242,8 @@ namespace OrderSheetCreator
                 else
                 {
 
-
                     oa.Orders = (from a in db.CainzOrder
-                              where a.IsDelete == 0 && (a.Status == 0 || a.Status == 1) & (a.OrderExNo.Contains(o.OrderExNo) || a.OrderNo.Contains(o.OrderNo)) && a.TraderName.Contains(o.TraderName)
+                                 where a.IsDelete == 0 && (a.Status == 0 || a.Status == 1) && (a.OrderExNo.Contains(o.OrderExNo) || a.OrderNo.Contains(o.OrderExNo)) && a.TraderName.Contains(o.TraderName)
                               orderby a.OrderDate
                               select a).ToList();
                 }
@@ -268,9 +299,12 @@ namespace OrderSheetCreator
             if (order != null)
             {
                 FCainzOrderD m = new FCainzOrderD(order);
+                PublicTools.RecoverFormSize(m);
+                this.Visible = false;
                 Application.DoEvents();
                 m.ShowDialog();
                 PublicTools.RecoverFormSize(this);
+                this.Visible = true;
             }
             btnSearch_Click(null, null);
 
@@ -376,6 +410,10 @@ namespace OrderSheetCreator
 
                 }
             }
+
+        private void dataGridView1_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+        }
     }
 
     public class OrdersArgs

@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Runtime.InteropServices;
 using NPOI.SS.UserModel;
 using System.Reflection;
+using System.Management;
 
 namespace OrderSheetCreator
 {
@@ -171,6 +172,30 @@ namespace OrderSheetCreator
 
             return _r;
 
+        }
+
+
+        public static void saveWidthTmp(DataGridView dgv, Dictionary<string, int> dic)
+        {
+            dic.Clear();
+            foreach (DataGridViewColumn dgvc in dgv.Columns)
+            {
+                dic.Add(dgvc.Name, dgvc.Width);
+            }
+        }
+
+        public static bool isWidthChange(DataGridView dgv, Dictionary<string, int> dic)
+        {
+            bool r = false;
+            foreach (DataGridViewColumn dgvc in dgv.Columns)
+            {
+                if (dic[dgvc.Name] != dgvc.Width)
+                {
+                    r = true;
+                    break;
+                }
+            }
+            return r;
         }
 
         public static double GetCellNumic(IRow row, char x, int y)
@@ -361,6 +386,52 @@ namespace OrderSheetCreator
             }
         }
 
+        public static void SaveColumnWidth(DataGridView dgv, string code,string appName,string formName)
+        {
+            List<entity.PubDgvSet> dgvColumns = new List<entity.PubDgvSet>();
+            using (var db = PublicDB.getDB())
+            {
+                foreach (DataGridViewColumn col in dgv.Columns)
+                {
+                    if (col.Visible)
+                    {
+                        entity.PubDgvSet pds = new entity.PubDgvSet();
+                        pds.RegCode = code;
+                        pds.RegApp = appName;
+                        pds.FormName = formName;
+                        pds.DgvName = dgv.Name;
+                        pds.ColumnName = col.Name;
+                        pds.ColumnWidth = col.Width;
+                        dgvColumns.Add(pds);
+                    }
+                }
+
+                foreach (var item in dgvColumns)
+                {
+                    var q = db.PubDgvSet.Where(a => a.RegCode.Equals(item.RegCode) && a.RegApp.Equals(item.RegApp) && a.FormName.Equals(item.FormName) && a.DgvName.Equals(item.DgvName) && a.ColumnName.Equals(item.ColumnName)).FirstOrDefault();
+                    if (q != null)
+                    {
+                        q.ColumnWidth = item.ColumnWidth;
+                        db.Entry(q).State = System.Data.Entity.EntityState.Modified;
+                    }
+                    else
+                    {
+                        db.PubDgvSet.Add(item);
+                        db.Entry(item).State = System.Data.Entity.EntityState.Added;
+
+                    }
+                }
+
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception ee)
+                {
+                }
+            }
+        }
+
         public static void RecoverColumnWidth(DataGridView dgv, string path)
         {
             if (File.Exists(path) == false)
@@ -389,6 +460,32 @@ namespace OrderSheetCreator
                     }
                 }
             }
+        }
+
+        public static void RecoverColumnWidth(DataGridView dgv, string code, string appName, string formName)
+        {
+
+            using(var db =PublicDB.getDB())
+            {
+                List<entity.PubDgvSet> dgvColumns = db.PubDgvSet.Where(a => a.RegCode.Equals(code) &&a.RegApp.Equals(appName)&& a.FormName.Equals(formName) && a.DgvName.Equals(dgv.Name)).ToList();
+                if(dgvColumns!=null)
+                {
+                   foreach(var item in dgvColumns)
+                   {
+                       foreach(DataGridViewColumn dgvc in dgv.Columns)
+                       {
+                           if(item.ColumnName.Equals(dgvc.Name))
+                           {
+                               dgvc.Width = item.ColumnWidth;
+                               break;
+                           }
+                       }
+                   }
+                }
+
+
+            }
+
         }
 
         public static void ReSizeTextbox(Control ctl)
@@ -477,6 +574,22 @@ namespace OrderSheetCreator
 
     public class EncAndDec
     {
+        public static string toDigital(string data)
+        {
+            int d = 0;
+            int lenth = data.Length;
+            for(int i=0;i<lenth;i++)
+            {
+                d += ((int)data[i]) * (i+1)*(i+1);
+            }
+
+            return d.ToString();
+        }
+
+        public static string toDigitalKey(string data)
+        {
+            return toDigital(KEY_64+data);
+        }
         //加密/解密钥匙
         const string KEY_64 = "tslinkcn";//注意了，是8个字符，64位    
         const string IV_64 = "ncknilst";//注意了，是8个字符，64位
@@ -606,5 +719,58 @@ namespace OrderSheetCreator
         }
         #endregion
 
+    }
+
+    public class Hardware
+    {
+
+        //获取硬盘号
+        public string GetDiskID()
+        {
+            try
+            {
+                //获取硬盘ID
+                String HDid = "";
+                ManagementClass mc = new ManagementClass("Win32_DiskDrive");
+                ManagementObjectCollection moc = mc.GetInstances();
+                foreach (ManagementObject mo in moc)
+                {
+                    HDid = (string)mo.Properties["Model"].Value;
+                }
+                moc = null;
+                mc = null;
+                return HDid;
+            }
+            catch
+            {
+                return "";
+            }
+            finally
+            {
+            }
+        }
+        //获取CPU信息
+        public string GetCpuInfo()
+        {
+            try
+            {
+                string cpuInfo = "";//cpu序列号
+                ManagementClass cimobject = new ManagementClass("Win32_Processor");
+                ManagementObjectCollection moc = cimobject.GetInstances();
+                foreach (ManagementObject mo in moc)
+                {
+                    cpuInfo = mo.Properties["ProcessorId"].Value.ToString();
+                }
+                return cpuInfo;
+            }
+            catch
+            {
+            }
+
+            return "";
+        }
+
+
+    
     }
 }

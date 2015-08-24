@@ -13,6 +13,7 @@ namespace OrderSheetCreator
 {
     public partial class FCainzOrderD : Form
     {
+        Dictionary<string, int> dicColumnWidth = new Dictionary<string, int>();
         //全局订单明细列表
         public static BindingList<entity.CainzOrderDetail> ORDERDETAILLIST = new BindingList<entity.CainzOrderDetail>();
         //全局客户信息
@@ -42,14 +43,13 @@ namespace OrderSheetCreator
             PublicTools.SetColumsAutoModeNone(dataGridView2);
 
             cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
-            PublicTools.RecoverColumnWidth(dataGridView1, FCainzOrderDdataGridViewSetPath);
             bdsCustomer.DataSource = FACTORY;
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.ControlBox = true;
             dataGridView1_DataBindingComplete(null, null);
             #endregion
 
-            PublicTools.RecoverFormSize(this);
+            //PublicTools.RecoverFormSize(this);
 
         }
 
@@ -87,14 +87,13 @@ namespace OrderSheetCreator
             PublicTools.SetColumsAutoModeNone(dataGridView2);
 
             cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
-            PublicTools.RecoverColumnWidth(dataGridView1, FCainzOrderDdataGridViewSetPath);
             bdsCustomer.DataSource = FACTORY;
             this.FormBorderStyle = FormBorderStyle.Sizable;
             this.ControlBox = true;
             dataGridView1_DataBindingComplete(null, null);
             #endregion
 
-            PublicTools.RecoverFormSize(this);
+            //PublicTools.RecoverFormSize(this);
 
         }
 
@@ -117,6 +116,8 @@ namespace OrderSheetCreator
 
         private void FCainzOrderD_Load(object sender, EventArgs e)
         {
+            PublicTools.RecoverColumnWidth(dataGridView1, Program.Code, Program.AppName, this.Name);
+            PublicTools.saveWidthTmp(dataGridView1, dicColumnWidth);
 
             ReColorStatus();
             pictureBox2.Visible = false;
@@ -124,7 +125,10 @@ namespace OrderSheetCreator
 
         private void FCainzOrderD_FormClosing(object sender, FormClosingEventArgs e)
         {
-            PublicTools.SaveColumnWidth(dataGridView1, this.FCainzOrderDdataGridViewSetPath);
+            if (PublicTools.isWidthChange(dataGridView1, dicColumnWidth))
+            {
+                PublicTools.SaveColumnWidth(dataGridView1,Program.Code,Program.AppName,this.Name);
+            }
 
             //保存窗体的设置
             if (WindowState == FormWindowState.Maximized)
@@ -235,7 +239,17 @@ namespace OrderSheetCreator
             }
 
             //OrderSheetCreator.Properties.Resources.ResourceManager.GetObject("cainzOrder.xls");
-            string excelPath = Application.StartupPath + @"\cainzOrder.xls";
+            int totol = ORDERDETAILLIST.Count;
+            string excelPath;
+            if (totol < 17)
+            {
+                excelPath = Application.StartupPath + @"\cainzOrder.xls";
+            }
+            else
+            {
+                excelPath = Application.StartupPath + @"\cainzOrder2.xls";
+            }
+
             string copedExcelPath = string.Format("{0}\\{1}{2}", Application.StartupPath, DateTime.Now.ToString("MMddHHmmss"), ".xls");
 
             if (File.Exists(excelPath))
@@ -277,12 +291,15 @@ namespace OrderSheetCreator
 
             icFile.SetCellValue(icFile.StringCellValue + txbFile.Text);
 
-            int totol = ORDERDETAILLIST.Count;
+            
             Decimal totolCount = 0;
             Decimal totolMoney = 0;
             for (int i = 0; i < totol; i++)
             {
-                IRow irow = ist.GetRow(i + 11);
+
+                IRow irow;
+
+                irow = ist.GetRow(i + 11);
                 irow.GetCell(1).SetCellValue(ORDERDETAILLIST[i].ProductBarcode);
                 irow.GetCell(2).SetCellValue(ORDERDETAILLIST[i].ProductName);
                 irow.GetCell(3).SetCellValue(ORDERDETAILLIST[i].ProductSize);
@@ -298,21 +315,37 @@ namespace OrderSheetCreator
                 totolCount += (decimal)ORDERDETAILLIST[i].POPNum;
                 cell7.SetCellValue((double)ORDERDETAILLIST[i].ProductPrice);
 
+
                 totolMoney += ORDERDETAILLIST[i].TotalMoney;
 
                 irow.GetCell(8).SetCellValue((double)ORDERDETAILLIST[i].TotalMoney);
+
                 if (ORDERDETAILLIST[i].ExpectDate != null)
                 {
                     irow.GetCell(9).SetCellValue(PublicTools.FormatDateC(((DateTime)ORDERDETAILLIST[i].ExpectDate)));
                 }
                 irow.GetCell(10).SetCellValue("");
                 irow.GetCell(11).SetCellValue(ORDERDETAILLIST[i].Remark);
+
             }
 
             //合计写
-            IRow irowTotol = ist.GetRow(30);
+            
+            IRow irowTotol;
+            if (totol < 17)
+            {
+                irowTotol=ist.GetRow(27);
+
+            }
+            else
+            {
+                irowTotol = ist.GetRow(57);
+
+            }
+
             irowTotol.GetCell(6).SetCellValue((double)totolCount);
             irowTotol.GetCell(8).SetCellValue((double)totolMoney);
+           
 
 
             using (FileStream fs = new FileStream(copedExcelPath, FileMode.Open))
@@ -486,7 +519,7 @@ namespace OrderSheetCreator
             toValidate.Add(txbTrader);
             toValidate.Add(txbIssuedDate);
             toValidate.Add(txbName);
-            toValidate.Add(txbOrder);
+           // toValidate.Add(txbOrder);
             toValidate.Add(txbJingChenOrder);
             toValidate.Add(txbFile);
 

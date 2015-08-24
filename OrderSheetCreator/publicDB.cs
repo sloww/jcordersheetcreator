@@ -12,11 +12,11 @@ namespace OrderSheetCreator
 
         public static DB getDB(int timeOut)
         {
-            if (!System.IO.File.Exists("config.ini"))
-            {
-                FDatabase m = new FDatabase();
-                m.ShowDialog();
-            }
+            //if (!System.IO.File.Exists("config.ini"))
+            //{
+            //    FDatabase m = new FDatabase();
+            //    m.ShowDialog();
+            //}
 
             var db = new DB();
             db.Database.Connection.ConnectionString = getIniConn("config.ini", timeOut);
@@ -27,6 +27,25 @@ namespace OrderSheetCreator
         public static DB getDB()
         {
             return getDB(60);
+        }
+
+        public static bool isRegInDb(string code ,string appName)
+        {
+            bool r = false;
+            using (var db = PublicDB.getDB())
+            {
+                try
+                {
+                    var query = db.PubCode.Where(a => a.RegCode.Contains(code) && a.RegApp.Contains(appName)).FirstOrDefault();
+                    if (query != null) r = true;
+
+                }
+                catch(Exception ee)
+                {
+                    r = false;
+                }
+            }
+            return r;
         }
 
         public static bool TestDB(string connString)
@@ -51,17 +70,26 @@ namespace OrderSheetCreator
 
         public static string getIniConn(string iniPath, int timeOut)
         {
-            INIClass iniClass = new INIClass(iniPath);
             string connString = "";
-            if (iniClass.ExistINIFile())
+
+            if (true)
             {
+                connString = string.Format("data source={0};initial catalog={1};persist security info=True;user id={2};password={3};MultipleActiveResultSets=True;App=EntityFramework;Connection Timeout={4};", "tcp:ubehgi97a9.database.chinacloudapi.cn", "db002", "tslinkdbuser@ubehgi97a9", "ceshi123!@#", timeOut);
+            }
+            else
+            {
+                INIClass iniClass = new INIClass(iniPath);
 
-                string Server = EncAndDec.Decode(iniClass.IniReadValue("Database", "server"));
-                string dataBase = EncAndDec.Decode(iniClass.IniReadValue("Database", "database"));
-                string user = EncAndDec.Decode(iniClass.IniReadValue("Database", "user"));
-                string pwd = EncAndDec.Decode(iniClass.IniReadValue("Database", "password"));
-                connString = string.Format("data source={0};initial catalog={1};persist security info=True;user id={2};password={3};MultipleActiveResultSets=True;App=EntityFramework;Connection Timeout={4};", Server, dataBase, user, pwd, timeOut);
+                if (iniClass.ExistINIFile())
+                {
 
+                    string Server = EncAndDec.Decode(iniClass.IniReadValue("Database", "server"));
+                    string dataBase = EncAndDec.Decode(iniClass.IniReadValue("Database", "database"));
+                    string user = EncAndDec.Decode(iniClass.IniReadValue("Database", "user"));
+                    string pwd = EncAndDec.Decode(iniClass.IniReadValue("Database", "password"));
+                    connString = string.Format("data source={0};initial catalog={1};persist security info=True;user id={2};password={3};MultipleActiveResultSets=True;App=EntityFramework;Connection Timeout={4};", Server, dataBase, user, pwd, timeOut);
+
+                }
             }
             return connString;
         }
@@ -70,12 +98,19 @@ namespace OrderSheetCreator
         {
             INIClass iniClass = new INIClass(iniPath);
             string coninfo = "";
-            if (iniClass.ExistINIFile())
-            {
 
-                string Server = EncAndDec.Decode(iniClass.IniReadValue("Database", "server"));
-                string dataBase = EncAndDec.Decode(iniClass.IniReadValue("Database", "database"));
-                coninfo = string.Format("{0} {1}", Server, dataBase, Server, dataBase);
+            if (true)
+                coninfo = "云数据库版";
+            else
+            {
+                if (iniClass.ExistINIFile())
+                {
+
+                    string Server = EncAndDec.Decode(iniClass.IniReadValue("Database", "server"));
+                    string dataBase = EncAndDec.Decode(iniClass.IniReadValue("Database", "database"));
+                    coninfo = string.Format("{0} {1}", Server, dataBase, Server, dataBase);
+
+                }
 
             }
             return coninfo;

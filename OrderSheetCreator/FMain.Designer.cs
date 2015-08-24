@@ -54,7 +54,6 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.sendDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.orderNoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.OrderExNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TraderName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -62,9 +61,10 @@
             this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.moneyDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusInfo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sendDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createTimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.caidan = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.btnOk = new System.Windows.Forms.ToolStripMenuItem();
@@ -266,7 +266,6 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.sendDateDataGridViewTextBoxColumn,
             this.orderNoDataGridViewTextBoxColumn,
             this.OrderExNo,
             this.TraderName,
@@ -274,9 +273,10 @@
             this.OrderDate,
             this.contactDataGridViewTextBoxColumn,
             this.moneyDataGridViewTextBoxColumn,
-            this.createTimeDataGridViewTextBoxColumn,
             this.statusInfo,
-            this.Status});
+            this.sendDateDataGridViewTextBoxColumn,
+            this.Status,
+            this.createTimeDataGridViewTextBoxColumn});
             this.dataGridView1.ContextMenuStrip = this.caidan;
             this.dataGridView1.DataSource = this.cainzOrderBindingSource;
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -286,19 +286,12 @@
             this.dataGridView1.Size = new System.Drawing.Size(1174, 658);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.dataGridView1.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.dataGridView1_ColumnWidthChanged);
             // 
             // Column1
             // 
             this.Column1.HeaderText = "序";
             this.Column1.Name = "Column1";
-            // 
-            // sendDateDataGridViewTextBoxColumn
-            // 
-            this.sendDateDataGridViewTextBoxColumn.DataPropertyName = "SendDate";
-            dataGridViewCellStyle1.Format = "d";
-            this.sendDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
-            this.sendDateDataGridViewTextBoxColumn.HeaderText = "交货期(納品日)";
-            this.sendDateDataGridViewTextBoxColumn.Name = "sendDateDataGridViewTextBoxColumn";
             // 
             // orderNoDataGridViewTextBoxColumn
             // 
@@ -327,8 +320,8 @@
             // OrderDate
             // 
             this.OrderDate.DataPropertyName = "OrderDate";
-            dataGridViewCellStyle2.Format = "d";
-            this.OrderDate.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Format = "d";
+            this.OrderDate.DefaultCellStyle = dataGridViewCellStyle1;
             this.OrderDate.HeaderText = "下单日期";
             this.OrderDate.Name = "OrderDate";
             // 
@@ -341,12 +334,32 @@
             // moneyDataGridViewTextBoxColumn
             // 
             this.moneyDataGridViewTextBoxColumn.DataPropertyName = "Money";
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
-            dataGridViewCellStyle3.Format = "N3";
-            dataGridViewCellStyle3.NullValue = "0";
-            this.moneyDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight;
+            dataGridViewCellStyle2.Format = "N3";
+            dataGridViewCellStyle2.NullValue = "0";
+            this.moneyDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
             this.moneyDataGridViewTextBoxColumn.HeaderText = "订单总价";
             this.moneyDataGridViewTextBoxColumn.Name = "moneyDataGridViewTextBoxColumn";
+            // 
+            // statusInfo
+            // 
+            this.statusInfo.HeaderText = "发货状态";
+            this.statusInfo.Name = "statusInfo";
+            // 
+            // sendDateDataGridViewTextBoxColumn
+            // 
+            this.sendDateDataGridViewTextBoxColumn.DataPropertyName = "SendDate";
+            dataGridViewCellStyle3.Format = "d";
+            this.sendDateDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.sendDateDataGridViewTextBoxColumn.HeaderText = "交货期(納品日)";
+            this.sendDateDataGridViewTextBoxColumn.Name = "sendDateDataGridViewTextBoxColumn";
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.HeaderText = "状态";
+            this.Status.Name = "Status";
+            this.Status.Visible = false;
             // 
             // createTimeDataGridViewTextBoxColumn
             // 
@@ -357,18 +370,6 @@
             this.createTimeDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle4;
             this.createTimeDataGridViewTextBoxColumn.HeaderText = "创建日期";
             this.createTimeDataGridViewTextBoxColumn.Name = "createTimeDataGridViewTextBoxColumn";
-            // 
-            // statusInfo
-            // 
-            this.statusInfo.HeaderText = "发货状态";
-            this.statusInfo.Name = "statusInfo";
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.HeaderText = "状态";
-            this.Status.Name = "Status";
-            this.Status.Visible = false;
             // 
             // caidan
             // 
@@ -466,8 +467,9 @@
         private System.Windows.Forms.TextBox txbTraderForSearch;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn sendDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn orderNoDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderExNo;
         private System.Windows.Forms.DataGridViewTextBoxColumn TraderName;
@@ -475,10 +477,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn OrderDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn moneyDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn createTimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn statusInfo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sendDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.ToolStripMenuItem clearToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn createTimeDataGridViewTextBoxColumn;
     }
 }

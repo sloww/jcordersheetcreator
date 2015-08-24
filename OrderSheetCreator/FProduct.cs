@@ -11,7 +11,8 @@ namespace OrderSheetCreator
 {
     public partial class FProduct : Form
     {
-        private string FADD_DATAGRIDVIEW_SETPATH = "产品查询表宽度设定.txt";
+        Dictionary<string, int> dicColumnWidth = new Dictionary<string, int>();
+
         private TextBox TXBMATERIAL_TMP = new TextBox();
         private bool IS_IN_ORDER = false;
         private entity.CainzTrader cTrader;
@@ -87,16 +88,16 @@ namespace OrderSheetCreator
 
                     if (ckbIsLock.Checked && cTrader !=null) {
                         cProductList = (from a in db.CainzProduct
-                                        where a.ProductBarcode.Contains(txbSearchBarcode.Text) && a.Deleted == 0 && a.TraderID == cTrader.TraderID
+                                        where (a.ProductBarcode.Contains(txbSearchBarcode.Text) || a.ProductMaterial.Contains(txbSearchBarcode.Text))&& a.Deleted == 0 && a.TraderID == cTrader.TraderID
                                         orderby a.ProductBarcode, a.ProductPrice
-                                        select a).Take(5).ToList();
+                                        select a).Take(7).ToList();
                     }
                     else
                     {
                         cProductList = (from a in db.CainzProduct
-                                        where a.ProductBarcode.Contains(txbSearchBarcode.Text) && a.Deleted == 0
+                                        where (a.ProductBarcode.Contains(txbSearchBarcode.Text) || a.ProductMaterial.Contains(txbSearchBarcode.Text)) && a.Deleted == 0
                                         orderby a.ProductBarcode, a.ProductPrice
-                                        select a).Take(5).ToList();
+                                        select a).Take(7).ToList();
 
                     }
 
@@ -125,7 +126,8 @@ namespace OrderSheetCreator
 
             PublicTools.IniDatagridview(dataGridView1);
             PublicTools.SetColumsAutoModeNone(dataGridView1);
-            PublicTools.RecoverColumnWidth(dataGridView1, this.FADD_DATAGRIDVIEW_SETPATH);
+            PublicTools.RecoverColumnWidth(dataGridView1, Program.Code, Program.AppName, this.Name);
+            PublicTools.saveWidthTmp(dataGridView1, dicColumnWidth);
             btnHidden_Click(null, null);
         }
 
@@ -139,6 +141,7 @@ namespace OrderSheetCreator
 
         private void btnSaveClose_Click(object sender, EventArgs e)
         {
+
             AddToODList();
             this.txbClear();
             this.Close();
@@ -221,6 +224,7 @@ namespace OrderSheetCreator
                 cod.ProductColor = txbColor.Text;
                 cod.ProductSize = txbSize.Text;
                 cod.ProductPrice = _price;
+                cod.ProductName = txbProductName.Text.Trim();
 
                 cod.POPNum = count;
                 cod.Remark = txbReMarK.Text.Trim();
@@ -280,7 +284,10 @@ namespace OrderSheetCreator
 
         private void FAdd_FormClosing(object sender, FormClosingEventArgs e)
         {
-            PublicTools.SaveColumnWidth(dataGridView1, this.FADD_DATAGRIDVIEW_SETPATH);
+            if (PublicTools.isWidthChange(dataGridView1, dicColumnWidth))
+            {
+                PublicTools.SaveColumnWidth(dataGridView1, Program.Code, Program.AppName, this.Name);
+            }
         }
 
 
@@ -493,6 +500,11 @@ namespace OrderSheetCreator
             fdt.Location = PublicTools.local(txbIssuedDate);
             fdt.ShowDialog();
             txbIssuedDate.Text = FDateTime.DateTimeSelect.ToShortDateString();
+        }
+
+        private void txbProductName_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

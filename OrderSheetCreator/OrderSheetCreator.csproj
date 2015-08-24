@@ -23,13 +23,12 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>http://tslink.chinacloudsites.cn/jcocod/</InstallUrl>
-    <TargetCulture>zh</TargetCulture>
     <ProductName>Cainz 订单管理系统</ProductName>
     <PublisherName>太数智能科技（上海）有限公司</PublisherName>
     <SuiteName>企业管理套件</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>8</ApplicationRevision>
+    <ApplicationRevision>16</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -248,6 +247,9 @@
     <Fakes Include="Fakes\NPinyin.fakes" />
     <Content Include="cainzOrder.xls">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="cainzOrder2.xls">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="OrderSheetCreator_TemporaryKey.pfx" />
     <None Include="packages.config">

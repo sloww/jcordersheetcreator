@@ -12,7 +12,7 @@ namespace OrderSheetCreator
     public partial class FFactory : Form
     {
         entity.CainzOrderDetail fd;
-        private string FFACTORY_DATAGRIDVIEW_SETPATH = "客户查询表宽度设定.txt";
+        Dictionary<string, int> dicColumnWidth = new Dictionary<string, int>();
 
         public FFactory()
         {
@@ -40,6 +40,7 @@ namespace OrderSheetCreator
                         CainzFactoryBindingSource.DataSource = Query.Take(8).ToList();
 
                 }
+                
                 PublicTools.RecountRowsNum(dataGridView1);
             }
             else
@@ -52,13 +53,19 @@ namespace OrderSheetCreator
         {
             PublicTools.IniDatagridview(dataGridView1);
             PublicTools.SetColumsAutoModeNone(dataGridView1);
-            PublicTools.RecoverColumnWidth(dataGridView1, this.FFACTORY_DATAGRIDVIEW_SETPATH);
+
+            PublicTools.RecoverColumnWidth(dataGridView1, Program.Code, Program.AppName, this.Name);
+            PublicTools.saveWidthTmp(dataGridView1, dicColumnWidth);
             panel4.Visible = false;
         }
 
         private void FFactory_FormClosing(object sender, FormClosingEventArgs e)
         {
-            PublicTools.SaveColumnWidth(dataGridView1, this.FFACTORY_DATAGRIDVIEW_SETPATH);
+            if(PublicTools.isWidthChange(dataGridView1,dicColumnWidth))
+            {
+                PublicTools.SaveColumnWidth(dataGridView1, Program.Code, Program.AppName, this.Name);
+            }
+           // PublicTools.SaveColumnWidth(dataGridView1, this.FFACTORY_DATAGRIDVIEW_SETPATH);
 
         }
 

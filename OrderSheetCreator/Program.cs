@@ -13,9 +13,14 @@ namespace OrderSheetCreator
         [STAThread]
         static void Main()
         {
+            Code=FReg.code();
+            AppName = "Cainz";
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new FMain());
         }
+
+        public static string Code;
+        public static string AppName;
     }
 }
