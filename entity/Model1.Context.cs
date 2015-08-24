@@ -42,6 +42,10 @@ public partial class DB : DbContext
 
     public DbSet<CainzTrader> CainzTrader { get; set; }
 
+    public DbSet<PubCode> PubCode { get; set; }
+
+    public DbSet<PubDgvSet> PubDgvSet { get; set; }
+
 }
 
 }

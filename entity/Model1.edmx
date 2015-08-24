@@ -114,6 +114,29 @@
           <Property Name="CreateTime" Type="datetime" Nullable="false" />
           <Property Name="Remark" Type="nvarchar" MaxLength="400" />
         </EntityType>
+        <EntityType Name="PubCode">
+          <Key>
+            <PropertyRef Name="RegCode" />
+          </Key>
+          <Property Name="RegCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RegName" Type="nvarchar" MaxLength="50" />
+          <Property Name="RegApp" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PubDgvSet">
+          <Key>
+            <PropertyRef Name="RegCode" />
+            <PropertyRef Name="RegApp" />
+            <PropertyRef Name="FormName" />
+            <PropertyRef Name="ColumnName" />
+            <PropertyRef Name="DgvName" />
+          </Key>
+          <Property Name="RegCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="RegApp" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="FormName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ColumnName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ColumnWidth" Type="int" Nullable="false" />
+          <Property Name="DgvName" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <Association Name="FK_CainzFactoryCainzOrder">
           <End Role="CainzFactory" Type="Self.CainzFactory" Multiplicity="1" />
           <End Role="CainzOrder" Type="Self.CainzOrder" Multiplicity="*" />
@@ -180,6 +203,8 @@
           <EntitySet Name="CainzOrderDetail" EntityType="Self.CainzOrderDetail" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CainzProduct" EntityType="Self.CainzProduct" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CainzTrader" EntityType="Self.CainzTrader" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PubCode" EntityType="Self.PubCode" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PubDgvSet" EntityType="Self.PubDgvSet" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CainzFactoryCainzOrder" Association="Self.FK_CainzFactoryCainzOrder">
             <End Role="CainzFactory" EntitySet="CainzFactory" />
             <End Role="CainzOrder" EntitySet="CainzOrder" />
@@ -231,6 +256,8 @@
             <End Role="CainzTrader" EntitySet="CainzTrader" />
             <End Role="CainzProduct" EntitySet="CainzProduct" />
           </AssociationSet>
+          <EntitySet Name="PubCode" EntityType="db001Model.PubCode" />
+          <EntitySet Name="PubDgvSet" EntityType="db001Model.PubDgvSet" />
         </EntityContainer>
         <EntityType Name="CainzFactory">
           <Key>
@@ -410,6 +437,29 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="PubCode">
+          <Key>
+            <PropertyRef Name="RegCode" />
+          </Key>
+          <Property Name="RegCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RegApp" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PubDgvSet">
+          <Key>
+            <PropertyRef Name="RegCode" />
+            <PropertyRef Name="RegApp" />
+            <PropertyRef Name="FormName" />
+            <PropertyRef Name="ColumnName" />
+            <PropertyRef Name="DgvName" />
+          </Key>
+          <Property Name="RegCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="RegApp" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FormName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ColumnName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ColumnWidth" Type="Int32" Nullable="false" />
+          <Property Name="DgvName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -526,6 +576,27 @@
                 <ScalarProperty Name="TraderShortName" ColumnName="TraderShortName" />
                 <ScalarProperty Name="TraderName" ColumnName="TraderName" />
                 <ScalarProperty Name="TraderID" ColumnName="TraderID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PubCode">
+            <EntityTypeMapping TypeName="db001Model.PubCode">
+              <MappingFragment StoreEntitySet="PubCode">
+                <ScalarProperty Name="RegApp" ColumnName="RegApp" />
+                <ScalarProperty Name="RegName" ColumnName="RegName" />
+                <ScalarProperty Name="RegCode" ColumnName="RegCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PubDgvSet">
+            <EntityTypeMapping TypeName="db001Model.PubDgvSet">
+              <MappingFragment StoreEntitySet="PubDgvSet">
+                <ScalarProperty Name="DgvName" ColumnName="DgvName" />
+                <ScalarProperty Name="ColumnWidth" ColumnName="ColumnWidth" />
+                <ScalarProperty Name="ColumnName" ColumnName="ColumnName" />
+                <ScalarProperty Name="FormName" ColumnName="FormName" />
+                <ScalarProperty Name="RegApp" ColumnName="RegApp" />
+                <ScalarProperty Name="RegCode" ColumnName="RegCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

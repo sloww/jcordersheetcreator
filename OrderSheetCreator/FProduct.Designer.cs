@@ -94,15 +94,15 @@
             this.label1.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.label1.Location = new System.Drawing.Point(8, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 25);
+            this.label1.Size = new System.Drawing.Size(101, 25);
             this.label1.TabIndex = 1;
-            this.label1.Text = "条码:";
+            this.label1.Text = "条码/材质:";
             // 
             // txbSearchBarcode
             // 
             this.txbSearchBarcode.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txbSearchBarcode.Font = new System.Drawing.Font("微软雅黑", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.txbSearchBarcode.Location = new System.Drawing.Point(65, 6);
+            this.txbSearchBarcode.Location = new System.Drawing.Point(111, 6);
             this.txbSearchBarcode.Name = "txbSearchBarcode";
             this.txbSearchBarcode.Size = new System.Drawing.Size(172, 33);
             this.txbSearchBarcode.TabIndex = 2;
@@ -119,7 +119,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(877, 48);
+            this.panel1.Size = new System.Drawing.Size(894, 48);
             this.panel1.TabIndex = 3;
             // 
             // ckbAutoEnter
@@ -127,7 +127,7 @@
             this.ckbAutoEnter.AutoSize = true;
             this.ckbAutoEnter.Checked = true;
             this.ckbAutoEnter.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ckbAutoEnter.Location = new System.Drawing.Point(262, 23);
+            this.ckbAutoEnter.Location = new System.Drawing.Point(297, 23);
             this.ckbAutoEnter.Name = "ckbAutoEnter";
             this.ckbAutoEnter.Size = new System.Drawing.Size(72, 16);
             this.ckbAutoEnter.TabIndex = 22;
@@ -136,10 +136,11 @@
             // 
             // btnClose
             // 
+            this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnClose.Font = new System.Drawing.Font("宋体", 12F);
             this.btnClose.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnClose.Location = new System.Drawing.Point(731, 3);
+            this.btnClose.Location = new System.Drawing.Point(748, 3);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(126, 38);
             this.btnClose.TabIndex = 21;
@@ -309,7 +310,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.Location = new System.Drawing.Point(0, 302);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(877, 325);
+            this.panel2.Size = new System.Drawing.Size(894, 325);
             this.panel2.TabIndex = 4;
             // 
             // txbProductName
@@ -334,17 +335,18 @@
             this.panel4.Controls.Add(this.btnDeletedb);
             this.panel4.Controls.Add(this.btnSaveToDB);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(0, 276);
+            this.panel4.Location = new System.Drawing.Point(0, 325);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(877, 49);
+            this.panel4.Size = new System.Drawing.Size(894, 0);
             this.panel4.TabIndex = 19;
             // 
             // btnHidden
             // 
+            this.btnHidden.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnHidden.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnHidden.Font = new System.Drawing.Font("宋体", 12F);
             this.btnHidden.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnHidden.Location = new System.Drawing.Point(748, 4);
+            this.btnHidden.Location = new System.Drawing.Point(765, -43);
             this.btnHidden.Name = "btnHidden";
             this.btnHidden.Size = new System.Drawing.Size(126, 38);
             this.btnHidden.TabIndex = 20;
@@ -433,8 +435,9 @@
             // 
             // btnDelete
             // 
+            this.btnDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDelete.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnDelete.Location = new System.Drawing.Point(731, 136);
+            this.btnDelete.Location = new System.Drawing.Point(748, 136);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(126, 38);
             this.btnDelete.TabIndex = 17;
@@ -477,8 +480,9 @@
             // 
             // btnContinue
             // 
+            this.btnContinue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnContinue.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnContinue.Location = new System.Drawing.Point(731, 41);
+            this.btnContinue.Location = new System.Drawing.Point(748, 41);
             this.btnContinue.Name = "btnContinue";
             this.btnContinue.Size = new System.Drawing.Size(126, 38);
             this.btnContinue.TabIndex = 13;
@@ -511,10 +515,11 @@
             // 
             // btnShow
             // 
+            this.btnShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnShow.BackColor = System.Drawing.SystemColors.AppWorkspace;
             this.btnShow.Font = new System.Drawing.Font("宋体", 12F);
             this.btnShow.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnShow.Location = new System.Drawing.Point(751, 284);
+            this.btnShow.Location = new System.Drawing.Point(768, 284);
             this.btnShow.Name = "btnShow";
             this.btnShow.Size = new System.Drawing.Size(126, 38);
             this.btnShow.TabIndex = 21;
@@ -528,7 +533,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(0, 48);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(877, 254);
+            this.panel3.Size = new System.Drawing.Size(894, 254);
             this.panel3.TabIndex = 5;
             // 
             // dataGridView1
@@ -553,7 +558,7 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowTemplate.Height = 23;
-            this.dataGridView1.Size = new System.Drawing.Size(877, 254);
+            this.dataGridView1.Size = new System.Drawing.Size(894, 254);
             this.dataGridView1.TabIndex = 0;
             // 
             // Column1
@@ -648,7 +653,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(877, 627);
+            this.ClientSize = new System.Drawing.Size(894, 627);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

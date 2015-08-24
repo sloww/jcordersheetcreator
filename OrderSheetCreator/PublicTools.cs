@@ -174,7 +174,11 @@ namespace OrderSheetCreator
 
         }
 
-
+        /// <summary>
+        /// 保存grid列宽信息到字典
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="dic"></param>
         public static void saveWidthTmp(DataGridView dgv, Dictionary<string, int> dic)
         {
             dic.Clear();
@@ -184,6 +188,12 @@ namespace OrderSheetCreator
             }
         }
 
+        /// <summary>
+        /// 校验grid 列宽信息和字典是否一致
+        /// </summary>
+        /// <param name="dgv"></param>
+        /// <param name="dic"></param>
+        /// <returns></returns>
         public static bool isWidthChange(DataGridView dgv, Dictionary<string, int> dic)
         {
             bool r = false;

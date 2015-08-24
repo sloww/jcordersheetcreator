@@ -35,7 +35,7 @@ namespace OrderSheetCreator
 
             lblDBStatus.Text = string.Format("数据库信息：{0}", PublicDB.getIniConnInfo("config.ini"));
 
-            this.Text = string.Format("{0}  Ver.{1}", PublicTools.AssemblyProduct, PublicTools.AssemblyVersion);
+            this.Text = string.Format("{0}  {1}", PublicTools.AssemblyProduct, PublicTools.AssemblyVersion);
 
             if (PublicDB.isRegInDb(Program.Code, "Cainz") == false)
             {
@@ -79,6 +79,18 @@ namespace OrderSheetCreator
             {
                 btnSearch_Click(null, null);
 
+            }
+
+            List<entity.CainzTrader> _listTrader = GetTraderList();
+            if(_listTrader!=null)
+            {
+                txbTraderForSearch.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                txbTraderForSearch.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                txbTraderForSearch.AutoCompleteCustomSource.Clear();
+                foreach(var item in _listTrader)
+                {
+                    txbTraderForSearch.AutoCompleteCustomSource.Add(item.TraderName);
+                }
             }
 
         }
@@ -235,21 +247,27 @@ namespace OrderSheetCreator
                 if (o == null)
                 {
                     oa.Orders = (from a in db.CainzOrder
-                              where a.IsDelete == 0 && (a.Status == 0 || a.Status == 1) 
-                              orderby a.OrderDate
-                              select a).ToList();
+                                 where a.IsDelete == 0 && (a.Status == 0 || a.Status == 1)
+                                 orderby a.OrderNo descending
+                                 select a).ToList();
                 }
                 else
                 {
 
                     oa.Orders = (from a in db.CainzOrder
                                  where a.IsDelete == 0 && (a.Status == 0 || a.Status == 1) && (a.OrderExNo.Contains(o.OrderExNo) || a.OrderNo.Contains(o.OrderExNo)) && a.TraderName.Contains(o.TraderName)
-                              orderby a.OrderDate
-                              select a).ToList();
+                                 orderby a.OrderNo descending
+                                 select a).ToList();
                 }
             }
         }
 
+        private List<entity.CainzTrader> GetTraderList()
+        {
+            using(var db =PublicDB.getDB()){
+                return db.CainzTrader.Where(a => a.IsDelete == 0).ToList();
+            }
+        }
 
         private void Work_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {

@@ -21,10 +21,7 @@ namespace OrderSheetCreator
         //全局订单信息
         public entity.CainzOrder ORDER = null;
         FProduct fadd = new FProduct();
-        private string FCainzOrderDdataGridViewSetPath = "订单表宽度设定.txt";
         private FDateTime FDT = new FDateTime();
-        private bool isModify = false;
-        private bool isReadyToSave = false;
         public FCainzOrderD()
         {
             InitializeComponent();
@@ -73,7 +70,6 @@ namespace OrderSheetCreator
 
             LoadOrder(order);
             ReColorStatus();
-            isModify = true;
 
             ///todo make faster
             #region load 
@@ -567,7 +563,6 @@ namespace OrderSheetCreator
             else
             {
                 ((TextBox)sender).BackColor = Color.LightCoral;
-                isReadyToSave = false;
             }
         }
 
@@ -646,13 +641,11 @@ namespace OrderSheetCreator
             txbDELdate.Tag = FDateTime.DateTimeSelect;
         }
 
-
-
         private void btnImportOrder_Click(object sender, EventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
-            ofd.DefaultExt = ".xls";
-            ofd.Filter = "xls file|*.xls";
+            //ofd.DefaultExt = ".xls";
+            ofd.Filter = "excel file |*.xls;*.xlsx";
             if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 entity.CainzOrder order = new entity.CainzOrder();
@@ -776,8 +769,6 @@ namespace OrderSheetCreator
             }
         }
 
-
-
         private void dataGridView1_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
             decimal totolMoney = 0;
@@ -789,6 +780,7 @@ namespace OrderSheetCreator
             }
             dataGridView2[6, 0].Value = totolCount;
             dataGridView2[8, 0].Value = totolMoney;
+            dataGridView2[1, 0].Value = "合计";
         }
 
         private void Frozen(bool isEnable)
