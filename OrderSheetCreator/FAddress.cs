@@ -55,7 +55,7 @@ namespace OrderSheetCreator
         private void btnNew_Click(object sender, EventArgs e)
         {
             string _stringAddress = txbAdd.Text.Trim();
-            if (_stringAddress.Length > 4)
+            if (_stringAddress.Length > 1)
             {
                 entity.CainzAddress _cainzAdd = new entity.CainzAddress();
                 _cainzAdd.FactroyID = ccFactory.FactoryID;
@@ -80,6 +80,10 @@ namespace OrderSheetCreator
                     }
 
                 }
+            }
+            else
+            {
+                MessageBox.Show("地址不能少于1个字符");
             }
         }
 

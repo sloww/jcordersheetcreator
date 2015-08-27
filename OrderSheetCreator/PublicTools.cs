@@ -527,7 +527,7 @@ namespace OrderSheetCreator
             }
             else
             {
-                p.Y += 26;
+                p.Y += 18;
             }
 
             return p;

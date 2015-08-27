@@ -76,6 +76,8 @@ public partial class CainzOrder
 
     public string ImageFile { get; set; }
 
+    public string ImageFile2 { get; set; }
+
 
 
     public virtual CainzFactory CainzFactory { get; set; }
