@@ -118,5 +118,16 @@ namespace OrderSheetCreator
                 txbFilePath.Text = string.Format("{0}-{1}", PublicTools.stringZip(_factory.TraderName), PublicTools.stringZip(_factory.FactoryName));
             }
         }
+
+        private void btnAddress_Click(object sender, EventArgs e)
+        {
+            entity.CainzFactory _fac = (entity.CainzFactory)CainzFactoryBindingSource.Current;
+            if (_fac != null)
+            {
+                FAddress _faddress = new FAddress(_fac);
+                _faddress.StartPosition = FormStartPosition.CenterParent;
+                _faddress.ShowDialog();
+            }
+        }
     }
 }

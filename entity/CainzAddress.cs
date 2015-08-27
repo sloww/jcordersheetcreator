@@ -26,6 +26,8 @@ public partial class CainzAddress
 
     public Nullable<System.DateTime> CreateTime { get; set; }
 
+    public Nullable<int> IsDelete { get; set; }
+
 }
 
 }

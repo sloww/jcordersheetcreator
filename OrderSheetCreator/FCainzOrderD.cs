@@ -883,26 +883,40 @@ namespace OrderSheetCreator
 
         private void btnChangeAdd_Click(object sender, EventArgs e)
         {
-            switch (addint)
+            if (FCainzOrderD.FACTORY != null && FCainzOrderD.FACTORY.FactoryName!=null)
             {
-                case 0:
-                    {
-                        txbAdd.Text = FACTORY.FactoryAddress2;
-                        addint = 1;
-
-                    } break;
-                case 1:
-                    {
-                        txbAdd.Text = FACTORY.FactoryAddress;
-                        addint = 2;
-                    } break;
-                case 2:
-                    {
-                        if (ORDER != null)
-                            txbAdd.Text = ORDER.Address;
-                        addint = 0;
-                    } break;
+                FAddress _fadd = new FAddress(FCainzOrderD.FACTORY);
+                if(_fadd.ShowDialog()== System.Windows.Forms.DialogResult.OK)
+                {
+                    this.txbAdd.Text = FAddress.add;
+                }
+                
             }
+            else
+            {
+                MessageBox.Show("请先选择工厂后，再选择地址");
+            }
+            
+            //switch (addint)
+            //{
+            //    case 0:
+            //        {
+            //            txbAdd.Text = FACTORY.FactoryAddress2;
+            //            addint = 1;
+
+            //        } break;
+            //    case 1:
+            //        {
+            //            txbAdd.Text = FACTORY.FactoryAddress;
+            //            addint = 2;
+            //        } break;
+            //    case 2:
+            //        {
+            //            if (ORDER != null)
+            //                txbAdd.Text = ORDER.Address;
+            //            addint = 0;
+            //        } break;
+            //}
         }
     }
     

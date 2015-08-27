@@ -5,18 +5,15 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="db001Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--生成过程中发现错误:
-警告 6002: 表/视图“db002.dbo.CainzAddress”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
         <EntityType Name="CainzAddress">
           <Key>
             <PropertyRef Name="AddressID" />
-            <PropertyRef Name="FactroyID" />
-            <PropertyRef Name="Address" />
           </Key>
           <Property Name="AddressID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="FactroyID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="Address" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="CreateTime" Type="datetime" />
+          <Property Name="IsDelete" Type="int" />
         </EntityType>
         <EntityType Name="CainzFactory">
           <Key>
@@ -213,6 +210,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="db001ModelStoreContainer">
+          <EntitySet Name="CainzAddress" EntityType="Self.CainzAddress" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CainzFactory" EntityType="Self.CainzFactory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CainzOrder" EntityType="Self.CainzOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CainzOrderDetail" EntityType="Self.CainzOrderDetail" Schema="dbo" store:Type="Tables" />
@@ -220,14 +218,6 @@
           <EntitySet Name="CainzTrader" EntityType="Self.CainzTrader" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PubCode" EntityType="Self.PubCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PubDgvSet" EntityType="Self.PubDgvSet" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="CainzAddress" EntityType="Self.CainzAddress" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-[CainzAddress].[AddressID] AS [AddressID], 
-[CainzAddress].[FactroyID] AS [FactroyID], 
-[CainzAddress].[Address] AS [Address], 
-[CainzAddress].[CreateTime] AS [CreateTime]
-FROM [dbo].[CainzAddress] AS [CainzAddress]</DefiningQuery>
-          </EntitySet>
           <AssociationSet Name="FK_CainzFactoryCainzOrder" Association="Self.FK_CainzFactoryCainzOrder">
             <End Role="CainzFactory" EntitySet="CainzFactory" />
             <End Role="CainzOrder" EntitySet="CainzOrder" />
@@ -489,13 +479,12 @@ FROM [dbo].[CainzAddress] AS [CainzAddress]</DefiningQuery>
         <EntityType Name="CainzAddress">
           <Key>
             <PropertyRef Name="AddressID" />
-            <PropertyRef Name="FactroyID" />
-            <PropertyRef Name="Address" />
           </Key>
           <Property Name="AddressID" Type="Guid" Nullable="false" />
           <Property Name="FactroyID" Type="Guid" Nullable="false" />
           <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="CreateTime" Type="DateTime" Precision="3" />
+          <Property Name="IsDelete" Type="Int32" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -642,6 +631,7 @@ FROM [dbo].[CainzAddress] AS [CainzAddress]</DefiningQuery>
           <EntitySetMapping Name="CainzAddress">
             <EntityTypeMapping TypeName="db001Model.CainzAddress">
               <MappingFragment StoreEntitySet="CainzAddress">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
                 <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
                 <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="FactroyID" ColumnName="FactroyID" />

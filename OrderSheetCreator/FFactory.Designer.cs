@@ -60,13 +60,10 @@
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.CainzFactoryBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.txbAdd2 = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.btnAddress = new System.Windows.Forms.Button();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.factoryNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FactoryAddress = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FactoryAddress2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contactDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CainzTrader = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FilePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -82,7 +79,7 @@
             // btnOK
             // 
             this.btnOK.Font = new System.Drawing.Font("宋体", 12F);
-            this.btnOK.Location = new System.Drawing.Point(842, 56);
+            this.btnOK.Location = new System.Drawing.Point(830, 97);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(143, 51);
             this.btnOK.TabIndex = 13;
@@ -109,7 +106,6 @@
             this.Column1,
             this.factoryNameDataGridViewTextBoxColumn,
             this.FactoryAddress,
-            this.FactoryAddress2,
             this.contactDataGridViewTextBoxColumn,
             this.CainzTrader,
             this.FilePath,
@@ -177,9 +173,7 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.txbAdd2);
-            this.panel2.Controls.Add(this.label9);
-            this.panel2.Controls.Add(this.label13);
+            this.panel2.Controls.Add(this.btnAddress);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.btnAdvice);
             this.panel2.Controls.Add(this.txbFilePath);
@@ -310,9 +304,9 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.CainzFactoryBindingSource, "FactoryAddress", true));
             this.textBox1.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.textBox1.Location = new System.Drawing.Point(305, 77);
+            this.textBox1.Location = new System.Drawing.Point(12, 107);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(531, 19);
+            this.textBox1.Size = new System.Drawing.Size(688, 19);
             this.textBox1.TabIndex = 34;
             this.textBox1.TabStop = false;
             // 
@@ -371,9 +365,9 @@
             this.label12.Font = new System.Drawing.Font("宋体", 12F);
             this.label12.Location = new System.Drawing.Point(10, 77);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(304, 16);
+            this.label12.Size = new System.Drawing.Size(360, 16);
             this.label12.TabIndex = 23;
-            this.label12.Text = "交货地址/电话（納品住所/電話番号）1：";
+            this.label12.Text = "交货地址/电话（納品住所/電話番号）（默认）：";
             // 
             // label11
             // 
@@ -428,7 +422,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(11, 86);
+            this.label7.Location = new System.Drawing.Point(11, 121);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(689, 12);
             this.label7.TabIndex = 28;
@@ -449,37 +443,15 @@
             // 
             this.CainzFactoryBindingSource.DataSource = typeof(entity.CainzFactory);
             // 
-            // txbAdd2
+            // btnAddress
             // 
-            this.txbAdd2.BackColor = System.Drawing.SystemColors.Control;
-            this.txbAdd2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txbAdd2.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.CainzFactoryBindingSource, "FactoryAddress2", true));
-            this.txbAdd2.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Bold);
-            this.txbAdd2.Location = new System.Drawing.Point(305, 109);
-            this.txbAdd2.Name = "txbAdd2";
-            this.txbAdd2.Size = new System.Drawing.Size(531, 19);
-            this.txbAdd2.TabIndex = 42;
-            this.txbAdd2.TabStop = false;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("宋体", 12F);
-            this.label9.Location = new System.Drawing.Point(10, 109);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(304, 16);
-            this.label9.TabIndex = 40;
-            this.label9.Text = "交货地址/电话（納品住所/電話番号）2：";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(11, 118);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(689, 12);
-            this.label13.TabIndex = 41;
-            this.label13.Text = "_________________________________________________________________________________" +
-    "_________________________________";
+            this.btnAddress.Location = new System.Drawing.Point(830, 17);
+            this.btnAddress.Name = "btnAddress";
+            this.btnAddress.Size = new System.Drawing.Size(143, 51);
+            this.btnAddress.TabIndex = 43;
+            this.btnAddress.Text = "地址管理";
+            this.btnAddress.UseVisualStyleBackColor = true;
+            this.btnAddress.Click += new System.EventHandler(this.btnAddress_Click);
             // 
             // Column1
             // 
@@ -497,16 +469,9 @@
             // FactoryAddress
             // 
             this.FactoryAddress.DataPropertyName = "FactoryAddress";
-            this.FactoryAddress.HeaderText = "地址1";
+            this.FactoryAddress.HeaderText = "默认地址";
             this.FactoryAddress.Name = "FactoryAddress";
             this.FactoryAddress.ReadOnly = true;
-            // 
-            // FactoryAddress2
-            // 
-            this.FactoryAddress2.DataPropertyName = "FactoryAddress2";
-            this.FactoryAddress2.HeaderText = "地址2";
-            this.FactoryAddress2.Name = "FactoryAddress2";
-            this.FactoryAddress2.ReadOnly = true;
             // 
             // contactDataGridViewTextBoxColumn
             // 
@@ -601,13 +566,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnAdvice;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txbAdd2;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Button btnAddress;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.DataGridViewTextBoxColumn factoryNameDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn FactoryAddress;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FactoryAddress2;
         private System.Windows.Forms.DataGridViewTextBoxColumn contactDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn CainzTrader;
         private System.Windows.Forms.DataGridViewTextBoxColumn FilePath;
