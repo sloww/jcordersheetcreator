@@ -42,6 +42,7 @@
             this.dataToolsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clearToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txbTraderForSearch = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -96,6 +97,7 @@
             this.menuStrip1.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.newOrderToolStripMenuItem,
+            this.updateToolStripMenuItem,
             this.reportToolStripMenuItem,
             this.helpToolStripMenuItem,
             this.dataToolsToolStripMenuItem,
@@ -152,6 +154,13 @@
             this.clearToolStripMenuItem.Text = "清理订单明细";
             this.clearToolStripMenuItem.Visible = false;
             this.clearToolStripMenuItem.Click += new System.EventHandler(this.clearToolStripMenuItem_Click);
+            // 
+            // updateToolStripMenuItem
+            // 
+            this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(100, 27);
+            this.updateToolStripMenuItem.Text = "更新记录";
+            this.updateToolStripMenuItem.Click += new System.EventHandler(this.updateToolStripMenuItem_Click);
             // 
             // panel2
             // 
@@ -481,5 +490,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn sendDateDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn createTimeDataGridViewTextBoxColumn;
+        private System.Windows.Forms.ToolStripMenuItem updateToolStripMenuItem;
     }
 }

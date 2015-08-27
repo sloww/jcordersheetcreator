@@ -5,6 +5,19 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="db001Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“db002.dbo.CainzAddress”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="CainzAddress">
+          <Key>
+            <PropertyRef Name="AddressID" />
+            <PropertyRef Name="FactroyID" />
+            <PropertyRef Name="Address" />
+          </Key>
+          <Property Name="AddressID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FactroyID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CreateTime" Type="datetime" />
+        </EntityType>
         <EntityType Name="CainzFactory">
           <Key>
             <PropertyRef Name="FactoryID" />
@@ -25,6 +38,7 @@
           <Property Name="CainzTraderTraderID" Type="uniqueidentifier" Nullable="false" />
           <Property Name="FilePath" Type="varchar" MaxLength="200" />
           <Property Name="ImageFile" Type="nvarchar" MaxLength="200" />
+          <Property Name="FactoryAddress2" Type="nvarchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="CainzOrder">
           <Key>
@@ -54,6 +68,7 @@
           <Property Name="TraderName" Type="nvarchar" MaxLength="300" />
           <Property Name="TraderID" Type="uniqueidentifier" />
           <Property Name="OrderDate" Type="datetime" />
+          <Property Name="ImageFile" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="CainzOrderDetail">
           <Key>
@@ -205,6 +220,14 @@
           <EntitySet Name="CainzTrader" EntityType="Self.CainzTrader" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PubCode" EntityType="Self.PubCode" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PubDgvSet" EntityType="Self.PubDgvSet" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CainzAddress" EntityType="Self.CainzAddress" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+[CainzAddress].[AddressID] AS [AddressID], 
+[CainzAddress].[FactroyID] AS [FactroyID], 
+[CainzAddress].[Address] AS [Address], 
+[CainzAddress].[CreateTime] AS [CreateTime]
+FROM [dbo].[CainzAddress] AS [CainzAddress]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_CainzFactoryCainzOrder" Association="Self.FK_CainzFactoryCainzOrder">
             <End Role="CainzFactory" EntitySet="CainzFactory" />
             <End Role="CainzOrder" EntitySet="CainzOrder" />
@@ -258,6 +281,7 @@
           </AssociationSet>
           <EntitySet Name="PubCode" EntityType="db001Model.PubCode" />
           <EntitySet Name="PubDgvSet" EntityType="db001Model.PubDgvSet" />
+          <EntitySet Name="CainzAddress" EntityType="db001Model.CainzAddress" />
         </EntityContainer>
         <EntityType Name="CainzFactory">
           <Key>
@@ -280,6 +304,7 @@
           <NavigationProperty Name="CainzOrder" Relationship="db001Model.FK_CainzFactoryCainzOrder" FromRole="CainzFactory" ToRole="CainzOrder" />
           <NavigationProperty Name="CainzTrader" Relationship="db001Model.FK_CainzTraderCainzFactory" FromRole="CainzFactory" ToRole="CainzTrader" />
           <Property Name="ImageFile" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FactoryAddress2" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="CainzOrder">
           <Key>
@@ -311,6 +336,7 @@
           <Property Name="TraderName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
           <Property Name="TraderID" Type="Guid" />
           <Property Name="OrderDate" Type="DateTime" Precision="3" />
+          <Property Name="ImageFile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="CainzOrderDetail">
           <Key>
@@ -460,6 +486,17 @@
           <Property Name="ColumnWidth" Type="Int32" Nullable="false" />
           <Property Name="DgvName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
+        <EntityType Name="CainzAddress">
+          <Key>
+            <PropertyRef Name="AddressID" />
+            <PropertyRef Name="FactroyID" />
+            <PropertyRef Name="Address" />
+          </Key>
+          <Property Name="AddressID" Type="Guid" Nullable="false" />
+          <Property Name="FactroyID" Type="Guid" Nullable="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CreateTime" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -469,6 +506,7 @@
           <EntitySetMapping Name="CainzFactory">
             <EntityTypeMapping TypeName="db001Model.CainzFactory">
               <MappingFragment StoreEntitySet="CainzFactory">
+                <ScalarProperty Name="FactoryAddress2" ColumnName="FactoryAddress2" />
                 <ScalarProperty Name="ImageFile" ColumnName="ImageFile" />
                 <ScalarProperty Name="CainzTraderTraderID" ColumnName="CainzTraderTraderID" />
                 <ScalarProperty Name="Deleted" ColumnName="Deleted" />
@@ -490,6 +528,7 @@
           <EntitySetMapping Name="CainzOrder">
             <EntityTypeMapping TypeName="db001Model.CainzOrder">
               <MappingFragment StoreEntitySet="CainzOrder">
+                <ScalarProperty Name="ImageFile" ColumnName="ImageFile" />
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="TraderID" ColumnName="TraderID" />
                 <ScalarProperty Name="TraderName" ColumnName="TraderName" />
@@ -597,6 +636,16 @@
                 <ScalarProperty Name="FormName" ColumnName="FormName" />
                 <ScalarProperty Name="RegApp" ColumnName="RegApp" />
                 <ScalarProperty Name="RegCode" ColumnName="RegCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CainzAddress">
+            <EntityTypeMapping TypeName="db001Model.CainzAddress">
+              <MappingFragment StoreEntitySet="CainzAddress">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="FactroyID" ColumnName="FactroyID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

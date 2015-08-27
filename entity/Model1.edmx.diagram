@@ -17,6 +17,7 @@
         <AssociationConnector Association="db001Model.FK_CainzProductCainzTrader" />
         <EntityTypeShape EntityType="db001Model.PubCode" Width="1.5" PointX="7.375" PointY="0.75" />
         <EntityTypeShape EntityType="db001Model.PubDgvSet" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="db001Model.CainzAddress" Width="1.5" PointX="10.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

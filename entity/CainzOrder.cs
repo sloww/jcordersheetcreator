@@ -74,6 +74,8 @@ public partial class CainzOrder
 
     public Nullable<System.DateTime> OrderDate { get; set; }
 
+    public string ImageFile { get; set; }
+
 
 
     public virtual CainzFactory CainzFactory { get; set; }

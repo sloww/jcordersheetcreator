@@ -432,6 +432,11 @@ namespace OrderSheetCreator
         private void dataGridView1_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
         {
         }
+
+        private void updateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start(Application.StartupPath + @"\update.txt");
+        }
     }
 
     public class OrdersArgs

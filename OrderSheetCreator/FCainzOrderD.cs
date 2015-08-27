@@ -20,6 +20,8 @@ namespace OrderSheetCreator
         public static entity.CainzFactory FACTORY = new entity.CainzFactory();
         //全局订单信息
         public entity.CainzOrder ORDER = null;
+        //add
+        int addint = 0;
         FProduct fadd = new FProduct();
         private FDateTime FDT = new FDateTime();
         public FCainzOrderD()
@@ -108,6 +110,7 @@ namespace OrderSheetCreator
             txbJingChenOrder.Text = order.OrderNo;
             cainzOrderDetailBindingSource.DataSource = ORDERDETAILLIST;
             bdsCustomer.DataSource = FACTORY;
+            txbFile.Text = order.ImageFile;
         }
 
         private void FCainzOrderD_Load(object sender, EventArgs e)
@@ -237,13 +240,30 @@ namespace OrderSheetCreator
             //OrderSheetCreator.Properties.Resources.ResourceManager.GetObject("cainzOrder.xls");
             int totol = ORDERDETAILLIST.Count;
             string excelPath;
+
             if (totol < 17)
             {
                 excelPath = Application.StartupPath + @"\cainzOrder.xls";
             }
-            else
+            else if(totol<47)
             {
                 excelPath = Application.StartupPath + @"\cainzOrder2.xls";
+            }
+            else if (totol < 77)
+            {
+                excelPath = Application.StartupPath + @"\cainzOrder3.xls";
+            }
+            else if (totol < 107)
+            {
+                excelPath = Application.StartupPath + @"\cainzOrder4.xls";
+            }
+            else if (totol < 137)
+            {
+                excelPath = Application.StartupPath + @"\cainzOrder5.xls";
+            }
+            else
+            {
+                excelPath = Application.StartupPath + @"\cainzOrder6.xls";
             }
 
             string copedExcelPath = string.Format("{0}\\{1}{2}", Application.StartupPath, DateTime.Now.ToString("MMddHHmmss"), ".xls");
@@ -328,16 +348,32 @@ namespace OrderSheetCreator
             //合计写
             
             IRow irowTotol;
+
             if (totol < 17)
             {
-                irowTotol=ist.GetRow(27);
-
+                irowTotol = ist.GetRow(27);
+            }
+            else if (totol < 47)
+            {
+                irowTotol = ist.GetRow(57);
+            }
+            else if (totol < 77)
+            {
+                irowTotol = ist.GetRow(87);
+            }
+            else if (totol < 107)
+            {
+                irowTotol = ist.GetRow(117);
+            }
+            else if (totol < 137)
+            {
+                irowTotol = ist.GetRow(147);
             }
             else
             {
-                irowTotol = ist.GetRow(57);
-
+                irowTotol = ist.GetRow(177);
             }
+
 
             irowTotol.GetCell(6).SetCellValue((double)totolCount);
             irowTotol.GetCell(8).SetCellValue((double)totolMoney);
@@ -441,7 +477,6 @@ namespace OrderSheetCreator
                             db.SaveChanges();
                         }
 
-                        
                     }
                 }
 
@@ -454,7 +489,7 @@ namespace OrderSheetCreator
 
             order.OrderNo = txbJingChenOrder.Text.Trim();
             order.OrderExNo = txbOrder.Text.Trim();
-
+            order.ImageFile = txbFile.Text.Trim();
             order.CreateTime = DateTime.Now;
             order.IsDelete = 0;
             order.Status = 0;
@@ -821,6 +856,53 @@ namespace OrderSheetCreator
         private void FCainzOrderD_SizeChanged(object sender, EventArgs e)
         {
             PublicTools.SaveFormSize(this);
+        }
+
+        private void btnUpMove_Click(object sender, EventArgs e)
+        {
+            var orderDetail = (entity.CainzOrderDetail)cainzOrderDetailBindingSource.Current;
+            if (orderDetail != null)
+            {
+                if(orderDetail.RowNo==1) return;
+                foreach(var d in FCainzOrderD.ORDERDETAILLIST)
+                {
+                    if(d.RowNo == orderDetail.RowNo-1)
+                    {
+                        d.RowNo = orderDetail.RowNo;
+                        orderDetail.RowNo--;
+                        break;
+                    }
+                }
+            }
+
+            FCainzOrderD.ORDERDETAILLIST = new BindingList<entity.CainzOrderDetail>(FCainzOrderD.ORDERDETAILLIST.OrderBy(a => a.RowNo).ToList());
+            cainzOrderDetailBindingSource.DataSource = FCainzOrderD.ORDERDETAILLIST;
+            PublicTools.RecountRowsNum(dataGridView1);
+            ReColorStatus();
+        }
+
+        private void btnChangeAdd_Click(object sender, EventArgs e)
+        {
+            switch (addint)
+            {
+                case 0:
+                    {
+                        txbAdd.Text = FACTORY.FactoryAddress2;
+                        addint = 1;
+
+                    } break;
+                case 1:
+                    {
+                        txbAdd.Text = FACTORY.FactoryAddress;
+                        addint = 2;
+                    } break;
+                case 2:
+                    {
+                        if (ORDER != null)
+                            txbAdd.Text = ORDER.Address;
+                        addint = 0;
+                    } break;
+            }
         }
     }
     

@@ -74,6 +74,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CainzAddress.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="CainzFactory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>

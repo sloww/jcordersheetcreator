@@ -56,6 +56,8 @@ public partial class CainzFactory
 
     public string ImageFile { get; set; }
 
+    public string FactoryAddress2 { get; set; }
+
 
 
     public virtual ICollection<CainzOrder> CainzOrder { get; set; }

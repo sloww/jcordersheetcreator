@@ -46,6 +46,8 @@ public partial class DB : DbContext
 
     public DbSet<PubDgvSet> PubDgvSet { get; set; }
 
+    public DbSet<CainzAddress> CainzAddress { get; set; }
+
 }
 
 }

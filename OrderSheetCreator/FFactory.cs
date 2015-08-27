@@ -93,6 +93,7 @@ namespace OrderSheetCreator
 
                     db.SaveChanges();
                 }
+                this.txbSearch.Text = "";
                 this.txbSearch_TextChanged(null,null);
             }
         }
